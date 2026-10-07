@@ -5,7 +5,7 @@ description: Start here for WhiteFox content work. Sets up the WhiteFox Content 
 
 # Start
 
-You are the front door of the WhiteFox content plugin, version 0.4.0. Read
+You are the front door of the WhiteFox content plugin, version 0.4.1. Read
 `../whitefox-content-guide/formats/README.md` (the workspace rules) before anything else.
 
 ## Steps built in this version
@@ -23,17 +23,30 @@ Write the Claude app command first and the Claude Code command in brackets, for 
 
 ## 1. Find the workspace
 
-The workspace is the folder named `WhiteFox Content`.
+The workspace is the folder the user chose for WhiteFox content. Its name and place are up to
+the user. You recognise it by its contents: a `settings.md` whose heading is
+`# WhiteFox Content workspace`, or `profiles/` and `campaigns/` folders.
 
-1. Look at the folders you can reach. If one is named `WhiteFox Content`, or holds `profiles/`
-   and `campaigns/`, that is the workspace.
-2. If you can reach a folder that contains a `WhiteFox Content` folder, use that one.
-3. If you cannot reach any folder, stop and tell the user:
-   - Claude app: give Claude access to the `WhiteFox Content` folder in Documents (create it
-     first if it does not exist), then run `/whitefox-content-start` again.
-   - Claude Code: open Claude Code in that folder, then run `/wf-content:whitefox-content-start` again.
-4. If you can reach a folder but it has no `WhiteFox Content` folder, ask: "Shall I create
-   `WhiteFox Content` in <folder>?" and wait for yes.
+1. Look at the folders you can already reach. If one is a workspace, use it.
+2. If one of them holds a workspace one level down, use that one.
+3. If you can reach no workspace, ask the user which folder to use, in one short message:
+
+   "Which folder should I use for your WhiteFox content? Add it with **+** in the message box,
+   or paste its path. If you are new, pick or create any empty folder, for example
+   `Documents\WhiteFox Content`, and I will set it up there."
+
+   When the user pastes a path, request access to that folder (in the Claude app this shows an
+   Allow window; the user can tick "Don't ask again" so later sessions skip it). When the user
+   adds it with +, use it. If access is refused or the path does not exist, say so and ask
+   again.
+4. Check the chosen folder:
+   - a workspace: use it.
+   - empty: it becomes the workspace; go to "First use".
+   - has other files but no workspace: ask "This folder already has other files. Set up
+     WhiteFox content here, or in a new `WhiteFox Content` folder inside it?" and follow the
+     answer.
+
+Say which folder you are using in the first line of your reply (see step 3).
 
 ## 2. First use: set up the workspace
 
@@ -48,14 +61,14 @@ If `settings.md` does not exist in the workspace:
      skipped.
 3. Create them, then say the workspace is ready.
 
-If `settings.md` exists but its `plugin` version differs from 0.4.0, update that line and say
-"Updated from <old> to 0.4.0".
+If `settings.md` exists but its `plugin` version differs from 0.4.1, update that line and say
+"Updated from <old> to 0.4.1".
 
 ## 3. Show where things stand
 
 Reply with:
 
-1. One line: "WhiteFox Content 0.4.0, workspace: <path>".
+1. One line: "WhiteFox Content 0.4.1, workspace: <path>".
 2. Only if a newer version exists (see "Checking for a newer version"), one line:
    "A newer version (<latest>) is available. To update: Claude app, Customize, Plugins,
    WhiteFox Content, the ⋯ menu, Check for updates, Update, then start a new chat. Claude
@@ -75,7 +88,7 @@ Reply with:
 
 If you can fetch web pages, fetch
 `https://raw.githubusercontent.com/whitefoxcloud/whitefox-content-plugin/main/plugins/wf-content/.claude-plugin/plugin.json`
-and read its `version`. If it is higher than 0.4.0 (compare each number in turn), show the
+and read its `version`. If it is higher than 0.4.1 (compare each number in turn), show the
 update line. If the fetch fails or you cannot fetch pages, skip the check silently; never
 delay or block the rest of `start` for it.
 

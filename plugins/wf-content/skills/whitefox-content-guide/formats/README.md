@@ -5,6 +5,8 @@ folder is the template for one kind of workspace file.
 
 ## Layout
 
+The workspace is any folder the user chooses (`WhiteFox Content` below is only an example name).
+
 ```
 WhiteFox Content/
   settings.md                       settings.md
@@ -28,9 +30,11 @@ WhiteFox Content/
 
 ## Every step begins the same way
 
-1. Find the workspace as `whitefox-content-start` does: the reachable folder named
-   `WhiteFox Content` (or holding `profiles/` and `campaigns/`). If there is none, or it has no
-   `settings.md`, tell the user to run `/whitefox-content-start` (Claude Code:
+1. Find the workspace as `whitefox-content-start` does (its section 1 in
+   `../../whitefox-content-start/SKILL.md`): any folder the user chose, recognised by a
+   `settings.md` headed `# WhiteFox Content workspace`, or by `profiles/` and `campaigns/`. If
+   no workspace is reachable, ask the user for the folder the same way. If the chosen folder
+   has no `settings.md`, tell the user to run `/whitefox-content-start` (Claude Code:
    `/wf-content:whitefox-content-start`) first, and stop.
 2. Read `settings.md` for the user's name.
 3. Steps that work on a campaign: if the user named one, use it. Otherwise list the campaigns

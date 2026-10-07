@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.4.1
+
+- The workspace can be any folder, with any name. When no workspace is attached,
+  `whitefox-content-start` asks which folder to use (add it with + or paste its path) and
+  requests access to it.
+
 ## 0.4.0
 
 - The evidence steps are built: extract-proof, match-proof, derive-pains, mine-quotes and

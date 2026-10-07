@@ -4,7 +4,7 @@ Turns case studies into proof-backed LinkedIn posts, articles and emails, one ap
 a time. Runs in the Claude desktop app and in Claude Code, on your own Claude subscription (Pro
 or Max).
 
-Status: 0.4.0. Built: start, guide, house-style, profile, campaign, and the evidence steps
+Status: 0.4.1. Built: start, guide, house-style, profile, campaign, and the evidence steps
 (extract-proof, match-proof, derive-pains, mine-quotes, mint-lanes). The keyword, brief and
 writing steps are not built yet.
 
@@ -24,15 +24,17 @@ The plugin holds no campaign data, case studies or logins.
      `whitefoxcloud/whitefox-content-plugin`, then install `wf-content`.
    - Claude Code: `/plugin marketplace add whitefoxcloud/whitefox-content-plugin`, then
      `/plugin install wf-content@whitefox`.
-2. **Workspace folder:** create `WhiteFox Content` in your Documents folder. The plugin fills in
-   the rest the first time you run it.
+2. **Workspace folder:** pick any folder for your WhiteFox content, with any name, anywhere
+   (for example `Documents\WhiteFox Content`). The first time you run the plugin, Claude asks
+   for it and sets it up.
 3. **Keyword research only:** add the DataForSEO login when the plugin asks for it.
 
 ## Each time you work
 
-1. Open Claude and give it access to your `WhiteFox Content` folder.
-2. Type `/whitefox-content-start` (in Claude Code: `/wf-content:whitefox-content-start`).
-   Claude lists your campaigns, or offers to create one.
+1. Type `/whitefox-content-start` (in Claude Code: `/wf-content:whitefox-content-start`).
+2. If Claude asks which folder to use, add your workspace folder with **+** in the message box,
+   or paste its path. When Claude asks for folder access, tick "Don't ask again for this folder
+   on this device", then click Allow. Claude lists your campaigns, or offers to create one.
 3. New campaign: pick a profile, or create a new one.
 4. Add a case study: attach the file or paste the link. Claude extracts its proofs into your
    pool, or reuses them if you extracted it before.
