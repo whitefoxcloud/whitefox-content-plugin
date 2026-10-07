@@ -21,7 +21,8 @@
       { "key": "quote", "label": "Quote", "edit": false }   // edit false = locked (verbatim text)
     ],
     "rows": [ { "id": "1", "pain": "...", "backing": "loot-P01" } ],
-    "choice": ["keep", "drop"]                 // optional: the two choices per row (default keep / drop)
+    "choice": ["keep", "active", "drop"]       // optional: 2 or more choices per row (default keep / drop);
+                                               // the first is the default, the last dims the row (drop, rejected)
   }
 -->
 <style>
@@ -51,6 +52,7 @@ h1 { font-size: 20px; margin: 0 0 4px; }
 .toggle button { border: 0; background: transparent; color: var(--fg); padding: 5px 12px; cursor: pointer; font: inherit; }
 .toggle button.on.a { background: var(--keep-bg); color: var(--keep); font-weight: 600; }
 .toggle button.on.b { background: var(--drop-bg); color: var(--drop); font-weight: 600; }
+.toggle button.on.c { background: var(--accent); color: #fff; font-weight: 600; }
 .field { margin-top: 6px; }
 .label { font-size: 12px; color: var(--muted); display: block; margin-bottom: 2px; }
 .value { white-space: pre-wrap; word-break: break-word; }
@@ -95,7 +97,8 @@ const DATA = {
 };
 /* end DATA */
 
-const choices = DATA.choice && DATA.choice.length === 2 ? DATA.choice : ["keep", "drop"];
+const choices = Array.isArray(DATA.choice) && DATA.choice.length >= 2 ? DATA.choice : ["keep", "drop"];
+const last = choices[choices.length - 1];
 const state = DATA.rows.map(r => ({ id: String(r.id), orig: r, vals: { ...r }, pick: choices[0], isNew: false }));
 let newCount = 0;
 
@@ -110,11 +113,11 @@ function render() {
   const box = document.getElementById("rows");
   box.replaceChildren();
   state.forEach(s => {
-    const row = el("div", { className: "row" + (s.pick === choices[1] ? " dropped" : "") });
+    const row = el("div", { className: "row" + (s.pick === last ? " dropped" : "") });
     const toggle = el("div", { className: "toggle" });
     choices.forEach((c, i) => {
       const b = el("button", { type: "button", textContent: c,
-        className: (s.pick === c ? "on " : "") + (i === 0 ? "a" : "b") });
+        className: (s.pick === c ? "on " : "") + (i === 0 ? "a" : i === choices.length - 1 ? "b" : "c") });
       b.onclick = () => { s.pick = c; render(); update(); };
       toggle.append(b);
     });
@@ -145,9 +148,10 @@ function update() {
   const lines = [`Decisions for ${DATA.title}:`];
   state.forEach(s => {
     if (s.isNew) {
-      if (s.pick === choices[1]) return;
+      if (s.pick === last) return;
       const parts = DATA.fields.map(f => `${f.label} = ${(s.vals[f.key] || "").trim() || "(none)"}`);
-      lines.push(`new ${DATA.item}: ${parts.join("; ")}`);
+      const tag = s.pick === choices[0] ? "" : ` (${s.pick})`;
+      lines.push(`new ${DATA.item}${tag}: ${parts.join("; ")}`);
       return;
     }
     const edits = DATA.fields

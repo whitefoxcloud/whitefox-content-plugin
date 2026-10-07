@@ -90,10 +90,14 @@ Check each candidate's label, stance and "Why WhiteFox" against only its own cit
 1. One block per candidate: label, type, stance, why WhiteFox, pain, proofs, quotes, quote
    variants, search phrases, flags.
 2. List any candidate you dropped in the grounding check, and why.
-3. The user keeps, drops or edits candidates. Apply and confirm.
+3. The user keeps, drops or edits candidates, and may mark lanes active straight away (on the
+   review page, use `choice` `["keep", "active", "drop"]`; typed, for example "make 1 and 2
+   active"). Apply and confirm.
 4. On yes, add the kept lanes to `lanes.md` (create it with the heading if missing), numbered
-   after the highest existing LANE, `Status` candidate, `Demand` unknown, `Minted` today.
-5. Then ask which lanes to make `active` now. Update their status on yes.
+   after the highest existing LANE, `Status` active for those marked active and candidate for
+   the rest, `Demand` unknown, `Minted` today.
+5. If no lane was marked active, ask which lanes to make `active` now. Update their status on
+   yes.
 
 ## Next
 

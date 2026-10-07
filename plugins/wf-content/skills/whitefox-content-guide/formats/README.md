@@ -66,8 +66,10 @@ buttons:
 2. Fields holding text copied from a source (a customer quote, a case study sentence, a link)
    get `"edit": false`. Fields the user may reword get `"edit": true`; long text also gets
    `"long": true`.
-3. For a judgement between two values, set `choice` (for example `["matched", "rejected"]` in
-   `/whitefox-content-match-proof`). The default is keep and drop.
+3. For other choices per row, set `choice`: two or more values, the first is the default and
+   the last dims the row (for example `["matched", "rejected"]` in
+   `/whitefox-content-match-proof`, `["keep", "active", "drop"]` in
+   `/whitefox-content-mint-lanes`). The default is keep and drop.
 4. Set the page's `<title>` to `Review: <title>` (for example "Review: quotes for
    fin-2026-10") so the artifact card says what it is for. Show it as an HTML artifact, and
    still write the numbered result in the chat.
