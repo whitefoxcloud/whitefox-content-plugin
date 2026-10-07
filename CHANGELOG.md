@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.8.1
+
+- Pages carry the real whitefox.cloud logo (its text black on light backgrounds, white on
+  dark; the fox always brand blue) and the brand colours from the WhiteFox Figma: primary
+  `#005DE5`, background navy `#152D51`, black and white. Dark mode uses the brand navy.
+
 ## 0.8.0
 
 - One chat style for every step: stage banner, result card with numbered items, notes to
