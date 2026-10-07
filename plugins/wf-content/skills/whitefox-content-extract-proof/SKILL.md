@@ -44,11 +44,15 @@ and proofs that disappeared are set to `archived`, never deleted.
 - Outcome: the result, from the text, or `(none)` when no concrete result is stated.
 - Metric: the number inside that outcome, exactly as written, or `(none)`. It must appear in the
   text. Never invent, round or combine numbers.
-- Write directly: "WhiteFox built...", never "the case study says...".
-- Keep every real specific: client names, places, third-party products, numbers. Do not
-  generalise ("teams need...") and do not soften a fact. Rewording for a campaign happens later,
-  in `/whitefox-content-match-proof`.
-- Ignore marketing lines, calls to action and SEO text.
+- Each field is whole sentences copied from the text, in their original order. No "...", no
+  joining parts of different sentences, no words of your own (no summary, no list you
+  compiled, no "the case study says"), and no quotation marks around the field.
+- Keep every real specific: client names, places, third-party products, numbers. When a detail
+  matters (a shortlist of options, a time a step took), include the sentence that states it.
+  Do not generalise ("teams need...") and do not soften a fact. Rewording for a campaign
+  happens later, in `/whitefox-content-match-proof`.
+- Leave out sentences that are only marketing ("to truly revolutionise..."), calls to action,
+  SEO text, and sentences about future work that was not delivered ("to be followed by...").
 
 **Testimonials.** Capture every quote from a named or quoted person, and every award or formal
 recognition WhiteFox received.
@@ -61,10 +65,12 @@ recognition WhiteFox received.
 
 ## 4. Check before showing
 
-1. Every number in a proof or testimonial appears in the captured text.
-2. Every Solution is filled.
-3. No two proofs say the same thing.
-4. No proof is marketing copy without a concrete deliverable.
+1. Every sentence in a proof or testimonial field appears, word for word, in the captured
+   text. Fix any field that does not.
+2. Every number in a proof or testimonial appears in the captured text.
+3. Every Solution is filled.
+4. No two proofs say the same thing.
+5. No proof is marketing copy without a concrete deliverable.
 
 ## 5. Show and approve
 
