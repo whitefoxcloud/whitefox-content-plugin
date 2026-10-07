@@ -1,0 +1,187 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WhiteFox review</title>
+<!--
+  Review page for WhiteFox content steps. A step copies this file unchanged except for the
+  DATA block below, fills DATA with the result it wants approved, and shows it as an artifact.
+  The user keeps, drops, edits and adds rows, then copies their choices back into the chat.
+
+  DATA shape:
+  {
+    "title": "Pains for fin-2026-10",          // heading
+    "item": "pain",                            // what one row is, used for "Add a pain"
+    "allowAdd": true,                          // show the Add button
+    "fields": [                                // columns, in order
+      { "key": "pain", "label": "Pain", "edit": true, "long": true },
+      { "key": "backing", "label": "Backed by", "edit": true },
+      { "key": "quote", "label": "Quote", "edit": false }   // edit false = locked (verbatim text)
+    ],
+    "rows": [ { "id": "1", "pain": "...", "backing": "loot-P01" } ],
+    "choice": ["keep", "drop"]                 // optional: the two choices per row (default keep / drop)
+  }
+-->
+<style>
+:root {
+  --bg: #ffffff; --fg: #1d1d1f; --muted: #6b6b70; --line: #e3e3e6; --card: #f7f7f8;
+  --keep: #1f7a4d; --keep-bg: #e6f4ec; --drop: #a23b3b; --drop-bg: #f8e9e9; --accent: #2f5bd3;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #161617; --fg: #ececee; --muted: #9a9aa0; --line: #2e2e31; --card: #1f1f21;
+    --keep: #6fd39f; --keep-bg: #1c3327; --drop: #f08c8c; --drop-bg: #3a2222; --accent: #8fb0ff;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--bg); color: var(--fg);
+  font: 15px/1.45 system-ui, -apple-system, "Segoe UI", sans-serif; }
+main { max-width: 900px; margin: 0 auto; padding: 20px 16px 40px; }
+h1 { font-size: 20px; margin: 0 0 4px; }
+.hint { color: var(--muted); margin: 0 0 16px; }
+.row { background: var(--card); border: 1px solid var(--line); border-radius: 10px;
+  padding: 12px; margin-bottom: 10px; }
+.row.dropped { opacity: .55; }
+.head { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+.num { font-weight: 600; min-width: 28px; }
+.tag { font-size: 12px; color: var(--muted); }
+.toggle { margin-left: auto; display: flex; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
+.toggle button { border: 0; background: transparent; color: var(--fg); padding: 5px 12px; cursor: pointer; font: inherit; }
+.toggle button.on.a { background: var(--keep-bg); color: var(--keep); font-weight: 600; }
+.toggle button.on.b { background: var(--drop-bg); color: var(--drop); font-weight: 600; }
+.field { margin-top: 6px; }
+.label { font-size: 12px; color: var(--muted); display: block; margin-bottom: 2px; }
+.value { white-space: pre-wrap; word-break: break-word; }
+textarea, input[type=text] { width: 100%; font: inherit; color: var(--fg); background: var(--bg);
+  border: 1px solid var(--line); border-radius: 6px; padding: 6px 8px; resize: vertical; }
+.edited { border-color: var(--accent); }
+.actions { display: flex; gap: 10px; flex-wrap: wrap; margin: 16px 0; }
+.btn { border: 1px solid var(--line); background: var(--card); color: var(--fg); border-radius: 8px;
+  padding: 8px 14px; cursor: pointer; font: inherit; }
+.btn.primary { background: var(--accent); color: #fff; border-color: var(--accent); }
+#out { width: 100%; min-height: 120px; font-family: ui-monospace, Consolas, monospace; font-size: 13px; }
+#status { color: var(--muted); margin-left: 4px; align-self: center; }
+</style>
+</head>
+<body>
+<main>
+  <h1 id="title"></h1>
+  <p class="hint">Keep or drop each row, edit the text where needed, then press <b>Copy my choices</b>
+    and paste the result into the chat. Nothing is saved until you do.</p>
+  <div id="rows"></div>
+  <div class="actions">
+    <button class="btn" id="add" type="button"></button>
+    <button class="btn primary" id="copy" type="button">Copy my choices</button>
+    <span id="status"></span>
+  </div>
+  <textarea id="out" readonly aria-label="Your choices"></textarea>
+</main>
+<script>
+/* DATA: the step replaces this object with its own result. */
+const DATA = {
+  "title": "Example review",
+  "item": "item",
+  "allowAdd": true,
+  "fields": [
+    { "key": "text", "label": "Text", "edit": true, "long": true },
+    { "key": "source", "label": "Source", "edit": false }
+  ],
+  "rows": [
+    { "id": "1", "text": "First example row", "source": "example-P01" },
+    { "id": "2", "text": "Second example row", "source": "example-P02" }
+  ]
+};
+/* end DATA */
+
+const choices = DATA.choice && DATA.choice.length === 2 ? DATA.choice : ["keep", "drop"];
+const state = DATA.rows.map(r => ({ id: String(r.id), orig: r, vals: { ...r }, pick: choices[0], isNew: false }));
+let newCount = 0;
+
+function el(tag, props = {}, kids = []) {
+  const n = document.createElement(tag);
+  Object.assign(n, props);
+  kids.forEach(k => n.append(k));
+  return n;
+}
+
+function render() {
+  const box = document.getElementById("rows");
+  box.replaceChildren();
+  state.forEach(s => {
+    const row = el("div", { className: "row" + (s.pick === choices[1] ? " dropped" : "") });
+    const toggle = el("div", { className: "toggle" });
+    choices.forEach((c, i) => {
+      const b = el("button", { type: "button", textContent: c,
+        className: (s.pick === c ? "on " : "") + (i === 0 ? "a" : "b") });
+      b.onclick = () => { s.pick = c; render(); update(); };
+      toggle.append(b);
+    });
+    row.append(el("div", { className: "head" }, [
+      el("span", { className: "num", textContent: s.isNew ? "new" : s.id }),
+      el("span", { className: "tag", textContent: s.isNew ? "added by you" : "" }),
+      toggle,
+    ]));
+    DATA.fields.forEach(f => {
+      const wrap = el("div", { className: "field" }, [el("span", { className: "label", textContent: f.label })]);
+      const v = s.vals[f.key] == null ? "" : String(s.vals[f.key]);
+      if (f.edit || s.isNew) {
+        const input = f.long ? el("textarea", { rows: 2, value: v }) : el("input", { type: "text", value: v });
+        const mark = () => input.classList.toggle("edited", !s.isNew && input.value !== String(s.orig[f.key] ?? ""));
+        mark();
+        input.oninput = () => { s.vals[f.key] = input.value; mark(); update(); };
+        wrap.append(input);
+      } else {
+        wrap.append(el("div", { className: "value", textContent: v || "(none)" }));
+      }
+      row.append(wrap);
+    });
+    box.append(row);
+  });
+}
+
+function update() {
+  const lines = [`Decisions for ${DATA.title}:`];
+  state.forEach(s => {
+    if (s.isNew) {
+      if (s.pick === choices[1]) return;
+      const parts = DATA.fields.map(f => `${f.label} = ${(s.vals[f.key] || "").trim() || "(none)"}`);
+      lines.push(`new ${DATA.item}: ${parts.join("; ")}`);
+      return;
+    }
+    const edits = DATA.fields
+      .filter(f => f.edit && String(s.vals[f.key] ?? "") !== String(s.orig[f.key] ?? ""))
+      .map(f => `${f.label} = ${String(s.vals[f.key]).trim() || "(none)"}`);
+    lines.push(`${s.id}: ${s.pick}${edits.length ? `, edited: ${edits.join("; ")}` : ""}`);
+  });
+  lines.push("Save these choices.");
+  document.getElementById("out").value = lines.join("\n");
+}
+
+const addBtn = document.getElementById("add");
+if (DATA.allowAdd === false) addBtn.style.display = "none";
+addBtn.textContent = `Add a ${DATA.item}`;
+addBtn.onclick = () => {
+  newCount += 1;
+  state.push({ id: `new-${newCount}`, orig: {}, vals: {}, pick: choices[0], isNew: true });
+  render(); update();
+};
+
+document.getElementById("copy").onclick = async () => {
+  const out = document.getElementById("out");
+  const status = document.getElementById("status");
+  try {
+    await navigator.clipboard.writeText(out.value);
+    status.textContent = "Copied. Paste it into the chat.";
+  } catch (e) {
+    out.focus(); out.select();
+    try { document.execCommand("copy"); status.textContent = "Copied. Paste it into the chat."; }
+    catch (e2) { status.textContent = "Select the text below and copy it."; }
+  }
+};
+
+document.getElementById("title").textContent = DATA.title;
+render(); update();
+</script>
+</body>
+</html>

@@ -53,6 +53,29 @@ example:
 Number the items you show, so the user can refer to them. After a change, show the changed
 items and ask again; save only after a clear yes ("save", "yes", "go ahead").
 
+### The review page (Claude app)
+
+When a result has 3 or more items and you can show an artifact (the Claude app can; Claude
+Code cannot), also show the review page, so the user can keep, drop, edit and add rows with
+buttons:
+
+1. Copy `review.html` from this folder unchanged, except the `DATA` object between
+   `/* DATA` and `/* end DATA */`. Fill it with the result: `title`, `item` (what one row is,
+   for example "pain"), `fields` (one per field you show), `rows` (one per item, `id` = the
+   number you show in the chat).
+2. Fields holding text copied from a source (a customer quote, a case study sentence, a link)
+   get `"edit": false`. Fields the user may reword get `"edit": true`; long text also gets
+   `"long": true`.
+3. For a judgement between two values, set `choice` (for example `["matched", "rejected"]` in
+   `/whitefox-content-match-proof`). The default is keep and drop.
+4. Show it as an HTML artifact, and still write the numbered result in the chat. Say: "Use the
+   review page, then paste your choices here, or just type them."
+5. The user pastes back lines starting `Decisions for`. Apply each line exactly: `keep`, `drop`
+   (or the two `choice` values), `edited: <field> = <text>`, and `new <item>: ...` rows. Show
+   the result once more as a short list and save on yes. A new or edited item still follows
+   the step's rules (for example a quote must stay word for word with a link); say so if it
+   does not.
+
 When a step names another step to the user, it gives the Claude app command and the Claude Code
 command in brackets, for example `/whitefox-content-match-proof` (Claude Code:
 `/wf-content:whitefox-content-match-proof`).
