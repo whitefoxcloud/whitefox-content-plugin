@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.4.2
+
+- Review page: in the Claude app, results with 3 or more items also open as a page with keep,
+  drop, edit and add on each row; copy your choices back into the chat.
+- Every approval question says how to save or change, with examples.
+- extract-proof: fields are whole sentences copied from the case study; no spliced fragments,
+  no summary of its own; marketing and future-work sentences left out.
+- derive-pains: a passing mention in a proof does not count as backing.
+- start: says that a folder added with + needs a short message to send.
+
 ## 0.4.1
 
 - The workspace can be any folder, with any name. When no workspace is attached,
