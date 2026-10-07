@@ -1,5 +1,5 @@
 ---
-name: profile
+name: whitefox-content-profile
 description: Create a new WhiteFox industry profile or change an existing one (audience, positioning, never-position-as, lead routes, brand and exclude terms, quote and keyword vocabulary) in the WhiteFox Content workspace. Use when the user wants to add, edit, approve or look at a profile.
 ---
 
@@ -10,10 +10,10 @@ may create or change a profile.
 
 ## Read first
 
-- `../guide/formats/README.md` (workspace rules) and `../guide/formats/profile.md` (the
+- `../whitefox-content-guide/formats/README.md` (workspace rules) and `../whitefox-content-guide/formats/profile.md` (the
   format).
 - `settings.md` in the workspace, for the user's name. If the workspace is not set up, tell the
-  user to run `/start` (Claude Code: `/wf-content:start`) first, and stop.
+  user to run `/whitefox-content-start` (Claude Code: `/wf-content:whitefox-content-start`) first, and stop.
 - Every file in `profiles/`.
 
 ## Look at a profile

@@ -1,5 +1,5 @@
 ---
-name: guide
+name: whitefox-content-guide
 description: Explains how the WhiteFox content workflow works, what each step does, where files live in the WhiteFox Content folder, and what the IDs (proof, PAIN, QUOTE, LANE, ANGLE) mean. Use when the user asks how the plugin, workflow, folders or IDs work.
 ---
 
@@ -19,21 +19,21 @@ be traced back to something WhiteFox really delivered.
 
 | # | Step | What it does | Writes |
 |---|---|---|---|
-| 1 | `/profile` | describes an industry: audience, positioning, words to use and avoid | `profiles/<CODE>.md` |
-| 2 | `/campaign` | starts a campaign on one profile | `campaigns/<name>/campaign.md` |
-| 3 | `/extract-proof` | reads a case study once and lists what WhiteFox really did (proofs) | `pool/sources/<id>.md` |
-| 4 | `/match-proof` | judges which pool proofs fit this campaign | `shelf.md` |
-| 5 | `/derive-pains` | names the buyer problems those proofs solve | `pains.md` |
-| 6 | `/mine-quotes` | finds real buyers saying those problems in public, word for word | `quotes.md` |
-| 7 | `/mint-lanes` | turns pains, proofs and quotes into topics to publish about (lanes) | `lanes.md` |
-| 8 | `/keyword-research` | optional and paid: what people search for on a lane | `keywords.md`, `costs.md` |
-| 9 | `/arm-brief` | plans the pieces for one lane (angles: channel, headline, persona) | `briefs/LANE-nn.md` |
-| 10 | `/write-linkedin`, `/write-article`, `/write-email` | writes one piece for a kept angle | `drafts/` |
+| 1 | `/whitefox-content-profile` | describes an industry: audience, positioning, words to use and avoid | `profiles/<CODE>.md` |
+| 2 | `/whitefox-content-campaign` | starts a campaign on one profile | `campaigns/<name>/campaign.md` |
+| 3 | `/whitefox-content-extract-proof` | reads a case study once and lists what WhiteFox really did (proofs) | `pool/sources/<id>.md` |
+| 4 | `/whitefox-content-match-proof` | judges which pool proofs fit this campaign | `shelf.md` |
+| 5 | `/whitefox-content-derive-pains` | names the buyer problems those proofs solve | `pains.md` |
+| 6 | `/whitefox-content-mine-quotes` | finds real buyers saying those problems in public, word for word | `quotes.md` |
+| 7 | `/whitefox-content-mint-lanes` | turns pains, proofs and quotes into topics to publish about (lanes) | `lanes.md` |
+| 8 | `/whitefox-content-keyword-research` | optional and paid: what people search for on a lane | `keywords.md`, `costs.md` |
+| 9 | `/whitefox-content-arm-brief` | plans the pieces for one lane (angles: channel, headline, persona) | `briefs/LANE-nn.md` |
+| 10 | `/whitefox-content-write-linkedin`, `/whitefox-content-write-article`, `/whitefox-content-write-email` | writes one piece for a kept angle | `drafts/` |
 
-`/start` shows where every campaign stands and suggests the next step. `/house-style` shows the
+`/whitefox-content-start` shows where every campaign stands and suggests the next step. `/whitefox-content-house-style` shows the
 writing rules every draft follows.
 
-In Claude Code every command starts with `wf-content:`, for example `/wf-content:start`.
+In Claude Code every command starts with `wf-content:`, for example `/wf-content:whitefox-content-start`.
 
 ## Things people ask
 

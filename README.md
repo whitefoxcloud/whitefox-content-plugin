@@ -4,7 +4,7 @@ Turns case studies into proof-backed LinkedIn posts, articles and emails, one ap
 a time. Runs in the Claude desktop app and in Claude Code, on your own Claude subscription (Pro
 or Max).
 
-Status: 0.2.0. Built: `start`, `guide`, `house-style`, `profile`, `campaign`. The evidence,
+Status: 0.3.0. Built: start, guide, house-style, profile, campaign. The evidence,
 keyword, brief and writing steps are not built yet.
 
 ## How it works
@@ -30,8 +30,8 @@ The plugin holds no campaign data, case studies or logins.
 ## Each time you work
 
 1. Open Claude and give it access to your `WhiteFox Content` folder.
-2. Type `/start` (in Claude Code: `/wf-content:start`). Claude lists your campaigns, or offers
-   to create one.
+2. Type `/whitefox-content-start` (in Claude Code: `/wf-content:whitefox-content-start`).
+   Claude lists your campaigns, or offers to create one.
 3. New campaign: pick a profile, or create a new one.
 4. Add a case study: attach the file or paste the link. Claude extracts its proofs into your
    pool, or reuses them if you extracted it before.
@@ -42,7 +42,7 @@ The plugin holds no campaign data, case studies or logins.
    approve.
 7. Take the post from the chat, or open the saved draft in your campaign folder.
 
-Next time, `/start` shows where each campaign stands and what to do next.
+Next time, `/whitefox-content-start` shows where each campaign stands and what to do next.
 
 ## For maintainers
 

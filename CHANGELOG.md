@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.3.0
+
+- Every step is renamed with the `whitefox-content-` prefix, so WhiteFox commands are easy to
+  find and cannot clash with other plugins: `/whitefox-content-start` in the Claude app,
+  `/wf-content:whitefox-content-start` in Claude Code.
+
 ## 0.2.0
 
 - `start` sets up the workspace folder on first use (settings, folders, starter profiles),
