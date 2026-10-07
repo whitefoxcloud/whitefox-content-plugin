@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.8.0
+
+- One chat style for every step: stage banner, result card with numbered items, notes to
+  check, and the reply line last.
+- Pages in WhiteFox's colours and font (Bai Jamjuree, brand blue): the review page gains a
+  stage header; new draft preview page (LinkedIn post, email or article as it will look, with
+  copy buttons and a search-result preview with title and description lengths); new campaign
+  dashboard from `whitefox-content-start` (stages, counts, next command). Pages never save;
+  saving stays in the chat.
+
 ## 0.7.0
 
 - Three stage commands, so users need four commands in all: `whitefox-content-add-case-study`

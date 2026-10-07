@@ -43,7 +43,8 @@ archived when the new one is saved.
 
 ## 3. Show and approve
 
-1. If the profile is not `approved`, say so first (checklist).
+1. If the profile is not `approved`, say so first (checklist). In the Claude app, show the
+   draft preview page (workspace rules, "The draft preview").
 2. The post, ready to copy; its word count; "Built from"; the checklist.
 3. Ask: "Reply **save**, or tell me what to change, for example: *shorter*, *open with a
    detail from the build*, *switch to the founder voice*." Apply changes and show the post again.

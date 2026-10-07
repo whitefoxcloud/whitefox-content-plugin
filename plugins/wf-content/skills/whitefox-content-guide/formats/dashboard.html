@@ -1,0 +1,148 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WhiteFox Content dashboard</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@400;500;600&display=swap" rel="stylesheet">
+<!--
+  Campaign dashboard for whitefox-content-start. The step copies this file unchanged except for
+  the DATA block below, fills DATA from the workspace, and shows it as an artifact. It only shows
+  where things stand; work happens in the chat.
+
+  DATA shape:
+  {
+    "version": "0.7.0",
+    "workspace": "C:\\...\\WhiteFox Content",
+    "update": null,                          // or "0.7.1" when a newer version exists
+    "profiles": [ { "code": "FIN", "name": "Fintech / payments", "status": "approved" } ],
+    "campaigns": [ {
+      "name": "fin-2026-10", "profile": "FIN", "goal": "...",
+      "stages": [ { "name": "Setup", "state": "done" },          // state: done | current | todo
+                  { "name": "Add a case study", "state": "done" },
+                  { "name": "Find topics", "state": "current" },
+                  { "name": "Write", "state": "todo" } ],
+      "counts": [ ["Proofs matched", "2 of 2"], ["Pains", "11"], ["Quotes", "10"],
+                  ["Topics", "8 (3 active)"], ["Pieces kept", "3"], ["Drafts", "3"] ],
+      "next": { "command": "/whitefox-content-write", "code": "/wf-content:whitefox-content-write",
+                "reason": "LANE-03 has 2 kept pieces without drafts" }
+    } ]
+  }
+-->
+<style>
+:root {
+  --blue: #005de5; --blue-dark: #0044a7; --navy: #003077; --blue-soft: #f3faff; --blue-tint: #d7edff;
+  --surface: #ffffff; --page: #f2f4f7; --fg: #003077; --text: #1f2633; --muted: #7a828e;
+  --line: #e2e6ef; --ok: #1f7a4d; --ok-bg: #e6f4ec; --warn: #a15c00; --warn-bg: #fff4e0; --on-blue: #ffffff;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --blue: #5a9bff; --blue-dark: #7bb0ff; --navy: #dfe9ff; --blue-soft: #14213a; --blue-tint: #1c2f52;
+    --surface: #171c25; --page: #0d1117; --fg: #dfe9ff; --text: #e4e8ef; --muted: #98a1ae;
+    --line: #2a3140; --ok: #6fd39f; --ok-bg: #183327; --warn: #f0b45a; --warn-bg: #3a2c14; --on-blue: #0d1117;
+  }
+}
+* { box-sizing: border-box; }
+body { margin: 0; background: var(--page); color: var(--text);
+  font: 15px/1.5 "Bai Jamjuree", system-ui, -apple-system, "Segoe UI", sans-serif; }
+.bar { background: var(--surface); border-bottom: 1px solid var(--line); }
+.bar-in { max-width: 960px; margin: 0 auto; padding: 12px 16px; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.mark { font-weight: 600; font-size: 17px; color: var(--fg); }
+.mark i { font-style: normal; color: var(--blue); }
+.mark b { font-weight: 500; color: var(--muted); margin-left: 6px; font-size: 14px; }
+.ver { margin-left: auto; font-size: 13px; color: var(--muted); }
+main { max-width: 960px; margin: 0 auto; padding: 20px 16px 48px; }
+.notice { background: var(--warn-bg); color: var(--warn); border-radius: 10px; padding: 10px 14px; margin-bottom: 16px; }
+.ws { color: var(--muted); font-size: 13px; margin: 0 0 16px; word-break: break-all; }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 18px; margin-bottom: 16px; }
+.ctitle { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
+.ctitle h2 { margin: 0; font-size: 20px; color: var(--fg); font-weight: 600; }
+.chip { font-size: 12px; border-radius: 999px; padding: 2px 10px; background: var(--blue-soft); color: var(--blue-dark); border: 1px solid var(--blue-tint); }
+.chip.warn { background: var(--warn-bg); color: var(--warn); border-color: transparent; }
+.goal { color: var(--muted); margin: 6px 0 14px; }
+.steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 16px; }
+.step { border: 1px solid var(--line); border-radius: 10px; padding: 8px 10px; font-size: 14px; }
+.step .n { font-size: 12px; color: var(--muted); }
+.step.done { background: var(--ok-bg); border-color: transparent; color: var(--ok); }
+.step.current { background: var(--blue); border-color: var(--blue); color: var(--on-blue); font-weight: 600; }
+.step.current .n { color: var(--on-blue); opacity: .85; }
+.tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 8px; margin-bottom: 16px; }
+.tile { background: var(--blue-soft); border-radius: 10px; padding: 8px 10px; }
+.tile .v { font-size: 18px; font-weight: 600; color: var(--fg); }
+.tile .k { font-size: 12px; color: var(--muted); }
+.next { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; border-top: 1px solid var(--line); padding-top: 12px; }
+.next code { background: var(--blue-soft); color: var(--blue-dark); border-radius: 6px; padding: 3px 8px; font-size: 14px; }
+.next .why { color: var(--muted); flex-basis: 100%; font-size: 14px; }
+.btn { border: 1px solid var(--blue); background: var(--blue); color: var(--on-blue); border-radius: 999px;
+  padding: 6px 14px; cursor: pointer; font: inherit; font-weight: 500; font-size: 14px; }
+.profiles { display: flex; gap: 8px; flex-wrap: wrap; }
+h3 { font-size: 14px; color: var(--muted); font-weight: 500; text-transform: uppercase; letter-spacing: .4px; margin: 24px 0 8px; }
+@media (max-width: 560px) { .steps { grid-template-columns: repeat(2, 1fr); } }
+</style>
+</head>
+<body>
+<div class="bar"><div class="bar-in">
+  <span class="mark">white<i>fox</i><b>Content</b></span>
+  <span class="ver" id="ver"></span>
+</div></div>
+<main>
+  <div id="notice"></div>
+  <p class="ws" id="ws"></p>
+  <div id="campaigns"></div>
+  <h3>Profiles</h3>
+  <div class="profiles" id="profiles"></div>
+</main>
+<script>
+/* DATA: the step replaces this object with the workspace's state. */
+const DATA = {
+  "version": "0.7.0",
+  "workspace": "Documents/WhiteFox Content",
+  "update": null,
+  "profiles": [ { "code": "EX", "name": "Example industry", "status": "draft" } ],
+  "campaigns": [ {
+    "name": "example-2026-10", "profile": "EX", "goal": "An example goal.",
+    "stages": [ { "name": "Setup", "state": "done" }, { "name": "Add a case study", "state": "current" },
+                { "name": "Find topics", "state": "todo" }, { "name": "Write", "state": "todo" } ],
+    "counts": [ ["Proofs matched", "0"], ["Pains", "0"] ],
+    "next": { "command": "/whitefox-content-add-case-study", "code": "/wf-content:whitefox-content-add-case-study",
+              "reason": "add a case study to start" }
+  } ]
+};
+/* end DATA */
+
+const esc = s => String(s ?? "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+document.getElementById("ver").textContent = `version ${DATA.version}`;
+document.getElementById("ws").textContent = `Workspace: ${DATA.workspace}`;
+if (DATA.update) {
+  document.getElementById("notice").innerHTML = `<div class="notice">Version ${esc(DATA.update)} is available. Claude app: Customize, Plugins, WhiteFox Content, the ⋯ menu, Check for updates, Update, then start a new chat.</div>`;
+}
+const box = document.getElementById("campaigns");
+if (!DATA.campaigns.length) {
+  box.innerHTML = `<div class="card"><div class="ctitle"><h2>No campaigns yet</h2></div><p class="goal">Start with <code>/whitefox-content-campaign</code>, then three stages: add a case study, find topics, write.</p></div>`;
+}
+DATA.campaigns.forEach(c => {
+  const prof = DATA.profiles.find(p => p.code === c.profile);
+  const approved = prof && prof.status === "approved";
+  const steps = c.stages.map((s, i) => `<div class="step ${esc(s.state)}"><div class="n">${i === 0 ? "Setup" : `Stage ${i} of 3`}${s.state === "done" ? " ✓" : s.state === "current" ? " · you are here" : ""}</div>${esc(s.name)}</div>`).join("");
+  const tiles = (c.counts || []).map(([k, v]) => `<div class="tile"><div class="v">${esc(v)}</div><div class="k">${esc(k)}</div></div>`).join("");
+  const card = document.createElement("div");
+  card.className = "card";
+  card.innerHTML = `
+    <div class="ctitle"><h2>${esc(c.name)}</h2><span class="chip">${esc(c.profile)}${prof ? `, ${esc(prof.name)}` : ""}</span>${approved ? "" : `<span class="chip warn">profile not approved yet</span>`}</div>
+    <p class="goal">${esc(c.goal || "")}</p>
+    <div class="steps">${steps}</div>
+    <div class="tiles">${tiles}</div>
+    <div class="next"><b>Next:</b> <code>${esc(c.next.command)}</code><button class="btn" type="button">Copy command</button>
+      <span class="why">${esc(c.next.reason)}. In Claude Code: <code>${esc(c.next.code)}</code></span></div>`;
+  card.querySelector("button").onclick = async (e) => {
+    try { await navigator.clipboard.writeText(c.next.command); e.target.textContent = "Copied"; }
+    catch (err) { e.target.textContent = "Select and copy"; }
+  };
+  box.append(card);
+});
+document.getElementById("profiles").innerHTML = DATA.profiles.map(p =>
+  `<span class="chip ${p.status === "approved" ? "" : "warn"}">${esc(p.code)}: ${esc(p.name)} (${esc(p.status)})</span>`).join("");
+</script>
+</body>
+</html>

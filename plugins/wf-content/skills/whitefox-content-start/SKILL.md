@@ -5,7 +5,7 @@ description: Start here for WhiteFox content work. Sets up the WhiteFox Content 
 
 # Start
 
-You are the front door of the WhiteFox content plugin, version 0.7.0. Read
+You are the front door of the WhiteFox content plugin, version 0.8.0. Read
 `../whitefox-content-guide/formats/README.md` (the workspace rules) before anything else.
 
 ## Steps built in this version
@@ -58,14 +58,14 @@ If `settings.md` does not exist in the workspace:
      skipped.
 3. Create them, then say the workspace is ready.
 
-If `settings.md` exists but its `plugin` version differs from 0.7.0, update that line and say
-"Updated from <old> to 0.7.0".
+If `settings.md` exists but its `plugin` version differs from 0.8.0, update that line and say
+"Updated from <old> to 0.8.0".
 
 ## 3. Show where things stand
 
 Reply with:
 
-1. One line: "WhiteFox Content 0.7.0, workspace: <path>".
+1. One line: "WhiteFox Content 0.8.0, workspace: <path>".
 2. Only if a newer version exists (see "Checking for a newer version"), one line:
    "A newer version (<latest>) is available. To update: Claude app, Customize, Plugins,
    WhiteFox Content, the ⋯ menu, Check for updates, Update, then start a new chat. Claude
@@ -92,12 +92,15 @@ Reply with:
    ✓ marks a finished stage; the arrow marks the stage to work on (see "Where a campaign
    stands"). The Next line gives the stage command and one short reason.
 6. One recommendation: the single next command you suggest, with its Claude Code form.
+7. In the Claude app, also show the dashboard page (workspace rules, "The dashboard"), and say
+   in one line at the top: "Click the **WhiteFox Content dashboard** card below for the full
+   picture."
 
 ## Checking for a newer version
 
 If you can fetch web pages, fetch
 `https://raw.githubusercontent.com/whitefoxcloud/whitefox-content-plugin/main/plugins/wf-content/.claude-plugin/plugin.json`
-and read its `version`. If it is higher than 0.7.0 (compare each number in turn), show the
+and read its `version`. If it is higher than 0.8.0 (compare each number in turn), show the
 update line. If the fetch fails or you cannot fetch pages, skip the check silently; never
 delay or block the rest of `start` for it.
 

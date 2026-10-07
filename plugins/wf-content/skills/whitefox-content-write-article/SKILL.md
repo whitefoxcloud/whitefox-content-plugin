@@ -80,7 +80,8 @@ changes and show the plan again.
 
 ## 4. Show and approve
 
-1. If the profile is not `approved`, say so first (checklist).
+1. If the profile is not `approved`, say so first (checklist). In the Claude app, show the
+   draft preview page (workspace rules, "The draft preview").
 2. SEO title, meta description, slug, then the article; its word count; "Built from"; the
    checklist.
 3. Ask: "Reply **save**, or tell me what to change, for example: *tighten section 3*, *more on

@@ -66,6 +66,24 @@ other in the same conversation; each step can also be run on its own.
 When a step runs on its own (not from its stage command), still name its stage and step
 number in the opening lines.
 
+## Chat style
+
+Every step's replies look the same, so the plugin feels like one product:
+
+1. **Banner**: the stage line in bold, then "What it does" and "What you'll decide" (see "Every
+   step begins the same way"). Only in the first reply of a step.
+2. **Result card**: a `###` heading naming the result ("### 8 topics for fin-2026-10"), one
+   summary line with the counts, then the numbered items. Each item: its ID and name in bold
+   on the first line, then its fields as short `Label: value` lines. Use a table only when
+   every item has the same three to six short fields (a keyword table, a shelf).
+3. **Notes**: anything the user should check, as a short list under "Check before saving", never
+   buried in the items.
+4. **Reply line**: always last, as a quote block (see "Asking for approval").
+
+Keep chat replies short: long results go on a page (see "Pages in the Claude app") and the chat
+keeps the numbered summary. Use ✓ for done and → for next; no other symbols or emoji. After
+saving, name the file once: "Saved to `drafts/ANGLE-03-linkedin-post.md`."
+
 ## Asking for approval
 
 There are no buttons: the user approves or changes a result by typing. End every approval
@@ -78,11 +96,27 @@ example:
 Number the items you show, so the user can refer to them. After a change, show the changed
 items and ask again; save only after a clear yes ("save", "yes", "go ahead").
 
-### The review page (Claude app)
+## Pages in the Claude app
 
-When a result has 3 or more items and you can show an artifact (the Claude app can; Claude
-Code cannot), also show the review page, so the user can keep, drop, edit and add rows with
-buttons:
+Three pages in this folder, in WhiteFox's colours and font, show results next to the chat. Show
+them only when you can show an artifact (the Claude app can; Claude Code cannot; then the chat
+alone is enough). For each: copy the file unchanged except the `DATA` object between `/* DATA`
+and `/* end DATA */`, set `stage` to the current stage line, and show it as an HTML artifact.
+Pages never save anything: saving always happens in the chat.
+
+| Page | When | What the user does on it |
+|---|---|---|
+| `review.html` | a result with 3 or more items to approve | keep, drop, edit, add; copy choices back |
+| `preview.html` | every draft, before asking to save | reads it as it will look; copies the clean text |
+| `dashboard.html` | `whitefox-content-start`, once the workspace exists | sees each campaign's stages and the next command |
+
+Start your reply with one line naming the page, because its card does not look clickable, for
+example: "Click the **Draft: LinkedIn post, ANGLE-03** card below to see it as it will look."
+
+### The review page
+
+For a result with 3 or more items, show the review page so the user can keep, drop, edit and
+add rows with buttons:
 
 1. Copy `review.html` from this folder unchanged, except the `DATA` object between
    `/* DATA` and `/* end DATA */`. Fill it with the result: `title`, `item` (what one row is,
@@ -103,10 +137,28 @@ buttons:
    below to keep, drop or edit with buttons, then press Copy my choices and paste them here.
    Or just type your changes." The card does not look clickable, so always say this.
 6. The user pastes back lines starting `Decisions for`. Apply each line exactly: `keep`, `drop`
-   (or the two `choice` values), `edited: <field> = <text>`, and `new <item>: ...` rows. Show
+   (or the `choice` values), `edited: <field> = <text>`, and `new <item>: ...` rows. Show
    the result once more as a short list and save on yes. A new or edited item still follows
    the step's rules (for example a quote must stay word for word with a link); say so if it
    does not.
+
+### The draft preview
+
+For every draft, before asking to save, show `preview.html` with `channel`, `title` (the
+article's H1, or "LinkedIn post, ANGLE-nn" / "Email, ANGLE-nn"), `persona` (LinkedIn), `words`
+and `range`, `body` (the ready-to-copy text; for articles the Markdown after the H1),
+`subjects` and `previewText` (email) or `seo` (article). The page title is "Draft: <title>".
+In the chat keep the word count, "Built from" and the checklist; the draft text itself may be
+left to the page when it is longer than about 200 words. After a change, show the page again.
+
+### The dashboard
+
+In `whitefox-content-start`, once the workspace exists, show `dashboard.html` with `version`,
+`workspace`, `update` (the newer version, or null), `profiles` and one entry per campaign that
+is not `done`: its stages (`done`, `current` or `todo`, from "Where a campaign stands"), its
+counts (proofs matched of judged, pains, quotes, topics with active, pieces kept, drafts; only
+the ones that exist) and `next` (command, Claude Code form, reason). The chat keeps the short
+text map.
 
 When a step names another step to the user, it gives the Claude app command and the Claude Code
 command in brackets, for example `/whitefox-content-match-proof` (Claude Code:

@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Review: WhiteFox</title>
 <!-- The step also sets this <title> to "Review: <DATA.title>" so the artifact card says what it is for. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@400;500;600&display=swap" rel="stylesheet">
 <!--
   Review page for WhiteFox content steps. A step copies this file unchanged except for the
   DATA block below, fills DATA with the result it wants approved, and shows it as an artifact.
@@ -12,62 +14,81 @@
 
   DATA shape:
   {
-    "title": "Pains for fin-2026-10",          // heading
-    "item": "pain",                            // what one row is, used for "Add a pain"
+    "stage": "Stage 2 of 3, Find topics: step 2 of 3, mint lanes",   // optional header line
+    "title": "Lanes for fin-2026-10",          // heading
+    "item": "lane",                            // what one row is, used for "Add a lane"
     "allowAdd": true,                          // show the Add button
     "fields": [                                // columns, in order
-      { "key": "pain", "label": "Pain", "edit": true, "long": true },
-      { "key": "backing", "label": "Backed by", "edit": true },
+      { "key": "label", "label": "Label", "edit": true },
+      { "key": "stance", "label": "Stance", "edit": true, "long": true },
       { "key": "quote", "label": "Quote", "edit": false }   // edit false = locked (verbatim text)
     ],
-    "rows": [ { "id": "1", "pain": "...", "backing": "loot-P01", "pick": "keep" } ],  // pick: optional starting choice
+    "rows": [ { "id": "1", "label": "...", "pick": "keep" } ],  // pick: optional starting choice
     "choice": ["keep", "active", "drop"]       // optional: 2 or more choices per row (default keep / drop);
                                                // the first is the default, the last dims the row (drop, rejected)
   }
 -->
 <style>
 :root {
-  --bg: #ffffff; --fg: #1d1d1f; --muted: #6b6b70; --line: #e3e3e6; --card: #f7f7f8;
-  --keep: #1f7a4d; --keep-bg: #e6f4ec; --drop: #a23b3b; --drop-bg: #f8e9e9; --accent: #2f5bd3;
+  --blue: #005de5; --blue-dark: #0044a7; --navy: #003077; --blue-soft: #f3faff; --blue-tint: #d7edff;
+  --bg: #ffffff; --surface: #ffffff; --page: #f2f4f7; --fg: #003077; --text: #1f2633; --muted: #7a828e;
+  --line: #e2e6ef; --keep: #1f7a4d; --keep-bg: #e6f4ec; --drop: #a23b3b; --drop-bg: #f8e9e9;
+  --on-blue: #ffffff;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --bg: #161617; --fg: #ececee; --muted: #9a9aa0; --line: #2e2e31; --card: #1f1f21;
-    --keep: #6fd39f; --keep-bg: #1c3327; --drop: #f08c8c; --drop-bg: #3a2222; --accent: #8fb0ff;
+    --blue: #5a9bff; --blue-dark: #7bb0ff; --navy: #dfe9ff; --blue-soft: #14213a; --blue-tint: #1c2f52;
+    --bg: #11151c; --surface: #171c25; --page: #0d1117; --fg: #dfe9ff; --text: #e4e8ef; --muted: #98a1ae;
+    --line: #2a3140; --keep: #6fd39f; --keep-bg: #183327; --drop: #f08c8c; --drop-bg: #3a2222;
+    --on-blue: #0d1117;
   }
 }
 * { box-sizing: border-box; }
-body { margin: 0; background: var(--bg); color: var(--fg);
-  font: 15px/1.45 system-ui, -apple-system, "Segoe UI", sans-serif; }
-main { max-width: 900px; margin: 0 auto; padding: 20px 16px 40px; }
-h1 { font-size: 20px; margin: 0 0 4px; }
-.hint { color: var(--muted); margin: 0 0 16px; }
-.row { background: var(--card); border: 1px solid var(--line); border-radius: 10px;
-  padding: 12px; margin-bottom: 10px; }
-.row.dropped { opacity: .55; }
-.head { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
-.num { font-weight: 600; min-width: 28px; }
+body { margin: 0; background: var(--page); color: var(--text);
+  font: 15px/1.5 "Bai Jamjuree", system-ui, -apple-system, "Segoe UI", sans-serif; }
+.bar { background: var(--surface); border-bottom: 1px solid var(--line); }
+.bar-in { max-width: 920px; margin: 0 auto; padding: 12px 16px; display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.mark { font-weight: 600; font-size: 17px; color: var(--fg); letter-spacing: .2px; }
+.mark i { font-style: normal; color: var(--blue); }
+.mark b { font-weight: 500; color: var(--muted); margin-left: 6px; font-size: 14px; }
+.stage { margin-left: auto; font-size: 13px; color: var(--blue-dark); background: var(--blue-soft);
+  border: 1px solid var(--blue-tint); border-radius: 999px; padding: 3px 12px; }
+main { max-width: 920px; margin: 0 auto; padding: 20px 16px 48px; }
+h1 { font-size: 22px; font-weight: 600; color: var(--fg); margin: 0 0 4px; }
+.hint { color: var(--muted); margin: 0 0 18px; }
+.row { background: var(--surface); border: 1px solid var(--line); border-radius: 12px;
+  padding: 14px; margin-bottom: 10px; }
+.row.dropped { opacity: .5; }
+.head { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; flex-wrap: wrap; }
+.num { font-weight: 600; color: var(--fg); min-width: 28px; }
 .tag { font-size: 12px; color: var(--muted); }
 .toggle { margin-left: auto; display: flex; border: 1px solid var(--line); border-radius: 8px; overflow: hidden; }
-.toggle button { border: 0; background: transparent; color: var(--fg); padding: 5px 12px; cursor: pointer; font: inherit; }
+.toggle button { border: 0; background: transparent; color: var(--text); padding: 5px 12px; cursor: pointer; font: inherit; font-size: 14px; }
+.toggle button + button { border-left: 1px solid var(--line); }
 .toggle button.on.a { background: var(--keep-bg); color: var(--keep); font-weight: 600; }
 .toggle button.on.b { background: var(--drop-bg); color: var(--drop); font-weight: 600; }
-.toggle button.on.c { background: var(--accent); color: #fff; font-weight: 600; }
-.field { margin-top: 6px; }
-.label { font-size: 12px; color: var(--muted); display: block; margin-bottom: 2px; }
+.toggle button.on.c { background: var(--blue); color: var(--on-blue); font-weight: 600; }
+.field { margin-top: 8px; }
+.label { font-size: 12px; color: var(--muted); display: block; margin-bottom: 2px; text-transform: uppercase; letter-spacing: .4px; }
 .value { white-space: pre-wrap; word-break: break-word; }
-textarea, input[type=text] { width: 100%; font: inherit; color: var(--fg); background: var(--bg);
-  border: 1px solid var(--line); border-radius: 6px; padding: 6px 8px; resize: vertical; }
-.edited { border-color: var(--accent); }
-.actions { display: flex; gap: 10px; flex-wrap: wrap; margin: 16px 0; }
-.btn { border: 1px solid var(--line); background: var(--card); color: var(--fg); border-radius: 8px;
-  padding: 8px 14px; cursor: pointer; font: inherit; }
-.btn.primary { background: var(--accent); color: #fff; border-color: var(--accent); }
+textarea, input[type=text] { width: 100%; font: inherit; color: var(--text); background: var(--bg);
+  border: 1px solid var(--line); border-radius: 8px; padding: 7px 9px; resize: vertical; }
+textarea:focus, input[type=text]:focus { outline: 2px solid var(--blue-tint); border-color: var(--blue); }
+.edited { border-color: var(--blue); background: var(--blue-soft); }
+.actions { display: flex; gap: 10px; flex-wrap: wrap; margin: 18px 0 10px; align-items: center; }
+.btn { border: 1px solid var(--line); background: var(--surface); color: var(--fg); border-radius: 999px;
+  padding: 9px 18px; cursor: pointer; font: inherit; font-weight: 500; }
+.btn.primary { background: var(--blue); color: var(--on-blue); border-color: var(--blue); }
+.btn.primary:hover { background: var(--blue-dark); }
 #out { width: 100%; min-height: 120px; font-family: ui-monospace, Consolas, monospace; font-size: 13px; }
-#status { color: var(--muted); margin-left: 4px; align-self: center; }
+#status { color: var(--muted); }
 </style>
 </head>
 <body>
+<div class="bar"><div class="bar-in">
+  <span class="mark">white<i>fox</i><b>Content</b></span>
+  <span class="stage" id="stage"></span>
+</div></div>
 <main>
   <h1 id="title"></h1>
   <p class="hint">Keep or drop each row, edit the text where needed, then press <b>Copy my choices</b>
@@ -83,6 +104,7 @@ textarea, input[type=text] { width: 100%; font: inherit; color: var(--fg); backg
 <script>
 /* DATA: the step replaces this object with its own result. */
 const DATA = {
+  "stage": "Stage 1 of 3, Add a case study: step 3 of 3, derive pains",
   "title": "Example review",
   "item": "item",
   "allowAdd": true,
@@ -186,6 +208,8 @@ document.getElementById("copy").onclick = async () => {
   }
 };
 
+const stageEl = document.getElementById("stage");
+if (DATA.stage) stageEl.textContent = DATA.stage; else stageEl.style.display = "none";
 document.getElementById("title").textContent = DATA.title;
 document.title = `Review: ${DATA.title}`;
 render(); update();

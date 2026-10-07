@@ -46,7 +46,8 @@ workflow review), unless the angle makes it obvious.
 
 ## 3. Show and approve
 
-1. If the profile is not `approved`, say so first (checklist).
+1. If the profile is not `approved`, say so first (checklist). In the Claude app, show the
+   draft preview page (workspace rules, "The draft preview").
 2. Subject options, preview text, body, sign-off; the body's word count; "Built from"; the
    checklist.
 3. Ask: "Reply **save**, or tell me what to change, for example: *softer ask*, *lead with the
