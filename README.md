@@ -44,6 +44,14 @@ The plugin holds no campaign data, case studies or logins.
 
 Next time, `/whitefox-content-start` shows where each campaign stands and what to do next.
 
+### Getting a new version
+
+- Claude app: Customize, Plugins, WhiteFox Content, the ⋯ menu, "Check for updates", then
+  "Update". Start a new chat afterwards.
+- Claude Code: `/plugin marketplace update whitefox`.
+
+`/whitefox-content-start` shows the version you have.
+
 ## For maintainers
 
 ```
