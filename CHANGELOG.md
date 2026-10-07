@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.5.1
+
+- keyword-research uses the DataForSEO connector's own tools (DataForSEO Labs Google Keyword
+  Overview, DataForSEO Labs Google Related Keywords, SERP Organic Live Advanced); the connector
+  in the Claude app has one tool per service, not a single `api_request` tool.
+- Colleague guide: set the connector's tools to ask first, and turn off all but those three.
+
 ## 0.5.0
 
 - keyword-research is built: for one active lane, three DataForSEO services through the
