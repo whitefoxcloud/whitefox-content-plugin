@@ -121,6 +121,10 @@ Use web search only. No DataForSEO call, no `costs.md` row.
 ## 4. Show and approve
 
 1. Lead with the mode, the verdict and, for paid mode, the actual total cost (or "unknown").
+   When the cost is unknown, add: "The DataForSEO connector does not report costs; the real
+   spend is in your DataForSEO account at app.dataforseo.com."
+   When every phrase came back empty, say the phrases are too narrow for search data (not a
+   fault), and offer broader phrases (a new price question) or free mode.
 2. The keyword table and the questions, in the format.
 3. The user may change Use values (for example "make 4 secondary", "skip 7").
 4. On yes, add the section to `keywords.md` (create it with the heading if missing). In paid

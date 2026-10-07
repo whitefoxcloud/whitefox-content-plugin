@@ -63,7 +63,11 @@ that already exists in substance.
    brands, no punctuation. Each must be something the profile's audience would literally type
    into a search box, in buyer vocabulary, never the voice of the buyer's own end users ("where
    is my money" is an app user's complaint, not a buyer search). Prefer the profile's keyword
-   vocabulary. When no natural buyer phrasing exists for a kind, skip it with a reason.
+   vocabulary. Write search terms, not complaints: short noun phrases people type into
+   Google ("payment provider evaluation", "sponsor bank"), never a sentence from a quote or pain
+   ("bank partner takes months"). The category phrase is the broad term for the topic, the one
+   most likely to have search data. When no natural buyer phrasing exists for a kind, skip it
+   with a reason.
 7. **Quote variants.** Quotes are used word for word by default. When a quote names third-party
    products, niches narrower than the audience, or places that do not carry over, add a neutral
    version that abstracts only those specifics. The neutral version is the whole quote, word
