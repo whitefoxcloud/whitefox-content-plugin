@@ -36,7 +36,9 @@ Keep a quote only when all of these hold:
   never from memory, never shortened, corrected or stitched together.
 - It is a real first-person voice: a practitioner or an authority speaking from experience.
 - It is about this pain, not a generic complaint about software.
-- You have the page's link.
+- You have the page's link. If the site blocks you and you read the quote through a copy (an
+  archive snapshot, the site's own search index), store the original page's link and add
+  "(read via a copy)" to Context, so the user can check the wording on the original.
 
 Reject: third-party paraphrase ("many companies struggle", "studies show"), vendor marketing
 (our platform, we help, seamless, end-to-end), noise and abuse. Never use WhiteFox's own case
