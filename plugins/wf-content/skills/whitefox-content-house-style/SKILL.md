@@ -118,7 +118,7 @@ Keywords are natural topic anchors. Never repeat a keyword for density.
 - **What WhiteFox did, not a method it never stated.** Say what the proof says WhiteFox did and
   found. Never turn it into a framework, checklist, order of checks or method "we used" unless
   the proof states one. A checklist built for the reader is offered as advice drawn from the
-  case ("what ruled options out for LOOT"), never as "the checklist we used". Keep the proof's
+  case ("what ruled options out in that project"), never as "the checklist we used". Keep the proof's
   own verdict words ("the clear choice"), and never add steps, rankings or reasons it does not
   give.
 - **Claim level.** `pitch`: name what WhiteFox built. `soft`: hint at it from experience ("in
