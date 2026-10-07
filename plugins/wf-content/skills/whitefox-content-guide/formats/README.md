@@ -26,6 +26,21 @@ WhiteFox Content/
       costs.md                      costs.md
 ```
 
+## Every step begins the same way
+
+1. Find the workspace as `whitefox-content-start` does: the reachable folder named
+   `WhiteFox Content` (or holding `profiles/` and `campaigns/`). If there is none, or it has no
+   `settings.md`, tell the user to run `/whitefox-content-start` (Claude Code:
+   `/wf-content:whitefox-content-start`) first, and stop.
+2. Read `settings.md` for the user's name.
+3. Steps that work on a campaign: if the user named one, use it. Otherwise list the campaigns
+   with status `active`; with exactly one, use it and say so; with several, ask which.
+4. Read the campaign's `campaign.md` and its profile in `profiles/`.
+
+When a step names another step to the user, it gives the Claude app command and the Claude Code
+command in brackets, for example `/whitefox-content-match-proof` (Claude Code:
+`/wf-content:whitefox-content-match-proof`).
+
 ## IDs
 
 | Item | Pattern | Example | Unique within |
@@ -70,7 +85,7 @@ draft -> angle -> brief -> lane -> pain + proofs + quotes -> source
 ```
 
 - A shelf row names a proof ID from the pool.
-- A pain names the matched proofs that back it.
+- A pain names the matched proofs that back it, or `gap`.
 - A quote names the pain it speaks to.
 - A lane names its pain, proofs and quotes.
 - A brief names its lane; each angle names the proofs and quotes it uses.

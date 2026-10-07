@@ -4,8 +4,9 @@ Turns case studies into proof-backed LinkedIn posts, articles and emails, one ap
 a time. Runs in the Claude desktop app and in Claude Code, on your own Claude subscription (Pro
 or Max).
 
-Status: 0.3.0. Built: start, guide, house-style, profile, campaign. The evidence,
-keyword, brief and writing steps are not built yet.
+Status: 0.4.0. Built: start, guide, house-style, profile, campaign, and the evidence steps
+(extract-proof, match-proof, derive-pains, mine-quotes, mint-lanes). The keyword, brief and
+writing steps are not built yet.
 
 ## How it works
 

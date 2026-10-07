@@ -12,6 +12,7 @@ captured_by: <name>
 
 <!-- Saved as pool/sources/<source-id>.md. One file per case study, extracted once, reused by every campaign. -->
 <!-- A proof is one real delivery: what WhiteFox actually did for a client. Never add a fact the text does not state. -->
+<!-- Every field is copied from the text, keeping client names, products, places and numbers. No rewording into general terms: that happens per campaign in shelf.md. -->
 <!-- Problem, outcome and metric may be "(none)" when the text does not state them; the solution never may. -->
 
 # <source-id>: <title of the case study>
@@ -22,11 +23,9 @@ captured_by: <name>
 
 - Status: active
 - Problem: <the client's problem, as the text states it>
-- Solution: <what WhiteFox built or did>
+- Solution: <what WhiteFox built or did, as the text states it>
 - Outcome: <the result, as the text states it>
-- Metric: <the number, exactly as written, or "(none)">
-- Capability: <the same delivery with client names removed, so it transfers to other industries>
-- Buyer pain: <the problem with client names removed>
+- Metric: <the number inside the outcome, exactly as written, or "(none)">
 
 ## Testimonials
 
