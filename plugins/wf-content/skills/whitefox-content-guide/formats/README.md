@@ -41,6 +41,18 @@ WhiteFox Content/
    with status `active`; with exactly one, use it and say so; with several, ask which.
 4. Read the campaign's `campaign.md` and its profile in `profiles/`.
 
+## Asking for approval
+
+There are no buttons: the user approves or changes a result by typing. End every approval
+question with one line that says so, with two or three examples that fit the result shown, for
+example:
+
+> Reply **save**, or tell me what to change, for example: *drop 3*, *make 7 a gap*, *add a
+> pain: ...*
+
+Number the items you show, so the user can refer to them. After a change, show the changed
+items and ask again; save only after a clear yes ("save", "yes", "go ahead").
+
 When a step names another step to the user, it gives the Claude app command and the Claude Code
 command in brackets, for example `/whitefox-content-match-proof` (Claude Code:
 `/wf-content:whitefox-content-match-proof`).
