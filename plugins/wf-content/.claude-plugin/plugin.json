@@ -1,0 +1,11 @@
+{
+  "name": "wf-content",
+  "displayName": "WhiteFox Content",
+  "version": "0.2.0",
+  "description": "Turn case studies into proof-backed LinkedIn posts, articles and emails, one approved step at a time",
+  "author": {
+    "name": "WhiteFox"
+  },
+  "repository": "https://github.com/whitefoxcloud/whitefox-content-plugin",
+  "keywords": ["content", "linkedin", "case-study", "marketing"]
+}

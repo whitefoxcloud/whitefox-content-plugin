@@ -1,0 +1,28 @@
+name: release
+
+# On a version tag (v0.1.0, v0.2.0, ...), build the uploadable plugin file and attach it to a
+# GitHub release. Claude Desktop users install this file when the repo is private.
+on:
+  push:
+    tags: ["v*"]
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Check the tag matches plugin.json
+        run: |
+          version=$(jq -r .version plugins/wf-content/.claude-plugin/plugin.json)
+          test "v$version" = "$GITHUB_REF_NAME" || { echo "tag $GITHUB_REF_NAME does not match version $version"; exit 1; }
+      - name: Build the plugin file
+        run: |
+          mkdir -p dist
+          cd plugins/wf-content && zip -r "../../dist/wf-content-$GITHUB_REF_NAME.zip" . -x '.*.swp'
+      - name: Publish the release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: gh release create "$GITHUB_REF_NAME" "dist/wf-content-$GITHUB_REF_NAME.zip" --title "$GITHUB_REF_NAME" --notes "See CHANGELOG.md"

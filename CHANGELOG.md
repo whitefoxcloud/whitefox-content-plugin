@@ -1,0 +1,15 @@
+# Changelog
+
+## 0.2.0
+
+- `start` sets up the workspace folder on first use (settings, folders, starter profiles),
+  lists profiles and campaigns, and suggests each campaign's next step.
+- `guide`, `house-style`, `profile` and `campaign` are built.
+- Workspace formats: rules and one template per file in `skills/guide/formats/`.
+- Starter profiles gained `changed_by` and `changed`.
+
+## 0.1.0
+
+- Skeleton: marketplace, the `wf-content` plugin, a working `start` skill, and placeholders for
+  every workflow step.
+- Starter profiles FIN, INS, HC and AI, transcribed from the WhiteFox content app.

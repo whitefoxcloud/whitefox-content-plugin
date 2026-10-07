@@ -1,0 +1,90 @@
+# Workspace formats
+
+The rules every step follows when it reads or writes the workspace folder. Each file in this
+folder is the template for one kind of workspace file.
+
+## Layout
+
+```
+WhiteFox Content/
+  settings.md                       settings.md
+  profiles/
+    <CODE>.md                       profile.md
+  pool/
+    sources/
+      <source-id>.md                source.md
+  campaigns/
+    <campaign-name>/
+      campaign.md                   campaign.md
+      shelf.md                      shelf.md
+      pains.md                      pains.md
+      quotes.md                     quotes.md
+      lanes.md                      lanes.md
+      keywords.md                   keywords.md
+      briefs/LANE-nn.md             brief.md
+      drafts/ANGLE-nn-<channel>.md  draft.md
+      costs.md                      costs.md
+```
+
+## IDs
+
+| Item | Pattern | Example | Unique within |
+|---|---|---|---|
+| Profile | 2 to 5 capital letters | `INS` | `profiles/` |
+| Campaign | lowercase words joined by hyphens | `ins-2026-q4` | `campaigns/` |
+| Source | lowercase letters, digits, hyphens; short | `acme-claims` | `pool/sources/` |
+| Proof | source ID, `-P`, two digits | `acme-claims-P03` | its source |
+| Testimonial | source ID, `-T`, two digits | `acme-claims-T01` | its source |
+| Pain | `PAIN-` and two digits | `PAIN-04` | the campaign |
+| Quote | `QUOTE-` and two digits | `QUOTE-12` | the campaign |
+| Lane | `LANE-` and two digits | `LANE-02` | the campaign |
+| Angle | `ANGLE-` and two digits | `ANGLE-07` | the campaign |
+
+- A new campaign ID is the next number after the highest one in that file (or folder), never
+  a reused number. Removed items keep their number: mark them `archived`, do not delete them.
+- Profile, source and proof IDs never use a counter shared across files, so `profiles/` and
+  `pool/` can later move to a shared folder without renumbering.
+- Before saving a new source, check `pool/sources/<source-id>.md` does not exist yet.
+
+## Status values
+
+| Item | Values | Starts as |
+|---|---|---|
+| Profile | `draft`, `unconfirmed`, `approved` | `draft` |
+| Campaign | `active`, `paused`, `done` | `active` |
+| Proof, testimonial | `active`, `archived` | `active` |
+| Shelf fit | `matched`, `rejected` | (judged) |
+| Lane | `candidate`, `active`, `paused`, `archived` | `candidate` |
+| Angle | `proposed`, `kept`, `dropped` | `proposed` |
+| Draft | `draft`, `approved`, `published`, `archived` | `draft` |
+
+Only an `active` lane goes to keyword research or a brief. Only a `kept` angle gets a draft.
+Writing steps warn when the campaign's profile is not `approved`.
+
+## Lineage
+
+Every item names the IDs it is built from, so any draft traces back to a case study:
+
+```
+draft -> angle -> brief -> lane -> pain + proofs + quotes -> source
+```
+
+- A shelf row names a proof ID from the pool.
+- A pain names the matched proofs that back it.
+- A quote names the pain it speaks to.
+- A lane names its pain, proofs and quotes.
+- A brief names its lane; each angle names the proofs and quotes it uses.
+- A draft names its angle and lane.
+
+A step never cites an ID it has not found in the workspace.
+
+## Writing rules
+
+- Dates are `YYYY-MM-DD`.
+- Money is US dollars with cents (`$0.42`). An unknown price is written `unknown`, never `$0`.
+- An empty field is written `(none)`; a field not yet known is written `unknown`.
+- Text copied from a source (case study text, customer quotes) stays word for word.
+- Each step shows its result and waits for approval before it saves. Saving adds or updates
+  only the items that were approved; it never rewrites other items in the file.
+- Lines starting with `<!--` in a template are instructions for the step and are not copied
+  into the workspace file.

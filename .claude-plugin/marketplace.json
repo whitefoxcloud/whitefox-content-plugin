@@ -1,0 +1,14 @@
+{
+  "name": "whitefox",
+  "description": "WhiteFox content plugins",
+  "owner": {
+    "name": "WhiteFox"
+  },
+  "plugins": [
+    {
+      "name": "wf-content",
+      "source": "./plugins/wf-content",
+      "description": "Turn case studies into proof-backed LinkedIn posts, articles and emails, one approved step at a time"
+    }
+  ]
+}
