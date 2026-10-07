@@ -68,9 +68,13 @@ buttons:
    `"long": true`.
 3. For a judgement between two values, set `choice` (for example `["matched", "rejected"]` in
    `/whitefox-content-match-proof`). The default is keep and drop.
-4. Show it as an HTML artifact, and still write the numbered result in the chat. Say: "Use the
-   review page, then paste your choices here, or just type them."
-5. The user pastes back lines starting `Decisions for`. Apply each line exactly: `keep`, `drop`
+4. Set the page's `<title>` to `Review: <title>` (for example "Review: quotes for
+   fin-2026-10") so the artifact card says what it is for. Show it as an HTML artifact, and
+   still write the numbered result in the chat.
+5. Start your reply with one line, before the result: "Click the **Review: <title>** card
+   below to keep, drop or edit with buttons, then press Copy my choices and paste them here.
+   Or just type your changes." The card does not look clickable, so always say this.
+6. The user pastes back lines starting `Decisions for`. Apply each line exactly: `keep`, `drop`
    (or the two `choice` values), `edited: <field> = <text>`, and `new <item>: ...` rows. Show
    the result once more as a short list and save on yes. A new or edited item still follows
    the step's rules (for example a quote must stay word for word with a link); say so if it

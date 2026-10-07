@@ -3,7 +3,8 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>WhiteFox review</title>
+<title>Review: WhiteFox</title>
+<!-- The step also sets this <title> to "Review: <DATA.title>" so the artifact card says what it is for. -->
 <!--
   Review page for WhiteFox content steps. A step copies this file unchanged except for the
   DATA block below, fills DATA with the result it wants approved, and shows it as an artifact.
@@ -181,6 +182,7 @@ document.getElementById("copy").onclick = async () => {
 };
 
 document.getElementById("title").textContent = DATA.title;
+document.title = `Review: ${DATA.title}`;
 render(); update();
 </script>
 </body>
