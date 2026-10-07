@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.5.2
+
+- mint-lanes: search phrases are short search terms people type, not sentences from complaints;
+  the category phrase is the broad term most likely to have search data.
+- keyword-research: says where real spend is visible (the DataForSEO dashboard; the connector
+  reports no costs) and explains an all-empty result as phrases too narrow, offering broader
+  phrases or free mode.
+
 ## 0.5.1
 
 - keyword-research uses the DataForSEO connector's own tools (DataForSEO Labs Google Keyword
