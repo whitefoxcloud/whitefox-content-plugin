@@ -5,7 +5,7 @@ description: Start here for WhiteFox content work. Sets up the WhiteFox Content 
 
 # Start
 
-You are the front door of the WhiteFox content plugin, version 0.6.1. Read
+You are the front door of the WhiteFox content plugin, version 0.7.0. Read
 `../whitefox-content-guide/formats/README.md` (the workspace rules) before anything else.
 
 ## Steps built in this version
@@ -58,54 +58,68 @@ If `settings.md` does not exist in the workspace:
      skipped.
 3. Create them, then say the workspace is ready.
 
-If `settings.md` exists but its `plugin` version differs from 0.6.1, update that line and say
-"Updated from <old> to 0.6.1".
+If `settings.md` exists but its `plugin` version differs from 0.7.0, update that line and say
+"Updated from <old> to 0.7.0".
 
 ## 3. Show where things stand
 
 Reply with:
 
-1. One line: "WhiteFox Content 0.6.1, workspace: <path>".
+1. One line: "WhiteFox Content 0.7.0, workspace: <path>".
 2. Only if a newer version exists (see "Checking for a newer version"), one line:
    "A newer version (<latest>) is available. To update: Claude app, Customize, Plugins,
    WhiteFox Content, the ⋯ menu, Check for updates, Update, then start a new chat. Claude
    Code: `/plugin marketplace update whitefox`."
 3. Profiles: one line each, `<CODE> <name> (<status>)`. Add "not approved yet" to any profile
    that is not `approved`.
-4. Campaigns: a table with one row per campaign that is not `done`:
+4. If there are no campaigns, explain the path once, in this shape, then suggest
+   `/whitefox-content-campaign`:
 
-   | Campaign | Profile | Status | Next step |
-   |---|---|---|---|
+   > How it works: set up a campaign, then three stages, each one command.
+   > 1. **Add a case study**: what WhiteFox delivered, matched to your campaign, and the buyer
+   >    problems it solves.
+   > 2. **Find topics**: real buyer quotes, then the topics to write about (keyword research
+   >    optional).
+   > 3. **Write**: a plan of pieces for a topic, then LinkedIn posts, emails and articles.
+   > Every step shows its result and waits for your yes before saving.
 
-   If there are no campaigns, say so.
-5. One recommendation: the single next step you suggest, as a command, with one sentence on
-   why. If there are no campaigns, suggest `/whitefox-content-campaign`.
+5. For each campaign that is not `done`, a map of the stages with where it stands:
+
+   > **acme-2026-10** (ACME)
+   > Setup ✓ · 1 Add a case study ✓ · 2 Find topics ✓ · **3 Write ← you are here**
+   > Next: `/whitefox-content-write`, LANE-03 has 2 kept pieces without drafts.
+
+   ✓ marks a finished stage; the arrow marks the stage to work on (see "Where a campaign
+   stands"). The Next line gives the stage command and one short reason.
+6. One recommendation: the single next command you suggest, with its Claude Code form.
 
 ## Checking for a newer version
 
 If you can fetch web pages, fetch
 `https://raw.githubusercontent.com/whitefoxcloud/whitefox-content-plugin/main/plugins/wf-content/.claude-plugin/plugin.json`
-and read its `version`. If it is higher than 0.6.1 (compare each number in turn), show the
+and read its `version`. If it is higher than 0.7.0 (compare each number in turn), show the
 update line. If the fetch fails or you cannot fetch pages, skip the check silently; never
 delay or block the rest of `start` for it.
 
-## Working out a campaign's next step
+## Where a campaign stands
 
-Check in this order and stop at the first match:
+Check in this order; the first match is the stage to work on, every stage before it is ✓.
 
-| What you find | Next step |
-|---|---|
-| `pool/sources/` is empty | `/whitefox-content-extract-proof`: add a case study |
-| a pool proof (status `active`) not listed in the campaign's `shelf.md` | `/whitefox-content-match-proof` |
-| no `matched` row in `shelf.md` | `/whitefox-content-extract-proof`: this campaign needs a case study that fits |
-| `pains.md` missing or empty | `/whitefox-content-derive-pains` |
-| a pain with no quote and not under "Pains with no quotes found" | `/whitefox-content-mine-quotes` |
-| `lanes.md` missing or empty | `/whitefox-content-mint-lanes` |
-| no lane with status `active` | `/whitefox-content-mint-lanes`: choose a lane to make active |
-| an `active` lane with no file in `briefs/` | `/whitefox-content-arm-brief` (`/whitefox-content-keyword-research` first is optional: free or paid) |
-| a brief with no `kept` angle | `/whitefox-content-arm-brief`: keep the angles you want |
-| a `kept` angle with no file in `drafts/` | its channel's step: `/whitefox-content-write-linkedin`, `/whitefox-content-write-article` or `/whitefox-content-write-email` |
-| everything above is done | "All kept angles have drafts." Suggest a new case study or lane |
+| What you find | Stage | Next line says |
+|---|---|---|
+| `pool/sources/` is empty | 1 Add a case study | add a case study (attach, paste or link) |
+| a pool proof (status `active`) not listed in the campaign's `shelf.md` | 1 Add a case study | N new proofs to match |
+| no `matched` row in `shelf.md` | 1 Add a case study | this campaign needs a case study that fits |
+| `pains.md` missing or empty | 1 Add a case study | derive the buyer pains |
+| a pain with no quote and not under "Pains with no quotes found" | 2 Find topics | N pains still need quotes |
+| `lanes.md` missing or empty | 2 Find topics | turn pains and quotes into topics |
+| no lane with status `active` | 2 Find topics | choose a topic to work on |
+| an `active` lane with no file in `briefs/` | 3 Write | plan the pieces for <lane> |
+| a brief with a `kept` angle without a file in `drafts/` | 3 Write | <lane> has N kept pieces without drafts |
+| everything above is done | all ✓ | all kept pieces have drafts; add a case study or plan more pieces |
+
+Stage commands: `/whitefox-content-add-case-study`, `/whitefox-content-find-topics`,
+`/whitefox-content-write`. Mention a single step's own command only if the user asks for it.
 
 ## Rules
 

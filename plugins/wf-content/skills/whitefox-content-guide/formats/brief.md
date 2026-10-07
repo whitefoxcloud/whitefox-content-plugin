@@ -23,7 +23,8 @@ armed: <YYYY-MM-DD, the first arming>
 - Type: <pitch-page | explainer | pattern-report | checklist | opinion | how-to | case-learnings>
 - Channel: <linkedin-post | website-article | email>
 - Claim level: <pitch | soft | none>
-- Keyword: <website-article only: a primary or secondary keyword from keywords.md for this lane, or "(none)">
+- Keyword: <website-article only: one target keyword from keywords.md for this lane, or "(none)">
+- Supporting: <website-article only: up to 3 supporting keywords from keywords.md, or "(none)">
 - Country: <the keyword's country, or "(none)">
 - Persona: <linkedin-post only: company | founder | engineer; otherwise "(none)">
 - Answers: <questions from keywords.md this piece answers, word for word, or "(none)">

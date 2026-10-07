@@ -56,7 +56,7 @@ after each call.
 |---|---|---|---|---|
 | 1 | DataForSEO Labs Google Keyword Overview, once | `dataforseo_labs/google/keyword_overview/live` | the phrases, the country, English | $0.012 + $0.00012 per phrase |
 | 2 | DataForSEO Labs Google Related Keywords, once per phrase | `dataforseo_labs/google/related_keywords/live` | the phrase, the country, English, depth 1, limit 20 | up to $0.0144 per call |
-| 3 | SERP Organic Live Advanced, once, for the primary keyword | `serp/google/organic/live/advanced` | the primary keyword, the country, English, depth 10 | $0.002 |
+| 3 | SERP Organic Live Advanced, once, for the strongest target keyword | `serp/google/organic/live/advanced` | that keyword, the country, English, depth 10 | $0.002 |
 
 Fill each tool's parameters from its own description (names such as `keyword` or `keywords`,
 `location_name`, `language_code` or `language_name`, `depth`, `limit`). Send the country name
@@ -77,9 +77,9 @@ Wait for an explicit yes in reply to this question. A yes to anything earlier do
 
 ### Run
 
-1. Call tools 1 and 2. Then choose the primary keyword: the keyword with the most monthly
-   searches that the profile's audience would type (see "Read the results"), then call tool 3
-   for it. The user's Claude app may ask them to approve each call; that is expected.
+1. Call tools 1 and 2. Then choose the strongest target keyword: the one with the most
+   monthly searches that the profile's audience would type (see "Read the results"), then call
+   tool 3 for it. The user's Claude app may ask them to approve each call; that is expected.
 2. After every call, add a row to `costs.md` straight away (create it with the heading if
    missing): date, `keyword-research`, what was called (lane, tool, phrase, country), the
    estimate, the actual cost from the response's `cost` field (or `unknown` if the response has
@@ -93,13 +93,14 @@ Wait for an explicit yes in reply to this question. A yes to anything earlier do
 - From tools 1 and 2, list each keyword with its monthly searches (`search_volume`),
   difficulty (`keyword_difficulty`), and main intent (`search_intent_info.main_intent`). A
   missing value is `unknown`, never 0.
-- Use: `primary` for the chosen keyword, `secondary` for others a buyer in the profile's
-  audience would type, `skip: <reason>` for the rest. Skip keywords in the voice of the
+- Use: `target` for keywords an article could be built around (as many as fit; each article
+  later aims at one of them), `supporting` for keywords a buyer in the profile's audience would
+  type that can appear inside an article but not carry one, `skip: <reason>` for the rest. Skip keywords in the voice of the
   buyer's end users or consumers ("where is my money"), job searches, other countries' brands
   and products, anything on the profile's exclude terms, and keywords off the lane's topic.
 - From tool 3, copy the "people also ask" questions word for word (items of type
   `people_also_ask`). None found: `(none)`.
-- Verdict, from the total monthly searches of the primary and secondary keywords: 1000 or more
+- Verdict, from the total monthly searches of the target and supporting keywords: 1000 or more
   `strong`, 10 or more `some`, less than 10 `none`. If nothing came back measured, `unknown`.
 
 ## 3. Free mode
@@ -110,9 +111,8 @@ Use web search only. No DataForSEO call, no `costs.md` row.
 2. Keywords: collect the phrasings buyers use for this topic, from page titles, headings and
    forum thread titles that match the lane, at most 15. Monthly searches and difficulty are
    `unknown` for every one. Intent is your judgement from the results (informational,
-   commercial, navigational, transactional), marked `(judged)`. Use: `primary` for the phrasing
-   that appears most often in buyer-facing results, `secondary` for others a buyer would type,
-   `skip: <reason>` as in paid mode.
+   commercial, navigational, transactional), marked `(judged)`. Use: `target`, `supporting` or
+   `skip: <reason>`, as in paid mode.
 3. Questions: real questions buyers ask about the topic, word for word from forum threads, Q&A
    sites and FAQ sections you opened, each with its link, at most 10. Never write a question
    yourself.
@@ -126,7 +126,10 @@ Use web search only. No DataForSEO call, no `costs.md` row.
    When every phrase came back empty, say the phrases are too narrow for search data (not a
    fault), and offer broader phrases (a new price question) or free mode.
 2. The keyword table and the questions, in the format.
-3. The user may change Use values (for example "make 4 secondary", "skip 7").
+3. Review page: `choice` `["target", "supporting", "skip"]`, each row's `pick` set to your
+   suggested Use, and the skip reason in a locked field. Before the table, say: "Mark as many **target**
+   keywords as you like: each article will aim at one of them. **Supporting** keywords appear
+   inside articles but do not carry one." Typed changes work too ("make 4 target", "skip 7").
 4. On yes, add the section to `keywords.md` (create it with the heading if missing). In paid
    mode, update the lane's `Demand` line in `lanes.md` to the verdict; free mode leaves Demand
    as it is. Paid `costs.md` rows are already written and stay, even if the user does not save

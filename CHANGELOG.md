@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.7.0
+
+- Three stage commands, so users need four commands in all: `whitefox-content-add-case-study`
+  (extract, match, pains), `whitefox-content-find-topics` (quotes, lanes, optional keywords)
+  and `whitefox-content-write` (brief, then drafts). Each runs its steps in one conversation,
+  skips what is done, and carries on where the user stopped. The detailed steps still work on
+  their own.
+- `whitefox-content-start` shows each campaign as a stage map with "you are here" and the next
+  command, and explains the path to new users.
+- Every step opens with where the user is, what it does, what they decide and its limits.
+- Keywords: `target` (several per lane; each article aims at one) and `supporting` replace
+  primary and secondary; older files still read. The review page can start each row on a
+  suggested choice.
+
 ## 0.6.1
 
 - house-style: a draft says what the case study says WhiteFox did, and never presents a

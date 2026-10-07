@@ -40,6 +40,31 @@ WhiteFox Content/
 3. Steps that work on a campaign: if the user named one, use it. Otherwise list the campaigns
    with status `active`; with exactly one, use it and say so; with several, ask which.
 4. Read the campaign's `campaign.md` and its profile in `profiles/`.
+5. Open your first reply with where the user is and what this step asks of them, in at most
+   three short lines, before any work or question:
+
+   > **Stage 1 of 3, Add a case study: step 2 of 3, match proofs.**
+   > What it does: judges which proofs in your pool fit this campaign's audience.
+   > What you'll decide: keep or reject each proof, and its one-line wording.
+
+   Name the step's limits here when it has any (for example "each article aims at one target
+   keyword", "at most 3 quotes per pain", "never more than $1.00 per lane"), so the user is
+   never surprised by a rule later. The stages are in the next section.
+
+## The stages
+
+What the user sees is three stages after setup. Each stage command runs its steps one after the
+other in the same conversation; each step can also be run on its own.
+
+| Stage | Command | Steps, in order |
+|---|---|---|
+| Setup | `/whitefox-content-start` | workspace, then `profile` and `campaign` when needed |
+| 1 of 3, Add a case study | `/whitefox-content-add-case-study` | extract-proof, match-proof, derive-pains |
+| 2 of 3, Find topics | `/whitefox-content-find-topics` | mine-quotes, mint-lanes, keyword-research (optional) |
+| 3 of 3, Write | `/whitefox-content-write` | arm-brief, then write-linkedin, write-email or write-article per kept angle |
+
+When a step runs on its own (not from its stage command), still name its stage and step
+number in the opening lines.
 
 ## Asking for approval
 
@@ -69,7 +94,8 @@ buttons:
 3. For other choices per row, set `choice`: two or more values, the first is the default and
    the last dims the row (for example `["matched", "rejected"]` in
    `/whitefox-content-match-proof`, `["keep", "active", "drop"]` in
-   `/whitefox-content-mint-lanes`). The default is keep and drop.
+   `/whitefox-content-mint-lanes`). The default is keep and drop. A row may set `pick` to start
+   on another choice than the first (for example your suggestion).
 4. Set the page's `<title>` to `Review: <title>` (for example "Review: quotes for
    fin-2026-10") so the artifact card says what it is for. Show it as an HTML artifact, and
    still write the numbered result in the chat.

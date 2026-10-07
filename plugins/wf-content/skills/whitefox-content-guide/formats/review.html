@@ -20,7 +20,7 @@
       { "key": "backing", "label": "Backed by", "edit": true },
       { "key": "quote", "label": "Quote", "edit": false }   // edit false = locked (verbatim text)
     ],
-    "rows": [ { "id": "1", "pain": "...", "backing": "loot-P01" } ],
+    "rows": [ { "id": "1", "pain": "...", "backing": "loot-P01", "pick": "keep" } ],  // pick: optional starting choice
     "choice": ["keep", "active", "drop"]       // optional: 2 or more choices per row (default keep / drop);
                                                // the first is the default, the last dims the row (drop, rejected)
   }
@@ -99,7 +99,8 @@ const DATA = {
 
 const choices = Array.isArray(DATA.choice) && DATA.choice.length >= 2 ? DATA.choice : ["keep", "drop"];
 const last = choices[choices.length - 1];
-const state = DATA.rows.map(r => ({ id: String(r.id), orig: r, vals: { ...r }, pick: choices[0], isNew: false }));
+const state = DATA.rows.map(r => ({ id: String(r.id), orig: r, vals: { ...r },
+  pick: choices.includes(r.pick) ? r.pick : choices[0], isNew: false }));
 let newCount = 0;
 
 function el(tag, props = {}, kids = []) {

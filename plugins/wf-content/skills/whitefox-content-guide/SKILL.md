@@ -17,6 +17,20 @@ know more about.
 A case study goes in; LinkedIn posts, articles and emails come out. Every piece of content can
 be traced back to something WhiteFox really delivered.
 
+You only need four commands:
+
+| Command | What happens |
+|---|---|
+| `/whitefox-content-start` | sets up your folder, shows every campaign's stage and the next command |
+| `/whitefox-content-add-case-study` | stage 1: a case study goes in; its proofs are matched to your campaign and the buyer problems named |
+| `/whitefox-content-find-topics` | stage 2: real buyer quotes, then the topics to write about, then optional keyword research |
+| `/whitefox-content-write` | stage 3: a plan of pieces for a topic, then the LinkedIn posts, emails and articles |
+
+Each stage runs its steps one after the other and waits for your yes at each one. You can stop
+any time; the same command carries on from where you stopped.
+
+The detailed steps behind the stages, each also a command of its own:
+
 | # | Step | What it does | Writes |
 |---|---|---|---|
 | 1 | `/whitefox-content-profile` | describes an industry: audience, positioning, words to use and avoid | `profiles/<CODE>.md` |
@@ -30,8 +44,7 @@ be traced back to something WhiteFox really delivered.
 | 9 | `/whitefox-content-arm-brief` | plans the pieces for one lane (angles: channel, headline, persona) | `briefs/LANE-nn.md` |
 | 10 | `/whitefox-content-write-linkedin`, `/whitefox-content-write-article`, `/whitefox-content-write-email` | writes one piece for a kept angle | `drafts/` |
 
-`/whitefox-content-start` shows where every campaign stands and suggests the next step. `/whitefox-content-house-style` shows the
-writing rules every draft follows.
+`/whitefox-content-house-style` shows the writing rules every draft follows.
 
 In Claude Code every command starts with `wf-content:`, for example `/wf-content:whitefox-content-start`.
 

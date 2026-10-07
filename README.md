@@ -4,8 +4,8 @@ Turns case studies into proof-backed LinkedIn posts, articles and emails, one ap
 a time. Runs in the Claude desktop app and in Claude Code, on your own Claude subscription (Pro
 or Max).
 
-Status: 0.6.1. Every step is built: start, guide, house-style, profile, campaign, the evidence
-steps, keyword-research (paid or free), arm-brief and the three writing steps.
+Status: 0.7.0. Every step is built, grouped into three stage commands (add a case study, find
+topics, write) after setup with `whitefox-content-start`.
 
 ## How it works
 
@@ -41,16 +41,20 @@ The plugin holds no campaign data, case studies or logins.
 2. If Claude asks which folder to use, add your workspace folder with **+** in the message box
    and send a short message such as "use this folder" (a folder alone does not send), or paste
    its path. When Claude asks for folder access, tick "Don't ask again for this folder
-   on this device", then click Allow. Claude lists your campaigns, or offers to create one.
-3. New campaign: pick a profile, or create a new one.
-4. Add a case study: attach the file or paste the link. Claude extracts its proofs into your
-   pool, or reuses them if you extracted it before.
-5. Follow the steps Claude suggests: match proofs, derive pains, mine quotes, mint lanes,
-   keyword research (price shown first, runs only on your yes), build a brief, write the
-   LinkedIn post, article or email.
-6. At each step Claude shows the result; approve or correct it. Nothing is saved before you
-   approve.
-7. Take the post from the chat, or open the saved draft in your campaign folder.
+   on this device", then click Allow. Claude shows each campaign's stage and the next command,
+   or offers to create a campaign (pick a profile, or create one).
+3. Run the three stages; each runs its steps one after the other and waits for your yes:
+   - `/whitefox-content-add-case-study`: attach the case study or paste its link. Its proofs
+     go into your pool, are matched to the campaign, and the buyer problems are named.
+   - `/whitefox-content-find-topics`: real buyer quotes, then the topics to write about (choose
+     the active ones), then optional keyword research (free, or paid with the price shown
+     first).
+   - `/whitefox-content-write`: a plan of pieces for a topic, then each LinkedIn post, email
+     or article.
+4. At each step Claude shows the result; approve or correct it by typing, or with the review
+   page's buttons. Nothing is saved before you approve. You can stop any time; the same command
+   carries on from where you stopped.
+5. Take the draft from the chat, or open it in your campaign's `drafts` folder.
 
 Next time, `/whitefox-content-start` shows where each campaign stands and what to do next.
 

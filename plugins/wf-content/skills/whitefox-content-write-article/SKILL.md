@@ -35,7 +35,7 @@ Show a plan, not the article:
 2. **Search intent**: the main one (informational, commercial investigation, service
    evaluation, problem diagnosis) and one secondary, and what the reader wants to decide after
    reading.
-3. **SEO title**: about 50 to 60 characters, primary keyword at the front (or a close natural
+3. **SEO title**: about 50 to 60 characters, the angle's target keyword at the front (or a close natural
    variation), no keyword stuffing; ` | WhiteFox` at the end only if it fits. No "guide" or
    "checklist" unless the article is one.
 4. **Meta description**: about 120 to 155 characters, one useful sentence on this page and why
@@ -59,8 +59,8 @@ changes and show the plan again.
 ## 3. Write (second approval)
 
 - Follow the approved plan: its title, meta description, slug, H1 and H2s.
-- Primary keyword naturally in the H1, the introduction, one body section and near the final
-  call to action, only where it reads cleanly. Secondary keywords only where their section
+- The target keyword naturally in the H1, the introduction, one body section and near the
+  final call to action, only where it reads cleanly. Supporting keywords only where their section
   needs them. Never for density.
 - A section that answers a real question from Answers opens with a direct answer of 40 to 60
   words that stands on its own. Not every section; only where a real question maps to it.

@@ -57,8 +57,12 @@ when the evidence is thin; never pad.
 3. **Channels.** Mix channels where the evidence supports it. Without keyword data for this lane
    (no section in `keywords.md`, or a verdict of `none`), prefer LinkedIn posts and emails, and
    justify any article in its Why.
-4. **Keyword** only on website-article angles, optional, and only a `primary` or `secondary`
-   keyword from this lane's `keywords.md` section, with its country. Never on LinkedIn or email.
+4. **Keyword** only on website-article angles: exactly one `target` keyword from this lane's
+   `keywords.md` section, with its country, or `(none)`. Different articles may aim at
+   different target keywords; no two articles in the campaign aim at the same one. **Supporting**:
+   up to 3 `supporting` keywords from the same section that fit the piece. Never on LinkedIn or
+   email. (Older `keywords.md` files say `primary` and `secondary`: read them as target and
+   supporting.)
 5. **Persona** required on LinkedIn angles: `company`, `founder` or `engineer`, chosen to fit the
    angle's voice (house style). Never on articles or emails.
 6. **Answers** may only cite questions listed in this lane's `keywords.md` section, word for
