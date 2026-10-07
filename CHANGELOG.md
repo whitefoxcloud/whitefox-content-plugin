@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.6.1
+
+- house-style: a draft says what the case study says WhiteFox did, and never presents a
+  checklist, order of checks or method as what WhiteFox used unless the case study states it;
+  the checklist tests this.
+- LinkedIn and email drafts get a label heading, so the copyable text does not repeat the hook.
+
 ## 0.6.0
 
 - The brief and writing steps are built: arm-brief (5 to 8 angles per lane within the lane's
