@@ -35,6 +35,9 @@ Produce a short list, about 8 to 12 pains, for the profile's audience and indust
 - It fits this audience and industry.
 - Draw from both: the pain each matched proof addresses (list the proof IDs), and nearby pains
   this audience plausibly voices even without proof (write `gap`).
+- A proof backs a pain only when its Solution or Outcome directly removes that pain. A passing
+  mention is not backing (a proof built "with a focus on compliance" does not back "compliance
+  slows every release"): write `gap` instead.
 - When several proofs address the same pain, write one pain and list all their IDs.
 - Search angle: a phrase you would expect inside a real practitioner's quote about it.
 
