@@ -115,6 +115,12 @@ Keywords are natural topic anchors. Never repeat a keyword for density.
   naturally where it adds specificity; do not recite the proof sentence. Name a client or partner
   only when the name is in the profile's brand terms and the case study is public (`public:
   yes` in its pool file); otherwise use the shelf wording.
+- **What WhiteFox did, not a method it never stated.** Say what the proof says WhiteFox did and
+  found. Never turn it into a framework, checklist, order of checks or method "we used" unless
+  the proof states one. A checklist built for the reader is offered as advice drawn from the
+  case ("what ruled options out for LOOT"), never as "the checklist we used". Keep the proof's
+  own verdict words ("the clear choice"), and never add steps, rankings or reasons it does not
+  give.
 - **Claim level.** `pitch`: name what WhiteFox built. `soft`: hint at it from experience ("in
   builds like this we have seen..."), no direct capability claim. `none`: no WhiteFox capability
   claim at all; the piece discusses the problem only.
@@ -140,7 +146,8 @@ Keywords are natural topic anchors. Never repeat a keyword for density.
 4. Every number appears in a cited proof, unchanged.
 5. Every quote-style line is word for word from `quotes.md` (or its neutral variant), and no
    quote is presented as a testimonial or named source.
-6. Every WhiteFox claim is backed by a proof the angle uses and stays within the claim level.
+6. Every WhiteFox claim is backed by a proof the angle uses and stays within the claim level,
+   and no draft presents a method, order of checks or reason the proof does not state.
 7. Nothing from the profile's "Never position as"; no exclude term.
 8. Australian spelling; no emoji; sentence-case headings.
 9. Length is inside the channel range.

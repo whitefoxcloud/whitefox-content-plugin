@@ -14,10 +14,10 @@ written_by: <name>
 <!-- A new take on the same angle archives the old file first: rename it to ANGLE-nn-<channel>-archived-<YYYY-MM-DD>.md. -->
 <!-- The part above "Built from" is ready to copy: no IDs, no notes, no links the user did not give. -->
 
-# <linkedin-post: the hook line | website-article: the H1 | email: the first subject line>
+# <linkedin-post: "LinkedIn post, ANGLE-nn" | email: "Email, ANGLE-nn" | website-article: the article's H1>
 
-<!-- linkedin-post: the post text. -->
-<!-- email: "Subject options:" (2 or 3), "Preview text:", then the body, then the sign-off placeholder. -->
+<!-- linkedin-post: the post text, starting with its hook (the heading above is only a label, not part of the post). -->
+<!-- email: "Subject options:" (2 or 3), "Preview text:", then the body, then the sign-off placeholder (the heading above is only a label). -->
 <!-- website-article: "SEO title:", "Meta description:", "Slug:", then the article with its H2 sections. -->
 
 <the draft, ready to copy>
