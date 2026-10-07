@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.6.0
+
+- The brief and writing steps are built: arm-brief (5 to 8 angles per lane within the lane's
+  claim ceiling, keyword only on articles, persona only on LinkedIn, review page with keep,
+  later and drop), write-linkedin, write-email and write-article (plan approved first, then the
+  article). Each draft lists the proofs and quotes it relies on and passes the house-style
+  checklist before it is shown.
+- house-style: how drafts use proofs, quotes, claim levels and flags; article length 1200 to
+  1800 words usually, never over 2200.
+
 ## 0.5.2
 
 - mint-lanes: search phrases are short search terms people type, not sentences from complaints;

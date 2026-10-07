@@ -105,9 +105,32 @@ altitude and the vocabulary.
 |---|---|
 | LinkedIn post | 110 to 180 words |
 | Email | 80 to 150 words; never over 170 |
-| Article | no target and no minimum; as long as the evidence supports |
+| Article | no minimum; usually 1200 to 1800 words; never over 2200 |
 
 Keywords are natural topic anchors. Never repeat a keyword for density.
+
+## Using evidence in a draft
+
+- **Proofs.** Claim only what a proof the angle uses states, never beyond its scope. Weave it in
+  naturally where it adds specificity; do not recite the proof sentence. Name a client or partner
+  only when the name is in the profile's brand terms and the case study is public (`public:
+  yes` in its pool file); otherwise use the shelf wording.
+- **Claim level.** `pitch`: name what WhiteFox built. `soft`: hint at it from experience ("in
+  builds like this we have seen..."), no direct capability claim. `none`: no WhiteFox capability
+  claim at all; the piece discusses the problem only.
+- **Silent-authority lanes**: write from delivery experience ("what we learned shipping this"),
+  never "everyone is complaining".
+- **Quotes.** Use them to shape pain language: paraphrase the pain, echo the buyer's short
+  phrases where they fit. Never present a quote as a testimonial or name its source. A
+  quote-style line, used sparingly, is framed as language heard in the market. Use the lane's
+  neutral variant when the angle marks the quote `(neutral)`. Adjacent quotes are texture,
+  never this campaign's own buyers speaking.
+- **Flags.** A voice-only idea is discussed through its quote, never claimed. A permission note
+  limits the claim exactly as written.
+- **Call to action.** One, specific to the piece, from the profile's lead routes, in your own
+  words. No link or URL in the text unless the user gives one.
+- **Built from.** Under every draft, list each proof and quote used and the sentence or section
+  that relies on it, so a reviewer can trace every claim.
 
 ## Checklist (run before showing any draft)
 
@@ -115,15 +138,17 @@ Keywords are natural topic anchors. Never repeat a keyword for density.
 2. No banned phrase.
 3. No antithesis, negative parallelism or "more than X. It means Y" reframe.
 4. Every number appears in a cited proof, unchanged.
-5. Every quote is word for word from `quotes.md`.
-6. Nothing from the profile's "Never position as"; no exclude term.
-7. Australian spelling; no emoji; sentence-case headings.
-8. Length is inside the channel range.
-9. Reads in the chosen persona's voice.
-10. No closing summary paragraph.
-11. The profile is `approved`. If not, say "Profile <CODE> is <status>, not approved yet" above
+5. Every quote-style line is word for word from `quotes.md` (or its neutral variant), and no
+   quote is presented as a testimonial or named source.
+6. Every WhiteFox claim is backed by a proof the angle uses and stays within the claim level.
+7. Nothing from the profile's "Never position as"; no exclude term.
+8. Australian spelling; no emoji; sentence-case headings.
+9. Length is inside the channel range.
+10. Reads in the chosen persona's voice.
+11. No closing summary paragraph.
+12. The profile is `approved`. If not, say "Profile <CODE> is <status>, not approved yet" above
     the draft.
-12. No profile field still reads `[placeholder]`, `unknown` or `(none)` where the draft needs
+13. No profile field still reads `[placeholder]`, `unknown` or `(none)` where the draft needs
     it. If one does, stop and ask the user to fill it with `/whitefox-content-profile`.
 
 Fix what fails before showing the draft, then list the checks under it with each one ticked.
