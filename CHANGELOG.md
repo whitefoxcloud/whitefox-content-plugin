@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.4.3
+
+- Review page: the card is named after what it reviews ("Review: lanes for ..."), and Claude
+  says to click it. Rows can have more than two choices: lanes offer keep, active and drop.
+- mine-quotes: a quote read through a copy keeps the original page's link.
+- mint-lanes: a quote variant is the whole quote with only names replaced, never a fragment.
+
 ## 0.4.2
 
 - Review page: in the Claude app, results with 3 or more items also open as a page with keep,
