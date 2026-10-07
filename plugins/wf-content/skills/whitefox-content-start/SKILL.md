@@ -31,9 +31,10 @@ the user. You recognise it by its contents: a `settings.md` whose heading is
 2. If one of them holds a workspace one level down, use that one.
 3. If you can reach no workspace, ask the user which folder to use, in one short message:
 
-   "Which folder should I use for your WhiteFox content? Add it with **+** in the message box,
-   or paste its path. If you are new, pick or create any empty folder, for example
-   `Documents\WhiteFox Content`, and I will set it up there."
+   "Which folder should I use for your WhiteFox content? Either add it with **+** in the
+   message box and send a short message such as *use this folder* (the app does not send a
+   folder on its own), or paste its path. If you are new, pick or create any empty folder, for
+   example `Documents\WhiteFox Content`, and I will set it up there."
 
    When the user pastes a path, request access to that folder (in the Claude app this shows an
    Allow window; the user can tick "Don't ask again" so later sessions skip it). When the user
