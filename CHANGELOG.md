@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.5.0
+
+- keyword-research is built: for one active lane, three DataForSEO services through the
+  DataForSEO connector (keyword overview, related keywords, one Google results page), price
+  shown and approved first, never more than $1.00 per lane per run, every call logged in
+  `costs.md` with the actual cost or `unknown`. The verdict (none, some, strong) updates the
+  lane's Demand. No login is ever stored in the plugin or the workspace.
+
 ## 0.4.3
 
 - Review page: the card is named after what it reviews ("Review: lanes for ..."), and Claude

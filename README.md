@@ -4,9 +4,9 @@ Turns case studies into proof-backed LinkedIn posts, articles and emails, one ap
 a time. Runs in the Claude desktop app and in Claude Code, on your own Claude subscription (Pro
 or Max).
 
-Status: 0.4.3. Built: start, guide, house-style, profile, campaign, and the evidence steps
-(extract-proof, match-proof, derive-pains, mine-quotes, mint-lanes). The keyword, brief and
-writing steps are not built yet.
+Status: 0.5.0. Built: start, guide, house-style, profile, campaign, the evidence steps
+(extract-proof, match-proof, derive-pains, mine-quotes, mint-lanes) and keyword-research. The
+brief and writing steps are not built yet.
 
 ## How it works
 
@@ -27,7 +27,12 @@ The plugin holds no campaign data, case studies or logins.
 2. **Workspace folder:** pick any folder for your WhiteFox content, with any name, anywhere
    (for example `Documents\WhiteFox Content`). The first time you run the plugin, Claude asks
    for it and sets it up.
-3. **Keyword research only:** add the DataForSEO login when the plugin asks for it.
+3. **Keyword research (only people with the company DataForSEO login):** in the Claude app,
+   Customize, Connectors, **+**, "Add custom connector", name it `DataForSEO`, URL
+   `https://mcp.dataforseo.com/mcp`, then Connect and sign in on DataForSEO's page with the
+   company login. In the connector's tool permissions, set `api_request` to ask before each
+   use. Never paste the login into a chat or a file. Everyone else skips this step; keyword
+   research then tells them it is not connected.
 
 ## Each time you work
 
