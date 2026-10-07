@@ -66,8 +66,10 @@ that already exists in substance.
    vocabulary. When no natural buyer phrasing exists for a kind, skip it with a reason.
 7. **Quote variants.** Quotes are used word for word by default. When a quote names third-party
    products, niches narrower than the audience, or places that do not carry over, add a neutral
-   version that abstracts only those specifics. Keep generic tools (Excel, spreadsheets, email)
-   as written. Never strengthen, never add numbers.
+   version that abstracts only those specifics. The neutral version is the whole quote, word
+   for word, with only those names replaced (for example "[the provider]"): never a fragment,
+   never "...". Keep generic tools (Excel, spreadsheets, email) as written. Never strengthen,
+   never add numbers.
 8. **Numbers.** Every number in a label, stance or quote variant appears in the cited evidence.
 
 ## Grounding check (before showing)
