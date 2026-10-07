@@ -32,7 +32,7 @@ The plugin holds no campaign data, case studies or logins.
    `https://mcp.dataforseo.com/mcp`, then Connect and sign in on DataForSEO's page with the
    company login. In the connector's tool permissions, set `api_request` to ask before each
    use. Never paste the login into a chat or a file. Everyone else skips this step; keyword
-   research then tells them it is not connected.
+   research then offers its free mode (questions and phrasing from web search, no numbers).
 
 ## Each time you work
 

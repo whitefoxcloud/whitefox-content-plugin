@@ -7,6 +7,9 @@
   shown and approved first, never more than $1.00 per lane per run, every call logged in
   `costs.md` with the actual cost or `unknown`. The verdict (none, some, strong) updates the
   lane's Demand. No login is ever stored in the plugin or the workspace.
+- keyword-research free mode: without DataForSEO (or by choice), web search collects the
+  phrasing and questions buyers use, with links; search numbers stay `unknown`.
+- Price table uses DataForSEO's list prices of 2026-10-07 (about $0.06 per lane).
 
 ## 0.4.3
 

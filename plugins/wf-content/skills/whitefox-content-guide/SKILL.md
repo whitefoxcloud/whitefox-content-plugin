@@ -26,7 +26,7 @@ be traced back to something WhiteFox really delivered.
 | 5 | `/whitefox-content-derive-pains` | names the buyer problems those proofs solve | `pains.md` |
 | 6 | `/whitefox-content-mine-quotes` | finds real buyers saying those problems in public, word for word | `quotes.md` |
 | 7 | `/whitefox-content-mint-lanes` | turns pains, proofs and quotes into topics to publish about (lanes) | `lanes.md` |
-| 8 | `/whitefox-content-keyword-research` | optional and paid: what people search for on a lane | `keywords.md`, `costs.md` |
+| 8 | `/whitefox-content-keyword-research` | optional: what people search for on a lane; paid with DataForSEO (real numbers) or free with web search (questions and phrasing) | `keywords.md`, `costs.md` |
 | 9 | `/whitefox-content-arm-brief` | plans the pieces for one lane (angles: channel, headline, persona) | `briefs/LANE-nn.md` |
 | 10 | `/whitefox-content-write-linkedin`, `/whitefox-content-write-article`, `/whitefox-content-write-email` | writes one piece for a kept angle | `drafts/` |
 
@@ -38,8 +38,9 @@ In Claude Code every command starts with `wf-content:`, for example `/wf-content
 ## Things people ask
 
 - **Is anything saved without me?** No. Each step shows its result and waits for your approval.
-- **Does it spend money?** Only keyword research, and only after it shows the price and you say
-  yes. Every paid call is logged in the campaign's `costs.md`.
+- **Does it spend money?** Only keyword research in paid mode (DataForSEO), and only after it
+  shows the price and you say yes. Its free mode spends nothing. Every paid call is logged in
+  the campaign's `costs.md`.
 - **Why a pool?** A case study is extracted once; every campaign you run reuses its proofs.
 - **Can I edit the files myself?** Yes, they are plain text. Keep the headings and IDs as they
   are, or the next step may not find them.

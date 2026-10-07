@@ -107,7 +107,7 @@ Check in this order and stop at the first match:
 | a pain with no quote and not under "Pains with no quotes found" | `/whitefox-content-mine-quotes` |
 | `lanes.md` missing or empty | `/whitefox-content-mint-lanes` |
 | no lane with status `active` | `/whitefox-content-mint-lanes`: choose a lane to make active |
-| an `active` lane with no file in `briefs/` | `/whitefox-content-arm-brief` (`/whitefox-content-keyword-research` first is optional and paid) |
+| an `active` lane with no file in `briefs/` | `/whitefox-content-arm-brief` (`/whitefox-content-keyword-research` first is optional: free or paid) |
 | a brief with no `kept` angle | `/whitefox-content-arm-brief`: keep the angles you want |
 | a `kept` angle with no file in `drafts/` | its channel's step: `/whitefox-content-write-linkedin`, `/whitefox-content-write-article` or `/whitefox-content-write-email` |
 | everything above is done | "All kept angles have drafts." Suggest a new case study or lane |

@@ -102,7 +102,8 @@ Check each candidate's label, stance and "Why WhiteFox" against only its own cit
 ## Next
 
 For an `active` lane: `/whitefox-content-arm-brief` to plan its pieces, optionally after
-`/whitefox-content-keyword-research` (paid, price shown first).
+`/whitefox-content-keyword-research` (free with web search, or paid with DataForSEO after a
+price is shown).
 
 ## Rules
 
