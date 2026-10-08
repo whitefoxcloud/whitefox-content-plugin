@@ -25,7 +25,7 @@ the content plan, and the drafts.
 4. Work out where to start:
    - The topic has no content plan, or the user asks for more pieces: step 1.
    - The content plan has planned pieces without drafts: step 2.
-   - Every planned piece has a draft: say so, and carry on with the next chosen topic, or end.
+   - Every planned piece has a draft: say so, and offer the next chosen topic as in "Then".
 5. One line with the limits: "LinkedIn posts are 110 to 180 words, emails 80 to 150, articles
    1200 to 1800 and each aims at one main keyword. Type **stop** any time."
 
@@ -74,9 +74,15 @@ changed drafts again, and save every draft on yes.
 
 ## Then
 
-One line: "Done for Topic <n>, <label>: <N> drafts saved in `drafts/`." If another chosen topic
-has no content plan, carry on with it ("Next: Topic <m>, <label>."). Otherwise end with
-`/whitefox-content-dashboard` to see everything.
+Stop here: a topic's saved drafts are the end of the stage. Never start another topic on your
+own. Reply with:
+
+> ✓ <N> drafts saved for Topic <n>, <label>, in `drafts/`.
+
+Then, if another chosen topic has planned pieces without drafts or no content plan yet: "Next
+chosen topic: Topic <m>, <label>. Reply **next** to plan it, or stop here." On **next**, run
+this stage again for that topic. Otherwise: "Every chosen topic has its drafts. See everything
+with `/whitefox-content-dashboard`."
 
 ## Rules
 

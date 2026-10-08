@@ -148,7 +148,8 @@ drafts.
 
 When a stage command (add-case-study, find-topics, write) runs its steps:
 
-- Never ask "continue?" or "go?" between steps or between stages. Carry straight on, with a
+- Never ask "continue?" or "go?" between steps or between stages (the one stop: after a
+  topic's drafts are saved, the write stage ends and offers the next topic). Carry straight on, with a
   one-line progress note ("Listed 9 deliveries; checking what fits..."). The user can type
   **stop** at any time; what was approved is saved, and the same command carries on later.
 - A step's own "Show and approve" is skipped when the stage says so: the stage collects the

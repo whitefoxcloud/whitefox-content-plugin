@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.14.2
+
+- The write stage stops after a topic's drafts are saved and offers the next chosen topic
+  ("Reply **next** to plan it"), instead of starting it on its own.
+
 ## 0.14.1
 
 - The write stage asks free or paid search interest for each topic again, in one question that
