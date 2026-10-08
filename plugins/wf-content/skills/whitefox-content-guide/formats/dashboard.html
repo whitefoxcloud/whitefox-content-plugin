@@ -13,9 +13,9 @@
 
   DATA shape:
   {
-    "version": "0.9.4",
+    "version": "0.9.5",
     "workspace": "C:\\...\\WhiteFox Content",
-    "update": null,                          // or "0.9.4" when a newer version exists
+    "update": null,                          // or "0.9.5" when a newer version exists
     "profiles": [ { "code": "FIN", "name": "Fintech / payments", "status": "approved" } ],
     "campaigns": [ {
       "name": "fin-2026-10", "profile": "FIN", "goal": "...",
@@ -34,18 +34,29 @@
   topics: the active lanes, and any lane with a plan or drafts. Exactly one action is suggested.
 -->
 <style>
+/* Neutral surfaces; blue only for actions; one hue per stage (case study violet, topics amber, write green). */
 :root {
-  --blue: #005de5; --blue-dark: #0044a7; --navy: #152d51; --blue-soft: #f3faff; --blue-tint: #d7edff;
-  --logo: #000000; --raised: #eef3fa;
-  --surface: #ffffff; --page: #e8ecf2; --fg: #152d51; --text: #1f2633; --muted: #7a828e;
-  --line: #e2e6ef; --ok: #1f7a4d; --ok-bg: #e6f4ec; --warn: #a15c00; --warn-bg: #fff4e0; --on-blue: #ffffff;
+  --page: #f5f6f8; --surface: #ffffff; --raised: #f7f8fa; --line: #e5e7eb; --line-strong: #d4d7de;
+  --ink: #111827; --text: #374151; --muted: #6b7280; --logo: #111827;
+  --accent: #005de5; --accent-hover: #0047b3; --accent-soft: #e8f0fe; --on-accent: #ffffff;
+  --s1: #7c3aed; --s1-soft: #f3edff;
+  --s2: #b45309; --s2-soft: #fef3e2;
+  --s3: #047857; --s3-soft: #e3f6ee;
+  --warn: #b45309; --warn-soft: #fef3e2;
+  --shadow: 0 1px 2px rgba(17,24,39,.04), 0 4px 16px rgba(17,24,39,.06);
+  --hero: linear-gradient(135deg, #005de5 0%, #4f46e5 100%);
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --blue: #1f6fff; --blue-dark: #9cc2ff; --navy: #ffffff; --blue-soft: #26497c; --blue-tint: #3a5f96;
-    --logo: #ffffff; --raised: #2b5089;
-    --surface: #1b3760; --page: #0b1729; --fg: #ffffff; --text: #e4e8ef; --muted: #98a1ae;
-    --line: #34568a; --ok: #6fd39f; --ok-bg: #183327; --warn: #f0b45a; --warn-bg: #3a2c14; --on-blue: #ffffff;
+    --page: #0d0f13; --surface: #16191f; --raised: #1d2128; --line: #262b33; --line-strong: #333944;
+    --ink: #f3f4f6; --text: #d1d5db; --muted: #9ca3af; --logo: #ffffff;
+    --accent: #3b82f6; --accent-hover: #60a5fa; --accent-soft: #172554; --on-accent: #ffffff;
+    --s1: #a78bfa; --s1-soft: #241b3d;
+    --s2: #fbbf24; --s2-soft: #2e2410;
+    --s3: #34d399; --s3-soft: #0f2a21;
+    --warn: #fbbf24; --warn-soft: #2e2410;
+    --shadow: 0 1px 2px rgba(0,0,0,.3), 0 8px 24px rgba(0,0,0,.25);
+    --hero: linear-gradient(135deg, #1d4ed8 0%, #4338ca 100%);
   }
 }
 * { box-sizing: border-box; }
@@ -56,42 +67,64 @@ body { margin: 0; background: var(--page); color: var(--text);
 .mark { display: flex; align-items: center; gap: 8px; color: var(--logo); }
 .mark .logo { height: 24px; width: auto; display: block; }
 .mark b { font-weight: 500; color: var(--muted); font-size: 14px; padding-left: 8px; border-left: 1px solid var(--line); }
-.ver { margin-left: auto; font-size: 13px; color: var(--muted); }
+.ver { margin-left: auto; font-size: 12px; color: var(--muted); }
 main { max-width: 960px; margin: 0 auto; padding: 20px 16px 48px; }
-.notice { background: var(--warn-bg); color: var(--warn); border-radius: 10px; padding: 10px 14px; margin-bottom: 16px; }
-.ws { color: var(--muted); font-size: 13px; margin: 0 0 16px; word-break: break-all; }
-.card { background: var(--surface); border: 1px solid var(--line); border-radius: 14px; padding: 18px; margin-bottom: 16px; }
-.ctitle { display: flex; align-items: baseline; gap: 10px; flex-wrap: wrap; }
-.ctitle h2 { margin: 0; font-size: 20px; color: var(--fg); font-weight: 600; }
-.chip { font-size: 12px; border-radius: 999px; padding: 2px 10px; background: var(--blue-soft); color: var(--blue-dark); border: 1px solid var(--blue-tint); }
-.chip.warn { background: var(--warn-bg); color: var(--warn); border-color: transparent; }
-.goal { color: var(--muted); margin: 6px 0 14px; }
-.made { color: var(--text); margin: 0 0 16px; font-size: 14px; }
-.made b { color: var(--fg); font-weight: 600; }
-.sub { font-size: 13px; color: var(--muted); font-weight: 500; text-transform: uppercase; letter-spacing: .4px; margin: 16px 0 6px; }
-.topic { display: grid; grid-template-columns: 80px 1fr auto; gap: 10px; align-items: baseline;
-  padding: 10px 12px; border-radius: 10px; background: var(--raised); margin-bottom: 6px; font-size: 14px; }
-.topic .id { color: var(--muted); font-size: 13px; }
-.topic .label { color: var(--fg); font-weight: 500; }
-.topic .st { color: var(--muted); text-align: right; }
-.topic.done .st { color: var(--ok); }
-.action { display: grid; grid-template-columns: 1fr auto; gap: 2px 12px; align-items: center; padding: 10px 12px;
-  background: var(--raised); border: 1px solid transparent; border-radius: 10px; margin-bottom: 6px; }
-.action.suggested { border-color: var(--blue); }
-.action .what { font-weight: 500; color: var(--fg); display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
-.action .tag { font-weight: 400; font-size: 12px; color: var(--blue-dark); background: transparent; border: 1px solid var(--blue-dark); border-radius: 999px; padding: 1px 8px; }
-.action code { color: var(--muted); font-size: 13px; grid-column: 1; word-break: break-all; }
-.action .btn { grid-column: 2; grid-row: 1 / span 2; }
-.top { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 16px; }
-.top .ws { margin: 0; flex: 1; }
+.notice { background: var(--warn-soft); color: var(--warn); border-radius: 12px; padding: 10px 14px; margin-bottom: 16px; font-size: 14px; }
+.top { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 20px; }
+.ws { margin: 0; flex: 1; color: var(--muted); font-size: 13px; word-break: break-all; }
+h3 { font-size: 12px; color: var(--muted); font-weight: 600; text-transform: uppercase; letter-spacing: .08em; margin: 28px 0 10px; }
 h3.first { margin-top: 0; }
-.hint { color: var(--muted); font-size: 13px; margin: 8px 0 0; }
-.btn { border: 1px solid var(--blue); background: var(--blue); color: var(--on-blue); border-radius: 999px;
-  padding: 6px 14px; cursor: pointer; font: inherit; font-weight: 500; font-size: 14px; }
-.btn.ghost { background: var(--surface); color: var(--fg); border-color: var(--line); }
+.card { background: var(--surface); border: 1px solid var(--line); border-radius: 16px; padding: 20px; margin-bottom: 16px; box-shadow: var(--shadow); }
+.ctitle { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; }
+.ctitle h2 { margin: 0; font-size: 22px; color: var(--ink); font-weight: 600; letter-spacing: -.01em; }
+.chip { font-size: 12px; border-radius: 999px; padding: 2px 10px; background: var(--raised); color: var(--text); border: 1px solid var(--line); }
+.chip.warn { background: var(--warn-soft); color: var(--warn); border-color: transparent; }
+.chip.ok::before { content: "✓ "; color: var(--s3); }
+.goal { color: var(--muted); margin: 6px 0 18px; }
+.stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(96px, 1fr)); gap: 1px; background: var(--line);
+  border: 1px solid var(--line); border-radius: 12px; overflow: hidden; margin-bottom: 4px; }
+.stat { background: var(--surface); padding: 10px 12px; }
+.stat .v { font-size: 22px; font-weight: 600; color: var(--ink); line-height: 1.2; }
+.stat .k { font-size: 12px; color: var(--muted); display: flex; align-items: center; gap: 6px; }
+.dot { width: 8px; height: 8px; border-radius: 50%; background: var(--muted); flex: none; }
+.dot.s1 { background: var(--s1); } .dot.s2 { background: var(--s2); } .dot.s3 { background: var(--s3); }
+.legend { display: flex; gap: 14px; flex-wrap: wrap; font-size: 12px; color: var(--muted); margin: 8px 0 0; }
+.legend span { display: inline-flex; align-items: center; gap: 6px; }
+.topic { display: grid; grid-template-columns: auto 1fr auto; gap: 12px; align-items: center;
+  padding: 10px 12px; border-radius: 12px; background: var(--raised); border: 1px solid var(--line); margin-bottom: 8px; }
+.topic .id { font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; }
+.topic .label { color: var(--ink); font-weight: 500; }
+.pill { font-size: 12px; border-radius: 999px; padding: 3px 10px; white-space: nowrap; font-weight: 500; }
+.pill.done { background: var(--s3-soft); color: var(--s3); }
+.pill.part { background: var(--accent-soft); color: var(--accent); }
+.pill.none { background: transparent; color: var(--muted); border: 1px dashed var(--line-strong); }
+.hero { background: var(--hero); color: #fff; border-radius: 14px; padding: 16px; display: grid;
+  grid-template-columns: 1fr auto; gap: 4px 14px; align-items: center; margin-bottom: 10px; }
+.hero .eyebrow { font-size: 11px; text-transform: uppercase; letter-spacing: .1em; opacity: .8; }
+.hero .what { font-size: 17px; font-weight: 600; }
+.hero code { font-size: 13px; opacity: .85; word-break: break-all; }
+.hero .btn { grid-column: 2; grid-row: 1 / span 3; background: #fff; color: #1e3a8a; border-color: #fff; }
+.hero .btn:hover { background: #e8f0fe; }
+.alts { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 8px; }
+.alt { display: flex; align-items: center; gap: 10px; padding: 10px 12px; border: 1px solid var(--line); border-radius: 12px;
+  background: var(--surface); }
+.alt .ic { width: 30px; height: 30px; border-radius: 8px; display: grid; place-items: center; font-size: 15px; flex: none; }
+.ic.s1 { background: var(--s1-soft); color: var(--s1); } .ic.s2 { background: var(--s2-soft); color: var(--s2); } .ic.s3 { background: var(--s3-soft); color: var(--s3); }
+.alt .txt { flex: 1; min-width: 0; }
+.alt .what { font-weight: 500; color: var(--ink); font-size: 14px; }
+.alt code { display: block; font-size: 12px; color: var(--muted); word-break: break-all; }
+.hint { color: var(--muted); font-size: 12px; margin: 12px 0 0; }
+.btn { border: 1px solid var(--accent); background: var(--accent); color: var(--on-accent); border-radius: 999px;
+  padding: 7px 16px; cursor: pointer; font: inherit; font-weight: 600; font-size: 14px; transition: background .15s; }
+.btn:hover { background: var(--accent-hover); border-color: var(--accent-hover); }
+.btn.ghost { background: transparent; color: var(--ink); border-color: var(--line-strong); padding: 5px 12px; font-size: 13px; }
+.btn.ghost:hover { background: var(--raised); }
+.btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
 .profiles { display: flex; gap: 8px; flex-wrap: wrap; }
-h3 { font-size: 14px; color: var(--muted); font-weight: 500; text-transform: uppercase; letter-spacing: .4px; margin: 24px 0 8px; }
-@media (max-width: 560px) { .topic { grid-template-columns: 1fr; gap: 2px; } .topic .st { text-align: left; } }
+@media (max-width: 560px) {
+  .topic { grid-template-columns: 1fr; gap: 4px; }
+  .hero { grid-template-columns: 1fr; } .hero .btn { grid-column: 1; grid-row: auto; justify-self: start; margin-top: 8px; }
+}
 </style>
 </head>
 <body>
@@ -110,7 +143,7 @@ h3 { font-size: 14px; color: var(--muted); font-weight: 500; text-transform: upp
 <script>
 /* DATA: the step replaces this object with the workspace's state. */
 const DATA = {
-  "version": "0.9.4",
+  "version": "0.9.5",
   "workspace": "Documents/WhiteFox Content",
   "update": null,
   "profiles": [ { "code": "EX", "name": "Example industry", "status": "draft" } ],
@@ -125,9 +158,13 @@ const DATA = {
 /* end DATA */
 
 const esc = s => String(s ?? "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+/* Stage of a command or a count, for its colour: s1 case study, s2 topics, s3 write. */
+const STAGE = { "add-case-study": ["s1", "◆"], "find-topics": ["s2", "✦"], "write": ["s3", "✎"], "campaign": ["", "+"] };
+const stageOf = cmd => { for (const k in STAGE) if (cmd.endsWith("-" + k)) return STAGE[k]; return ["", "›"]; };
+const countStage = k => /case stud|proof|pain/i.test(k) ? "s1" : /quote|topic/i.test(k) ? "s2" : /draft|piece/i.test(k) ? "s3" : "";
 async function copy(btn, text) {
   const old = btn.textContent;
-  try { await navigator.clipboard.writeText(text); btn.textContent = "Copied"; }
+  try { await navigator.clipboard.writeText(text); btn.textContent = "Copied ✓"; }
   catch (err) { btn.textContent = "Select and copy"; }
   setTimeout(() => { btn.textContent = old; }, 1500);
 }
@@ -146,23 +183,31 @@ if (!DATA.campaigns.length) {
 DATA.campaigns.forEach(c => {
   const prof = DATA.profiles.find(p => p.code === c.profile);
   const approved = prof && prof.status === "approved";
-  const made = (c.made || []).map(([k, v]) => `<b>${esc(v)}</b> ${esc(k)}`).join(" · ");
-  const topics = (c.topics || []).map(t => `<div class="topic ${t.done ? "done" : ""}"><span class="id">${esc(t.id)}</span><span class="label">${esc(t.label)}</span><span class="st">${esc(t.status)}${t.done ? " ✓" : ""}</span></div>`).join("");
-  const actions = (c.actions || []).map((a, i) => `<div class="action ${a.suggested ? "suggested" : ""}"><span class="what">${esc(a.label)}${a.suggested ? `<span class="tag">suggested</span>` : ""}</span><code title="Claude Code: ${esc(a.code)}">${esc(a.command)}</code><button class="btn ${a.suggested ? "" : "ghost"}" type="button" data-i="${i}">Copy</button></div>`).join("");
+  const stats = (c.made || []).map(([k, v]) => `<div class="stat"><div class="v">${esc(v)}</div><div class="k"><span class="dot ${countStage(k)}"></span>${esc(k)}</div></div>`).join("");
+  const topics = (c.topics || []).map(t => {
+    const kind = t.done ? "done" : /^no plan/i.test(t.status) ? "none" : "part";
+    return `<div class="topic"><span class="id">${esc(t.id)}</span><span class="label">${esc(t.label)}</span><span class="pill ${kind}">${t.done ? "✓ " : ""}${esc(t.status)}</span></div>`;
+  }).join("");
+  const acts = c.actions || [];
+  const sug = acts.find(a => a.suggested) || acts[0];
+  const rest = acts.filter(a => a !== sug);
+  const hero = sug ? `<div class="hero"><span class="eyebrow">Suggested next</span><span class="what">${esc(sug.label)}</span><code title="Claude Code: ${esc(sug.code)}">${esc(sug.command)}</code><button class="btn" type="button" data-cmd="${esc(sug.command)}">Copy command</button></div>` : "";
+  const alts = rest.map(a => { const [st, icon] = stageOf(a.command);
+    return `<div class="alt"><span class="ic ${st}">${icon}</span><span class="txt"><span class="what">${esc(a.label)}</span><code title="Claude Code: ${esc(a.code)}">${esc(a.command)}</code></span><button class="btn ghost" type="button" data-cmd="${esc(a.command)}">Copy</button></div>`; }).join("");
   const card = document.createElement("div");
   card.className = "card";
   card.innerHTML = `
-    <div class="ctitle"><h2>${esc(c.name)}</h2><span class="chip">${esc(c.profile)}${prof ? `, ${esc(prof.name)}` : ""}</span>${approved ? "" : `<span class="chip warn">profile not approved yet</span>`}</div>
+    <div class="ctitle"><h2>${esc(c.name)}</h2><span class="chip ${approved ? "ok" : ""}">${esc(c.profile)}${prof ? ` · ${esc(prof.name)}` : ""}</span>${approved ? "" : `<span class="chip warn">profile not approved yet</span>`}</div>
     <p class="goal">${esc(c.goal || "")}</p>
-    ${made ? `<p class="made">Made so far: ${made}</p>` : ""}
-    ${topics ? `<div class="sub">Topics in progress</div>${topics}` : ""}
-    <div class="sub">What you can do</div>${actions}
+    ${stats ? `<div class="stats">${stats}</div><div class="legend"><span><span class="dot s1"></span>Case study</span><span><span class="dot s2"></span>Topics</span><span><span class="dot s3"></span>Write</span></div>` : ""}
+    ${topics ? `<h3>Topics in progress</h3>${topics}` : ""}
+    <h3>What you can do</h3>${hero}${alts ? `<div class="alts">${alts}</div>` : ""}
     <p class="hint">Copy a command and paste it in the chat. Hover a command for its Claude Code form.</p>`;
-  card.querySelectorAll("button[data-i]").forEach(b => { b.onclick = () => copy(b, c.actions[+b.dataset.i].command); });
+  card.querySelectorAll("button[data-cmd]").forEach(b => { b.onclick = () => copy(b, b.dataset.cmd); });
   box.append(card);
 });
 document.getElementById("profiles").innerHTML = DATA.profiles.map(p =>
-  `<span class="chip ${p.status === "approved" ? "" : "warn"}">${esc(p.code)}: ${esc(p.name)} (${esc(p.status)})</span>`).join("");
+  `<span class="chip ${p.status === "approved" ? "ok" : "warn"}">${esc(p.code)} · ${esc(p.name)}${p.status === "approved" ? "" : ` (${esc(p.status)})`}</span>`).join("");
 </script>
 </body>
 </html>

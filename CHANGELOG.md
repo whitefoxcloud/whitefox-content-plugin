@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.9.5
+
+- New look for all pages: neutral surfaces (white and soft grey in light mode, near black in
+  dark mode) instead of blue on blue; blue is kept for actions only.
+- One colour per stage everywhere: violet for Add a case study, amber for Find topics, green
+  for Write. The dashboard's counts carry stage dots with a legend, and the review and preview
+  pages' stage pill takes its stage's colour.
+- Dashboard: counts as a stat strip; topics with status pills (done in green, in progress in
+  blue, no plan yet dashed); the suggested action as a highlighted card with "Copy command",
+  other actions as smaller cards with stage icons; approved profiles carry a tick.
+
 ## 0.9.4
 
 - Dashboard: topic and action rows get their own lighter background so they stand out from
