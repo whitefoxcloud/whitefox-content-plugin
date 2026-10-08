@@ -14,7 +14,7 @@
 
   DATA shape:
   {
-    "version": "0.12.2",
+    "version": "0.13.0",
     "workspace": "C:\\...\\WhiteFox Content",
     "update": null,                          // or "0.10.1" when a newer version exists
     "profiles": [ { "code": "FIN", "name": "Fintech / payments", "status": "approved" } ],
@@ -37,6 +37,7 @@
       }
     } ]
   }
+  Campaigns: most recently worked on first; the first starts expanded, the others collapsed.
   fit: matched | rejected | not judged. topics: the active lanes and any lane with a plan or
   drafts. Exactly one action is suggested. Draft "Open" copies /whitefox-content-show Piece <n> <campaign>.
   IDs and statuses stay as in the files; the page shows them in the user's words (fid, word).
@@ -89,6 +90,20 @@ h3.first { margin-top: 0; }
 .chip.warn { background: var(--warn-soft); color: var(--warn); border-color: transparent; }
 .chip.ok::before { content: "✓ "; color: var(--s3); }
 .goal { color: var(--muted); margin: 6px 0 18px; }
+.chead { display: grid; grid-template-columns: auto 1fr; gap: 4px 14px; align-items: start; width: 100%; background: none; border: 0;
+  padding: 0; margin: 0; text-align: left; font: inherit; color: inherit; cursor: pointer; }
+.chead .cchev { color: var(--muted); font-size: 14px; margin-top: 7px; transition: transform .15s; }
+.card.open .chead .cchev { transform: rotate(90deg); }
+.chead:focus-visible { outline: 2px solid var(--accent); outline-offset: 4px; border-radius: 8px; }
+.csum { grid-column: 2; display: flex; gap: 6px 14px; flex-wrap: wrap; font-size: 13px; color: var(--muted); margin-top: 2px; }
+.csum b { color: var(--ink); font-weight: 600; }
+.csum .nx { color: var(--accent); }
+.card.open .csum { display: none; }
+.card:not(.open) { padding: 16px 20px; }
+.card:not(.open) .cbody { display: none; }
+.card .chead .goal { grid-column: 2; margin: 2px 0 0; }
+.card:not(.open) .chead .goal { display: none; }
+.cbody { margin-top: 18px; }
 .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(96px, 1fr)); gap: 1px; background: var(--line);
   border: 1px solid var(--line); border-radius: 12px; overflow: hidden; margin-bottom: 4px; }
 .stat { background: var(--surface); padding: 10px 12px; }
@@ -182,13 +197,13 @@ details.topic[open] > summary .chev { transform: rotate(90deg); }
   <div class="top"><p class="ws" id="ws"></p><button class="btn" type="button" id="newc">+ New campaign</button></div>
   <h3 class="first">Your campaigns</h3>
   <div id="campaigns"></div>
-  <h3>Profiles</h3>
+  <h3>Industries</h3>
   <div class="profiles" id="profiles"></div>
 </main>
 <script>
 /* DATA: the step replaces this object with the workspace's state. */
 const DATA = {
-  "version": "0.12.2",
+  "version": "0.13.0",
   "workspace": "Documents/WhiteFox Content",
   "update": null,
   "profiles": [ { "code": "EX", "name": "Example industry", "status": "draft" } ],
@@ -274,7 +289,11 @@ const box = document.getElementById("campaigns");
 if (!DATA.campaigns.length) {
   box.innerHTML = `<div class="card"><div class="ctitle"><h2>No campaigns yet</h2></div><p class="goal">Start with <b>+ New campaign</b>, then add a case study, find topics and write.</p></div>`;
 }
-DATA.campaigns.forEach(c => {
+const OPEN_KEY = "wf-dashboard-open";
+let openState = {};
+try { openState = JSON.parse(localStorage.getItem(OPEN_KEY) || "{}") || {}; } catch (e) { openState = {}; }
+const saveOpen = () => { try { localStorage.setItem(OPEN_KEY, JSON.stringify(openState)); } catch (e) {} };
+DATA.campaigns.forEach((c, ci) => {
   const d = c.details || {};
   const prof = DATA.profiles.find(p => p.code === c.profile);
   const approved = prof && prof.status === "approved";
@@ -295,14 +314,24 @@ DATA.campaigns.forEach(c => {
   const alts = rest.map(a => { const [st, icon] = stageOf(a.command);
     return `<div class="alt"><span class="ic ${st}">${icon}</span><span class="txt"><span class="what">${esc(a.label)}</span><code title="Claude Code: ${esc(a.code)}">${esc(a.command)}</code></span><button class="btn ghost" type="button" data-cmd="${esc(a.command)}">Copy</button></div>`; }).join("");
   const card = document.createElement("div");
-  card.className = "card";
+  const isOpen = c.name in openState ? openState[c.name] : ci === 0;
+  card.className = "card" + (isOpen ? " open" : "");
+  const summary = (c.made || []).map(([k, v]) => `<span><b>${esc(v)}</b> ${esc(k)}</span>`).join("");
   card.innerHTML = `
-    <div class="ctitle"><h2>${esc(c.name)}</h2><span class="chip ${approved ? "ok" : ""}">${esc(c.profile)}${prof ? ` · ${esc(prof.name)}` : ""}</span>${approved ? "" : `<span class="chip warn">profile not approved yet</span>`}</div>
-    <p class="goal">${esc(c.goal || "")}</p>
+    <button class="chead" type="button" aria-expanded="${isOpen}"><span class="cchev">▶</span>
+      <span class="ctitle"><h2>${esc(c.name)}</h2><span class="chip ${approved ? "ok" : ""}">${esc(c.profile)}${prof ? ` · ${esc(prof.name)}` : ""}</span>${approved ? "" : `<span class="chip warn">industry not approved yet</span>`}</span>
+      <span class="goal">${esc(c.goal || "")}</span>
+      <span class="csum">${summary}${sug ? `<span class="nx">Next: ${esc(sug.label)}</span>` : ""}</span>
+    </button>
+    <div class="cbody">
     ${stats ? `<div class="stats">${stats}</div><div class="panelbox"></div><div class="legend"><span><span class="dot s1"></span>Case study</span><span><span class="dot s2"></span>Topics</span><span><span class="dot s3"></span>Write</span><span>Click a count to see the list</span></div>` : ""}
     ${topics ? `<h3>Topics in progress</h3>${topics}` : ""}
     <h3>What you can do</h3>${hero}${alts ? `<div class="alts">${alts}</div>` : ""}
-    <p class="hint">Copy a command and paste it in the chat. Hover a command for its Claude Code form. This page is a snapshot: run /whitefox-content-dashboard for a fresh one.</p>`;
+    <p class="hint">Copy a command and paste it in the chat. Hover a command for its Claude Code form. This page is a snapshot: run /whitefox-content-dashboard for a fresh one.</p>
+    </div>`;
+  const head = card.querySelector(".chead");
+  head.onclick = () => { const o = !card.classList.contains("open"); card.classList.toggle("open", o);
+    head.setAttribute("aria-expanded", o); openState[c.name] = o; saveOpen(); };
   const pbox = card.querySelector(".panelbox");
   card.querySelectorAll("button.stat").forEach(b => { b.onclick = () => {
     const open = b.getAttribute("aria-expanded") === "true";

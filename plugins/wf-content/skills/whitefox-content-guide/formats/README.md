@@ -219,7 +219,8 @@ left to the page when it is longer than about 200 words. After a change, show th
 
 In `whitefox-content-start`, once the workspace exists, show `dashboard.html` with `version`,
 `workspace`, `update` (the newer version, or null), `profiles` and one entry per campaign that
-is not `done`: `made` (case studies, audience problems, quotes, topics, drafts), `topics` (the active
+is not `done`, most recently worked on first (the newest file change in its folder; the page
+opens the first and collapses the others): `made` (case studies, audience problems, quotes, topics, drafts), `topics` (the active
 lanes and any lane with a plan or drafts, each with its label and what it has, for example "3
 drafts: LinkedIn post, email, article" or "no plan yet") and `actions` (the three stage
 commands, one marked suggested; see `whitefox-content-start`, "What the user can do"). The page

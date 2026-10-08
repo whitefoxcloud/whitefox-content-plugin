@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.13.0
+
+- Dashboard: each campaign folds open and closed. Folded, it shows one line of counts and its
+  next step. The most recently worked-on campaign opens first; the page remembers which ones
+  you opened. The profiles list is headed "Industries".
+
 ## 0.12.2
 
 - Finding audience quotes is one pass with one approval, however many problems there are (no
