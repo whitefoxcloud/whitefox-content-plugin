@@ -156,10 +156,13 @@ left to the page when it is longer than about 200 words. After a change, show th
 
 In `whitefox-content-start`, once the workspace exists, show `dashboard.html` with `version`,
 `workspace`, `update` (the newer version, or null), `profiles` and one entry per campaign that
-is not `done`: its stages (`done`, `current` or `todo`, from "Where a campaign stands"), its
-counts (proofs matched of judged, pains, quotes, topics with active, pieces kept, drafts; only
-the ones that exist) and `next` (command, Claude Code form, reason). The chat keeps the short
-text map.
+is not `done`: `made` (case studies, pains, quotes, topics, drafts), `topics` (the active
+lanes and any lane with a plan or drafts, each with its label and what it has, for example "3
+drafts: LinkedIn post, email, article" or "no plan yet") and `actions` (the three stage
+commands, one marked suggested; see `whitefox-content-start`, "What the user can do"). The page
+has its own "+ New campaign" button, so never add a new campaign to `actions`. In `made`, each
+value is a plain number and each name agrees with it ("1 case study", "2 case studies"); leave
+out zeros. The chat gives the same picture as short text.
 
 When a step names another step to the user, it gives the Claude app command and the Claude Code
 command in brackets, for example `/whitefox-content-match-proof` (Claude Code:

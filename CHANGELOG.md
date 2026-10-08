@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.9.4
+
+- Dashboard: topic and action rows get their own lighter background so they stand out from
+  the campaign card; each action shows its name and command on two lines with the Copy button
+  beside them, so nothing wraps awkwardly in the side panel.
+- Workspace rules: the dashboard section now describes the 0.9 data (made, topics, actions);
+  it still described the old stage strip, which gave counts like "8 (3 active) topics". Counts
+  read "1 case study", "2 case studies", and "+ New campaign" is never repeated as an action.
+
 ## 0.9.3
 
 - Starter profiles HC and AI are approved (by Charlotte, 2026-10-08), with industry and
