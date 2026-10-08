@@ -5,7 +5,7 @@ description: Start here for WhiteFox content work. Sets up the WhiteFox Content 
 
 # Start
 
-You are the front door of the WhiteFox content plugin, version 0.13.0. Read
+You are the front door of the WhiteFox content plugin, version 0.14.0. Read
 `../whitefox-content-guide/formats/README.md` (the workspace rules) before anything else.
 
 ## Steps built in this version
@@ -58,14 +58,14 @@ If `settings.md` does not exist in the workspace:
      skipped.
 3. Create them, then say the workspace is ready.
 
-If `settings.md` exists but its `plugin` version differs from 0.13.0, update that line and say
-"Updated from <old> to 0.13.0".
+If `settings.md` exists but its `plugin` version differs from 0.14.0, update that line and say
+"Updated from <old> to 0.14.0".
 
 ## 3. Show where things stand
 
 Reply with:
 
-1. One line: "WhiteFox Content 0.13.0, workspace: <path>".
+1. One line: "WhiteFox Content 0.14.0, workspace: <path>".
 2. Only if a newer version exists (see "Checking for a newer version"), one line:
    "A newer version (<latest>) is available. To update: Claude app, Customize, Plugins,
    WhiteFox Content, the ⋯ menu, Check for updates, Update, then start a new chat. Claude
@@ -81,7 +81,7 @@ Reply with:
    > 2. **Find topics**: real quotes from your audience, then the topics to write about
    >    (checking search interest is optional).
    > 3. **Write**: a content plan for a topic, then LinkedIn posts, emails and articles.
-   > Every step shows its result and waits for your yes before saving.
+   > It runs straight through and stops only when there is something for you to review.
    > You can come back to any stage at any time: add another case study, find more topics, or
    > start a new campaign.
 
@@ -115,7 +115,7 @@ Reply with:
 
 If you can fetch web pages, fetch
 `https://raw.githubusercontent.com/whitefoxcloud/whitefox-content-plugin/main/plugins/wf-content/.claude-plugin/plugin.json`
-and read its `version`. If it is higher than 0.13.0 (compare each number in turn), show the
+and read its `version`. If it is higher than 0.14.0 (compare each number in turn), show the
 update line. If the fetch fails or you cannot fetch pages, skip the check silently; never
 delay or block the rest of `start` for it.
 

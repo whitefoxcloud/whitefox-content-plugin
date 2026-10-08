@@ -1,47 +1,53 @@
 ---
 name: whitefox-content-write
-description: Stage 3 of 3 of the WhiteFox content workflow. Plans the pieces for an active topic (the brief) and writes the drafts - LinkedIn posts, emails and articles - one after the other in one conversation. Use when the user wants content written, drafts, posts, emails or articles for a campaign.
+description: Stage 3 of 3 of the WhiteFox content workflow. Plans the pieces for a chosen topic (the content plan) and writes all the drafts - LinkedIn posts, emails and articles - with one review for the plan and one for the drafts. Use when the user wants content written, drafts, posts, emails or articles for a campaign.
 ---
 
 # Write (stage 3 of 3)
 
-Plans the pieces for one active topic (lane), then writes the drafts the user keeps, one after
-the other in this conversation. Each plan and each draft still waits for approval before
-saving.
+Plans the pieces for one chosen topic, then writes every planned piece, as the workspace rules
+say in "Running straight through". The user replies twice: once to approve the content plan,
+once to approve the drafts.
 
-| Step | What it does | What the user decides |
-|---|---|---|
-| 1 of 2, plan the pieces | proposes 5 to 8 pieces for the topic (the content plan): channel, headline, voice, evidence | plan, later or drop each piece |
-| 2 of 2, write the drafts | writes each planned piece in its channel | approve or change each draft; articles get their plan approved first |
+| Step | What it does |
+|---|---|
+| 1 of 2, plan the pieces | checks free search interest for the topic, then proposes 5 to 8 pieces (the content plan): channel, headline, voice, evidence |
+| 2 of 2, write the drafts | writes every planned piece in its channel |
 
 ## Before you start
 
 1. Read `../whitefox-content-guide/formats/README.md` and begin as it says (workspace,
    settings, campaign, profile).
-2. If the campaign has no `active` lane, say stage 2 comes first and offer
-   `/whitefox-content-find-topics` (Claude Code: `/wf-content:whitefox-content-find-topics`).
-   Stop.
-3. Lane: if the user named one, use it. With exactly one active lane, use it and say so. With
-   several, list them (Topic N, label, whether it has a content plan and how many drafts) and ask which.
+2. If the campaign has no chosen (`active`) topic, say stage 2 comes first and carry on with
+   `../whitefox-content-find-topics/SKILL.md`.
+3. Topic: if the user named one, use it. Otherwise the first chosen topic without a content
+   plan, or with planned pieces still to write; say which in one line.
 4. Work out where to start:
-   - The lane has no brief, or the user asks for more pieces: step 1.
-   - The brief has kept pieces without drafts: step 2.
-   - Every kept piece has a draft: say so; offer more pieces (step 1) or another lane.
-5. Show the plan in at most four lines, including the limits: "LinkedIn posts are 110 to 180
-   words, emails 80 to 150, articles usually 1200 to 1800 and are planned before they are
-   written. Each article aims at one main keyword."
+   - The topic has no content plan, or the user asks for more pieces: step 1.
+   - The content plan has planned pieces without drafts: step 2.
+   - Every planned piece has a draft: say so, and carry on with the next chosen topic, or end.
+5. One line with the limits: "LinkedIn posts are 110 to 180 words, emails 80 to 150, articles
+   1200 to 1800 and each aims at one main keyword. Type **stop** any time."
 
 ## Step 1: plan the pieces
 
-Read `../whitefox-content-plan-pieces/SKILL.md` and follow it exactly, with the stage line
-**Stage 3 of 3, Write: step 1 of 2, plan the pieces.** and without its "Next" section.
+1. If the topic has no section in `keywords.md`, run the free mode of
+   `../whitefox-content-search-interest/SKILL.md` for it first (no question, first market), and
+   keep its result for the plan. Paid mode only if the user asked for it.
+2. Follow `../whitefox-content-plan-pieces/SKILL.md`, using that result, without its "Next".
+
+Its review is the first of the two: **Stage 3 of 3, Write: review the content plan.** Show the
+search interest found (main and extra keywords, top questions) in two or three lines above the
+pieces. The review page holds the pieces with `choice` `["planned", "later", "drop"]`. On save,
+write the keywords section to `keywords.md`, then the content plan to `briefs/LANE-nn.md`.
 
 ## Step 2: write the drafts
 
-List the planned pieces without drafts (Piece N, channel, headline) and ask which to write: one, several
-or **all**. Then write them one at a time, in the order the user gave (or LinkedIn posts, then
-emails, then articles). For each, open with **Stage 3 of 3, Write: step 2 of 2, draft <n> of
-<total>, <channel>.** and follow its file exactly, without its "Next" section:
+Write every planned piece without a draft, straight through, LinkedIn posts first, then
+emails, then articles. Follow each channel's file exactly, except: skip its "which piece"
+question, its own "Show and approve" and "Next", and (for articles) the separate plan
+approval. Use the defaults in "Running straight through". One progress line per draft: "Wrote
+Piece 3, LinkedIn post (164 words)."
 
 | Channel | File |
 |---|---|
@@ -49,17 +55,21 @@ emails, then articles). For each, open with **Stage 3 of 3, Write: step 2 of 2, 
 | email | `../whitefox-content-write-email/SKILL.md` |
 | website-article | `../whitefox-content-write-article/SKILL.md` |
 
-After each save, say in one line what was saved, then: "Next: draft <n+1>, <channel>. Reply
-**go**, or **stop** to pause here."
+Then the second review: **Stage 3 of 3, Write: review the drafts.** One preview page with every
+draft as a tab (the preview's `drafts` list; an article's SEO title, meta description and slug
+go in its `seo`). In the chat, per draft: Piece N, channel, word count, and any writing-rules
+check that did not pass. Reply line: "Reply **save** for all, or tell me what to change, for
+example: *Piece 3: shorter*, *Piece 5: softer ask*, *drop Piece 1*." Apply changes, show the
+changed drafts again, and save every draft on yes.
 
-## End of the stage
+## Then
 
-Say: "Done for Topic <N>, <label>: <N> drafts saved in `drafts/`." List them (Piece N, channel, word
-count). Then offer: more pieces for this topic, another chosen topic, or `/whitefox-content-start`
-to see the whole campaign.
+One line: "Done for Topic <n>, <label>: <N> drafts saved in `drafts/`." If another chosen topic
+has no content plan, carry on with it ("Next: Topic <m>, <label>."). Otherwise end with
+`/whitefox-content-dashboard` to see everything.
 
 ## Rules
 
 - Every step's own rules apply in full, including the writing-rules checklist on every draft;
   this file only joins them.
-- Never skip an approval. Nothing is saved before the user's yes.
+- Nothing is saved before its review's yes.

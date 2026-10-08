@@ -139,6 +139,36 @@ Keep chat replies short: long results go on a page (see "Pages in the Claude app
 keeps the numbered summary. Use ✓ for done and → for next; no other symbols or emoji. After
 saving, name the file once: "Saved to `drafts/ANGLE-03-linkedin-post.md`."
 
+## Running straight through
+
+Users should only reply when there is a real choice. From a new campaign to drafts takes about
+seven replies: industry and goal, the case study, then one review each for what we delivered
+and the audience problems, the topics, the content plan, and the drafts.
+
+When a stage command (add-case-study, find-topics, write) runs its steps:
+
+- Never ask "continue?" or "go?" between steps or between stages. Carry straight on, with a
+  one-line progress note ("Listed 9 deliveries; checking what fits..."). The user can type
+  **stop** at any time; what was approved is saved, and the same command carries on later.
+- A step's own "Show and approve" is skipped when the stage says so: the stage collects the
+  results and shows them in one review. On the user's yes, save every file of that review in
+  order. Later steps work from the earlier results even before they are saved.
+- A step's small questions take their default instead of asking:
+
+| Step | Question | Default |
+|---|---|---|
+| list-deliveries | is the case study public? | `yes` for a public web page, otherwise `needs review` |
+| choose-topics | which topics are chosen? | asked inside the topics review, not separately |
+| search-interest | free, paid or skip; which country | free, for each chosen topic before planning it; the first market. Paid only when the user asks, and then its own price question always applies |
+| plan-pieces | which topic | the first chosen topic without a content plan |
+| write | which pieces to write | every planned piece without a draft |
+| write-email | which lead route | the profile's first lead route |
+| write-article | approve the article plan first | skipped: the plan is shown as part of the drafts review |
+| write-*, any step | a draft already exists | keep it and skip that piece; a new take only when the user asks |
+
+Still always asked: anything that spends money (paid keyword research keeps its own price
+question and explicit yes), and the reviews above. Nothing is saved before its review's yes.
+
 ## Asking for approval
 
 There are no buttons: the user approves or changes a result by typing. End every approval
@@ -170,7 +200,7 @@ Pages never save anything: saving always happens in the chat.
 | Page | When | What the user does on it |
 |---|---|---|
 | `review.html` | a result with 3 or more items to approve | keep, drop, edit, add; copy choices back |
-| `preview.html` | every draft, before asking to save | reads it as it will look; copies the clean text |
+| `preview.html` | drafts, before asking to save (several drafts: one tab each) | reads it as it will look; copies the clean text |
 | `dashboard.html` | `whitefox-content-start`, once the workspace exists | sees what each campaign has made and what they can do next |
 
 The page opens on its own in the panel on the right, and its card sits above your reply. Start
@@ -212,6 +242,8 @@ For every draft, before asking to save, show `preview.html` with `channel`, `tit
 article's H1, or "LinkedIn post, ANGLE-nn" / "Email, ANGLE-nn"), `persona` (LinkedIn), `words`
 and `range`, `body` (the ready-to-copy text; for articles the Markdown after the H1),
 `subjects` and `previewText` (email) or `seo` (article). The page title is "Draft: <title>".
+When several drafts are reviewed together, put each in the `drafts` list (with `piece`, for
+example "Piece 3") and show one page; it gets a tab per draft.
 In the chat keep the word count, "Built from" and the checklist; the draft text itself may be
 left to the page when it is longer than about 200 words. After a change, show the page again.
 

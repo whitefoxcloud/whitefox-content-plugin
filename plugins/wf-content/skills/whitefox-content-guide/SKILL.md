@@ -27,8 +27,9 @@ You only need four commands:
 | `/whitefox-content-find-topics` | stage 2: real audience quotes, then the topics to write about, then an optional search interest check |
 | `/whitefox-content-write` | stage 3: a content plan for a topic, then the LinkedIn posts, emails and articles |
 
-Each stage runs its steps one after the other and waits for your yes at each one. You can stop
-any time; the same command carries on from where you stopped.
+Each stage runs straight through and stops only for a review: one after adding a case study,
+one for the topics, one for the content plan and one for the drafts. You can type **stop** any
+time; the same command carries on from where you stopped.
 
 Two more for looking around, they change nothing:
 

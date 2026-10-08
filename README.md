@@ -4,7 +4,7 @@ Turns case studies into proof-backed LinkedIn posts, articles and emails, one ap
 a time. Runs in the Claude desktop app and in Claude Code, on your own Claude subscription (Pro
 or Max).
 
-Status: 0.13.0. Every step is built, grouped into three stage commands (add a case study, find
+Status: 0.14.0. Every step is built, grouped into three stage commands (add a case study, find
 topics, write) after setup with `whitefox-content-start`.
 
 The words it uses: **what we delivered** (one piece of work from a case study), **audience
@@ -47,17 +47,20 @@ The plugin holds no campaign data, case studies or logins.
    its path. When Claude asks for folder access, tick "Don't ask again for this folder
    on this device", then click Allow. Claude shows each campaign's stage and the next command,
    or offers to create a campaign (pick an industry, or create one).
-3. Run the three stages; each runs its steps one after the other and waits for your yes:
+3. Run the three stages. Each runs straight through and stops only for a review, and each
+   stage carries on into the next:
    - `/whitefox-content-add-case-study`: attach the case study or paste its link. What we
      delivered goes into your case study library, is checked against the campaign, and your
      audience's problems are named.
-   - `/whitefox-content-find-topics`: real buyer quotes, then the topics to write about (choose
-     the active ones), then optional keyword research (free, or paid with the price shown
-     first).
-   - `/whitefox-content-write`: a plan of pieces for a topic, then each LinkedIn post, email
-     or article.
-4. At each step Claude shows the result; approve or correct it by typing, or with the review
-   page's buttons. Nothing is saved before you approve. You can stop any time; the same command
+   - `/whitefox-content-find-topics`: real audience quotes, then the topics to write about
+     (you choose which to work on).
+   - `/whitefox-content-write`: a free search interest check and a content plan for a topic,
+     then every LinkedIn post, email and article in it. Paid keyword research only when you
+     ask (`/whitefox-content-search-interest`, price shown first).
+4. From a new campaign to drafts takes about seven replies: industry and goal, the case study,
+   then one review each for what we delivered and the problems, the topics, the content plan
+   and the drafts. Approve or correct each by typing, or with the page's buttons. Nothing is
+   saved before you approve. You can stop any time; the same command
    carries on from where you stopped.
 5. Take the draft from the chat, or open it in your campaign's `drafts` folder.
 

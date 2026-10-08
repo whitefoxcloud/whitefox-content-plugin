@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.14.0
+
+- Far fewer replies: from a new campaign to drafts takes about seven (industry and goal, the
+  case study, then one review each for deliveries and problems, topics, the content plan, and
+  the drafts), down from about 25.
+- Stages run straight through: no "continue?" between steps or stages, and each stage carries
+  on into the next. Type **stop** any time.
+- Small questions take defaults (public case study, lead route, which pieces to write, free
+  search interest check before each content plan). Paid keyword research only when asked, and
+  still with its price question.
+- Creating a campaign is one question (industry and goal); the name is automatic.
+- The draft preview shows several drafts as tabs, so all drafts are reviewed at once.
+
 ## 0.13.0
 
 - Dashboard: each campaign folds open and closed. Folded, it shows one line of counts and its

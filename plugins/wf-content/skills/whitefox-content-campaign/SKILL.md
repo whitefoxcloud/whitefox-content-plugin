@@ -1,12 +1,12 @@
 ---
 name: whitefox-content-campaign
-description: Create a WhiteFox content campaign on a profile, or pause, resume or finish one, in the WhiteFox Content workspace. Use when the user wants to start a new campaign or change a campaign's status.
+description: Create a WhiteFox content campaign for one industry, or pause, resume or finish one, in the WhiteFox folder. Use when the user wants to start a new campaign or change a campaign's status.
 ---
 
 # Campaign
 
-A campaign belongs to one user and runs on one profile. It reuses every proof in the user's
-pool.
+A campaign belongs to one user and runs on one industry (a profile in the files). It reuses
+everything in the user's case study library.
 
 ## Read first
 
@@ -18,37 +18,37 @@ pool.
 
 ## Create a campaign
 
-1. Show the profiles as `<CODE> <name> (<status>)` and ask which one. If the right one does not
-   exist, suggest `/whitefox-content-industry` (Claude Code: `/wf-content:whitefox-content-industry`) and stop.
-2. If the chosen profile is not `approved`, say: "<CODE> is <status>, not approved yet. You can
-   go ahead; the writing steps will warn on every draft." Continue only on yes.
-3. Ask for a goal in a sentence, or "(none)".
-4. Suggest a name: the profile code in lowercase, the year and the month, for example
-   `ins-2026-10`. The user may pick another. It must be lowercase words joined by hyphens and
-   not already exist in `campaigns/`.
-5. Show the `campaign.md` you will save, and wait for yes.
-6. Create `campaigns/<name>/` with `campaign.md` only. The other files are created by the steps
-   that fill them.
-7. Say what comes next, always stage 1, and ask for the case study in the same reply:
+One question, one answer:
 
-   > Next: add a case study for <name>. Attach a file, paste the text, or paste a link, and I
-   > will start stage 1 here. Or run `/whitefox-content-add-case-study` (Claude Code:
-   > `/wf-content:whitefox-content-add-case-study`) later.
+1. Ask in one message: "Which industry, and what's the goal? For example: *INS, start
+   conversations with insurance operations leaders in Australia*." List the industries as
+   `<CODE> <name>`, adding "(not approved yet)" where it applies. If the user already gave
+   the industry or goal, do not ask for it again. If the right industry does not exist,
+   suggest `/whitefox-content-industry` (Claude Code: `/wf-content:whitefox-content-industry`)
+   and stop. The goal may be "(none)".
+2. Name it yourself: the industry code in lowercase, the year and the month, for example
+   `ins-2026-10`; add `-2`, `-3` if that name exists.
+3. Save `campaigns/<name>/campaign.md` straight away (the reply was the approval). If the
+   industry is not approved, add one line: "<CODE> is not approved yet; drafts will carry a
+   warning."
+4. Reply in one message: "✓ Campaign <name> created for <industry>. Saved to
+   `campaigns/<name>/campaign.md`; to rename it or change the goal, just say so." Then ask for
+   the case study:
 
-   If the pool already has proofs, add one line: "The pool also has <N> proofs from <sources>;
-   stage 1 checks whether they fit this campaign after your case study." Do not suggest a
-   single step's command (check-fit, list-deliveries) here. When the user sends a case study,
-   follow `../whitefox-content-add-case-study/SKILL.md`.
+   > Next: attach the case study for <name>, paste its text, or paste its link, and I'll take
+   > it from there.
+
+   If the case study library already has deliveries, add: "Or reply **library** to check the
+   <N> deliveries already in your case study library." When the user replies, follow
+   `../whitefox-content-add-case-study/SKILL.md`.
 
 ## Pause, resume or finish a campaign
 
 1. Show the campaign's current status.
-2. Change `status` to `paused`, `active` or `done` as the user asks, after a yes.
+2. Change `status` to `paused`, `active` or `done` as the user asks.
 3. A `done` campaign is hidden from `/whitefox-content-start`; its files stay.
 
 ## Rules
 
-- Show the result and wait for approval before saving.
 - Never delete a campaign folder or its files. To stop working on one, set it to `done`.
-- Never change the profile of an existing campaign. To use another profile, create a new
-  campaign.
+- Never change the industry of an existing campaign. To use another, create a new campaign.

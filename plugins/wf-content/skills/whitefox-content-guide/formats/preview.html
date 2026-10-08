@@ -25,6 +25,8 @@
     "subjects": ["...", "..."], "previewText": "...",           // email only
     "seo": { "title": "...", "meta": "...", "slug": "..." }     // article only
   }
+  Several drafts at once (one review for all): { "stage": "...", "drafts": [ { "piece": "Piece 3",
+  ...the fields above... }, ... ] }. The page shows one tab per draft.
 -->
 <style>
 :root {
@@ -89,6 +91,10 @@ main { max-width: 820px; margin: 0 auto; padding: 20px 16px 48px; }
 .btn.primary { background: var(--blue); color: var(--on-blue); border-color: var(--blue); font-weight: 600; }
 .actions { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; margin-top: 4px; }
 #status { color: var(--muted); font-size: 14px; }
+.tabs { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 14px; }
+.tab { border: 1px solid var(--line); background: var(--surface); color: var(--text); border-radius: 999px;
+  padding: 6px 14px; cursor: pointer; font: inherit; font-size: 14px; }
+.tab[aria-selected="true"] { background: var(--blue); border-color: var(--blue); color: var(--on-blue); font-weight: 600; }
 .foot { color: var(--muted); font-size: 13px; margin-top: 18px; }
 </style>
 </head>
@@ -98,10 +104,11 @@ main { max-width: 820px; margin: 0 auto; padding: 20px 16px 48px; }
   <span class="stage" id="stage"></span>
 </div></div>
 <main>
+  <div class="tabs" id="tabs" role="tablist"></div>
   <div class="meta" id="meta"></div>
   <div id="view"></div>
   <div class="actions"><button class="btn primary" id="copy" type="button"></button><span id="status"></span></div>
-  <p class="foot">This page only shows the draft. To save it or change it, reply in the chat.</p>
+  <p class="foot">This page only shows the drafts. To save them or change one, reply in the chat.</p>
 </main>
 <script>
 /* DATA: the step replaces this object with its own draft. */
@@ -152,36 +159,39 @@ async function copyText(text) {
 const view = document.getElementById("view");
 const meta = document.getElementById("meta");
 const copyBtn = document.getElementById("copy");
-const ch = DATA.channel;
+const DRAFTS = Array.isArray(DATA.drafts) && DATA.drafts.length ? DATA.drafts : [DATA];
+function render(D) {
+view.innerHTML = ""; meta.innerHTML = ""; document.getElementById("status").textContent = "";
+const ch = D.channel;
 const chLabel = { "linkedin-post": "LinkedIn post", "email": "Email", "website-article": "Article" }[ch] || ch;
 meta.append(el("span", "pill", esc(chLabel)));
-if (DATA.words != null) meta.append(el("span", "pill", `${esc(DATA.words)} words${DATA.range ? ` (aim: ${esc(DATA.range)})` : ""}`));
+if (D.words != null) meta.append(el("span", "pill", `${esc(D.words)} words${D.range ? ` (aim: ${esc(D.range)})` : ""}`));
 
 if (ch === "linkedin-post") {
   const card = el("div", "card");
-  card.append(el("div", "who", `<div class="avatar">wf</div><div><div class="name">WhiteFox</div><div class="sub">${esc(DATA.persona || "")}</div></div>`));
+  card.append(el("div", "who", `<div class="avatar">wf</div><div><div class="name">WhiteFox</div><div class="sub">${esc(D.persona || "")}</div></div>`));
   const post = el("div", "post");
-  String(DATA.body || "").split(/\n\s*\n/).forEach(p => post.append(el("p", null, inline(p))));
+  String(D.body || "").split(/\n\s*\n/).forEach(p => post.append(el("p", null, inline(p))));
   card.append(post); view.append(card);
   copyBtn.textContent = "Copy post";
-  copyBtn.onclick = () => copyText(plain(DATA.body).trim());
+  copyBtn.onclick = () => copyText(plain(D.body).trim());
 } else if (ch === "email") {
   const head = el("div", "card");
   head.append(el("div", "label", "Subject options"));
-  (DATA.subjects || []).forEach((s, i) => {
+  (D.subjects || []).forEach((s, i) => {
     const row = el("div", "subj", `<span>${esc(s)}</span>`);
     const b = el("button", "btn", "Copy"); b.type = "button"; b.onclick = () => copyText(s);
     row.append(b); head.append(row);
   });
-  if (DATA.previewText) head.append(el("p", "preview-line", `Preview: ${esc(DATA.previewText)}`));
+  if (D.previewText) head.append(el("p", "preview-line", `Preview: ${esc(D.previewText)}`));
   view.append(head);
   const body = el("div", "card post");
-  String(DATA.body || "").split(/\n\s*\n/).forEach(p => body.append(el("p", null, inline(p))));
+  String(D.body || "").split(/\n\s*\n/).forEach(p => body.append(el("p", null, inline(p))));
   view.append(body);
   copyBtn.textContent = "Copy email body";
-  copyBtn.onclick = () => copyText(plain(DATA.body).trim());
+  copyBtn.onclick = () => copyText(plain(D.body).trim());
 } else {
-  const seo = DATA.seo || {};
+  const seo = D.seo || {};
   const tl = (seo.title || "").length, ml = (seo.meta || "").length;
   const card = el("div", "card snippet");
   card.append(el("div", "label", "How it may look in search"));
@@ -192,16 +202,29 @@ if (ch === "linkedin-post") {
   card.append(el("div", "counts", `SEO title ${tl} characters <span class="pill ${tOk ? "ok" : "warn"}">aim 50 to 60</span> &nbsp; Meta description ${ml} characters <span class="pill ${mOk ? "ok" : "warn"}">aim 120 to 155</span>`));
   view.append(card);
   const art = el("div", "card article");
-  art.append(el("h1", null, inline(DATA.title)));
-  art.insertAdjacentHTML("beforeend", markdown(DATA.body));
+  art.append(el("h1", null, inline(D.title)));
+  art.insertAdjacentHTML("beforeend", markdown(D.body));
   view.append(art);
   copyBtn.textContent = "Copy article (Markdown)";
-  copyBtn.onclick = () => copyText(`# ${DATA.title}\n\n${String(DATA.body || "").trim()}\n`);
+  copyBtn.onclick = () => copyText(`# ${D.title}\n\n${String(D.body || "").trim()}\n`);
 }
+
+}
+const tabs = document.getElementById("tabs");
+const CHL = { "linkedin-post": "LinkedIn post", "email": "Email", "website-article": "Article" };
+if (DRAFTS.length > 1) {
+  DRAFTS.forEach((d, i) => {
+    const t = el("button", "tab", esc(`${d.piece ? d.piece + " · " : ""}${CHL[d.channel] || d.channel}`));
+    t.type = "button"; t.setAttribute("role", "tab"); t.setAttribute("aria-selected", i === 0);
+    t.onclick = () => { tabs.querySelectorAll(".tab").forEach(x => x.setAttribute("aria-selected", x === t)); render(d); };
+    tabs.append(t);
+  });
+} else tabs.style.display = "none";
+render(DRAFTS[0]);
 
 const stageEl = document.getElementById("stage");
 if (DATA.stage) { stageEl.textContent = DATA.stage; const n = (DATA.stage.match(/Stage (\d)/) || [])[1]; if (n) stageEl.classList.add("s" + n); } else stageEl.style.display = "none";
-document.title = `Draft: ${DATA.title}`;
+document.title = DRAFTS.length > 1 ? `Drafts: ${DRAFTS.length} pieces` : `Draft: ${DRAFTS[0].title}`;
 </script>
 </body>
 </html>
