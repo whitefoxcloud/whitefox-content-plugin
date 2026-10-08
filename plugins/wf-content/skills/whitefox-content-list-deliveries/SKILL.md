@@ -1,6 +1,6 @@
 ---
-name: whitefox-content-extract-proof
-description: Extract proofs (what WhiteFox really delivered) and testimonials from a case study into the WhiteFox Content proof pool. Use when the user adds, attaches or links a WhiteFox case study, document or web page.
+name: whitefox-content-list-deliveries
+description: List what WhiteFox delivered (each a delivery: the client problem, what we built, the outcome) and the testimonials in a case study, and add them to the case study library. Use when the user adds, attaches or links a WhiteFox case study, document or web page.
 ---
 
 # Extract proof
@@ -29,7 +29,7 @@ The user attaches a file, pastes text, or gives a link.
 
 If a pool source has the same link, or clearly the same title and client, say "This case study
 is already in your pool as `<source-id>`, with N proofs" and stop. Suggest
-`/whitefox-content-match-proof` to use it in a campaign. Offer to extract again only if the user
+`/whitefox-content-check-fit` to use it in a campaign. Offer to extract again only if the user
 says the case study has changed; then the new extraction goes into the same file after a yes,
 and proofs that disappeared are set to `archived`, never deleted.
 
@@ -50,7 +50,7 @@ and proofs that disappeared are set to `archived`, never deleted.
 - Keep every real specific: client names, places, third-party products, numbers. When a detail
   matters (a shortlist of options, a time a step took), include the sentence that states it.
   Do not generalise ("teams need...") and do not soften a fact. Rewording for a campaign
-  happens later, in `/whitefox-content-match-proof`.
+  happens later, in `/whitefox-content-check-fit`.
 - Leave out sentences that are only marketing ("to truly revolutionise..."), calls to action,
   SEO text, and sentences about future work that was not delivered ("to be followed by...").
 
@@ -87,7 +87,7 @@ recognition WhiteFox received.
 
 ## 6. Next
 
-Suggest `/whitefox-content-match-proof` to judge the new proofs for a campaign. If the user has
+Suggest `/whitefox-content-check-fit` to judge the new proofs for a campaign. If the user has
 no campaign, suggest `/whitefox-content-campaign` first.
 
 ## Rules

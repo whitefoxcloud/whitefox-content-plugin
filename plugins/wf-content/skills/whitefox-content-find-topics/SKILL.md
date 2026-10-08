@@ -42,9 +42,9 @@ For each step, read its file and follow it exactly, with two changes:
 
 | Step | File |
 |---|---|
-| 1 | `../whitefox-content-mine-quotes/SKILL.md` |
-| 2 | `../whitefox-content-mint-lanes/SKILL.md` (make sure the user chooses at least one `active` lane before moving on) |
-| 3 | `../whitefox-content-keyword-research/SKILL.md`, only on the user's choice |
+| 1 | `../whitefox-content-find-quotes/SKILL.md` |
+| 2 | `../whitefox-content-choose-topics/SKILL.md` (make sure the user chooses at least one `active` lane before moving on) |
+| 3 | `../whitefox-content-search-interest/SKILL.md`, only on the user's choice |
 
 Before step 3, ask: "Check search interest for <chosen topic>? **free** (questions and phrasing from
 web search, no numbers), **paid** (real search numbers from DataForSEO, price shown first), or

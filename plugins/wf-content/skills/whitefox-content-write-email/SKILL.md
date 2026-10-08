@@ -14,7 +14,7 @@ a useful specialist, not an automated sequence.
 - `../whitefox-content-guide/formats/README.md`, then begin as it says (workspace, settings,
   campaign, profile).
 - `../whitefox-content-guide/formats/draft.md` (the format).
-- `../whitefox-content-house-style/SKILL.md`, all of it: rules, evidence use, checklist.
+- `../whitefox-content-writing-rules/SKILL.md`, all of it: rules, evidence use, checklist.
 - The campaign's `briefs/`, `lanes.md`, `quotes.md`, `shelf.md` and `drafts/`; the pool files of
   the proofs the angle uses.
 
@@ -42,7 +42,7 @@ workflow review), unless the angle makes it obvious.
 - Sign-off: `[sender name]`, `[role]`. The sender is the user's choice, not a persona.
 - Never use: hope this email finds you well, just checking in, bumping this to the top of your
   inbox (house style lists the rest).
-- Run the house-style checklist. Fix what fails.
+- Run the writing-rules checklist. Fix what fails.
 
 ## 3. Show and approve
 

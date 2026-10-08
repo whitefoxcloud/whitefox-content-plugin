@@ -4,4 +4,4 @@
 
 | Date | Step | What | Estimate | Actual | Approved by |
 |---|---|---|---|---|---|
-| <YYYY-MM-DD> | keyword-research | <LANE-nn, which lookup, country> | <$0.00> | <$0.00 or unknown> | <name> |
+| <YYYY-MM-DD> | search-interest | <LANE-nn, which lookup, country> | <$0.00> | <$0.00 or unknown> | <name> |

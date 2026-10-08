@@ -1,6 +1,6 @@
 ---
-name: whitefox-content-profile
-description: Create a new WhiteFox industry profile or change an existing one (audience, positioning, never-position-as, lead routes, brand and exclude terms, quote and keyword vocabulary) in the WhiteFox Content workspace. Use when the user wants to add, edit, approve or look at a profile.
+name: whitefox-content-industry
+description: Create a new WhiteFox industry or change an existing one (who the audience is, how we position WhiteFox, what never to call ourselves, lead routes, brand and exclude terms, words to search for quotes and keywords) in the WhiteFox folder. Use when the user wants to add, edit, approve or look at an industry (stored as a profile).
 ---
 
 # Profile

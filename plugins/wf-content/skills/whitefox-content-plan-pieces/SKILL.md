@@ -1,6 +1,6 @@
 ---
-name: whitefox-content-arm-brief
-description: Plan the content pieces (angles) for one active WhiteFox content lane - channel, type, headline, persona, keyword and the proofs and quotes each piece uses - and save them as the lane's brief. Use when the user wants a brief, content ideas or angles for a lane.
+name: whitefox-content-plan-pieces
+description: Plan the content pieces for one chosen WhiteFox topic (the content plan): channel, type, headline, who posts it, main keyword, and the deliveries and quotes each piece uses. Use when the user wants a content plan, content ideas or pieces for a topic.
 ---
 
 # Arm brief
@@ -14,7 +14,7 @@ step proposes angles from the lane's evidence only; it invents no proof, quote o
 - `../whitefox-content-guide/formats/README.md`, then begin as it says (workspace, settings,
   campaign, profile).
 - `../whitefox-content-guide/formats/brief.md` (the format).
-- `../whitefox-content-house-style/SKILL.md`, its "Posting personas" section.
+- `../whitefox-content-writing-rules/SKILL.md`, its "Posting personas" section.
 - The campaign's `lanes.md`, `shelf.md`, `quotes.md`, `keywords.md` (if it exists) and
   `briefs/` (every brief, for angle numbering and earlier angles).
 - For each proof the lane cites: its pool file (Problem, Solution, Outcome, Metric) and its
@@ -23,7 +23,7 @@ step proposes angles from the lane's evidence only; it invents no proof, quote o
 ## 1. Pick the lane
 
 The lane must be `active` and have a Type. If the user names a lane that is not active, say so
-and suggest `/whitefox-content-mint-lanes` to make it active. With several active lanes and
+and suggest `/whitefox-content-choose-topics` to make it active. With several active lanes and
 none named, list them and ask which.
 
 If `briefs/LANE-nn.md` exists, this is a re-arm: show its angles in one line each and propose

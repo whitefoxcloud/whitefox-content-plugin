@@ -1,6 +1,6 @@
 ---
-name: whitefox-content-house-style
-description: WhiteFox house style for all content - priority order, brand voice, anti-AI writing rules, banned phrases, posting personas (company, founder, engineer) and length per channel, with a checklist. Use whenever writing or reviewing a WhiteFox LinkedIn post, article or email, or when the user asks about the writing rules.
+name: whitefox-content-writing-rules
+description: WhiteFox writing rules for all content: priority order, brand voice, anti-AI writing rules, banned phrases, who posts (company, founder, engineer) and length per channel, with a checklist. Use whenever writing or reviewing a WhiteFox LinkedIn post, article or email, or when the user asks about the writing rules.
 ---
 
 # House style
@@ -156,6 +156,6 @@ Keywords are natural topic anchors. Never repeat a keyword for density.
 12. The profile is `approved`. If not, say "Profile <CODE> is <status>, not approved yet" above
     the draft.
 13. No profile field still reads `[placeholder]`, `unknown` or `(none)` where the draft needs
-    it. If one does, stop and ask the user to fill it with `/whitefox-content-profile`.
+    it. If one does, stop and ask the user to fill it with `/whitefox-content-industry`.
 
 Fix what fails before showing the draft, then list the checks under it with each one ticked.

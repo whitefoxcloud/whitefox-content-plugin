@@ -1,6 +1,6 @@
 ---
-name: whitefox-content-mine-quotes
-description: Search the public web for verbatim quotes from real buyers and practitioners voicing a campaign's pains (forums, Reddit, interviews, reviews), each with its link, and save them to quotes.md. Use after deriving pains, or when the user wants voice-of-customer quotes for a campaign.
+name: whitefox-content-find-quotes
+description: Search the public web for word-for-word quotes from real people in the audience voicing a campaign's problems (forums, Reddit, interviews, reviews), each with its link. Use after naming audience problems, or when the user wants audience quotes for a campaign.
 ---
 
 # Mine quotes
@@ -73,7 +73,7 @@ For each kept quote:
 
 ## Next
 
-Suggest `/whitefox-content-mint-lanes`.
+Suggest `/whitefox-content-choose-topics`.
 
 ## Rules
 

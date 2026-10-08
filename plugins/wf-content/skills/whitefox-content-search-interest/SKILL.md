@@ -1,6 +1,6 @@
 ---
-name: whitefox-content-keyword-research
-description: Keyword research for one active WhiteFox content lane. Paid mode uses the DataForSEO connector for monthly searches, difficulty, intent and "people also ask" questions, with the price approved first and every call logged in costs.md. Free mode uses web search for the questions and phrasing buyers use, without search numbers. Use when the user wants keyword data, search demand or SEO research for a lane.
+name: whitefox-content-search-interest
+description: Check search interest for one chosen WhiteFox topic. Paid mode uses the DataForSEO connector for monthly searches, difficulty, intent and "people also ask" questions, with the price approved first and every call logged in costs.md. Free mode uses web search for the questions and phrasing people use, without numbers. Use when the user wants keywords, search interest or SEO research for a topic.
 disable-model-invocation: true
 ---
 
@@ -29,7 +29,7 @@ tell them to remove it from the chat and change it, and do not use it.
 ## 1. Pick the lane, country and mode
 
 - The lane must have status `active`. If the user names a lane that is not, say so and suggest
-  making it active with `/whitefox-content-mint-lanes`. With several active lanes and none
+  making it active with `/whitefox-content-choose-topics`. With several active lanes and none
   named, ask which.
 - If `keywords.md` already has a section for this lane, show its date, mode and verdict, and
   ask whether to run again.
@@ -81,7 +81,7 @@ Wait for an explicit yes in reply to this question. A yes to anything earlier do
    monthly searches that the profile's audience would type (see "Read the results"), then call
    tool 3 for it. The user's Claude app may ask them to approve each call; that is expected.
 2. After every call, add a row to `costs.md` straight away (create it with the heading if
-   missing): date, `keyword-research`, what was called (lane, tool, phrase, country), the
+   missing): date, `search-interest`, what was called (lane, tool, phrase, country), the
    estimate, the actual cost from the response's `cost` field (or `unknown` if the response has
    none), and the user's name. Never write $0 for an unknown cost.
 3. If a call fails or returns an error (including an empty balance), stop. Log it with what the
@@ -137,7 +137,7 @@ Use web search only. No DataForSEO call, no `costs.md` row.
 
 ## Next
 
-Suggest `/whitefox-content-arm-brief` for this lane.
+Suggest `/whitefox-content-plan-pieces` for this lane.
 
 ## Rules
 

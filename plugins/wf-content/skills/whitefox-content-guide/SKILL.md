@@ -41,18 +41,18 @@ The detailed steps behind the stages, each also a command of its own:
 
 | # | Step | What it does | Writes |
 |---|---|---|---|
-| 1 | `/whitefox-content-profile` | describes an industry: audience, how we position WhiteFox, words to use and avoid | `profiles/<CODE>.md` |
+| 1 | `/whitefox-content-industry` | describes an industry: audience, how we position WhiteFox, words to use and avoid | `profiles/<CODE>.md` |
 | 2 | `/whitefox-content-campaign` | starts a campaign for one industry | `campaigns/<name>/campaign.md` |
-| 3 | `/whitefox-content-extract-proof` | list what we delivered: reads a case study once and lists what WhiteFox really did | `pool/sources/<id>.md` |
-| 4 | `/whitefox-content-match-proof` | check what fits: which deliveries in your case study library fit this campaign | `shelf.md` |
-| 5 | `/whitefox-content-derive-pains` | name audience problems: the problems those deliveries solve | `pains.md` |
-| 6 | `/whitefox-content-mine-quotes` | find audience quotes: real people saying those problems in public, word for word | `quotes.md` |
-| 7 | `/whitefox-content-mint-lanes` | choose topics: turns problems, deliveries and quotes into topics to publish about | `lanes.md` |
-| 8 | `/whitefox-content-keyword-research` | check search interest, optional: what people search for on a topic; paid with DataForSEO (real numbers) or free with web search (questions and phrasing) | `keywords.md`, `costs.md` |
-| 9 | `/whitefox-content-arm-brief` | plan the pieces: the content plan for one topic (channel, headline, who posts it) | `briefs/LANE-nn.md` |
+| 3 | `/whitefox-content-list-deliveries` | list what we delivered: reads a case study once and lists what WhiteFox really did | `pool/sources/<id>.md` |
+| 4 | `/whitefox-content-check-fit` | check what fits: which deliveries in your case study library fit this campaign | `shelf.md` |
+| 5 | `/whitefox-content-name-problems` | name audience problems: the problems those deliveries solve | `pains.md` |
+| 6 | `/whitefox-content-find-quotes` | find audience quotes: real people saying those problems in public, word for word | `quotes.md` |
+| 7 | `/whitefox-content-choose-topics` | choose topics: turns problems, deliveries and quotes into topics to publish about | `lanes.md` |
+| 8 | `/whitefox-content-search-interest` | check search interest, optional: what people search for on a topic; paid with DataForSEO (real numbers) or free with web search (questions and phrasing) | `keywords.md`, `costs.md` |
+| 9 | `/whitefox-content-plan-pieces` | plan the pieces: the content plan for one topic (channel, headline, who posts it) | `briefs/LANE-nn.md` |
 | 10 | `/whitefox-content-write-linkedin`, `/whitefox-content-write-article`, `/whitefox-content-write-email` | writes one planned piece | `drafts/` |
 
-`/whitefox-content-house-style` shows the writing rules every draft follows.
+`/whitefox-content-writing-rules` shows the writing rules every draft follows.
 
 In Claude Code every command starts with `wf-content:`, for example `/wf-content:whitefox-content-start`.
 

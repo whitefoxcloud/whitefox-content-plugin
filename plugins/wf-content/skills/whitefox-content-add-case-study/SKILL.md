@@ -47,9 +47,9 @@ For each step, read its file and follow it exactly, with two changes:
 
 | Step | File |
 |---|---|
-| 1 | `../whitefox-content-extract-proof/SKILL.md` (if the case study is already in the pool, say so and go to step 2) |
-| 2 | `../whitefox-content-match-proof/SKILL.md` |
-| 3 | `../whitefox-content-derive-pains/SKILL.md` |
+| 1 | `../whitefox-content-list-deliveries/SKILL.md` (if the case study is already in the pool, say so and go to step 2) |
+| 2 | `../whitefox-content-check-fit/SKILL.md` |
+| 3 | `../whitefox-content-name-problems/SKILL.md` |
 
 ## End of the stage
 

@@ -14,7 +14,7 @@ buyer first, findable in search second, and routing the reader to a practical ne
 - `../whitefox-content-guide/formats/README.md`, then begin as it says (workspace, settings,
   campaign, profile).
 - `../whitefox-content-guide/formats/draft.md` (the format).
-- `../whitefox-content-house-style/SKILL.md`, all of it: rules, evidence use, checklist.
+- `../whitefox-content-writing-rules/SKILL.md`, all of it: rules, evidence use, checklist.
 - The campaign's `briefs/`, `lanes.md`, `quotes.md`, `shelf.md`, `keywords.md` (if it exists)
   and `drafts/`; the pool files of the proofs the angle uses.
 
@@ -76,7 +76,7 @@ changes and show the plan again.
   review). No generic sales language.
 - Must avoid: generic transformation intros, surface "what is" content, a SaaS category-page
   tone, keyword-first paragraphs, a bloated conclusion, a fake "complete guide" promise.
-- Run the house-style checklist. Fix what fails.
+- Run the writing-rules checklist. Fix what fails.
 
 ## 4. Show and approve
 

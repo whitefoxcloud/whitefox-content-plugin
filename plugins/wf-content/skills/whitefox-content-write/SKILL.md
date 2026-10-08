@@ -33,7 +33,7 @@ saving.
 
 ## Step 1: plan the pieces
 
-Read `../whitefox-content-arm-brief/SKILL.md` and follow it exactly, with the stage line
+Read `../whitefox-content-plan-pieces/SKILL.md` and follow it exactly, with the stage line
 **Stage 3 of 3, Write: step 1 of 2, plan the pieces.** and without its "Next" section.
 
 ## Step 2: write the drafts
@@ -60,6 +60,6 @@ to see the whole campaign.
 
 ## Rules
 
-- Every step's own rules apply in full, including the house-style checklist on every draft;
+- Every step's own rules apply in full, including the writing-rules checklist on every draft;
   this file only joins them.
 - Never skip an approval. Nothing is saved before the user's yes.

@@ -14,7 +14,7 @@ hype.
 - `../whitefox-content-guide/formats/README.md`, then begin as it says (workspace, settings,
   campaign, profile).
 - `../whitefox-content-guide/formats/draft.md` (the format).
-- `../whitefox-content-house-style/SKILL.md`, all of it: rules, personas, evidence use,
+- `../whitefox-content-writing-rules/SKILL.md`, all of it: rules, personas, evidence use,
   checklist.
 - The campaign's `briefs/`, `lanes.md`, `quotes.md`, `shelf.md`, `keywords.md` (if it exists)
   and `drafts/`; the pool files of the proofs the angle uses.
@@ -39,7 +39,7 @@ archived when the new one is saved.
 - Keywords: one or two of the lane's phrases as natural topic anchors, never for density, never
   website meta copy.
 - Hashtags: none, unless the user asks; then at most three specific ones.
-- Run the house-style checklist. Fix what fails.
+- Run the writing-rules checklist. Fix what fails.
 
 ## 3. Show and approve
 

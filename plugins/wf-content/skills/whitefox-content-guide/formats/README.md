@@ -92,13 +92,13 @@ Step names, as the user sees them:
 
 | Step | Say |
 |---|---|
-| extract-proof | list what we delivered |
-| match-proof | check what fits |
-| derive-pains | name audience problems |
-| mine-quotes | find audience quotes |
-| mint-lanes | choose topics |
-| keyword-research | check search interest |
-| arm-brief | plan the pieces |
+| list-deliveries | list what we delivered |
+| check-fit | check what fits |
+| name-problems | name audience problems |
+| find-quotes | find audience quotes |
+| choose-topics | choose topics |
+| search-interest | check search interest |
+| plan-pieces | plan the pieces |
 | write-linkedin, write-email, write-article | write the drafts |
 
 IDs, as the user sees them: `PAIN-03` is **Problem 3**, `QUOTE-04` is **Quote 4**, `LANE-03` is
@@ -114,9 +114,9 @@ other in the same conversation; each step can also be run on its own.
 | Stage | Command | Steps, in order |
 |---|---|---|
 | Setup | `/whitefox-content-start` | workspace, then `profile` and `campaign` when needed |
-| 1 of 3, Add a case study | `/whitefox-content-add-case-study` | list what we delivered (extract-proof), check what fits (match-proof), name audience problems (derive-pains) |
-| 2 of 3, Find topics | `/whitefox-content-find-topics` | find audience quotes (mine-quotes), choose topics (mint-lanes), check search interest (keyword-research, optional) |
-| 3 of 3, Write | `/whitefox-content-write` | plan the pieces (arm-brief), then write the drafts (write-linkedin, write-email or write-article) for each planned piece |
+| 1 of 3, Add a case study | `/whitefox-content-add-case-study` | list what we delivered (list-deliveries), check what fits (check-fit), name audience problems (name-problems) |
+| 2 of 3, Find topics | `/whitefox-content-find-topics` | find audience quotes (find-quotes), choose topics (choose-topics), check search interest (search-interest, optional) |
+| 3 of 3, Write | `/whitefox-content-write` | plan the pieces (plan-pieces), then write the drafts (write-linkedin, write-email or write-article) for each planned piece |
 
 When a step runs on its own (not from its stage command), still name its stage and step
 number in the opening lines.
@@ -183,8 +183,8 @@ add rows with buttons:
    `"long": true`.
 3. For other choices per row, set `choice`: two or more values, the first is the default and
    the last dims the row (for example `["matched", "rejected"]` in
-   `/whitefox-content-match-proof`, `["keep", "active", "drop"]` in
-   `/whitefox-content-mint-lanes`). The default is keep and drop. A row may set `pick` to start
+   `/whitefox-content-check-fit`, `["keep", "active", "drop"]` in
+   `/whitefox-content-choose-topics`). The default is keep and drop. A row may set `pick` to start
    on another choice than the first (for example your suggestion).
 4. Set the page's `<title>` to `Review: <title>` (for example "Review: quotes for
    fin-2026-10") so the artifact card says what it is for. Show it as an HTML artifact, and
@@ -241,8 +241,8 @@ draft preview. Keep IDs and statuses in `details` exactly as in the files (`PAIN
 the page shows them in the user's words.
 
 When a step names another step to the user, it gives the Claude app command and the Claude Code
-command in brackets, for example `/whitefox-content-match-proof` (Claude Code:
-`/wf-content:whitefox-content-match-proof`).
+command in brackets, for example `/whitefox-content-check-fit` (Claude Code:
+`/wf-content:whitefox-content-check-fit`).
 
 ## IDs
 

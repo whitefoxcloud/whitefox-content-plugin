@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.12.0
+
+- Step commands renamed to plain words, with plain descriptions in the skill list:
+  `profile` is now `industry`, `extract-proof` is `list-deliveries`, `match-proof` is
+  `check-fit`, `derive-pains` is `name-problems`, `mine-quotes` is `find-quotes`, `mint-lanes` is
+  `choose-topics`, `keyword-research` is `search-interest`, `arm-brief` is `plan-pieces`,
+  `house-style` is `writing-rules` (all with the `whitefox-content-` prefix). The main commands
+  (start, campaign, add-case-study, find-topics, write, dashboard, show) are unchanged, and so
+  are the workspace files.
+
 ## 0.11.1
 
 - Starter profiles: plain source line ("WhiteFox starter profile") and shorter approval notes,

@@ -1,13 +1,13 @@
 ---
-name: whitefox-content-derive-pains
-description: Derive a campaign's buyer pains (the problems WhiteFox's matched proofs solve, in the buyer's own words) and save them to pains.md, ready for quote mining. Use after matching proofs, or when the user wants a campaign's buyer pains.
+name: whitefox-content-name-problems
+description: Name a campaign's audience problems (the problems our deliveries solve, in the audience's own words), ready for finding quotes. Use after checking what fits, or when the user wants a campaign's audience problems.
 ---
 
 # Derive pains
 
 Turns the campaign's matched proofs into buyer pains: the problems that exist without what
 WhiteFox delivered, phrased the way a real practitioner complains. These are search targets for
-`/whitefox-content-mine-quotes`. The goal is fixed: B2B demand generation, turning buyers into
+`/whitefox-content-find-quotes`. The goal is fixed: B2B demand generation, turning buyers into
 enquiries.
 
 ## Read first
@@ -19,7 +19,7 @@ enquiries.
   Problem, Solution, Outcome and Metric in its pool file.
 - The campaign's `pains.md`, if it exists.
 
-If no proof is matched, say so and suggest `/whitefox-content-match-proof`. Stop.
+If no proof is matched, say so and suggest `/whitefox-content-check-fit`. Stop.
 
 ## Derive
 
@@ -63,7 +63,7 @@ to add that proof ID to the existing pain's "Backed by".
 
 ## Next
 
-Suggest `/whitefox-content-mine-quotes` to find real buyers voicing these pains.
+Suggest `/whitefox-content-find-quotes` to find real buyers voicing these pains.
 
 ## Rules
 

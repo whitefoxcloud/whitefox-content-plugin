@@ -1,6 +1,6 @@
 ---
-name: whitefox-content-match-proof
-description: Judge which proofs in the WhiteFox Content pool fit a campaign's audience, and word each matched proof for that audience, saving the verdicts to the campaign's shelf. Use after extracting a case study, or when the user wants to match proofs to a campaign.
+name: whitefox-content-check-fit
+description: Check which deliveries in the case study library fit a campaign's audience, and word each one that fits for that audience. Use after listing what we delivered, or when the user wants to see what fits a campaign.
 ---
 
 # Match proof
@@ -19,7 +19,7 @@ speak to this campaign's audience? Matched proofs get one line of wording for th
 The proofs to judge are the active pool proofs not listed in `shelf.md`. If there are none, say
 "Everything we delivered in your case study library is already checked for <campaign>" and suggest
 `/whitefox-content-start` to see the next step. If the pool is empty, suggest
-`/whitefox-content-extract-proof`.
+`/whitefox-content-list-deliveries`.
 
 Judge at most 20 proofs per round. With more, do 20, save after approval, then offer the next
 round.
@@ -73,8 +73,8 @@ Use the profile's industry and audience as the lens. Judge each proof on its own
 ## Next
 
 If there is at least one `matched` row and no `pains.md`, suggest
-`/whitefox-content-derive-pains`. If nothing matched, suggest a case study that fits this
-audience with `/whitefox-content-extract-proof`.
+`/whitefox-content-name-problems`. If nothing matched, suggest a case study that fits this
+audience with `/whitefox-content-list-deliveries`.
 
 ## Rules
 

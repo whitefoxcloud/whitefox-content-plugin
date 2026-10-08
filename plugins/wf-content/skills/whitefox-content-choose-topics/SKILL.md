@@ -1,6 +1,6 @@
 ---
-name: whitefox-content-mint-lanes
-description: Mint content lanes for a WhiteFox campaign (one buyer pain plus the proofs and quotes behind it, framed as a position WhiteFox can own), check them against the evidence, and save them to lanes.md; also makes lanes active, paused or archived. Use after mining quotes, or when the user wants lanes or wants to change a lane's status.
+name: whitefox-content-choose-topics
+description: Choose the topics to publish about for a WhiteFox campaign (one audience problem plus the deliveries and quotes behind it, with our point of view), check them against the evidence, and mark them idea, chosen, paused or archived. Use after finding quotes, or when the user wants topics or wants to change a topic's status.
 ---
 
 # Mint lanes
@@ -17,7 +17,7 @@ that already exists; it never invents evidence.
 - The campaign's `shelf.md` (matched rows and wording), `pains.md`, `quotes.md` and `lanes.md`
   (if it exists).
 
-If there are no pains, suggest `/whitefox-content-derive-pains` and stop.
+If there are no pains, suggest `/whitefox-content-name-problems` and stop.
 
 ## Change a lane's status
 
@@ -105,8 +105,8 @@ Check each candidate's label, stance and "Why WhiteFox" against only its own cit
 
 ## Next
 
-For an `active` lane: `/whitefox-content-arm-brief` to plan its pieces, optionally after
-`/whitefox-content-keyword-research` (free with web search, or paid with DataForSEO after a
+For an `active` lane: `/whitefox-content-plan-pieces` to plan its pieces, optionally after
+`/whitefox-content-search-interest` (free with web search, or paid with DataForSEO after a
 price is shown).
 
 ## Rules

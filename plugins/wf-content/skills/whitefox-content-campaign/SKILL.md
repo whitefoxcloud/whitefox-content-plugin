@@ -19,7 +19,7 @@ pool.
 ## Create a campaign
 
 1. Show the profiles as `<CODE> <name> (<status>)` and ask which one. If the right one does not
-   exist, suggest `/whitefox-content-profile` (Claude Code: `/wf-content:whitefox-content-profile`) and stop.
+   exist, suggest `/whitefox-content-industry` (Claude Code: `/wf-content:whitefox-content-industry`) and stop.
 2. If the chosen profile is not `approved`, say: "<CODE> is <status>, not approved yet. You can
    go ahead; the writing steps will warn on every draft." Continue only on yes.
 3. Ask for a goal in a sentence, or "(none)".
@@ -37,7 +37,7 @@ pool.
 
    If the pool already has proofs, add one line: "The pool also has <N> proofs from <sources>;
    stage 1 checks whether they fit this campaign after your case study." Do not suggest a
-   single step's command (match-proof, extract-proof) here. When the user sends a case study,
+   single step's command (check-fit, list-deliveries) here. When the user sends a case study,
    follow `../whitefox-content-add-case-study/SKILL.md`.
 
 ## Pause, resume or finish a campaign
