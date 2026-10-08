@@ -13,7 +13,7 @@
 
   DATA shape:
   {
-    "version": "0.9.0",
+    "version": "0.9.1",
     "workspace": "C:\\...\\WhiteFox Content",
     "update": null,                          // or "0.9.1" when a newer version exists
     "profiles": [ { "code": "FIN", "name": "Fintech / payments", "status": "approved" } ],
@@ -84,6 +84,7 @@ main { max-width: 960px; margin: 0 auto; padding: 20px 16px 48px; }
 .action .btn { margin-left: auto; }
 .top { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 16px; }
 .top .ws { margin: 0; flex: 1; }
+h3.first { margin-top: 0; }
 .hint { color: var(--muted); font-size: 13px; margin: 8px 0 0; }
 .btn { border: 1px solid var(--blue); background: var(--blue); color: var(--on-blue); border-radius: 999px;
   padding: 6px 14px; cursor: pointer; font: inherit; font-weight: 500; font-size: 14px; }
@@ -101,6 +102,7 @@ h3 { font-size: 14px; color: var(--muted); font-weight: 500; text-transform: upp
 <main>
   <div id="notice"></div>
   <div class="top"><p class="ws" id="ws"></p><button class="btn" type="button" id="newc">+ New campaign</button></div>
+  <h3 class="first">Your campaigns</h3>
   <div id="campaigns"></div>
   <h3>Profiles</h3>
   <div class="profiles" id="profiles"></div>
@@ -108,7 +110,7 @@ h3 { font-size: 14px; color: var(--muted); font-weight: 500; text-transform: upp
 <script>
 /* DATA: the step replaces this object with the workspace's state. */
 const DATA = {
-  "version": "0.9.0",
+  "version": "0.9.1",
   "workspace": "Documents/WhiteFox Content",
   "update": null,
   "profiles": [ { "code": "EX", "name": "Example industry", "status": "draft" } ],

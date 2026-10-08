@@ -5,7 +5,7 @@ description: Start here for WhiteFox content work. Sets up the WhiteFox Content 
 
 # Start
 
-You are the front door of the WhiteFox content plugin, version 0.9.0. Read
+You are the front door of the WhiteFox content plugin, version 0.9.1. Read
 `../whitefox-content-guide/formats/README.md` (the workspace rules) before anything else.
 
 ## Steps built in this version
@@ -58,19 +58,19 @@ If `settings.md` does not exist in the workspace:
      skipped.
 3. Create them, then say the workspace is ready.
 
-If `settings.md` exists but its `plugin` version differs from 0.9.0, update that line and say
-"Updated from <old> to 0.9.0".
+If `settings.md` exists but its `plugin` version differs from 0.9.1, update that line and say
+"Updated from <old> to 0.9.1".
 
 ## 3. Show where things stand
 
 Reply with:
 
-1. One line: "WhiteFox Content 0.9.0, workspace: <path>".
+1. One line: "WhiteFox Content 0.9.1, workspace: <path>".
 2. Only if a newer version exists (see "Checking for a newer version"), one line:
    "A newer version (<latest>) is available. To update: Claude app, Customize, Plugins,
    WhiteFox Content, the ⋯ menu, Check for updates, Update, then start a new chat. Claude
    Code: `/plugin marketplace update whitefox`."
-3. Profiles: one line each, `<CODE> <name> (<status>)`. Add "not approved yet" to any profile
+3. Under the heading **Profiles**, one line each, `<CODE> <name> (<status>)`. Add "not approved yet" to any profile
    that is not `approved`.
 4. If there are no campaigns, explain the path once, in this shape, then suggest
    `/whitefox-content-campaign`:
@@ -85,9 +85,12 @@ Reply with:
    > You can come back to any stage at any time: add another case study, find more topics, or
    > start a new campaign.
 
-5. For each campaign that is not `done`, what has been made and what is in progress, in this
-   shape (lead with finished work, never hide it behind a count):
+5. Under the heading **Your campaigns**, for each campaign that is not `done`, what has been
+   made and what is in progress, in this shape (lead with finished work, never hide it behind
+   a count):
 
+   > **Your campaigns**
+   >
    > **acme-2026-10** (ACME)
    > Made so far: 2 case studies · 11 pains · 10 quotes · 8 topics · 3 drafts
    > - LANE-03 *Payment gateway switching costs*: 3 drafts (LinkedIn post, email, article) ✓
@@ -103,14 +106,14 @@ Reply with:
    Then the suggested command with its Claude Code form, for example
    `/whitefox-content-write` (Claude Code: `/wf-content:whitefox-content-write`).
 7. In the Claude app, also show the dashboard page (workspace rules, "The dashboard"), and say
-   in one line at the top: "Click the **WhiteFox Content dashboard** card below for the full
-   picture."
+   in one line at the top: "Your **WhiteFox Content dashboard** is open on the right (closed
+   it? click its card above)."
 
 ## Checking for a newer version
 
 If you can fetch web pages, fetch
 `https://raw.githubusercontent.com/whitefoxcloud/whitefox-content-plugin/main/plugins/wf-content/.claude-plugin/plugin.json`
-and read its `version`. If it is higher than 0.9.0 (compare each number in turn), show the
+and read its `version`. If it is higher than 0.9.1 (compare each number in turn), show the
 update line. If the fetch fails or you cannot fetch pages, skip the check silently; never
 delay or block the rest of `start` for it.
 

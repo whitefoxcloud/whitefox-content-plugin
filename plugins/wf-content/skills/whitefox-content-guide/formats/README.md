@@ -108,10 +108,11 @@ Pages never save anything: saving always happens in the chat.
 |---|---|---|
 | `review.html` | a result with 3 or more items to approve | keep, drop, edit, add; copy choices back |
 | `preview.html` | every draft, before asking to save | reads it as it will look; copies the clean text |
-| `dashboard.html` | `whitefox-content-start`, once the workspace exists | sees each campaign's stages and the next command |
+| `dashboard.html` | `whitefox-content-start`, once the workspace exists | sees what each campaign has made and what they can do next |
 
-Start your reply with one line naming the page, because its card does not look clickable, for
-example: "Click the **Draft: LinkedIn post, ANGLE-03** card below to see it as it will look."
+The page opens on its own in the panel on the right, and its card sits above your reply. Start
+your reply with one line naming the page, for example: "**Draft: LinkedIn post, ANGLE-03** is
+open on the right, as it will look (closed it? click its card above)."
 
 ### The review page
 
@@ -133,9 +134,9 @@ add rows with buttons:
 4. Set the page's `<title>` to `Review: <title>` (for example "Review: quotes for
    fin-2026-10") so the artifact card says what it is for. Show it as an HTML artifact, and
    still write the numbered result in the chat.
-5. Start your reply with one line, before the result: "Click the **Review: <title>** card
-   below to keep, drop or edit with buttons, then press Copy my choices and paste them here.
-   Or just type your changes." The card does not look clickable, so always say this.
+5. Start your reply with one line, before the result: "**Review: <title>** is open on the
+   right: keep, drop or edit with buttons, then press Copy my choices and paste them here
+   (closed it? click its card above). Or just type your changes."
 6. The user pastes back lines starting `Decisions for`. Apply each line exactly: `keep`, `drop`
    (or the `choice` values), `edited: <field> = <text>`, and `new <item>: ...` rows. Show
    the result once more as a short list and save on yes. A new or edited item still follows

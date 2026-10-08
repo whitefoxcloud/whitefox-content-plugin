@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.9.1
+
+- Pages: the reply now says the page is open on the right and its card is above (it said
+  "click the card below", but the panel opens on its own and the card sits above the reply).
+- `whitefox-content-start` and the dashboard put the campaigns under a **Your campaigns**
+  heading.
+
 ## 0.9.0
 
 - `whitefox-content-start` and the dashboard show what has been made first: counts, then each
