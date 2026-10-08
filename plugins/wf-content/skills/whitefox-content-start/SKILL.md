@@ -5,7 +5,7 @@ description: Start here for WhiteFox content work. Sets up the WhiteFox Content 
 
 # Start
 
-You are the front door of the WhiteFox content plugin, version 0.10.0. Read
+You are the front door of the WhiteFox content plugin, version 0.11.0. Read
 `../whitefox-content-guide/formats/README.md` (the workspace rules) before anything else.
 
 ## Steps built in this version
@@ -58,14 +58,14 @@ If `settings.md` does not exist in the workspace:
      skipped.
 3. Create them, then say the workspace is ready.
 
-If `settings.md` exists but its `plugin` version differs from 0.10.0, update that line and say
-"Updated from <old> to 0.10.0".
+If `settings.md` exists but its `plugin` version differs from 0.11.0, update that line and say
+"Updated from <old> to 0.11.0".
 
 ## 3. Show where things stand
 
 Reply with:
 
-1. One line: "WhiteFox Content 0.10.0, workspace: <path>".
+1. One line: "WhiteFox Content 0.11.0, workspace: <path>".
 2. Only if a newer version exists (see "Checking for a newer version"), one line:
    "A newer version (<latest>) is available. To update: Claude app, Customize, Plugins,
    WhiteFox Content, the ⋯ menu, Check for updates, Update, then start a new chat. Claude
@@ -76,11 +76,11 @@ Reply with:
    `/whitefox-content-campaign`:
 
    > How it works: set up a campaign, then three stages, each one command.
-   > 1. **Add a case study**: what WhiteFox delivered, matched to your campaign, and the buyer
-   >    problems it solves.
-   > 2. **Find topics**: real buyer quotes, then the topics to write about (keyword research
-   >    optional).
-   > 3. **Write**: a plan of pieces for a topic, then LinkedIn posts, emails and articles.
+   > 1. **Add a case study**: what WhiteFox delivered, checked against your campaign, and the
+   >    problems it solves for your audience.
+   > 2. **Find topics**: real quotes from your audience, then the topics to write about
+   >    (checking search interest is optional).
+   > 3. **Write**: a content plan for a topic, then LinkedIn posts, emails and articles.
    > Every step shows its result and waits for your yes before saving.
    > You can come back to any stage at any time: add another case study, find more topics, or
    > start a new campaign.
@@ -92,15 +92,15 @@ Reply with:
    > **Your campaigns**
    >
    > **acme-2026-10** (ACME)
-   > Made so far: 2 case studies · 11 pains · 10 quotes · 8 topics · 3 drafts
-   > - LANE-03 *Payment gateway switching costs*: 3 drafts (LinkedIn post, email, article) ✓
-   > - LANE-01 *Chargeback handling at scale*: no plan yet
+   > Made so far: 2 case studies · 11 audience problems · 10 quotes · 8 topics · 3 drafts
+   > - Topic 3, *Payment gateway switching costs*: 3 drafts (LinkedIn post, email, article) ✓
+   > - Topic 1, *Chargeback handling at scale*: no plan yet
 
    List the active lanes and any lane with a brief or drafts, with its label from `lanes.md`
    and what it has (see "What the user can do").
 6. What the user can do, in one line, with the suggested action first:
 
-   > You can: **write for LANE-01** (suggested), add another case study, find more topics, or
+   > You can: **write for Topic 1** (suggested), add another case study, find more topics, or
    > start a new campaign.
 
    Then the suggested command with its Claude Code form, for example
@@ -115,7 +115,7 @@ Reply with:
 
 If you can fetch web pages, fetch
 `https://raw.githubusercontent.com/whitefoxcloud/whitefox-content-plugin/main/plugins/wf-content/.claude-plugin/plugin.json`
-and read its `version`. If it is higher than 0.10.0 (compare each number in turn), show the
+and read its `version`. If it is higher than 0.11.0 (compare each number in turn), show the
 update line. If the fetch fails or you cannot fetch pages, skip the check silently; never
 delay or block the rest of `start` for it.
 
@@ -141,13 +141,13 @@ To pick the suggested action, check in this order; the first match wins.
 | a pain with no quote and not under "Pains with no quotes found" | Find topics | N pains still need quotes |
 | `lanes.md` missing or empty | Find topics | turn pains and quotes into topics |
 | no lane with status `active` | Find topics | choose a topic to work on |
-| a brief with a `kept` angle without a file in `drafts/` | Write for <lane> | N kept pieces without drafts |
-| an `active` lane with no file in `briefs/` | Write for <lane> | no plan yet |
+| a brief with a `kept` angle without a file in `drafts/` | Write for Topic <N> | N planned pieces without drafts |
+| an `active` lane with no file in `briefs/` | Write for Topic <N> | no plan yet |
 | everything above is done | Add another case study | every active topic has its drafts |
 
 The dashboard's `actions` list the suggested one first, then the other stage commands as "Add
 another case study" (or "Add a case study" when there is none), "Find more topics" (or "Find
-topics") and "Write" (or "Write for <lane>").
+topics") and "Write" (or "Write for Topic <N>").
 
 Stage commands: `/whitefox-content-add-case-study`, `/whitefox-content-find-topics`,
 `/whitefox-content-write`. Mention a single step's own command only if the user asks for it.

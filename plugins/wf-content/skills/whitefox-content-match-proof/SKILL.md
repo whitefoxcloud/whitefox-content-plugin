@@ -17,7 +17,7 @@ speak to this campaign's audience? Matched proofs get one line of wording for th
 - Every file in `pool/sources/`: the proofs with status `active`.
 
 The proofs to judge are the active pool proofs not listed in `shelf.md`. If there are none, say
-"Every proof in your pool is already judged for <campaign>" and suggest
+"Everything we delivered in your case study library is already checked for <campaign>" and suggest
 `/whitefox-content-start` to see the next step. If the pool is empty, suggest
 `/whitefox-content-extract-proof`.
 

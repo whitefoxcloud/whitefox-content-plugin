@@ -65,7 +65,7 @@ For each kept quote:
 
 1. Per pain: its kept quotes (quote, speaker, link, domain, tier, confidence), or its "no quotes
    found" reason.
-2. A count: "N quotes for M pains; K pains with no quotes found".
+2. A count: "N quotes for M problems; K problems with no quotes found".
 3. The user may drop quotes or ask for another search on a pain. Apply and confirm.
 4. On yes, add the quotes to `quotes.md` (create it with the heading if missing), numbered
    after the highest existing QUOTE, `Found` today; add the no-quote pains to "Pains with no

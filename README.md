@@ -4,15 +4,19 @@ Turns case studies into proof-backed LinkedIn posts, articles and emails, one ap
 a time. Runs in the Claude desktop app and in Claude Code, on your own Claude subscription (Pro
 or Max).
 
-Status: 0.10.0. Every step is built, grouped into three stage commands (add a case study, find
+Status: 0.11.0. Every step is built, grouped into three stage commands (add a case study, find
 topics, write) after setup with `whitefox-content-start`.
+
+The words it uses: **what we delivered** (one piece of work from a case study), **audience
+problem**, **audience quote**, **topic**, **content plan** and **piece**. `/whitefox-content-guide`
+explains each one.
 
 ## How it works
 
 | Layer | Holds | Lives in |
 |---|---|---|
 | This plugin | how each step works | this repo |
-| Your workspace folder | your profiles, proof pool and campaigns | `WhiteFox Content` on your laptop |
+| Your WhiteFox folder | your industries, case study library and campaigns | `WhiteFox Content` on your laptop |
 
 The plugin holds no campaign data, case studies or logins.
 
@@ -42,10 +46,11 @@ The plugin holds no campaign data, case studies or logins.
    and send a short message such as "use this folder" (a folder alone does not send), or paste
    its path. When Claude asks for folder access, tick "Don't ask again for this folder
    on this device", then click Allow. Claude shows each campaign's stage and the next command,
-   or offers to create a campaign (pick a profile, or create one).
+   or offers to create a campaign (pick an industry, or create one).
 3. Run the three stages; each runs its steps one after the other and waits for your yes:
-   - `/whitefox-content-add-case-study`: attach the case study or paste its link. Its proofs
-     go into your pool, are matched to the campaign, and the buyer problems are named.
+   - `/whitefox-content-add-case-study`: attach the case study or paste its link. What we
+     delivered goes into your case study library, is checked against the campaign, and your
+     audience's problems are named.
    - `/whitefox-content-find-topics`: real buyer quotes, then the topics to write about (choose
      the active ones), then optional keyword research (free, or paid with the price shown
      first).
@@ -58,7 +63,7 @@ The plugin holds no campaign data, case studies or logins.
 
 Next time, `/whitefox-content-start` shows where each campaign stands and what to do next.
 `/whitefox-content-dashboard` shows the dashboard page any time: click a count or a topic to see
-its pains, quotes, topics and drafts, and **Open** on a draft to read it in the preview.
+its problems, quotes, topics and drafts, and **Open** on a draft to read it in the preview.
 
 ### Getting a new version
 

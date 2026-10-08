@@ -10,9 +10,9 @@ result and waits for approval before saving.
 
 | Step | What it does | What the user decides |
 |---|---|---|
-| 1 of 3, mine quotes | searches the web for real buyers voicing each pain, word for word with links | keep or drop quotes (at most 3 per pain) |
-| 2 of 3, mint lanes | turns pains, proofs and quotes into topics WhiteFox can own | keep, drop or edit topics, and which are active |
-| 3 of 3, keyword research (optional) | what buyers search for on an active topic | free, paid (price shown first) or skip; which keywords to target |
+| 1 of 3, find audience quotes | searches the web for real people from your audience voicing each problem, word for word with links | keep or drop quotes (at most 3 per problem) |
+| 2 of 3, choose topics | turns problems, deliveries and quotes into topics WhiteFox can own | keep, drop or edit topics, and which are chosen |
+| 3 of 3, check search interest (optional) | what your audience searches for on a chosen topic | free, paid (price shown first) or skip; which main keywords to use |
 
 ## Before you start
 
@@ -34,8 +34,8 @@ result and waits for approval before saving.
 
 For each step, read its file and follow it exactly, with two changes:
 
-- Open with the stage line, for example **Stage 2 of 3, Find topics: step 1 of 3, mine
-  quotes.**
+- Open with the stage line, for example **Stage 2 of 3, Find topics: step 1 of 3, find
+  audience quotes.**
 - Skip the step's own "Next" section. After it saves, say in one line what was saved, then ask:
   "Continue to step N, <name>? Reply **go**, or **stop** to pause here." Mine quotes may need
   more than one round: offer the next round before moving on.
@@ -46,7 +46,7 @@ For each step, read its file and follow it exactly, with two changes:
 | 2 | `../whitefox-content-mint-lanes/SKILL.md` (make sure the user chooses at least one `active` lane before moving on) |
 | 3 | `../whitefox-content-keyword-research/SKILL.md`, only on the user's choice |
 
-Before step 3, ask: "Keyword research for <active lane>? **free** (questions and phrasing from
+Before step 3, ask: "Check search interest for <chosen topic>? **free** (questions and phrasing from
 web search, no numbers), **paid** (real search numbers from DataForSEO, price shown first), or
 **skip** (LinkedIn posts and emails do not need it; articles are better with it)." Run it once
 per active lane the user picks. Paid mode keeps all its own rules: price question, explicit
@@ -54,8 +54,8 @@ yes, $1.00 cap.
 
 ## End of the stage
 
-Say: "Stage 2 done for <campaign>: <N> quotes, <M> topics, <K> active: <labels>." Then: "Next
-is stage 3, Write: a plan of pieces for an active topic, then the drafts. Reply **go** to start
+Say: "Stage 2 done for <campaign>: <N> quotes, <M> topics, <K> chosen: <labels>." Then: "Next
+is stage 3, Write: a content plan for a chosen topic, then the drafts. Reply **go** to start
 it now, or run `/whitefox-content-write` (Claude Code: `/wf-content:whitefox-content-write`)
 later." On go, follow `../whitefox-content-write/SKILL.md`.
 

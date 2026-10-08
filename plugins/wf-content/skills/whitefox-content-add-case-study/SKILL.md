@@ -10,9 +10,9 @@ next command. Each step still shows its result and waits for approval before sav
 
 | Step | What it does | What the user decides |
 |---|---|---|
-| 1 of 3, extract proofs | reads the case study and lists, word for word, what WhiteFox delivered | correct, merge or drop proofs |
-| 2 of 3, match proofs | judges which pool proofs fit this campaign's audience | keep or reject each, and its wording |
-| 3 of 3, derive pains | names the buyer problems those proofs solve | keep, edit, drop or add pains |
+| 1 of 3, list what we delivered | reads the case study and lists, word for word, what WhiteFox delivered | correct, merge or drop each delivery |
+| 2 of 3, check what fits | checks which deliveries in the case study library fit this campaign's audience | keep or reject each, and its wording |
+| 3 of 3, name audience problems | names the audience problems those deliveries solve | keep, edit, drop or add problems |
 
 ## Before you start
 
@@ -41,7 +41,7 @@ next command. Each step still shows its result and waits for approval before sav
 For each step, read its file and follow it exactly, with two changes:
 
 - Open with the stage line from the workspace rules, for example **Stage 1 of 3, Add a case
-  study: step 2 of 3, match proofs.**
+  study: step 2 of 3, check what fits.**
 - Skip the step's own "Next" section. After it saves, say in one line what was saved, then ask:
   "Continue to step N, <name>? Reply **go**, or **stop** to pause here."
 
@@ -53,8 +53,8 @@ For each step, read its file and follow it exactly, with two changes:
 
 ## End of the stage
 
-Say: "Stage 1 done for <campaign>: <N> proofs in the pool, <M> matched, <K> pains." Then:
-"Next is stage 2, Find topics: real buyer quotes, then the topics (lanes) to write about. Reply
+Say: "Stage 1 done for <campaign>: <N> deliveries in your case study library, <M> fit this campaign, <K> audience problems." Then:
+"Next is stage 2, Find topics: real audience quotes, then the topics to write about. Reply
 **go** to start it now, or run `/whitefox-content-find-topics` (Claude Code:
 `/wf-content:whitefox-content-find-topics`) later." On go, follow
 `../whitefox-content-find-topics/SKILL.md`.

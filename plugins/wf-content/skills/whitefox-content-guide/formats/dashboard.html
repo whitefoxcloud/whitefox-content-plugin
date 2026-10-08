@@ -14,13 +14,13 @@
 
   DATA shape:
   {
-    "version": "0.10.0",
+    "version": "0.11.0",
     "workspace": "C:\\...\\WhiteFox Content",
     "update": null,                          // or "0.10.1" when a newer version exists
     "profiles": [ { "code": "FIN", "name": "Fintech / payments", "status": "approved" } ],
     "campaigns": [ {
       "name": "fin-2026-10", "profile": "FIN", "goal": "...",
-      "made": [ ["case study", "1"], ["pains", "11"], ["quotes", "10"], ["topics", "8"], ["drafts", "3"] ],
+      "made": [ ["case study", "1"], ["audience problems", "11"], ["quotes", "10"], ["topics", "8"], ["drafts", "3"] ],
       "topics": [ { "id": "LANE-03", "label": "...", "status": "3 drafts: article, LinkedIn post, email", "done": true } ],
       "actions": [ { "label": "Write for LANE-01", "command": "/whitefox-content-write",
                      "code": "/wf-content:whitefox-content-write", "suggested": true } ],
@@ -38,7 +38,8 @@
     } ]
   }
   fit: matched | rejected | not judged. topics: the active lanes and any lane with a plan or
-  drafts. Exactly one action is suggested. Draft "Open" copies /whitefox-content-show <angle> <campaign>.
+  drafts. Exactly one action is suggested. Draft "Open" copies /whitefox-content-show Piece <n> <campaign>.
+  IDs and statuses stay as in the files; the page shows them in the user's words (fid, word).
 -->
 <style>
 /* Neutral surfaces; blue only for actions; one hue per stage (case study violet, topics amber, write green). */
@@ -152,7 +153,7 @@ details.topic > summary::-webkit-details-marker { display: none; }
 details.topic > summary .chev { color: var(--muted); transition: transform .15s; font-size: 12px; }
 details.topic[open] > summary .chev { transform: rotate(90deg); }
 .tdetail { padding: 2px 12px 12px; font-size: 14px; border-top: 1px solid var(--line); }
-.tdetail dl { display: grid; grid-template-columns: 90px 1fr; gap: 6px 12px; margin: 10px 0 0; }
+.tdetail dl { display: grid; grid-template-columns: 120px 1fr; gap: 6px 12px; margin: 10px 0 0; }
 .tdetail dt { color: var(--muted); font-size: 12px; padding-top: 2px; }
 .tdetail dd { margin: 0; color: var(--text); }
 .tdetail .ref { margin-bottom: 6px; }
@@ -187,13 +188,13 @@ details.topic[open] > summary .chev { transform: rotate(90deg); }
 <script>
 /* DATA: the step replaces this object with the workspace's state. */
 const DATA = {
-  "version": "0.10.0",
+  "version": "0.11.0",
   "workspace": "Documents/WhiteFox Content",
   "update": null,
   "profiles": [ { "code": "EX", "name": "Example industry", "status": "draft" } ],
   "campaigns": [ {
     "name": "example-2026-10", "profile": "EX", "goal": "An example goal.",
-    "made": [ ["case study", "1"], ["pains", "1"] ],
+    "made": [ ["case study", "1"], ["audience problems", "1"] ],
     "topics": [],
     "actions": [ { "label": "Find topics", "command": "/whitefox-content-find-topics",
                    "code": "/wf-content:whitefox-content-find-topics", "suggested": true } ],
@@ -212,8 +213,22 @@ const safeUrl = u => /^https?:\/\//i.test(u || "") ? u : "";
 /* Stage of a command or a count, for its colour: s1 case study, s2 topics, s3 write. */
 const STAGE = { "add-case-study": ["s1", "◆"], "find-topics": ["s2", "✦"], "write": ["s3", "✎"], "campaign": ["", "+"] };
 const stageOf = cmd => { for (const k in STAGE) if (cmd.endsWith("-" + k)) return STAGE[k]; return ["", "›"]; };
-const countStage = k => /case stud|proof|pain/i.test(k) ? "s1" : /quote|topic/i.test(k) ? "s2" : /draft|piece/i.test(k) ? "s3" : "";
-const panelOf = k => /case stud|proof/i.test(k) ? "sources" : /pain/i.test(k) ? "pains" : /quote/i.test(k) ? "quotes" : /topic/i.test(k) ? "lanes" : /draft/i.test(k) ? "drafts" : "";
+const countStage = k => /case stud|proof|deliver|pain|problem/i.test(k) ? "s1" : /quote|topic/i.test(k) ? "s2" : /draft|piece/i.test(k) ? "s3" : "";
+const panelOf = k => /case stud|proof|deliver/i.test(k) ? "sources" : /pain|problem/i.test(k) ? "pains" : /quote/i.test(k) ? "quotes" : /topic/i.test(k) ? "lanes" : /draft/i.test(k) ? "drafts" : "";
+/* Words the user sees (workspace rules): IDs and statuses stay as in the files, the page shows these. */
+const fid = id => { id = String(id || ""); let m;
+  if ((m = id.match(/^PAIN-0*(\d+)$/))) return `Problem ${m[1]}`;
+  if ((m = id.match(/^QUOTE-0*(\d+)$/))) return `Quote ${m[1]}`;
+  if ((m = id.match(/^LANE-0*(\d+)$/))) return `Topic ${m[1]}`;
+  if ((m = id.match(/^ANGLE-0*(\d+)$/))) return `Piece ${m[1]}`;
+  if ((m = id.match(/^(.+)-P0*(\d+)$/))) return `Delivery ${m[2]} (${m[1].charAt(0).toUpperCase() + m[1].slice(1)})`;
+  return id; };
+const fids = s => String(s || "").split(/,\s*/).map(x => x === "gap" ? "nothing we delivered yet" : fid(x)).join(", ");
+const WORD = { "active": "chosen", "candidate": "idea", "matched": "fits", "rejected": "doesn't fit", "not judged": "not checked yet",
+  "full-stack": "backed by our work and audience quotes", "silent-authority": "backed by our work only",
+  "commentary-only": "audience quotes only", "none": "low", "strong": "high", "unknown": "not checked", "some": "some",
+  "in-domain": "from this industry", "adjacent": "from a nearby field" };
+const word = w => WORD[w] || w;
 const CHANNEL = { "linkedin-post": "LinkedIn post", "email": "Email", "website-article": "Article" };
 async function copy(btn, text) {
   const old = btn.textContent;
@@ -222,30 +237,30 @@ async function copy(btn, text) {
   setTimeout(() => { btn.textContent = old; }, 1500);
 }
 const tags = (list) => (list || []).length ? list.map(x => `<span class="tag">${esc(x)}</span>`).join("") : `<span class="empty">(none)</span>`;
-const draftRow = (d, camp, lane) => `<div class="draft"><span class="dt">${esc(d.title || d.angle)}<span>${esc(CHANNEL[d.channel] || d.channel)} · ${esc(d.angle)}${lane ? ` · ${esc(lane)}` : ""}${d.words ? ` · ${esc(d.words)} words` : ""}</span></span><button class="btn ghost" type="button" data-cmd="/whitefox-content-show ${esc(d.angle)} ${esc(camp)}" title="Copies a command that shows this draft in the chat">Open</button></div>`;
+const draftRow = (d, camp, lane) => `<div class="draft"><span class="dt">${esc(d.title || d.angle)}<span>${esc(CHANNEL[d.channel] || d.channel)} · ${esc(fid(d.angle))}${lane ? ` · ${esc(fid(lane))}` : ""}${d.words ? ` · ${esc(d.words)} words` : ""}</span></span><button class="btn ghost" type="button" data-cmd="/whitefox-content-show ${esc(fid(d.angle))} ${esc(camp)}" title="Copies a command that shows this draft in the chat">Open</button></div>`;
 function laneDetail(l, camp, d) {
-  const pick = (ids, list, show) => (ids || []).length ? ids.map(id => { const x = (list || []).find(y => y.id === id); return `<div class="ref"><span class="iid">${esc(id)}</span>${x ? show(x) : ""}</div>`; }).join("") : `<span class="empty">(none)</span>`;
+  const pick = (ids, list, show) => (ids || []).length ? ids.map(id => { const x = (list || []).find(y => y.id === id); return `<div class="ref"><span class="iid">${esc(fid(id))}</span>${x ? show(x) : ""}</div>`; }).join("") : `<span class="empty">(none)</span>`;
   return `<div class="tdetail"><dl>
-    <dt>Stance</dt><dd>${esc(l.stance || "(none)")}</dd>
-    <dt>Status</dt><dd>${esc(l.status || "")}${l.type ? ` · ${esc(l.type)}` : ""}${l.demand ? ` · demand ${esc(l.demand)}` : ""}</dd>
-    <dt>Pains</dt><dd>${pick(l.pains, d.pains, x => esc(x.text))}</dd>
+    <dt>Our point of view</dt><dd>${esc(l.stance || "(none)")}</dd>
+    <dt>Status</dt><dd>${esc(word(l.status || ""))}${l.type ? ` · ${esc(word(l.type))}` : ""}${l.demand ? ` · search interest ${esc(word(l.demand))}` : ""}</dd>
+    <dt>Problems</dt><dd>${pick(l.pains, d.pains, x => esc(x.text))}</dd>
     <dt>Quotes</dt><dd>${pick(l.quotes, d.quotes, x => `<q>${esc(x.text)}</q>`)}</dd>
     <dt>Keywords</dt><dd>${tags(l.keywords)}</dd>
     <dt>Drafts</dt><dd>${(l.drafts || []).length ? l.drafts.map(d => draftRow(d, camp)).join("") : `<span class="empty">none yet</span>`}</dd>
   </dl></div>`;
 }
 function laneRow(l, camp, pill, d) {
-  return `<details class="topic"><summary><span class="chev">▶</span><span><span class="iid">${esc(l.id)}</span><span class="label">${esc(l.label)}</span></span>${pill}</summary>${laneDetail(l, camp, d)}</details>`;
+  return `<details class="topic"><summary><span class="chev">▶</span><span><span class="iid">${esc(fid(l.id))}</span><span class="label">${esc(l.label)}</span></span>${pill}</summary>${laneDetail(l, camp, d)}</details>`;
 }
 function panelBody(kind, d, camp) {
-  if (kind === "sources") return (d.sources || []).map(src => `<div class="item"><div class="main"><b>${esc(src.name)}</b>${safeUrl(src.link) ? ` · <a href="${esc(safeUrl(src.link))}" target="_blank" rel="noopener">open ↗</a>` : ""}</div>${(src.proofs || []).map(pr => `<div class="meta" style="margin-top:8px"><span class="iid">${esc(pr.id)}</span><span class="fit ${esc(pr.fit === "matched" ? "matched" : "rejected")}">${esc(pr.fit)}</span><div class="main" style="margin-top:3px">${esc(pr.wording && pr.wording !== "(none)" ? pr.wording : pr.solution)}</div></div>`).join("")}</div>`).join("");
-  if (kind === "pains") return (d.pains || []).map(x => `<div class="item"><span class="iid">${esc(x.id)}</span><span class="main">${esc(x.text)}</span><div class="meta">${esc(x.audience || "")}${x.backed ? ` · backed by ${esc(x.backed)}` : ""}${x.quotes != null ? ` · ${esc(x.quotes)} quote${x.quotes == 1 ? "" : "s"}` : ""}</div></div>`).join("");
-  if (kind === "quotes") return (d.quotes || []).map(q => `<div class="item"><span class="iid">${esc(q.id)} · ${esc(q.pain || "")}</span><blockquote>“${esc(q.text)}”</blockquote><div class="meta">${esc(q.speaker || "")}${q.platform ? ` · ${esc(q.platform)}` : ""}${safeUrl(q.link) ? ` · <a href="${esc(safeUrl(q.link))}" target="_blank" rel="noopener">source ↗</a>` : ""}</div></div>`).join("");
-  if (kind === "lanes") return (d.lanes || []).map(l => laneRow(l, camp, `<span class="pill ${l.status === "active" ? "part" : "none"}">${esc(l.status)}</span>`, d)).join("");
+  if (kind === "sources") return (d.sources || []).map(src => `<div class="item"><div class="main"><b>${esc(src.name)}</b>${safeUrl(src.link) ? ` · <a href="${esc(safeUrl(src.link))}" target="_blank" rel="noopener">open ↗</a>` : ""}</div>${(src.proofs || []).map(pr => `<div class="meta" style="margin-top:8px"><span class="iid">${esc(fid(pr.id))}</span><span class="fit ${esc(pr.fit === "matched" ? "matched" : "rejected")}">${esc(word(pr.fit))}</span><div class="main" style="margin-top:3px">${esc(pr.wording && pr.wording !== "(none)" ? pr.wording : pr.solution)}</div></div>`).join("")}</div>`).join("");
+  if (kind === "pains") return (d.pains || []).map(x => `<div class="item"><span class="iid">${esc(fid(x.id))}</span><span class="main">${esc(x.text)}</span><div class="meta">${esc(x.audience || "")}${x.backed ? ` · backed by ${esc(fids(x.backed))}` : ""}${x.quotes != null ? ` · ${esc(x.quotes)} quote${x.quotes == 1 ? "" : "s"}` : ""}</div></div>`).join("");
+  if (kind === "quotes") return (d.quotes || []).map(q => `<div class="item"><span class="iid">${esc(fid(q.id))} · ${esc(fids(q.pain))}</span><blockquote>“${esc(q.text)}”</blockquote><div class="meta">${esc(q.speaker || "")}${q.platform ? ` · ${esc(q.platform)}` : ""}${safeUrl(q.link) ? ` · <a href="${esc(safeUrl(q.link))}" target="_blank" rel="noopener">source ↗</a>` : ""}</div></div>`).join("");
+  if (kind === "lanes") return (d.lanes || []).map(l => laneRow(l, camp, `<span class="pill ${l.status === "active" ? "part" : "none"}">${esc(word(l.status))}</span>`, d)).join("");
   if (kind === "drafts") return (d.lanes || []).flatMap(l => (l.drafts || []).map(x => draftRow(x, camp, l.id))).join("");
   return "";
 }
-const PANEL_TITLE = { sources: "Case studies and proofs", pains: "Buyer pains", quotes: "Buyer quotes", lanes: "All topics", drafts: "Drafts" };
+const PANEL_TITLE = { sources: "Case studies and what we delivered", pains: "Audience problems", quotes: "Audience quotes", lanes: "All topics", drafts: "Drafts" };
 
 document.getElementById("ver").textContent = `version ${DATA.version}`;
 document.getElementById("ws").textContent = `Workspace: ${DATA.workspace}`;
@@ -271,7 +286,7 @@ DATA.campaigns.forEach(c => {
     const pill = `<span class="pill ${kind}">${t.done ? "✓ " : ""}${esc(t.status)}</span>`;
     const lane = (d.lanes || []).find(l => l.id === t.id);
     return lane ? laneRow({ ...lane, label: t.label || lane.label }, c.name, pill, d)
-                : `<details class="topic"><summary><span class="chev"></span><span><span class="iid">${esc(t.id)}</span><span class="label">${esc(t.label)}</span></span>${pill}</summary></details>`;
+                : `<details class="topic"><summary><span class="chev"></span><span><span class="iid">${esc(fid(t.id))}</span><span class="label">${esc(t.label)}</span></span>${pill}</summary></details>`;
   }).join("");
   const acts = c.actions || [];
   const sug = acts.find(a => a.suggested) || acts[0];

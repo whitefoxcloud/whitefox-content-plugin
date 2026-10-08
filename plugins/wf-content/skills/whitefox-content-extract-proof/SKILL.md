@@ -79,7 +79,7 @@ recognition WhiteFox received.
 2. Ask whether the case study is public: `yes`, `no` or `needs review`. If it came from a public
    web page, suggest `yes`.
 3. Show the proofs and testimonials as numbered lists with their IDs, then a one-line count:
-   "N proofs, M testimonials from <name>".
+   "N deliveries, M testimonials from <name>".
 4. The user may correct, merge, split or drop items. Apply the changes and show the list again
    if anything changed.
 5. On yes, save `pool/sources/<source-id>.md` in the format, with the full text under `## Text`,

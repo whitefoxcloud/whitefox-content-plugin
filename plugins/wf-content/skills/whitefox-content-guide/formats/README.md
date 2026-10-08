@@ -43,13 +43,68 @@ WhiteFox Content/
 5. Open your first reply with where the user is and what this step asks of them, in at most
    three short lines, before any work or question:
 
-   > **Stage 1 of 3, Add a case study: step 2 of 3, match proofs.**
-   > What it does: judges which proofs in your pool fit this campaign's audience.
-   > What you'll decide: keep or reject each proof, and its one-line wording.
+   > **Stage 1 of 3, Add a case study: step 2 of 3, check what fits.**
+   > What it does: checks which of the things we delivered, in your case study library, fit
+   > this campaign's audience.
+   > What you'll decide: keep or reject each one, and its one-line wording.
 
    Name the step's limits here when it has any (for example "each article aims at one target
    keyword", "at most 3 quotes per pain", "never more than $1.00 per lane"), so the user is
-   never surprised by a rule later. The stages are in the next section.
+   never surprised by a rule later. The stages are in "The stages".
+
+## Words the user sees
+
+Users are not technical. In every chat reply and on every page, use the words in the right
+column, never the left. The left column stays inside the files (headings, field names, file
+and folder names, IDs on disk) so existing workspaces keep working. Read the user's words both
+ways: "Topic 3", "LANE-03" and "lane 3" are the same thing.
+
+| In the files | Say to the user |
+|---|---|
+| workspace | your WhiteFox folder |
+| profile | industry (for example "the INS industry, Insurance / insurtech") |
+| pool, source | case study library, case study |
+| proof | what we delivered; one item: delivery |
+| testimonial | testimonial |
+| shelf; matched / rejected | fits this campaign / doesn't fit |
+| transfer: direct / cross-industry | same industry / carries over from another industry |
+| pain | audience problem (short: problem) |
+| "Pains with no quotes found" | problems with no quotes found |
+| quote | audience quote (short: quote) |
+| domain: in-domain / adjacent | from this industry / from a nearby field |
+| tier: tier1 / tier2 | anonymous person / named executive |
+| lane | topic |
+| lane status: candidate / active | idea / chosen |
+| lane type: full-stack / silent-authority / commentary-only | backed by our work and audience quotes / backed by our work only / audience quotes only (we don't claim to solve it) |
+| stance | our point of view |
+| search phrases | search phrases |
+| demand: none / some / strong / unknown | search interest: low / some / high / not checked |
+| keyword use: target / supporting | main keyword / extra keyword |
+| brief | content plan |
+| angle | piece |
+| angle status: proposed / kept / dropped | suggested / planned / dropped |
+| section: pitch / talk | sales / expertise |
+| claim level: pitch / soft / none | names WhiteFox / hints at WhiteFox / no mention |
+| persona: company / founder / engineer | posted as the company / founder / engineer |
+| house style | writing rules |
+
+Step names, as the user sees them:
+
+| Step | Say |
+|---|---|
+| extract-proof | list what we delivered |
+| match-proof | check what fits |
+| derive-pains | name audience problems |
+| mine-quotes | find audience quotes |
+| mint-lanes | choose topics |
+| keyword-research | check search interest |
+| arm-brief | plan the pieces |
+| write-linkedin, write-email, write-article | write the drafts |
+
+IDs, as the user sees them: `PAIN-03` is **Problem 3**, `QUOTE-04` is **Quote 4**, `LANE-03` is
+**Topic 3**, `ANGLE-03` is **Piece 3**, and `loot-P02` is **Delivery 2 (Loot)** (the source's
+`name` or `client`, shortened). File paths are the one exception: when you name a saved file,
+show its real path.
 
 ## The stages
 
@@ -59,9 +114,9 @@ other in the same conversation; each step can also be run on its own.
 | Stage | Command | Steps, in order |
 |---|---|---|
 | Setup | `/whitefox-content-start` | workspace, then `profile` and `campaign` when needed |
-| 1 of 3, Add a case study | `/whitefox-content-add-case-study` | extract-proof, match-proof, derive-pains |
-| 2 of 3, Find topics | `/whitefox-content-find-topics` | mine-quotes, mint-lanes, keyword-research (optional) |
-| 3 of 3, Write | `/whitefox-content-write` | arm-brief, then write-linkedin, write-email or write-article per kept angle |
+| 1 of 3, Add a case study | `/whitefox-content-add-case-study` | list what we delivered (extract-proof), check what fits (match-proof), name audience problems (derive-pains) |
+| 2 of 3, Find topics | `/whitefox-content-find-topics` | find audience quotes (mine-quotes), choose topics (mint-lanes), check search interest (keyword-research, optional) |
+| 3 of 3, Write | `/whitefox-content-write` | plan the pieces (arm-brief), then write the drafts (write-linkedin, write-email or write-article) for each planned piece |
 
 When a step runs on its own (not from its stage command), still name its stage and step
 number in the opening lines.
@@ -75,7 +130,7 @@ Every step's replies look the same, so the plugin feels like one product:
 2. **Result card**: a `###` heading naming the result ("### 8 topics for fin-2026-10"), one
    summary line with the counts, then the numbered items. Each item: its ID and name in bold
    on the first line, then its fields as short `Label: value` lines. Use a table only when
-   every item has the same three to six short fields (a keyword table, a shelf).
+   every item has the same three to six short fields (a keyword table, what fits).
 3. **Notes**: anything the user should check, as a short list under "Check before saving", never
    buried in the items.
 4. **Reply line**: always last, as a quote block (see "Asking for approval").
@@ -91,7 +146,7 @@ question with one line that says so, with two or three examples that fit the res
 example:
 
 > Reply **save**, or tell me what to change, for example: *drop 3*, *make 7 a gap*, *add a
-> pain: ...*
+> problem: ...*
 
 Number the items you show, so the user can refer to them. After a change, show the changed
 items and ask again; save only after a clear yes ("save", "yes", "go ahead").
@@ -156,7 +211,7 @@ left to the page when it is longer than about 200 words. After a change, show th
 
 In `whitefox-content-start`, once the workspace exists, show `dashboard.html` with `version`,
 `workspace`, `update` (the newer version, or null), `profiles` and one entry per campaign that
-is not `done`: `made` (case studies, pains, quotes, topics, drafts), `topics` (the active
+is not `done`: `made` (case studies, audience problems, quotes, topics, drafts), `topics` (the active
 lanes and any lane with a plan or drafts, each with its label and what it has, for example "3
 drafts: LinkedIn post, email, article" or "no plan yet") and `actions` (the three stage
 commands, one marked suggested; see `whitefox-content-start`, "What the user can do"). The page
@@ -181,8 +236,9 @@ page cannot read files, so put in everything it shows, copied from the files, ne
   subject option, or a LinkedIn post's first line).
 
 Leave out a list the campaign does not have yet. The drafts' text stays out of the page: each
-draft's **Open** copies `/whitefox-content-show <angle> <campaign>`, which shows it in the
-draft preview.
+draft's **Open** copies `/whitefox-content-show Piece <n> <campaign>`, which shows it in the
+draft preview. Keep IDs and statuses in `details` exactly as in the files (`PAIN-03`, `active`);
+the page shows them in the user's words.
 
 When a step names another step to the user, it gives the Claude app command and the Claude Code
 command in brackets, for example `/whitefox-content-match-proof` (Claude Code:

@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.11.0
+
+- Plain words everywhere the user looks: what we delivered (was proof), audience problem (pain),
+  audience quote, topic (lane), content plan (brief), piece (angle), industry (profile), case
+  study library (pool), writing rules (house style). Statuses too: idea / chosen topics,
+  suggested / planned pieces, "fits this campaign", "search interest". Step names: list what we
+  delivered, check what fits, name audience problems, find audience quotes, choose topics, check
+  search interest, plan the pieces.
+- IDs read as Problem 3, Quote 4, Topic 3, Piece 3, Delivery 2 (Loot); the old IDs still work
+  when typed. Files, folders and commands are unchanged, so existing workspaces keep working.
+- The workspace rules hold the full word list ("Words the user sees"); the guide explains the
+  words to users.
+
 ## 0.10.0
 
 - Dashboard: every count opens its list (case studies with their proofs and fit, pains, quotes

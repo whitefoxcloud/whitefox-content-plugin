@@ -14,7 +14,10 @@ as `../whitefox-content-start/SKILL.md` says in "1. Find the workspace".
 
 ## What to show
 
-The user gives an ID and usually a campaign, for example `ANGLE-03 fin-2026-10`. With no
+The user gives an ID and usually a campaign, for example `ANGLE-03 fin-2026-10` or `Piece 3
+fin-2026-10` (Piece is ANGLE, Topic is LANE, Problem is PAIN, Quote is QUOTE, Delivery is a
+proof; see "Words the user sees" in the workspace rules). Name items to the user in those
+words. With no
 campaign, use the only `active` campaign, or ask which. If the ID is not found, say so and list
 the IDs of that kind the campaign has.
 
