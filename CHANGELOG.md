@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.9.2
+
+- Starter profile INS is approved (by Charlotte, 2026-10-08). Its keyword "insurance portal"
+  is now "insurance systems integration", since "broker portal" is on its never-position-as
+  list. Existing workspaces keep their own copy; update it with `whitefox-content-profile`.
+
 ## 0.9.1
 
 - Pages: the reply now says the page is open on the right and its card is above (it said

@@ -1,17 +1,17 @@
 ---
 code: INS
 name: Insurance / insurtech
-status: unconfirmed
+status: approved
 source: ai-content-engine data/campaign-profiles/insurance.json, transcribed 2026-10-06
-changed_by: transcribed from the app
-changed: 2026-10-06
+changed_by: Charlotte
+changed: 2026-10-08
 ---
 
 # INS: Insurance / insurtech
 
 ## Approval note
 
-(no approval note in the source profile)
+Approved by Charlotte 2026-10-08: all fields as written, with keyword "insurance portal" replaced by "insurance systems integration" (it clashed with the never-position-as list).
 
 ## Industry
 
@@ -72,6 +72,6 @@ Custom software and workflow automation for insurance operations, connected syst
 
 - insurance workflow automation
 - quote-to-bind
-- insurance portal
+- insurance systems integration
 - underwriting referral
 - policy lifecycle
