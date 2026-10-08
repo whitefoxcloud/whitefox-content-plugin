@@ -164,6 +164,26 @@ has its own "+ New campaign" button, so never add a new campaign to `actions`. I
 value is a plain number and each name agrees with it ("1 case study", "2 case studies"); leave
 out zeros. The chat gives the same picture as short text.
 
+Each campaign also gets `details`, which the page opens when a count or topic is clicked. The
+page cannot read files, so put in everything it shows, copied from the files, never reworded:
+
+- `sources`: each pool source with a proof judged for this campaign: `id`, `name`, `link` (or
+  null), and its `proofs` with `id`, `solution`, `fit` (from `shelf.md`: matched, rejected, or
+  "not judged") and `wording` (the shelf wording, or "(none)").
+- `pains`: from `pains.md`: `id`, `text` (the Pain line), `audience`, `backed` (Backed by), and
+  `quotes` (how many quotes cite it).
+- `quotes`: from `quotes.md`: `id`, `text` (word for word, without the outer quote marks),
+  `speaker`, `platform`, `link`, `pain`.
+- `lanes`: every lane in `lanes.md`: `id`, `label`, `status`, `type`, `stance`, `demand`,
+  `pains` and `quotes` (ID lists), `keywords` (the lane's `target` and `supporting` keywords from
+  its latest `keywords.md` section, or empty), and `drafts`: each live file in `drafts/` for
+  the lane, with `angle`, `channel`, `words`, and `title` (an article's H1, an email's first
+  subject option, or a LinkedIn post's first line).
+
+Leave out a list the campaign does not have yet. The drafts' text stays out of the page: each
+draft's **Open** copies `/whitefox-content-show <angle> <campaign>`, which shows it in the
+draft preview.
+
 When a step names another step to the user, it gives the Claude app command and the Claude Code
 command in brackets, for example `/whitefox-content-match-proof` (Claude Code:
 `/wf-content:whitefox-content-match-proof`).

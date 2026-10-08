@@ -4,7 +4,7 @@ Turns case studies into proof-backed LinkedIn posts, articles and emails, one ap
 a time. Runs in the Claude desktop app and in Claude Code, on your own Claude subscription (Pro
 or Max).
 
-Status: 0.9.6. Every step is built, grouped into three stage commands (add a case study, find
+Status: 0.10.0. Every step is built, grouped into three stage commands (add a case study, find
 topics, write) after setup with `whitefox-content-start`.
 
 ## How it works
@@ -57,6 +57,8 @@ The plugin holds no campaign data, case studies or logins.
 5. Take the draft from the chat, or open it in your campaign's `drafts` folder.
 
 Next time, `/whitefox-content-start` shows where each campaign stands and what to do next.
+`/whitefox-content-dashboard` shows the dashboard page any time: click a count or a topic to see
+its pains, quotes, topics and drafts, and **Open** on a draft to read it in the preview.
 
 ### Getting a new version
 

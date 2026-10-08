@@ -1,5 +1,14 @@
 # Changelog
 
+## 0.10.0
+
+- Dashboard: every count opens its list (case studies with their proofs and fit, pains, quotes
+  with links, all topics, drafts). Each topic opens to show its stance, the pains and quotes
+  behind it, its keywords and its drafts.
+- New `/whitefox-content-dashboard`: shows a fresh dashboard any time, read only.
+- New `/whitefox-content-show <ID> <campaign>`: shows one saved item; a draft opens in the
+  preview page. The dashboard's **Open** button on a draft copies this command.
+
 ## 0.9.6
 
 - A new campaign now leads to its own case study first. `whitefox-content-campaign` ends by

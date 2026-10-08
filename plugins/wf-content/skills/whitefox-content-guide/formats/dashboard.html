@@ -7,31 +7,38 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Bai+Jamjuree:wght@400;500;600&display=swap" rel="stylesheet">
 <!--
-  Campaign dashboard for whitefox-content-start. The step copies this file unchanged except for
-  the DATA block below, fills DATA from the workspace, and shows it as an artifact. It only shows
-  what exists and what the user can do; work happens in the chat.
+  Campaign dashboard for whitefox-content-start and whitefox-content-dashboard. The step copies
+  this file unchanged except for the DATA block below, fills DATA from the workspace, and shows
+  it as an artifact. The page cannot read the workspace or talk to the chat: everything it shows
+  is in DATA, and its buttons copy commands for the user to paste.
 
   DATA shape:
   {
-    "version": "0.9.6",
+    "version": "0.10.0",
     "workspace": "C:\\...\\WhiteFox Content",
-    "update": null,                          // or "0.9.6" when a newer version exists
+    "update": null,                          // or "0.10.1" when a newer version exists
     "profiles": [ { "code": "FIN", "name": "Fintech / payments", "status": "approved" } ],
     "campaigns": [ {
       "name": "fin-2026-10", "profile": "FIN", "goal": "...",
-      "made": [ ["case studies", "2"], ["pains", "11"], ["quotes", "10"], ["topics", "8"], ["drafts", "3"] ],
-      "topics": [ { "id": "LANE-03", "label": "Payment gateway switching costs",
-                    "status": "3 drafts: LinkedIn post, email, article", "done": true },
-                  { "id": "LANE-01", "label": "...", "status": "no plan yet", "done": false } ],
+      "made": [ ["case study", "1"], ["pains", "11"], ["quotes", "10"], ["topics", "8"], ["drafts", "3"] ],
+      "topics": [ { "id": "LANE-03", "label": "...", "status": "3 drafts: article, LinkedIn post, email", "done": true } ],
       "actions": [ { "label": "Write for LANE-01", "command": "/whitefox-content-write",
-                     "code": "/wf-content:whitefox-content-write", "suggested": true },
-                   { "label": "Add another case study", "command": "/whitefox-content-add-case-study",
-                     "code": "/wf-content:whitefox-content-add-case-study" },
-                   { "label": "Find more topics", "command": "/whitefox-content-find-topics",
-                     "code": "/wf-content:whitefox-content-find-topics" } ]
+                     "code": "/wf-content:whitefox-content-write", "suggested": true } ],
+      "details": {                           // what opens when a count or topic is clicked
+        "sources": [ { "id": "loot", "name": "Loot payments platform", "link": "https://...",
+                       "proofs": [ { "id": "loot-P01", "solution": "...", "fit": "matched", "wording": "..." } ] } ],
+        "pains":   [ { "id": "PAIN-01", "text": "...", "audience": "...", "backed": "loot-P01", "quotes": 2 } ],
+        "quotes":  [ { "id": "QUOTE-01", "text": "...", "speaker": "...", "platform": "Reddit",
+                       "link": "https://...", "pain": "PAIN-01" } ],
+        "lanes":   [ { "id": "LANE-03", "label": "...", "status": "active", "type": "full-stack",
+                       "stance": "...", "demand": "some", "pains": ["PAIN-01"], "quotes": ["QUOTE-01"],
+                       "keywords": ["payment gateway"],
+                       "drafts": [ { "angle": "ANGLE-03", "channel": "linkedin-post", "title": "...", "words": 160 } ] } ]
+      }
     } ]
   }
-  topics: the active lanes, and any lane with a plan or drafts. Exactly one action is suggested.
+  fit: matched | rejected | not judged. topics: the active lanes and any lane with a plan or
+  drafts. Exactly one action is suggested. Draft "Open" copies /whitefox-content-show <angle> <campaign>.
 -->
 <style>
 /* Neutral surfaces; blue only for actions; one hue per stage (case study violet, topics amber, write green). */
@@ -90,8 +97,7 @@ h3.first { margin-top: 0; }
 .dot.s1 { background: var(--s1); } .dot.s2 { background: var(--s2); } .dot.s3 { background: var(--s3); }
 .legend { display: flex; gap: 14px; flex-wrap: wrap; font-size: 12px; color: var(--muted); margin: 8px 0 0; }
 .legend span { display: inline-flex; align-items: center; gap: 6px; }
-.topic { display: grid; grid-template-columns: auto 1fr auto; gap: 12px; align-items: center;
-  padding: 10px 12px; border-radius: 12px; background: var(--raised); border: 1px solid var(--line); margin-bottom: 8px; }
+.topic { border-radius: 12px; background: var(--raised); border: 1px solid var(--line); margin-bottom: 8px; }
 .topic .id { font-size: 12px; color: var(--muted); font-variant-numeric: tabular-nums; }
 .topic .label { color: var(--ink); font-weight: 500; }
 .pill { font-size: 12px; border-radius: 999px; padding: 3px 10px; white-space: nowrap; font-weight: 500; }
@@ -120,9 +126,47 @@ h3.first { margin-top: 0; }
 .btn.ghost { background: transparent; color: var(--ink); border-color: var(--line-strong); padding: 5px 12px; font-size: 13px; }
 .btn.ghost:hover { background: var(--raised); }
 .btn:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+button.stat { border: 0; text-align: left; font: inherit; color: inherit; cursor: pointer; transition: background .15s; }
+button.stat:hover { background: var(--raised); }
+.stat[aria-expanded="true"] { background: var(--raised); box-shadow: inset 0 -2px 0 var(--accent); }
+.stat .more { font-size: 11px; color: var(--accent); margin-top: 2px; }
+.panel { border: 1px solid var(--line); border-radius: 12px; margin-top: 10px; background: var(--raised); }
+.panel-head { display: flex; align-items: center; gap: 8px; padding: 10px 14px; border-bottom: 1px solid var(--line); }
+.panel-head b { color: var(--ink); font-weight: 600; flex: 1; }
+.panel-body { padding: 6px 14px 12px; max-height: 420px; overflow: auto; }
+.item { padding: 10px 0; border-bottom: 1px solid var(--line); font-size: 14px; }
+.item:last-child { border-bottom: 0; }
+.iid { font-size: 12px; color: var(--muted); margin-right: 8px; font-variant-numeric: tabular-nums; }
+.item .main { color: var(--ink); }
+.item .meta { font-size: 12px; color: var(--muted); margin-top: 3px; }
+.item blockquote { margin: 0; padding-left: 10px; border-left: 3px solid var(--s2); color: var(--ink); font-style: italic; }
+.item a { color: var(--accent); text-decoration: none; }
+.item a:hover { text-decoration: underline; }
+.fit { font-size: 11px; border-radius: 999px; padding: 1px 8px; margin-left: 6px; }
+.fit.matched { background: var(--s3-soft); color: var(--s3); }
+.fit.rejected { background: transparent; color: var(--muted); border: 1px solid var(--line-strong); }
+details.topic { display: block; padding: 0; }
+details.topic > summary { display: grid; grid-template-columns: auto 1fr auto auto; gap: 12px; align-items: center;
+  padding: 10px 12px; cursor: pointer; list-style: none; }
+details.topic > summary::-webkit-details-marker { display: none; }
+details.topic > summary .chev { color: var(--muted); transition: transform .15s; font-size: 12px; }
+details.topic[open] > summary .chev { transform: rotate(90deg); }
+.tdetail { padding: 2px 12px 12px; font-size: 14px; border-top: 1px solid var(--line); }
+.tdetail dl { display: grid; grid-template-columns: 90px 1fr; gap: 6px 12px; margin: 10px 0 0; }
+.tdetail dt { color: var(--muted); font-size: 12px; padding-top: 2px; }
+.tdetail dd { margin: 0; color: var(--text); }
+.tdetail .ref { margin-bottom: 6px; }
+.tdetail .ref q { font-style: italic; color: var(--ink); }
+.tag { display: inline-block; font-size: 12px; border-radius: 6px; padding: 1px 7px; margin: 0 4px 4px 0;
+  background: var(--surface); border: 1px solid var(--line); color: var(--text); }
+.draft { display: flex; align-items: center; gap: 10px; padding: 6px 0; }
+.draft .dt { flex: 1; min-width: 0; }
+.draft .dt span { display: block; font-size: 12px; color: var(--muted); }
+.empty { color: var(--muted); font-size: 14px; padding: 10px 0; }
 .profiles { display: flex; gap: 8px; flex-wrap: wrap; }
 @media (max-width: 560px) {
-  .topic { grid-template-columns: 1fr; gap: 4px; }
+  details.topic > summary { grid-template-columns: auto 1fr; } details.topic > summary .pill { grid-column: 2; justify-self: start; }
+  .tdetail dl { grid-template-columns: 1fr; gap: 2px; }
   .hero { grid-template-columns: 1fr; } .hero .btn { grid-column: 1; grid-row: auto; justify-self: start; margin-top: 8px; }
 }
 </style>
@@ -143,31 +187,66 @@ h3.first { margin-top: 0; }
 <script>
 /* DATA: the step replaces this object with the workspace's state. */
 const DATA = {
-  "version": "0.9.6",
+  "version": "0.10.0",
   "workspace": "Documents/WhiteFox Content",
   "update": null,
   "profiles": [ { "code": "EX", "name": "Example industry", "status": "draft" } ],
   "campaigns": [ {
     "name": "example-2026-10", "profile": "EX", "goal": "An example goal.",
-    "made": [ ["case studies", "0"] ],
+    "made": [ ["case study", "1"], ["pains", "1"] ],
     "topics": [],
-    "actions": [ { "label": "Add a case study", "command": "/whitefox-content-add-case-study",
-                   "code": "/wf-content:whitefox-content-add-case-study", "suggested": true } ]
+    "actions": [ { "label": "Find topics", "command": "/whitefox-content-find-topics",
+                   "code": "/wf-content:whitefox-content-find-topics", "suggested": true } ],
+    "details": {
+      "sources": [ { "id": "example", "name": "Example case study", "link": null,
+                     "proofs": [ { "id": "example-P01", "solution": "What WhiteFox built.", "fit": "matched", "wording": "One buyer-readable line." } ] } ],
+      "pains": [ { "id": "PAIN-01", "text": "An example buyer problem.", "audience": "a buyer role", "backed": "example-P01", "quotes": 0 } ],
+      "quotes": [], "lanes": []
+    }
   } ]
 };
 /* end DATA */
 
 const esc = s => String(s ?? "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+const safeUrl = u => /^https?:\/\//i.test(u || "") ? u : "";
 /* Stage of a command or a count, for its colour: s1 case study, s2 topics, s3 write. */
 const STAGE = { "add-case-study": ["s1", "◆"], "find-topics": ["s2", "✦"], "write": ["s3", "✎"], "campaign": ["", "+"] };
 const stageOf = cmd => { for (const k in STAGE) if (cmd.endsWith("-" + k)) return STAGE[k]; return ["", "›"]; };
 const countStage = k => /case stud|proof|pain/i.test(k) ? "s1" : /quote|topic/i.test(k) ? "s2" : /draft|piece/i.test(k) ? "s3" : "";
+const panelOf = k => /case stud|proof/i.test(k) ? "sources" : /pain/i.test(k) ? "pains" : /quote/i.test(k) ? "quotes" : /topic/i.test(k) ? "lanes" : /draft/i.test(k) ? "drafts" : "";
+const CHANNEL = { "linkedin-post": "LinkedIn post", "email": "Email", "website-article": "Article" };
 async function copy(btn, text) {
   const old = btn.textContent;
   try { await navigator.clipboard.writeText(text); btn.textContent = "Copied ✓"; }
   catch (err) { btn.textContent = "Select and copy"; }
   setTimeout(() => { btn.textContent = old; }, 1500);
 }
+const tags = (list) => (list || []).length ? list.map(x => `<span class="tag">${esc(x)}</span>`).join("") : `<span class="empty">(none)</span>`;
+const draftRow = (d, camp, lane) => `<div class="draft"><span class="dt">${esc(d.title || d.angle)}<span>${esc(CHANNEL[d.channel] || d.channel)} · ${esc(d.angle)}${lane ? ` · ${esc(lane)}` : ""}${d.words ? ` · ${esc(d.words)} words` : ""}</span></span><button class="btn ghost" type="button" data-cmd="/whitefox-content-show ${esc(d.angle)} ${esc(camp)}" title="Copies a command that shows this draft in the chat">Open</button></div>`;
+function laneDetail(l, camp, d) {
+  const pick = (ids, list, show) => (ids || []).length ? ids.map(id => { const x = (list || []).find(y => y.id === id); return `<div class="ref"><span class="iid">${esc(id)}</span>${x ? show(x) : ""}</div>`; }).join("") : `<span class="empty">(none)</span>`;
+  return `<div class="tdetail"><dl>
+    <dt>Stance</dt><dd>${esc(l.stance || "(none)")}</dd>
+    <dt>Status</dt><dd>${esc(l.status || "")}${l.type ? ` · ${esc(l.type)}` : ""}${l.demand ? ` · demand ${esc(l.demand)}` : ""}</dd>
+    <dt>Pains</dt><dd>${pick(l.pains, d.pains, x => esc(x.text))}</dd>
+    <dt>Quotes</dt><dd>${pick(l.quotes, d.quotes, x => `<q>${esc(x.text)}</q>`)}</dd>
+    <dt>Keywords</dt><dd>${tags(l.keywords)}</dd>
+    <dt>Drafts</dt><dd>${(l.drafts || []).length ? l.drafts.map(d => draftRow(d, camp)).join("") : `<span class="empty">none yet</span>`}</dd>
+  </dl></div>`;
+}
+function laneRow(l, camp, pill, d) {
+  return `<details class="topic"><summary><span class="chev">▶</span><span><span class="iid">${esc(l.id)}</span><span class="label">${esc(l.label)}</span></span>${pill}</summary>${laneDetail(l, camp, d)}</details>`;
+}
+function panelBody(kind, d, camp) {
+  if (kind === "sources") return (d.sources || []).map(src => `<div class="item"><div class="main"><b>${esc(src.name)}</b>${safeUrl(src.link) ? ` · <a href="${esc(safeUrl(src.link))}" target="_blank" rel="noopener">open ↗</a>` : ""}</div>${(src.proofs || []).map(pr => `<div class="meta" style="margin-top:8px"><span class="iid">${esc(pr.id)}</span><span class="fit ${esc(pr.fit === "matched" ? "matched" : "rejected")}">${esc(pr.fit)}</span><div class="main" style="margin-top:3px">${esc(pr.wording && pr.wording !== "(none)" ? pr.wording : pr.solution)}</div></div>`).join("")}</div>`).join("");
+  if (kind === "pains") return (d.pains || []).map(x => `<div class="item"><span class="iid">${esc(x.id)}</span><span class="main">${esc(x.text)}</span><div class="meta">${esc(x.audience || "")}${x.backed ? ` · backed by ${esc(x.backed)}` : ""}${x.quotes != null ? ` · ${esc(x.quotes)} quote${x.quotes == 1 ? "" : "s"}` : ""}</div></div>`).join("");
+  if (kind === "quotes") return (d.quotes || []).map(q => `<div class="item"><span class="iid">${esc(q.id)} · ${esc(q.pain || "")}</span><blockquote>“${esc(q.text)}”</blockquote><div class="meta">${esc(q.speaker || "")}${q.platform ? ` · ${esc(q.platform)}` : ""}${safeUrl(q.link) ? ` · <a href="${esc(safeUrl(q.link))}" target="_blank" rel="noopener">source ↗</a>` : ""}</div></div>`).join("");
+  if (kind === "lanes") return (d.lanes || []).map(l => laneRow(l, camp, `<span class="pill ${l.status === "active" ? "part" : "none"}">${esc(l.status)}</span>`, d)).join("");
+  if (kind === "drafts") return (d.lanes || []).flatMap(l => (l.drafts || []).map(x => draftRow(x, camp, l.id))).join("");
+  return "";
+}
+const PANEL_TITLE = { sources: "Case studies and proofs", pains: "Buyer pains", quotes: "Buyer quotes", lanes: "All topics", drafts: "Drafts" };
+
 document.getElementById("ver").textContent = `version ${DATA.version}`;
 document.getElementById("ws").textContent = `Workspace: ${DATA.workspace}`;
 const newc = document.getElementById("newc");
@@ -181,12 +260,18 @@ if (!DATA.campaigns.length) {
   box.innerHTML = `<div class="card"><div class="ctitle"><h2>No campaigns yet</h2></div><p class="goal">Start with <b>+ New campaign</b>, then add a case study, find topics and write.</p></div>`;
 }
 DATA.campaigns.forEach(c => {
+  const d = c.details || {};
   const prof = DATA.profiles.find(p => p.code === c.profile);
   const approved = prof && prof.status === "approved";
-  const stats = (c.made || []).map(([k, v]) => `<div class="stat"><div class="v">${esc(v)}</div><div class="k"><span class="dot ${countStage(k)}"></span>${esc(k)}</div></div>`).join("");
+  const stats = (c.made || []).map(([k, v]) => { const pk = panelOf(k); const has = pk && panelBody(pk, d, c.name);
+    return has ? `<button class="stat" type="button" aria-expanded="false" data-panel="${pk}"><div class="v">${esc(v)}</div><div class="k"><span class="dot ${countStage(k)}"></span>${esc(k)}</div><div class="more">View ▾</div></button>`
+               : `<div class="stat"><div class="v">${esc(v)}</div><div class="k"><span class="dot ${countStage(k)}"></span>${esc(k)}</div></div>`; }).join("");
   const topics = (c.topics || []).map(t => {
     const kind = t.done ? "done" : /^no plan/i.test(t.status) ? "none" : "part";
-    return `<div class="topic"><span class="id">${esc(t.id)}</span><span class="label">${esc(t.label)}</span><span class="pill ${kind}">${t.done ? "✓ " : ""}${esc(t.status)}</span></div>`;
+    const pill = `<span class="pill ${kind}">${t.done ? "✓ " : ""}${esc(t.status)}</span>`;
+    const lane = (d.lanes || []).find(l => l.id === t.id);
+    return lane ? laneRow({ ...lane, label: t.label || lane.label }, c.name, pill, d)
+                : `<details class="topic"><summary><span class="chev"></span><span><span class="iid">${esc(t.id)}</span><span class="label">${esc(t.label)}</span></span>${pill}</summary></details>`;
   }).join("");
   const acts = c.actions || [];
   const sug = acts.find(a => a.suggested) || acts[0];
@@ -199,11 +284,21 @@ DATA.campaigns.forEach(c => {
   card.innerHTML = `
     <div class="ctitle"><h2>${esc(c.name)}</h2><span class="chip ${approved ? "ok" : ""}">${esc(c.profile)}${prof ? ` · ${esc(prof.name)}` : ""}</span>${approved ? "" : `<span class="chip warn">profile not approved yet</span>`}</div>
     <p class="goal">${esc(c.goal || "")}</p>
-    ${stats ? `<div class="stats">${stats}</div><div class="legend"><span><span class="dot s1"></span>Case study</span><span><span class="dot s2"></span>Topics</span><span><span class="dot s3"></span>Write</span></div>` : ""}
+    ${stats ? `<div class="stats">${stats}</div><div class="panelbox"></div><div class="legend"><span><span class="dot s1"></span>Case study</span><span><span class="dot s2"></span>Topics</span><span><span class="dot s3"></span>Write</span><span>Click a count to see the list</span></div>` : ""}
     ${topics ? `<h3>Topics in progress</h3>${topics}` : ""}
     <h3>What you can do</h3>${hero}${alts ? `<div class="alts">${alts}</div>` : ""}
-    <p class="hint">Copy a command and paste it in the chat. Hover a command for its Claude Code form.</p>`;
-  card.querySelectorAll("button[data-cmd]").forEach(b => { b.onclick = () => copy(b, b.dataset.cmd); });
+    <p class="hint">Copy a command and paste it in the chat. Hover a command for its Claude Code form. This page is a snapshot: run /whitefox-content-dashboard for a fresh one.</p>`;
+  const pbox = card.querySelector(".panelbox");
+  card.querySelectorAll("button.stat").forEach(b => { b.onclick = () => {
+    const open = b.getAttribute("aria-expanded") === "true";
+    card.querySelectorAll("button.stat").forEach(x => { x.setAttribute("aria-expanded", "false"); x.querySelector(".more").textContent = "View ▾"; });
+    if (open) { pbox.innerHTML = ""; return; }
+    b.setAttribute("aria-expanded", "true"); b.querySelector(".more").textContent = "Hide ▴";
+    const k = b.dataset.panel;
+    pbox.innerHTML = `<div class="panel"><div class="panel-head"><b>${PANEL_TITLE[k]}</b><button class="btn ghost" type="button" data-close>Close</button></div><div class="panel-body">${panelBody(k, d, c.name) || `<div class="empty">Nothing yet.</div>`}</div></div>`;
+    pbox.querySelector("[data-close]").onclick = () => b.click();
+  }; });
+  card.addEventListener("click", e => { const b = e.target.closest("button[data-cmd]"); if (b) copy(b, b.dataset.cmd); });
   box.append(card);
 });
 document.getElementById("profiles").innerHTML = DATA.profiles.map(p =>

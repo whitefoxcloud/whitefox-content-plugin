@@ -29,6 +29,13 @@ You only need four commands:
 Each stage runs its steps one after the other and waits for your yes at each one. You can stop
 any time; the same command carries on from where you stopped.
 
+Two more for looking around, they change nothing:
+
+| Command | What happens |
+|---|---|
+| `/whitefox-content-dashboard` | shows the dashboard page: click a count or a topic to see its pains, quotes, topics and drafts |
+| `/whitefox-content-show <ID>` | shows one saved item, for example `/whitefox-content-show ANGLE-03 fin-2026-10` opens that draft in the preview page |
+
 The detailed steps behind the stages, each also a command of its own:
 
 | # | Step | What it does | Writes |
