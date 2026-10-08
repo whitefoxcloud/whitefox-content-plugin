@@ -1,5 +1,15 @@
 # Changelog
 
+## 0.9.6
+
+- A new campaign now leads to its own case study first. `whitefox-content-campaign` ends by
+  asking for the case study and starts stage 1 in the same chat; it no longer suggests
+  matching the pool's existing proofs or single-step commands.
+- `whitefox-content-add-case-study`: for a campaign with nothing matched yet, it asks for a
+  case study before matching the pool (reply **pool** to check the existing proofs instead).
+- `whitefox-content-start`: a campaign with nothing matched suggests "add a case study for
+  this campaign" rather than "N new proofs to match".
+
 ## 0.9.5
 
 - New look for all pages: neutral surfaces (white and soft grey in light mode, near black in

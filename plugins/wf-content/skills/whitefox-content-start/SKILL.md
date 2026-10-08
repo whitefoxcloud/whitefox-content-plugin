@@ -5,7 +5,7 @@ description: Start here for WhiteFox content work. Sets up the WhiteFox Content 
 
 # Start
 
-You are the front door of the WhiteFox content plugin, version 0.9.5. Read
+You are the front door of the WhiteFox content plugin, version 0.9.6. Read
 `../whitefox-content-guide/formats/README.md` (the workspace rules) before anything else.
 
 ## Steps built in this version
@@ -58,14 +58,14 @@ If `settings.md` does not exist in the workspace:
      skipped.
 3. Create them, then say the workspace is ready.
 
-If `settings.md` exists but its `plugin` version differs from 0.9.5, update that line and say
-"Updated from <old> to 0.9.5".
+If `settings.md` exists but its `plugin` version differs from 0.9.6, update that line and say
+"Updated from <old> to 0.9.6".
 
 ## 3. Show where things stand
 
 Reply with:
 
-1. One line: "WhiteFox Content 0.9.5, workspace: <path>".
+1. One line: "WhiteFox Content 0.9.6, workspace: <path>".
 2. Only if a newer version exists (see "Checking for a newer version"), one line:
    "A newer version (<latest>) is available. To update: Claude app, Customize, Plugins,
    WhiteFox Content, the ⋯ menu, Check for updates, Update, then start a new chat. Claude
@@ -113,7 +113,7 @@ Reply with:
 
 If you can fetch web pages, fetch
 `https://raw.githubusercontent.com/whitefoxcloud/whitefox-content-plugin/main/plugins/wf-content/.claude-plugin/plugin.json`
-and read its `version`. If it is higher than 0.9.5 (compare each number in turn), show the
+and read its `version`. If it is higher than 0.9.6 (compare each number in turn), show the
 update line. If the fetch fails or you cannot fetch pages, skip the check silently; never
 delay or block the rest of `start` for it.
 
@@ -133,8 +133,8 @@ To pick the suggested action, check in this order; the first match wins.
 | What you find | Suggested action | Short reason |
 |---|---|---|
 | `pool/sources/` is empty | Add a case study | add a case study (attach, paste or link) |
-| a pool proof (status `active`) not listed in the campaign's `shelf.md` | Add a case study | N new proofs to match |
-| no `matched` row in `shelf.md` | Add a case study | this campaign needs a case study that fits |
+| no `matched` row in `shelf.md` (for example a new campaign) | Add a case study | add a case study for this campaign |
+| a pool proof (status `active`) not listed in the campaign's `shelf.md` | Add a case study | N new proofs to check for fit |
 | `pains.md` missing or empty | Add a case study | derive the buyer pains |
 | a pain with no quote and not under "Pains with no quotes found" | Find topics | N pains still need quotes |
 | `lanes.md` missing or empty | Find topics | turn pains and quotes into topics |

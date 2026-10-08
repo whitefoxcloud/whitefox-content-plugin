@@ -29,8 +29,16 @@ pool.
 5. Show the `campaign.md` you will save, and wait for yes.
 6. Create `campaigns/<name>/` with `campaign.md` only. The other files are created by the steps
    that fill them.
-7. Say what comes next: if `pool/sources/` has proofs, `/whitefox-content-match-proof`; if it is empty,
-   `/whitefox-content-extract-proof` to add a case study. Give both commands with their Claude Code form.
+7. Say what comes next, always stage 1, and ask for the case study in the same reply:
+
+   > Next: add a case study for <name>. Attach a file, paste the text, or paste a link, and I
+   > will start stage 1 here. Or run `/whitefox-content-add-case-study` (Claude Code:
+   > `/wf-content:whitefox-content-add-case-study`) later.
+
+   If the pool already has proofs, add one line: "The pool also has <N> proofs from <sources>;
+   stage 1 checks whether they fit this campaign after your case study." Do not suggest a
+   single step's command (match-proof, extract-proof) here. When the user sends a case study,
+   follow `../whitefox-content-add-case-study/SKILL.md`.
 
 ## Pause, resume or finish a campaign
 

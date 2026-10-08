@@ -23,8 +23,12 @@ next command. Each step still shows its result and waits for approval before sav
    (it is part of setup), then come back here.
 3. Work out where to start, and skip steps that are already done, one line each:
    - The user gave a case study (file, text or link): start at step 1.
-   - No new case study, but the pool has active proofs not judged for this campaign: start at
-     step 2.
+   - No new case study and the campaign has no `matched` proof yet (a new campaign): ask for
+     its case study first: "Do you have a case study for <campaign>? Attach a file, paste the
+     text, or paste a link. Or reply **pool** to check the <N> proofs already in the pool (from
+     <sources>) for fit." Start at step 1 with the case study, or at step 2 on **pool**.
+   - No new case study, the campaign already has matched proofs, and the pool has active
+     proofs not judged for this campaign: start at step 2.
    - Every proof judged, at least one matched, no `pains.md`: start at step 3.
    - All done: say "Stage 1 is done for <campaign>" and offer stage 2.
    - The pool is empty and no case study was given: ask for one (attach a file, paste the
