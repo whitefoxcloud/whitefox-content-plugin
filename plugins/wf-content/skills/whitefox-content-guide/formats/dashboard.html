@@ -14,7 +14,7 @@
 
   DATA shape:
   {
-    "version": "0.14.2",
+    "version": "0.15.0",
     "workspace": "C:\\...\\WhiteFox Content",
     "update": null,                          // or "0.10.1" when a newer version exists
     "profiles": [ { "code": "FIN", "name": "Fintech / payments", "status": "approved" } ],
@@ -33,7 +33,9 @@
         "lanes":   [ { "id": "LANE-03", "label": "...", "status": "active", "type": "full-stack",
                        "stance": "...", "demand": "some", "pains": ["PAIN-01"], "quotes": ["QUOTE-01"],
                        "keywords": ["payment gateway"],
-                       "drafts": [ { "angle": "ANGLE-03", "channel": "linkedin-post", "title": "...", "words": 160 } ] } ]
+                       "drafts": [ { "angle": "ANGLE-03", "channel": "linkedin-post", "title": "...", "words": 160,
+                                    "persona": "engineer", "body": "the ready-to-copy text",
+                                    "subjects": [], "previewText": "", "seo": null } ] } ]   // body etc. as in preview.html
       }
     } ]
   }
@@ -179,6 +181,25 @@ details.topic[open] > summary .chev { transform: rotate(90deg); }
 .draft .dt { flex: 1; min-width: 0; }
 .draft .dt span { display: block; font-size: 12px; color: var(--muted); }
 .empty { color: var(--muted); font-size: 14px; padding: 10px 0; }
+.reader { position: fixed; inset: 0; background: rgba(0,0,0,.55); display: none; align-items: flex-start;
+  justify-content: center; padding: 24px 12px; overflow: auto; z-index: 10; }
+.reader.on { display: flex; }
+.rpanel { background: var(--page); border: 1px solid var(--line); border-radius: 16px; width: 100%; max-width: 760px;
+  padding: 16px; box-shadow: var(--shadow); }
+.rhead { display: flex; align-items: center; gap: 10px; margin-bottom: 12px; flex-wrap: wrap; }
+.rhead b { flex: 1; color: var(--ink); font-size: 16px; }
+.rcard { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 16px; margin-bottom: 12px; }
+.rcard p { margin: 0 0 12px; white-space: pre-wrap; }
+.rcard h1 { font-size: 24px; color: var(--ink); margin: 0 0 14px; line-height: 1.25; }
+.rcard h2 { font-size: 19px; color: var(--ink); margin: 22px 0 8px; }
+.rcard h3 { font-size: 16px; color: var(--ink); margin: 16px 0 6px; }
+.rcard ul, .rcard ol { margin: 0 0 12px; padding-left: 22px; }
+.rlabel { font-size: 12px; color: var(--muted); text-transform: uppercase; letter-spacing: .06em; margin-bottom: 6px; }
+.rsubj { display: flex; gap: 10px; align-items: center; padding: 6px 0; border-bottom: 1px solid var(--line); }
+.rsubj span { flex: 1; color: var(--ink); font-weight: 500; }
+.rsnip .t { color: var(--accent); font-size: 18px; } .rsnip .u { color: var(--s3); font-size: 13px; } .rsnip .d { color: var(--muted); font-size: 14px; }
+.rwho { display: flex; gap: 10px; align-items: center; margin-bottom: 10px; }
+.ravatar { width: 40px; height: 40px; border-radius: 50%; background: var(--accent); color: #fff; display: grid; place-items: center; font-weight: 600; }
 .profiles { display: flex; gap: 8px; flex-wrap: wrap; }
 @media (max-width: 560px) {
   details.topic > summary { grid-template-columns: auto 1fr; } details.topic > summary .pill { grid-column: 2; justify-self: start; }
@@ -200,10 +221,11 @@ details.topic[open] > summary .chev { transform: rotate(90deg); }
   <h3>Industries</h3>
   <div class="profiles" id="profiles"></div>
 </main>
+<div class="reader" id="reader" role="dialog" aria-modal="true"><div class="rpanel" id="rpanel"></div></div>
 <script>
 /* DATA: the step replaces this object with the workspace's state. */
 const DATA = {
-  "version": "0.14.2",
+  "version": "0.15.0",
   "workspace": "Documents/WhiteFox Content",
   "update": null,
   "profiles": [ { "code": "EX", "name": "Example industry", "status": "draft" } ],
@@ -252,7 +274,7 @@ async function copy(btn, text) {
   setTimeout(() => { btn.textContent = old; }, 1500);
 }
 const tags = (list) => (list || []).length ? list.map(x => `<span class="tag">${esc(x)}</span>`).join("") : `<span class="empty">(none)</span>`;
-const draftRow = (d, camp, lane) => `<div class="draft"><span class="dt">${esc(d.title || d.angle)}<span>${esc(CHANNEL[d.channel] || d.channel)} · ${esc(fid(d.angle))}${lane ? ` · ${esc(fid(lane))}` : ""}${d.words ? ` · ${esc(d.words)} words` : ""}</span></span><button class="btn ghost" type="button" data-cmd="/whitefox-content-show ${esc(fid(d.angle))} ${esc(camp)}" title="Copies a command that shows this draft in the chat">Open</button></div>`;
+const draftRow = (d, camp, lane) => `<div class="draft"><span class="dt">${esc(d.title || d.angle)}<span>${esc(CHANNEL[d.channel] || d.channel)} · ${esc(fid(d.angle))}${lane ? ` · ${esc(fid(lane))}` : ""}${d.words ? ` · ${esc(d.words)} words` : ""}</span></span>${d.body ? `<button class="btn ghost" type="button" data-read="${esc(d.angle)}">Open</button>` : `<button class="btn ghost" type="button" data-cmd="/whitefox-content-show ${esc(fid(d.angle))} ${esc(camp)}" title="Copies a command that shows this draft in the chat">Open</button>`}</div>`;
 function laneDetail(l, camp, d) {
   const pick = (ids, list, show) => (ids || []).length ? ids.map(id => { const x = (list || []).find(y => y.id === id); return `<div class="ref"><span class="iid">${esc(fid(id))}</span>${x ? show(x) : ""}</div>`; }).join("") : `<span class="empty">(none)</span>`;
   return `<div class="tdetail"><dl>
@@ -276,6 +298,52 @@ function panelBody(kind, d, camp) {
   return "";
 }
 const PANEL_TITLE = { sources: "Case studies and what we delivered", pains: "Audience problems", quotes: "Audience quotes", lanes: "All topics", drafts: "Drafts" };
+
+
+/* Draft reader: shows a draft's text inside the page (no chat needed). */
+const inl = s => esc(s).replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>");
+const plain = s => String(s ?? "").replace(/\*\*(.+?)\*\*/g, "$1");
+function md(text) {
+  const out = []; let list = null, para = [];
+  const close = () => { if (list) { out.push(`</${list}>`); list = null; } };
+  const flush = () => { if (para.length) { out.push(`<p>${inl(para.join(" "))}</p>`); para = []; } };
+  for (const raw of String(text ?? "").split(/\r?\n/)) {
+    const line = raw.trimEnd(); let m;
+    if (!line.trim()) { flush(); close(); continue; }
+    if ((m = line.match(/^(#{2,3})\s+(.*)$/))) { flush(); close(); out.push(`<h${m[1].length}>${inl(m[2])}</h${m[1].length}>`); continue; }
+    if ((m = line.match(/^\s*[-*]\s+(.*)$/))) { flush(); if (list !== "ul") { close(); out.push("<ul>"); list = "ul"; } out.push(`<li>${inl(m[1])}</li>`); continue; }
+    if ((m = line.match(/^\s*\d+[.)]\s+(.*)$/))) { flush(); if (list !== "ol") { close(); out.push("<ol>"); list = "ol"; } out.push(`<li>${inl(m[1])}</li>`); continue; }
+    close(); para.push(line.trim());
+  }
+  flush(); close(); return out.join("");
+}
+const paras = t => String(t || "").split(/\n\s*\n/).map(p => `<p>${inl(p)}</p>`).join("");
+const reader = document.getElementById("reader"), rpanel = document.getElementById("rpanel");
+const closeReader = () => { reader.classList.remove("on"); rpanel.innerHTML = ""; };
+reader.addEventListener("click", e => { if (e.target === reader) closeReader(); });
+document.addEventListener("keydown", e => { if (e.key === "Escape") closeReader(); });
+function openDraft(d) {
+  const ch = d.channel, copies = [];
+  let html = `<div class="rhead"><b>${esc(fid(d.angle))} · ${esc(CHANNEL[ch] || ch)}${d.words ? ` · ${esc(d.words)} words` : ""}</b><button class="btn" type="button" data-copy="0"></button><button class="btn ghost" type="button" data-close>Close</button></div>`;
+  if (ch === "linkedin-post") {
+    copies.push(["Copy post", plain(d.body).trim()]);
+    html += `<div class="rcard"><div class="rwho"><div class="ravatar">wf</div><div><b>WhiteFox</b><div class="iid">${esc(d.persona || "")}</div></div></div>${paras(d.body)}</div>`;
+  } else if (ch === "email") {
+    copies.push(["Copy email body", plain(d.body).trim()]);
+    html += `<div class="rcard"><div class="rlabel">Subject options</div>${(d.subjects || []).map((x, i) => { copies.push(["Copy", x]); return `<div class="rsubj"><span>${esc(x)}</span><button class="btn ghost" type="button" data-copy="${copies.length - 1}">Copy</button></div>`; }).join("")}${d.previewText ? `<p class="iid" style="margin:10px 0 0">Preview: ${esc(d.previewText)}</p>` : ""}</div><div class="rcard">${paras(d.body)}</div>`;
+  } else {
+    const seo = d.seo || {};
+    copies.push(["Copy article (Markdown)", `# ${d.title}\n\n${String(d.body || "").trim()}\n`]);
+    if (seo.title) html += `<div class="rcard rsnip"><div class="rlabel">How it may look in search</div><div class="u">whitefox.cloud/.../${esc(seo.slug || "")}</div><div class="t">${esc(seo.title)}</div><div class="d">${esc(seo.meta || "")}</div></div>`;
+    html += `<div class="rcard"><h1>${inl(d.title)}</h1>${md(d.body)}</div>`;
+  }
+  html += `<p class="hint">To change a draft, ask in the chat, for example "shorten ${esc(fid(d.angle))}".</p>`;
+  rpanel.innerHTML = html;
+  const main = rpanel.querySelector('[data-copy="0"]'); main.textContent = copies[0][0];
+  rpanel.querySelectorAll("[data-copy]").forEach(b => { b.onclick = () => copy(b, copies[+b.dataset.copy][1]); });
+  rpanel.querySelector("[data-close]").onclick = closeReader;
+  reader.classList.add("on"); rpanel.querySelector("[data-close]").focus();
+}
 
 document.getElementById("ver").textContent = `version ${DATA.version}`;
 document.getElementById("ws").textContent = `Workspace: ${DATA.workspace}`;
@@ -342,7 +410,10 @@ DATA.campaigns.forEach((c, ci) => {
     pbox.innerHTML = `<div class="panel"><div class="panel-head"><b>${PANEL_TITLE[k]}</b><button class="btn ghost" type="button" data-close>Close</button></div><div class="panel-body">${panelBody(k, d, c.name) || `<div class="empty">Nothing yet.</div>`}</div></div>`;
     pbox.querySelector("[data-close]").onclick = () => b.click();
   }; });
-  card.addEventListener("click", e => { const b = e.target.closest("button[data-cmd]"); if (b) copy(b, b.dataset.cmd); });
+  card.addEventListener("click", e => {
+    const r = e.target.closest("button[data-read]");
+    if (r) { const dr = (d.lanes || []).flatMap(l => l.drafts || []).find(x => x.angle === r.dataset.read); if (dr) openDraft(dr); return; }
+    const b = e.target.closest("button[data-cmd]"); if (b) copy(b, b.dataset.cmd); });
   box.append(card);
 });
 document.getElementById("profiles").innerHTML = DATA.profiles.map(p =>

@@ -276,12 +276,13 @@ page cannot read files, so put in everything it shows, copied from the files, ne
 - `lanes`: every lane in `lanes.md`: `id`, `label`, `status`, `type`, `stance`, `demand`,
   `pains` and `quotes` (ID lists), `keywords` (the lane's `target` and `supporting` keywords from
   its latest `keywords.md` section, or empty), and `drafts`: each live file in `drafts/` for
-  the lane, with `angle`, `channel`, `words`, and `title` (an article's H1, an email's first
-  subject option, or a LinkedIn post's first line).
+  the lane, with `angle`, `channel`, `words`, `title` (an article's H1, an email's first
+  subject option, or a LinkedIn post's first line), and its text exactly as in the draft
+  preview: `body`, `persona` (LinkedIn), `subjects` and `previewText` (email), `seo` (article).
 
-Leave out a list the campaign does not have yet. The drafts' text stays out of the page: each
-draft's **Open** copies `/whitefox-content-show Piece <n> <campaign>`, which shows it in the
-draft preview. Keep IDs and statuses in `details` exactly as in the files (`PAIN-03`, `active`);
+Leave out a list the campaign does not have yet. A draft's **Open** shows its text on the page
+with copy buttons; a draft without `body` falls back to copying `/whitefox-content-show Piece <n>
+<campaign>`. Keep IDs and statuses in `details` exactly as in the files (`PAIN-03`, `active`);
 the page shows them in the user's words.
 
 When a step names another step to the user, it gives the Claude app command and the Claude Code

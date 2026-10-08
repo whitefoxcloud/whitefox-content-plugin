@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.15.0
+
+- Dashboard: **Open** on a draft shows it on the page, as it will look (LinkedIn post, email
+  with subject options, article with its search preview), with copy buttons. No pasting into
+  the chat.
+
 ## 0.14.2
 
 - The write stage stops after a topic's drafts are saved and offers the next chosen topic
