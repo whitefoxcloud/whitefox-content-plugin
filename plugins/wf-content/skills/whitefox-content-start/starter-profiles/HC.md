@@ -1,25 +1,25 @@
 ---
 code: HC
 name: Healthcare / health-tech
-status: unconfirmed
+status: approved
 source: ai-content-engine data/campaign-profiles/healthcare.json, transcribed 2026-10-06
-changed_by: transcribed from the app
-changed: 2026-10-06
+changed_by: Charlotte
+changed: 2026-10-08
 ---
 
 # HC: Healthcare / health-tech
 
 ## Approval note
 
-(no approval note in the source profile)
+Approved by Charlotte 2026-10-08: all fields; industry and audience added, case study set to Touchstone.
 
 ## Industry
 
-(not set)
+Healthcare / health-tech
 
 ## Audience
 
-(not set)
+CTOs and product leaders at health-tech companies; health-tech founders; heads of operations at care providers and clinics; digital health programme managers
 
 ## Markets
 
@@ -37,12 +37,12 @@ Custom software and platform stabilization for health-tech operations, reliable,
 
 ## Links
 
-- Case study: https://www.whitefox.cloud/our-work/
+- Case study: https://www.whitefox.cloud/our-work/projects/touchstone/
 - Site: https://www.whitefox.cloud/
 
 ## Lead routes
 
-- Case study: Share the relevant healthcare platform case study (https://www.whitefox.cloud/our-work/)
+- Case study: Share the Touchstone care management case study (https://www.whitefox.cloud/our-work/projects/touchstone/)
 - Conversation: Invite a platform/workflow review conversation (https://www.whitefox.cloud/)
 
 ## Brand terms

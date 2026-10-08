@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.9.3
+
+- Starter profiles HC and AI are approved (by Charlotte, 2026-10-08), with industry and
+  audience filled in and a specific case study each: Touchstone for HC, RACAS for AI. All four
+  starter profiles are now approved. Existing workspaces keep their own copies.
+
 ## 0.9.2
 
 - Starter profile INS is approved (by Charlotte, 2026-10-08). Its keyword "insurance portal"

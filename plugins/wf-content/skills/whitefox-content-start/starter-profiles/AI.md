@@ -1,25 +1,25 @@
 ---
 code: AI
 name: Applied AI / computer vision
-status: draft
+status: approved
 source: ai-content-engine data/campaign-profiles/ai.json, transcribed 2026-10-06
-changed_by: transcribed from the app
-changed: 2026-10-06
+changed_by: Charlotte
+changed: 2026-10-08
 ---
 
 # AI: Applied AI / computer vision
 
 ## Approval note
 
-INFERRED by Claude Code 2026-07-18 from the AI campaigns row (target_audience), PROOF-AI-001..008 capabilities, VoC copywriting notes, and the 8 kept lanes, at Ben's explicit ONE-TIME exception (every other campaign profile is human-transcribed/approved). NOT Ben-approved wording: review positioning / doNotPositionAs / vocabularies before relying on this for outward content. Recurring profile drafting is meant to become an in-system LLM node (register #18).
+Approved by Charlotte 2026-10-08: all fields; industry and audience added, case study set to RACAS. Earlier note: inferred by Claude Code 2026-07-18 as a one-time exception, not approved until now.
 
 ## Industry
 
-(not set)
+Applied AI / computer vision
 
 ## Audience
 
-(not set)
+CTOs and heads of engineering at companies with AI or computer-vision pilots; heads of data and ML; operations leaders whose teams review images or video by hand; founders of AI-enabled products
 
 ## Markets
 
@@ -37,12 +37,12 @@ Custom software and production engineering that turns AI and computer-vision mod
 
 ## Links
 
-- Case study: https://www.whitefox.cloud/our-work/
+- Case study: https://www.whitefox.cloud/our-work/projects/ai-platform-engineering-for-racas/
 - Site: https://www.whitefox.cloud/
 
 ## Lead routes
 
-- Case study: Share the relevant applied-AI / computer-vision case study (https://www.whitefox.cloud/our-work/)
+- Case study: Share the RACAS AI platform engineering case study (https://www.whitefox.cloud/our-work/projects/ai-platform-engineering-for-racas/)
 - Conversation: Invite a platform/workflow review conversation (https://www.whitefox.cloud/)
 
 ## Brand terms
