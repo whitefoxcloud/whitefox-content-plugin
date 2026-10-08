@@ -151,6 +151,14 @@ example:
 Number the items you show, so the user can refer to them. After a change, show the changed
 items and ask again; save only after a clear yes ("save", "yes", "go ahead").
 
+## Reading web pages
+
+Read a web page with web search and web fetch (fetch returns the page's text), never with the
+browser. In the Claude app the browser asks the user to allow every new website; fetch does
+not. Use the browser only when fetch cannot read a page that matters, and then say first, in
+one line: "<site> blocks reading as text; I can open it in the browser (the app asks you to
+allow the site once), or skip it." Skip it unless the user says open.
+
 ## Pages in the Claude app
 
 Three pages in this folder, in WhiteFox's colours and font, show results next to the chat. Show

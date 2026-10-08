@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.12.1
+
+- Web pages are read with web search and web fetch, not the browser, so the Claude app stops
+  asking to allow every website while finding quotes or reading a case study link. The browser
+  is used only when a page cannot be read as text and the user agrees.
+
 ## 0.12.0
 
 - Step commands renamed to plain words, with plain descriptions in the skill list:

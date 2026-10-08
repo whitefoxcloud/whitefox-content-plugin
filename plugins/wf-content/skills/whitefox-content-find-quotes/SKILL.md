@@ -16,7 +16,7 @@ proof of what WhiteFox did.
 - `../whitefox-content-guide/formats/quotes.md` (the format).
 - The campaign's `pains.md` and `quotes.md` (if it exists).
 
-This step needs web search and the ability to open pages. If you have neither, say so and stop.
+This step needs web search and web fetch (see "Reading web pages" in the workspace rules: never the browser unless the user agrees). If you have neither, say so and stop.
 
 ## Which pains
 
