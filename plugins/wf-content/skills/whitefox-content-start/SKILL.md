@@ -5,7 +5,7 @@ description: Start here for WhiteFox content work. Sets up the WhiteFox Content 
 
 # Start
 
-You are the front door of the WhiteFox content plugin, version 0.8.1. Read
+You are the front door of the WhiteFox content plugin, version 0.9.0. Read
 `../whitefox-content-guide/formats/README.md` (the workspace rules) before anything else.
 
 ## Steps built in this version
@@ -58,14 +58,14 @@ If `settings.md` does not exist in the workspace:
      skipped.
 3. Create them, then say the workspace is ready.
 
-If `settings.md` exists but its `plugin` version differs from 0.8.1, update that line and say
-"Updated from <old> to 0.8.1".
+If `settings.md` exists but its `plugin` version differs from 0.9.0, update that line and say
+"Updated from <old> to 0.9.0".
 
 ## 3. Show where things stand
 
 Reply with:
 
-1. One line: "WhiteFox Content 0.8.1, workspace: <path>".
+1. One line: "WhiteFox Content 0.9.0, workspace: <path>".
 2. Only if a newer version exists (see "Checking for a newer version"), one line:
    "A newer version (<latest>) is available. To update: Claude app, Customize, Plugins,
    WhiteFox Content, the ⋯ menu, Check for updates, Update, then start a new chat. Claude
@@ -82,16 +82,26 @@ Reply with:
    >    optional).
    > 3. **Write**: a plan of pieces for a topic, then LinkedIn posts, emails and articles.
    > Every step shows its result and waits for your yes before saving.
+   > You can come back to any stage at any time: add another case study, find more topics, or
+   > start a new campaign.
 
-5. For each campaign that is not `done`, a map of the stages with where it stands:
+5. For each campaign that is not `done`, what has been made and what is in progress, in this
+   shape (lead with finished work, never hide it behind a count):
 
    > **acme-2026-10** (ACME)
-   > Setup ✓ · 1 Add a case study ✓ · 2 Find topics ✓ · **3 Write ← you are here**
-   > Next: `/whitefox-content-write`, LANE-03 has 2 kept pieces without drafts.
+   > Made so far: 2 case studies · 11 pains · 10 quotes · 8 topics · 3 drafts
+   > - LANE-03 *Payment gateway switching costs*: 3 drafts (LinkedIn post, email, article) ✓
+   > - LANE-01 *Chargeback handling at scale*: no plan yet
 
-   ✓ marks a finished stage; the arrow marks the stage to work on (see "Where a campaign
-   stands"). The Next line gives the stage command and one short reason.
-6. One recommendation: the single next command you suggest, with its Claude Code form.
+   List the active lanes and any lane with a brief or drafts, with its label from `lanes.md`
+   and what it has (see "What the user can do").
+6. What the user can do, in one line, with the suggested action first:
+
+   > You can: **write for LANE-01** (suggested), add another case study, find more topics, or
+   > start a new campaign.
+
+   Then the suggested command with its Claude Code form, for example
+   `/whitefox-content-write` (Claude Code: `/wf-content:whitefox-content-write`).
 7. In the Claude app, also show the dashboard page (workspace rules, "The dashboard"), and say
    in one line at the top: "Click the **WhiteFox Content dashboard** card below for the full
    picture."
@@ -100,26 +110,39 @@ Reply with:
 
 If you can fetch web pages, fetch
 `https://raw.githubusercontent.com/whitefoxcloud/whitefox-content-plugin/main/plugins/wf-content/.claude-plugin/plugin.json`
-and read its `version`. If it is higher than 0.8.1 (compare each number in turn), show the
+and read its `version`. If it is higher than 0.9.0 (compare each number in turn), show the
 update line. If the fetch fails or you cannot fetch pages, skip the check silently; never
 delay or block the rest of `start` for it.
 
-## Where a campaign stands
+## What the user can do
 
-Check in this order; the first match is the stage to work on, every stage before it is ✓.
+The three stages are not a one-way road: a campaign can take another case study or more topics
+at any time, and the user can start a new campaign whenever they like. So always offer all
+three stage commands and "start a new campaign", and mark one as suggested.
 
-| What you find | Stage | Next line says |
+What a topic has, for the list in step 5 and the dashboard: count its drafts (files in
+`drafts/` whose `lane` is the lane, leaving out `-archived-` files) and name their channels
+(LinkedIn post, email, article). Otherwise "plan ready, N kept pieces to write" when it has a
+brief, or "no plan yet". A topic is finished (✓) when every kept piece in its brief has a draft.
+
+To pick the suggested action, check in this order; the first match wins.
+
+| What you find | Suggested action | Short reason |
 |---|---|---|
-| `pool/sources/` is empty | 1 Add a case study | add a case study (attach, paste or link) |
-| a pool proof (status `active`) not listed in the campaign's `shelf.md` | 1 Add a case study | N new proofs to match |
-| no `matched` row in `shelf.md` | 1 Add a case study | this campaign needs a case study that fits |
-| `pains.md` missing or empty | 1 Add a case study | derive the buyer pains |
-| a pain with no quote and not under "Pains with no quotes found" | 2 Find topics | N pains still need quotes |
-| `lanes.md` missing or empty | 2 Find topics | turn pains and quotes into topics |
-| no lane with status `active` | 2 Find topics | choose a topic to work on |
-| an `active` lane with no file in `briefs/` | 3 Write | plan the pieces for <lane> |
-| a brief with a `kept` angle without a file in `drafts/` | 3 Write | <lane> has N kept pieces without drafts |
-| everything above is done | all ✓ | all kept pieces have drafts; add a case study or plan more pieces |
+| `pool/sources/` is empty | Add a case study | add a case study (attach, paste or link) |
+| a pool proof (status `active`) not listed in the campaign's `shelf.md` | Add a case study | N new proofs to match |
+| no `matched` row in `shelf.md` | Add a case study | this campaign needs a case study that fits |
+| `pains.md` missing or empty | Add a case study | derive the buyer pains |
+| a pain with no quote and not under "Pains with no quotes found" | Find topics | N pains still need quotes |
+| `lanes.md` missing or empty | Find topics | turn pains and quotes into topics |
+| no lane with status `active` | Find topics | choose a topic to work on |
+| a brief with a `kept` angle without a file in `drafts/` | Write for <lane> | N kept pieces without drafts |
+| an `active` lane with no file in `briefs/` | Write for <lane> | no plan yet |
+| everything above is done | Add another case study | every active topic has its drafts |
+
+The dashboard's `actions` list the suggested one first, then the other stage commands as "Add
+another case study" (or "Add a case study" when there is none), "Find more topics" (or "Find
+topics") and "Write" (or "Write for <lane>").
 
 Stage commands: `/whitefox-content-add-case-study`, `/whitefox-content-find-topics`,
 `/whitefox-content-write`. Mention a single step's own command only if the user asks for it.

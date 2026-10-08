@@ -9,40 +9,43 @@
 <!--
   Campaign dashboard for whitefox-content-start. The step copies this file unchanged except for
   the DATA block below, fills DATA from the workspace, and shows it as an artifact. It only shows
-  where things stand; work happens in the chat.
+  what exists and what the user can do; work happens in the chat.
 
   DATA shape:
   {
-    "version": "0.7.0",
+    "version": "0.9.0",
     "workspace": "C:\\...\\WhiteFox Content",
-    "update": null,                          // or "0.7.1" when a newer version exists
+    "update": null,                          // or "0.9.1" when a newer version exists
     "profiles": [ { "code": "FIN", "name": "Fintech / payments", "status": "approved" } ],
     "campaigns": [ {
       "name": "fin-2026-10", "profile": "FIN", "goal": "...",
-      "stages": [ { "name": "Setup", "state": "done" },          // state: done | current | todo
-                  { "name": "Add a case study", "state": "done" },
-                  { "name": "Find topics", "state": "current" },
-                  { "name": "Write", "state": "todo" } ],
-      "counts": [ ["Proofs matched", "2 of 2"], ["Pains", "11"], ["Quotes", "10"],
-                  ["Topics", "8 (3 active)"], ["Pieces kept", "3"], ["Drafts", "3"] ],
-      "next": { "command": "/whitefox-content-write", "code": "/wf-content:whitefox-content-write",
-                "reason": "LANE-03 has 2 kept pieces without drafts" }
+      "made": [ ["case studies", "2"], ["pains", "11"], ["quotes", "10"], ["topics", "8"], ["drafts", "3"] ],
+      "topics": [ { "id": "LANE-03", "label": "Payment gateway switching costs",
+                    "status": "3 drafts: LinkedIn post, email, article", "done": true },
+                  { "id": "LANE-01", "label": "...", "status": "no plan yet", "done": false } ],
+      "actions": [ { "label": "Write for LANE-01", "command": "/whitefox-content-write",
+                     "code": "/wf-content:whitefox-content-write", "suggested": true },
+                   { "label": "Add another case study", "command": "/whitefox-content-add-case-study",
+                     "code": "/wf-content:whitefox-content-add-case-study" },
+                   { "label": "Find more topics", "command": "/whitefox-content-find-topics",
+                     "code": "/wf-content:whitefox-content-find-topics" } ]
     } ]
   }
+  topics: the active lanes, and any lane with a plan or drafts. Exactly one action is suggested.
 -->
 <style>
 :root {
   --blue: #005de5; --blue-dark: #0044a7; --navy: #152d51; --blue-soft: #f3faff; --blue-tint: #d7edff;
   --logo: #000000;
-  --surface: #ffffff; --page: #f2f4f7; --fg: #152d51; --text: #1f2633; --muted: #7a828e;
+  --surface: #ffffff; --page: #e8ecf2; --fg: #152d51; --text: #1f2633; --muted: #7a828e;
   --line: #e2e6ef; --ok: #1f7a4d; --ok-bg: #e6f4ec; --warn: #a15c00; --warn-bg: #fff4e0; --on-blue: #ffffff;
 }
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
-    --blue: #1f6fff; --blue-dark: #9cc2ff; --navy: #ffffff; --blue-soft: #1d3a63; --blue-tint: #2c4a75;
+    --blue: #1f6fff; --blue-dark: #9cc2ff; --navy: #ffffff; --blue-soft: #26497c; --blue-tint: #3a5f96;
     --logo: #ffffff;
-    --surface: #1b3760; --page: #152d51; --fg: #ffffff; --text: #e4e8ef; --muted: #98a1ae;
-    --line: #2c4a75; --ok: #6fd39f; --ok-bg: #183327; --warn: #f0b45a; --warn-bg: #3a2c14; --on-blue: #ffffff;
+    --surface: #1b3760; --page: #0b1729; --fg: #ffffff; --text: #e4e8ef; --muted: #98a1ae;
+    --line: #34568a; --ok: #6fd39f; --ok-bg: #183327; --warn: #f0b45a; --warn-bg: #3a2c14; --on-blue: #ffffff;
   }
 }
 * { box-sizing: border-box; }
@@ -63,24 +66,31 @@ main { max-width: 960px; margin: 0 auto; padding: 20px 16px 48px; }
 .chip { font-size: 12px; border-radius: 999px; padding: 2px 10px; background: var(--blue-soft); color: var(--blue-dark); border: 1px solid var(--blue-tint); }
 .chip.warn { background: var(--warn-bg); color: var(--warn); border-color: transparent; }
 .goal { color: var(--muted); margin: 6px 0 14px; }
-.steps { display: grid; grid-template-columns: repeat(4, 1fr); gap: 8px; margin-bottom: 16px; }
-.step { border: 1px solid var(--line); border-radius: 10px; padding: 8px 10px; font-size: 14px; }
-.step .n { font-size: 12px; color: var(--muted); }
-.step.done { background: var(--ok-bg); border-color: transparent; color: var(--ok); }
-.step.current { background: var(--blue); border-color: var(--blue); color: var(--on-blue); font-weight: 600; }
-.step.current .n { color: var(--on-blue); opacity: .85; }
-.tiles { display: grid; grid-template-columns: repeat(auto-fill, minmax(130px, 1fr)); gap: 8px; margin-bottom: 16px; }
-.tile { background: var(--blue-soft); border-radius: 10px; padding: 8px 10px; }
-.tile .v { font-size: 18px; font-weight: 600; color: var(--fg); }
-.tile .k { font-size: 12px; color: var(--muted); }
-.next { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; border-top: 1px solid var(--line); padding-top: 12px; }
-.next code { background: var(--blue-soft); color: var(--blue-dark); border-radius: 6px; padding: 3px 8px; font-size: 14px; }
-.next .why { color: var(--muted); flex-basis: 100%; font-size: 14px; }
+.made { color: var(--text); margin: 0 0 16px; font-size: 14px; }
+.made b { color: var(--fg); font-weight: 600; }
+.sub { font-size: 13px; color: var(--muted); font-weight: 500; text-transform: uppercase; letter-spacing: .4px; margin: 16px 0 6px; }
+.topic { display: grid; grid-template-columns: 80px 1fr auto; gap: 10px; align-items: baseline;
+  padding: 8px 10px; border-radius: 10px; background: var(--blue-soft); margin-bottom: 6px; font-size: 14px; }
+.topic .id { color: var(--muted); font-size: 13px; }
+.topic .label { color: var(--fg); font-weight: 500; }
+.topic .st { color: var(--muted); text-align: right; }
+.topic.done .st { color: var(--ok); }
+.action { display: flex; gap: 10px; align-items: center; flex-wrap: wrap; padding: 8px 10px;
+  border: 1px solid var(--line); border-radius: 10px; margin-bottom: 6px; }
+.action.suggested { border-color: var(--blue); }
+.action .what { font-weight: 500; color: var(--fg); min-width: 200px; }
+.action .tag { font-size: 12px; color: var(--blue-dark); background: var(--blue-soft); border-radius: 999px; padding: 1px 8px; }
+.action code { color: var(--muted); font-size: 13px; }
+.action .btn { margin-left: auto; }
+.top { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-bottom: 16px; }
+.top .ws { margin: 0; flex: 1; }
+.hint { color: var(--muted); font-size: 13px; margin: 8px 0 0; }
 .btn { border: 1px solid var(--blue); background: var(--blue); color: var(--on-blue); border-radius: 999px;
   padding: 6px 14px; cursor: pointer; font: inherit; font-weight: 500; font-size: 14px; }
+.btn.ghost { background: var(--surface); color: var(--fg); border-color: var(--line); }
 .profiles { display: flex; gap: 8px; flex-wrap: wrap; }
 h3 { font-size: 14px; color: var(--muted); font-weight: 500; text-transform: uppercase; letter-spacing: .4px; margin: 24px 0 8px; }
-@media (max-width: 560px) { .steps { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 560px) { .topic { grid-template-columns: 1fr; gap: 2px; } .topic .st { text-align: left; } .action .btn { margin-left: 0; } }
 </style>
 </head>
 <body>
@@ -90,7 +100,7 @@ h3 { font-size: 14px; color: var(--muted); font-weight: 500; text-transform: upp
 </div></div>
 <main>
   <div id="notice"></div>
-  <p class="ws" id="ws"></p>
+  <div class="top"><p class="ws" id="ws"></p><button class="btn" type="button" id="newc">+ New campaign</button></div>
   <div id="campaigns"></div>
   <h3>Profiles</h3>
   <div class="profiles" id="profiles"></div>
@@ -98,49 +108,55 @@ h3 { font-size: 14px; color: var(--muted); font-weight: 500; text-transform: upp
 <script>
 /* DATA: the step replaces this object with the workspace's state. */
 const DATA = {
-  "version": "0.7.0",
+  "version": "0.9.0",
   "workspace": "Documents/WhiteFox Content",
   "update": null,
   "profiles": [ { "code": "EX", "name": "Example industry", "status": "draft" } ],
   "campaigns": [ {
     "name": "example-2026-10", "profile": "EX", "goal": "An example goal.",
-    "stages": [ { "name": "Setup", "state": "done" }, { "name": "Add a case study", "state": "current" },
-                { "name": "Find topics", "state": "todo" }, { "name": "Write", "state": "todo" } ],
-    "counts": [ ["Proofs matched", "0"], ["Pains", "0"] ],
-    "next": { "command": "/whitefox-content-add-case-study", "code": "/wf-content:whitefox-content-add-case-study",
-              "reason": "add a case study to start" }
+    "made": [ ["case studies", "0"] ],
+    "topics": [],
+    "actions": [ { "label": "Add a case study", "command": "/whitefox-content-add-case-study",
+                   "code": "/wf-content:whitefox-content-add-case-study", "suggested": true } ]
   } ]
 };
 /* end DATA */
 
-const esc = s => String(s ?? "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+const esc = s => String(s ?? "").replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+async function copy(btn, text) {
+  const old = btn.textContent;
+  try { await navigator.clipboard.writeText(text); btn.textContent = "Copied"; }
+  catch (err) { btn.textContent = "Select and copy"; }
+  setTimeout(() => { btn.textContent = old; }, 1500);
+}
 document.getElementById("ver").textContent = `version ${DATA.version}`;
 document.getElementById("ws").textContent = `Workspace: ${DATA.workspace}`;
+const newc = document.getElementById("newc");
+newc.title = "Copies /whitefox-content-campaign (Claude Code: /wf-content:whitefox-content-campaign)";
+newc.onclick = () => copy(newc, "/whitefox-content-campaign");
 if (DATA.update) {
   document.getElementById("notice").innerHTML = `<div class="notice">Version ${esc(DATA.update)} is available. Claude app: Customize, Plugins, WhiteFox Content, the ⋯ menu, Check for updates, Update, then start a new chat.</div>`;
 }
 const box = document.getElementById("campaigns");
 if (!DATA.campaigns.length) {
-  box.innerHTML = `<div class="card"><div class="ctitle"><h2>No campaigns yet</h2></div><p class="goal">Start with <code>/whitefox-content-campaign</code>, then three stages: add a case study, find topics, write.</p></div>`;
+  box.innerHTML = `<div class="card"><div class="ctitle"><h2>No campaigns yet</h2></div><p class="goal">Start with <b>+ New campaign</b>, then add a case study, find topics and write.</p></div>`;
 }
 DATA.campaigns.forEach(c => {
   const prof = DATA.profiles.find(p => p.code === c.profile);
   const approved = prof && prof.status === "approved";
-  const steps = c.stages.map((s, i) => `<div class="step ${esc(s.state)}"><div class="n">${i === 0 ? "Setup" : `Stage ${i} of 3`}${s.state === "done" ? " ✓" : s.state === "current" ? " · you are here" : ""}</div>${esc(s.name)}</div>`).join("");
-  const tiles = (c.counts || []).map(([k, v]) => `<div class="tile"><div class="v">${esc(v)}</div><div class="k">${esc(k)}</div></div>`).join("");
+  const made = (c.made || []).map(([k, v]) => `<b>${esc(v)}</b> ${esc(k)}`).join(" · ");
+  const topics = (c.topics || []).map(t => `<div class="topic ${t.done ? "done" : ""}"><span class="id">${esc(t.id)}</span><span class="label">${esc(t.label)}</span><span class="st">${esc(t.status)}${t.done ? " ✓" : ""}</span></div>`).join("");
+  const actions = (c.actions || []).map((a, i) => `<div class="action ${a.suggested ? "suggested" : ""}"><span class="what">${esc(a.label)}</span>${a.suggested ? `<span class="tag">suggested</span>` : ""}<code title="Claude Code: ${esc(a.code)}">${esc(a.command)}</code><button class="btn ${a.suggested ? "" : "ghost"}" type="button" data-i="${i}">Copy</button></div>`).join("");
   const card = document.createElement("div");
   card.className = "card";
   card.innerHTML = `
     <div class="ctitle"><h2>${esc(c.name)}</h2><span class="chip">${esc(c.profile)}${prof ? `, ${esc(prof.name)}` : ""}</span>${approved ? "" : `<span class="chip warn">profile not approved yet</span>`}</div>
     <p class="goal">${esc(c.goal || "")}</p>
-    <div class="steps">${steps}</div>
-    <div class="tiles">${tiles}</div>
-    <div class="next"><b>Next:</b> <code>${esc(c.next.command)}</code><button class="btn" type="button">Copy command</button>
-      <span class="why">${esc(c.next.reason)}. In Claude Code: <code>${esc(c.next.code)}</code></span></div>`;
-  card.querySelector("button").onclick = async (e) => {
-    try { await navigator.clipboard.writeText(c.next.command); e.target.textContent = "Copied"; }
-    catch (err) { e.target.textContent = "Select and copy"; }
-  };
+    ${made ? `<p class="made">Made so far: ${made}</p>` : ""}
+    ${topics ? `<div class="sub">Topics in progress</div>${topics}` : ""}
+    <div class="sub">What you can do</div>${actions}
+    <p class="hint">Copy a command and paste it in the chat. Hover a command for its Claude Code form.</p>`;
+  card.querySelectorAll("button[data-i]").forEach(b => { b.onclick = () => copy(b, c.actions[+b.dataset.i].command); });
   box.append(card);
 });
 document.getElementById("profiles").innerHTML = DATA.profiles.map(p =>

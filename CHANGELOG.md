@@ -1,5 +1,16 @@
 # Changelog
 
+## 0.9.0
+
+- `whitefox-content-start` and the dashboard show what has been made first: counts, then each
+  topic in progress with its drafts (for example "3 drafts: LinkedIn post, email, article") or
+  "no plan yet". The one-way "you are here" stage strip is gone.
+- Every campaign now offers all three stage commands (add another case study, find more
+  topics, write), with one marked suggested, and the dashboard has a "+ New campaign" button.
+- Started drafts come before planning a new topic when choosing the suggestion.
+- Dark mode pages: a darker page background so cards and topic rows stand out; lighter page
+  background in light mode too.
+
 ## 0.8.1
 
 - Pages carry the real whitefox.cloud logo (its text black on light backgrounds, white on
