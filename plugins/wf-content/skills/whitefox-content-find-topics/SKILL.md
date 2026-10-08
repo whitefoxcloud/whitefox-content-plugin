@@ -37,8 +37,7 @@ For each step, read its file and follow it exactly, with two changes:
 - Open with the stage line, for example **Stage 2 of 3, Find topics: step 1 of 3, find
   audience quotes.**
 - Skip the step's own "Next" section. After it saves, say in one line what was saved, then ask:
-  "Continue to step N, <name>? Reply **go**, or **stop** to pause here." Mine quotes may need
-  more than one round: offer the next round before moving on.
+  "Continue to step N, <name>? Reply **go**, or **stop** to pause here."
 
 | Step | File |
 |---|---|

@@ -21,12 +21,24 @@ This step needs web search and web fetch (see "Reading web pages" in the workspa
 ## Which pains
 
 By default, the pains with no quote yet and not listed under "Pains with no quotes found". The
-user may name other pains. With more than 6 pains to search, do 6, save after approval, then
-offer the next round.
+user may name other pains. Do them all in one pass with one approval at the end: no rounds.
+
+## Keep it quick
+
+The user is waiting, so:
+
+- Search several pains at once (run their searches and page reads side by side, not one pain
+  after another).
+- Per pain: at most 2 searches and 4 page reads. Stop as soon as you have 2 good quotes. If
+  nothing genuine turns up within that, record it under "Pains with no quotes found" and move
+  on; the user can ask for another try on that one pain.
+- Keep only what you need from a page (the quote, its speaker and link), not the page text.
+- While searching, write one short progress line every few pains, for example "Searched 6 of
+  12 problems, 7 quotes so far."
 
 ## Search
 
-For each pain, one focused search built from its search angle and, where it helps, the
+For each pain, a focused search built from its search angle and, where it helps, the
 profile's quote-mining vocabulary. Look where practitioners talk: Reddit, industry forums,
 practitioner interviews, reviews.
 

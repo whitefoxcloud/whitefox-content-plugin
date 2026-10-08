@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.12.2
+
+- Finding audience quotes is one pass with one approval, however many problems there are (no
+  more rounds of 6). It searches several problems at once, stops at 2 good quotes or after 2
+  searches and 4 page reads per problem, and shows a short progress line every few problems.
+
 ## 0.12.1
 
 - Web pages are read with web search and web fetch, not the browser, so the Claude app stops
