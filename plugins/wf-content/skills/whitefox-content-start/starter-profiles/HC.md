@@ -2,7 +2,7 @@
 code: HC
 name: Healthcare / health-tech
 status: approved
-source: ai-content-engine data/campaign-profiles/healthcare.json, transcribed 2026-10-06
+source: WhiteFox starter profile
 changed_by: Charlotte
 changed: 2026-10-08
 ---

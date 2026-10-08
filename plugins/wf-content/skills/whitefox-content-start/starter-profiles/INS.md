@@ -2,7 +2,7 @@
 code: INS
 name: Insurance / insurtech
 status: approved
-source: ai-content-engine data/campaign-profiles/insurance.json, transcribed 2026-10-06
+source: WhiteFox starter profile
 changed_by: Charlotte
 changed: 2026-10-08
 ---

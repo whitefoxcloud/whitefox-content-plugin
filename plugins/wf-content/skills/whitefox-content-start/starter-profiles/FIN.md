@@ -2,7 +2,7 @@
 code: FIN
 name: Fintech / payments
 status: approved
-source: ai-content-engine data/campaign-profiles/fin.json, transcribed 2026-10-06
+source: WhiteFox starter profile
 changed_by: transcribed from the app
 changed: 2026-10-06
 ---
@@ -11,7 +11,7 @@ changed: 2026-10-06
 
 ## Approval note
 
-TRANSCRIBED 2026-07-11 from campaigns row + lane evidence; positioning/doNotPositionAs/caseStudyUrl/leadRoutes APPROVED BY BEN 2026-07-12 (his wording per session + whitefox.cloud About + published Loot case study). One-time human-input fill. Recurring profile drafting becomes an in-system LLM node (register #18).
+Approved 2026-07-12: positioning, never position as, case study and lead routes, based on the whitefox.cloud About page and the published Loot case study.
 
 ## Industry
 

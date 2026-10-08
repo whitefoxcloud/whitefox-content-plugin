@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.11.1
+
+- Starter profiles: plain source line ("WhiteFox starter profile") and shorter approval notes,
+  without internal references.
+
 ## 0.11.0
 
 - Plain words everywhere the user looks: what we delivered (was proof), audience problem (pain),

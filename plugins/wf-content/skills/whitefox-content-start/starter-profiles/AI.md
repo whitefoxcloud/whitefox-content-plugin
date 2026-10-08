@@ -2,7 +2,7 @@
 code: AI
 name: Applied AI / computer vision
 status: approved
-source: ai-content-engine data/campaign-profiles/ai.json, transcribed 2026-10-06
+source: WhiteFox starter profile
 changed_by: Charlotte
 changed: 2026-10-08
 ---
@@ -11,7 +11,7 @@ changed: 2026-10-08
 
 ## Approval note
 
-Approved by Charlotte 2026-10-08: all fields; industry and audience added, case study set to RACAS. Earlier note: inferred by Claude Code 2026-07-18 as a one-time exception, not approved until now.
+Approved by Charlotte 2026-10-08: all fields; industry and audience added, case study set to RACAS.
 
 ## Industry
 

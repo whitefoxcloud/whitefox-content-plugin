@@ -1,7 +1,7 @@
 {
   "name": "wf-content",
   "displayName": "WhiteFox Content",
-  "version": "0.11.0",
+  "version": "0.11.1",
   "description": "Turn case studies into proof-backed LinkedIn posts, articles and emails, one approved step at a time",
   "author": {
     "name": "WhiteFox"
