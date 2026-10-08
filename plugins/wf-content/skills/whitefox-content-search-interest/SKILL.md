@@ -74,6 +74,8 @@ prices, not a hard limit; the real cost is logged after each call. Reply **yes**
 **no**."
 
 Wait for an explicit yes in reply to this question. A yes to anything earlier does not count.
+Inside the write stage, the single free-or-paid question that shows these calls' count and
+price is this question, and **paid** is the explicit yes.
 
 ### Run
 

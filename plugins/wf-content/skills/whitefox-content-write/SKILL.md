@@ -6,12 +6,12 @@ description: Stage 3 of 3 of the WhiteFox content workflow. Plans the pieces for
 # Write (stage 3 of 3)
 
 Plans the pieces for one chosen topic, then writes every planned piece, as the workspace rules
-say in "Running straight through". The user replies twice: once to approve the content plan,
-once to approve the drafts.
+say in "Running straight through". The user replies three times: free or paid search interest,
+the content plan, and the drafts.
 
 | Step | What it does |
 |---|---|
-| 1 of 2, plan the pieces | checks free search interest for the topic, then proposes 5 to 8 pieces (the content plan): channel, headline, voice, evidence |
+| 1 of 2, plan the pieces | checks search interest for the topic (free or paid, the user chooses), then proposes 5 to 8 pieces (the content plan): channel, headline, voice, evidence |
 | 2 of 2, write the drafts | writes every planned piece in its channel |
 
 ## Before you start
@@ -31,9 +31,19 @@ once to approve the drafts.
 
 ## Step 1: plan the pieces
 
-1. If the topic has no section in `keywords.md`, run the free mode of
-   `../whitefox-content-search-interest/SKILL.md` for it first (no question, first market), and
-   keep its result for the plan. Paid mode only if the user asked for it.
+1. If the topic has no section in `keywords.md`, check its search interest first with
+   `../whitefox-content-search-interest/SKILL.md`, asking free or paid in one question:
+   - With the DataForSEO connector: work out the paid plan and price as that file says, then
+     ask: "Search interest for Topic <n> (<country>): **free** (web search: the questions and
+     phrasing people use, no numbers) or **paid** (DataForSEO: <N> calls, about $<X>, real
+     monthly searches; an estimate from list prices, not a hard limit)? Replying **paid**
+     approves that spend." This is the paid mode's price question: **paid** is its explicit
+     yes, and the $1.00 cap still applies. The user may name another market in the reply.
+   - Without the connector, still ask, so the user knows the choice exists: "Search interest
+     for Topic <n>: I can do the **free** check (questions and phrasing, no numbers). The paid
+     DataForSEO check needs the company login connected in your Claude app (see the README,
+     one-time setup). Reply **free**, or **skip**."
+   Keep the result for the plan. On **skip**, plan without keywords.
 2. Follow `../whitefox-content-plan-pieces/SKILL.md`, using that result, without its "Next".
 
 Its review is the first of the two: **Stage 3 of 3, Write: review the content plan.** Show the

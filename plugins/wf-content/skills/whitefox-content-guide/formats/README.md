@@ -142,8 +142,9 @@ saving, name the file once: "Saved to `drafts/ANGLE-03-linkedin-post.md`."
 ## Running straight through
 
 Users should only reply when there is a real choice. From a new campaign to drafts takes about
-seven replies: industry and goal, the case study, then one review each for what we delivered
-and the audience problems, the topics, the content plan, and the drafts.
+eight replies: industry and goal, the case study, then one review each for what we delivered
+and the audience problems, the topics, free or paid search interest, the content plan, and the
+drafts.
 
 When a stage command (add-case-study, find-topics, write) runs its steps:
 
@@ -159,15 +160,16 @@ When a stage command (add-case-study, find-topics, write) runs its steps:
 |---|---|---|
 | list-deliveries | is the case study public? | `yes` for a public web page, otherwise `needs review` |
 | choose-topics | which topics are chosen? | asked inside the topics review, not separately |
-| search-interest | free, paid or skip; which country | free, for each chosen topic before planning it; the first market. Paid only when the user asks, and then its own price question always applies |
+| search-interest | free or paid; which country | asked, in one question with the price (see the write stage); the first market unless the user names another |
 | plan-pieces | which topic | the first chosen topic without a content plan |
 | write | which pieces to write | every planned piece without a draft |
 | write-email | which lead route | the profile's first lead route |
 | write-article | approve the article plan first | skipped: the plan is shown as part of the drafts review |
 | write-*, any step | a draft already exists | keep it and skip that piece; a new take only when the user asks |
 
-Still always asked: anything that spends money (paid keyword research keeps its own price
-question and explicit yes), and the reviews above. Nothing is saved before its review's yes.
+Still always asked: free or paid search interest for each topic before its content plan (one
+question that shows the price, so answering **paid** is the explicit yes), and the reviews
+above. Nothing is saved before its review's yes.
 
 ## Asking for approval
 

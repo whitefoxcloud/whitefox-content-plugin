@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.14.1
+
+- The write stage asks free or paid search interest for each topic again, in one question that
+  shows the DataForSEO price, so replying **paid** also approves the spend ($1.00 cap
+  unchanged). Without the DataForSEO connector it offers free or skip and says how to connect.
+
 ## 0.14.0
 
 - Far fewer replies: from a new campaign to drafts takes about seven (industry and goal, the
