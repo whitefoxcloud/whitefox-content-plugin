@@ -72,8 +72,8 @@ In Claude Code every command starts with `wf-content:`, for example `/wf-content
 | Piece | one planned LinkedIn post, email or article |
 | Draft | a written piece, ready to copy |
 
-IDs: Problem 3, Quote 4, Topic 3, Piece 3, Delivery 2 (Loot). In the files they are written
-PAIN-03, QUOTE-04, LANE-03, ANGLE-03 and loot-P02; either form works when you type them.
+IDs: Problem 3, Quote 4, Topic 3, Piece 3, Delivery 2 (Acme). In the files they are written
+PAIN-03, QUOTE-04, LANE-03, ANGLE-03 and acme-P02; either form works when you type them.
 
 ## Things people ask
 

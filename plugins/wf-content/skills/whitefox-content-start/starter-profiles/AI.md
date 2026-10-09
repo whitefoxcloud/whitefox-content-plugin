@@ -4,7 +4,7 @@ name: Applied AI / computer vision
 status: approved
 source: WhiteFox starter profile
 changed_by: Charlotte
-changed: 2026-10-08
+changed: 2026-10-09
 ---
 
 # AI: Applied AI / computer vision
@@ -37,12 +37,11 @@ Custom software and production engineering that turns AI and computer-vision mod
 
 ## Links
 
-- Case study: https://www.whitefox.cloud/our-work/projects/ai-platform-engineering-for-racas/
 - Site: https://www.whitefox.cloud/
 
 ## Lead routes
 
-- Case study: Share the RACAS AI platform engineering case study (https://www.whitefox.cloud/our-work/projects/ai-platform-engineering-for-racas/)
+- Case study: Share the case study this piece is built from (its link in the case study library)
 - Conversation: Invite a platform/workflow review conversation (https://www.whitefox.cloud/)
 
 ## Brand terms

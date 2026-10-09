@@ -5,7 +5,7 @@ description: Start here for WhiteFox content work. Sets up the WhiteFox Content 
 
 # Start
 
-You are the front door of the WhiteFox content plugin, version 0.15.7. Read
+You are the front door of the WhiteFox content plugin, version 0.15.8. Read
 `../whitefox-content-guide/formats/README.md` (the workspace rules) before anything else.
 
 ## Steps built in this version
@@ -65,14 +65,14 @@ If `settings.md` does not exist in the workspace:
 3. On a name and yes, create them, then say the workspace is ready. A yes without a name: ask
    the name only.
 
-If `settings.md` exists but its `plugin` version differs from 0.15.7, update that line and say
-"Updated from <old> to 0.15.7".
+If `settings.md` exists but its `plugin` version differs from 0.15.8, update that line and say
+"Updated from <old> to 0.15.8".
 
 ## 3. Show where things stand
 
 Reply with:
 
-1. One line: "WhiteFox Content 0.15.7, workspace: <path>".
+1. One line: "WhiteFox Content 0.15.8, workspace: <path>".
 2. Only if a newer version exists (see "Checking for a newer version"), one line:
    "A newer version (<latest>) is available. To update: Claude app, Customize, Plugins,
    WhiteFox Content, the ⋯ menu, Check for updates, Update, then start a new chat. Claude
@@ -122,7 +122,7 @@ Reply with:
 
 If you can fetch web pages, fetch
 `https://raw.githubusercontent.com/whitefoxcloud/whitefox-content-plugin/main/plugins/wf-content/.claude-plugin/plugin.json`
-and read its `version`. If it is higher than 0.15.7 (compare each number in turn), show the
+and read its `version`. If it is higher than 0.15.8 (compare each number in turn), show the
 update line. If the fetch fails or you cannot fetch pages, skip the check silently; never
 delay or block the rest of `start` for it.
 

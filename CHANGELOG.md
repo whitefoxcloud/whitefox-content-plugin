@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.15.8
+
+- Starter industries no longer name a fixed case study (Loot, RACAS, Touchstone, Numerisk) in
+  their links or lead routes. The case study call to action always points to the case study a
+  piece is built from. Examples in the formats use a made-up client (Acme).
+- Existing workspaces keep their own industry files: change them with
+  `/whitefox-content-industry`.
+
 ## 0.15.7
 
 - Claude never suggests a specific case study anywhere (also not in "Check before saving").

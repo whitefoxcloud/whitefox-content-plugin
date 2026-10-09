@@ -134,7 +134,8 @@ Keywords are natural topic anchors. Never repeat a keyword for density.
 - **Flags.** A voice-only idea is discussed through its quote, never claimed. A permission note
   limits the claim exactly as written.
 - **Call to action.** One, specific to the piece, from the profile's lead routes, in your own
-  words. No link or URL in the text unless the user gives one.
+  words. No link or URL in the text unless the user gives one. A case study call to action
+  always points to the case study the piece is built from, never another one.
 - **Built from.** Under every draft, list each proof and quote used and the sentence or section
   that relies on it, so a reviewer can trace every claim.
 

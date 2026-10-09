@@ -4,7 +4,7 @@ Turns case studies into proof-backed LinkedIn posts, articles and emails, one ap
 a time. Runs in the Claude desktop app and in Claude Code, on your own Claude subscription (Pro
 or Max).
 
-Status: 0.15.7. Every step is built, grouped into three stage commands (add a case study, find
+Status: 0.15.8. Every step is built, grouped into three stage commands (add a case study, find
 topics, write) after setup with `whitefox-content-start`.
 
 The words it uses: **what we delivered** (one piece of work from a case study), **audience

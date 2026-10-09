@@ -38,12 +38,14 @@ changed: <YYYY-MM-DD>
 
 ## Links
 
-- Case study: <URL>
 - Site: <URL>
 
 ## Lead routes
 
 - <route name>: <the call to action> (<URL>)
+
+A profile never names a fixed case study (in Links, Lead routes or anywhere else). A case study
+route always means the case study the piece is built from.
 
 ## Brand terms
 

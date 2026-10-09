@@ -4,7 +4,7 @@ name: Healthcare / health-tech
 status: approved
 source: WhiteFox starter profile
 changed_by: Charlotte
-changed: 2026-10-08
+changed: 2026-10-09
 ---
 
 # HC: Healthcare / health-tech
@@ -37,12 +37,11 @@ Custom software and platform stabilization for health-tech operations, reliable,
 
 ## Links
 
-- Case study: https://www.whitefox.cloud/our-work/projects/touchstone/
 - Site: https://www.whitefox.cloud/
 
 ## Lead routes
 
-- Case study: Share the Touchstone care management case study (https://www.whitefox.cloud/our-work/projects/touchstone/)
+- Case study: Share the case study this piece is built from (its link in the case study library)
 - Conversation: Invite a platform/workflow review conversation (https://www.whitefox.cloud/)
 
 ## Brand terms

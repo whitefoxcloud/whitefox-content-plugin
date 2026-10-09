@@ -102,7 +102,7 @@ Step names, as the user sees them:
 | write-linkedin, write-email, write-article | write the drafts |
 
 IDs, as the user sees them: `PAIN-03` is **Problem 3**, `QUOTE-04` is **Quote 4**, `LANE-03` is
-**Topic 3**, `ANGLE-03` is **Piece 3**, and `loot-P02` is **Delivery 2 (Loot)** (the source's
+**Topic 3**, `ANGLE-03` is **Piece 3**, and `acme-P02` is **Delivery 2 (Acme)** (the source's
 `name` or `client`, shortened). File paths are the one exception: when you name a saved file,
 show its real path.
 

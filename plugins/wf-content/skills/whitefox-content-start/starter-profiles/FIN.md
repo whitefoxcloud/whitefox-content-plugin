@@ -4,7 +4,7 @@ name: Fintech / payments
 status: approved
 source: WhiteFox starter profile
 changed_by: transcribed from the app
-changed: 2026-10-06
+changed: 2026-10-09
 ---
 
 # FIN: Fintech / payments
@@ -37,12 +37,11 @@ Custom software and payments integration for fintech companies, secure, reliable
 
 ## Links
 
-- Case study: https://www.whitefox.cloud/our-work/projects/loot/
 - Site: https://www.whitefox.cloud/
 
 ## Lead routes
 
-- Case study: Share the Loot real-time payments case study (https://www.whitefox.cloud/our-work/projects/loot/)
+- Case study: Share the case study this piece is built from (its link in the case study library)
 - Conversation: Invite a platform/workflow review conversation (https://www.whitefox.cloud/)
 
 ## Brand terms

@@ -4,7 +4,7 @@ name: Insurance / insurtech
 status: approved
 source: WhiteFox starter profile
 changed_by: Charlotte
-changed: 2026-10-08
+changed: 2026-10-09
 ---
 
 # INS: Insurance / insurtech
@@ -39,12 +39,11 @@ Custom software and workflow automation for insurance operations, connected syst
 
 ## Links
 
-- Case study: https://www.whitefox.cloud/our-work/projects/cloud-native-insurance-platform-development-for-numerisk/
 - Site: https://www.whitefox.cloud/
 
 ## Lead routes
 
-- Case study: Share the Numerisk Granite case study (https://www.whitefox.cloud/our-work/projects/cloud-native-insurance-platform-development-for-numerisk/)
+- Case study: Share the case study this piece is built from (its link in the case study library)
 - Conversation: Invite a workflow review conversation (https://www.whitefox.cloud/)
 
 ## Brand terms
