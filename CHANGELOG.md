@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.15.4
+
+- A case study link opens straight in the app's browser (one **Always allow** for
+  whitefox.cloud, the first time). The page reader only ever gave a summary, and downloads
+  are blocked by the app's network settings. Claude Code downloads the page instead.
+
 ## 0.15.3
 
 - A case study link is read word for word: the page reader is asked for the full text, not a

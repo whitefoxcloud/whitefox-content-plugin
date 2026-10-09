@@ -186,19 +186,19 @@ items and ask again; save only after a clear yes ("save", "yes", "go ahead").
 
 ## Reading web pages
 
-Read a web page with web search and web fetch (fetch returns the page's text), never with the
-browser. In the Claude app the browser asks the user to allow every new website; fetch does
+Read web pages (search results, forums, articles) with web search and web fetch, never with
+the browser, except a case study link (below). In the Claude app the browser asks the user to allow every new website; fetch does
 not. Use the browser only when fetch cannot read a page that matters, and then say first, in
 one line: "<site> blocks reading as text; I can open it in the browser (the app asks you to
 allow the site once), or skip it." Skip it unless the user says open.
 
-When you need a page's exact words (a case study, a quote), fetch may answer a question about
-the page instead of returning it. Ask it for the words, not a summary, with this prompt:
-"Return the page's main text in full, exactly as written, every heading and paragraph in
-order. Do not summarise, shorten or reword anything. Leave out menus and footers." If what
-comes back is still shorter than the page or reads like a summary, fetch again with the same
-prompt asking for the next part ("continue from: <last sentence you got>"), until you have
-it all. Never treat a summary as the page's words.
+A case study link is different: its words are copied exactly, and fetch in the Claude app
+returns a summary, never the page itself. So read a case study link in the browser straight
+away (no fetch first, no download command: the app blocks those for most sites). Say first, in
+one line: "Opening the case study in the browser. The first time, the app asks to allow
+<site>: click **Always allow**." In Claude Code, download the page with a command instead
+(for example `curl -sL <link>`) and take the main text from the HTML. Never treat a summary
+as the page's words.
 
 ## Pages in the Claude app
 

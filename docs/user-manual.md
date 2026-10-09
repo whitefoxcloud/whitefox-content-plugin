@@ -202,7 +202,9 @@ Command: `/whitefox-content-add-case-study`
 1. Right after creating a campaign, Claude already asks for the case study, so just answer.
    Later, type the command, or click **Copy command** on the dashboard and paste it. Claude
    says what the stage does and asks for the case study.
-2. Attach the case study (PDF or Word file), paste its text, or paste its link.
+2. Attach the case study (PDF or Word file), paste its text, or paste its link. With a link,
+   Claude opens the page in the app's browser. The first time, the app asks to allow
+   whitefox.cloud: click **Always allow**.
 3. Claude lists **what we delivered**: each piece of work WhiteFox really did, in whole
    sentences from the case study, and checks which ones fit your campaign's audience.
 4. Claude names your **audience's problems** that this work solves, in your buyers' words.

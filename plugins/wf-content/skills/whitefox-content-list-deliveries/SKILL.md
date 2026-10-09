@@ -20,9 +20,9 @@ campaign reuses it.
 
 The user attaches a file, pastes text, or gives a link.
 
-- Link: fetch the page's main text word for word, as the workspace rules say in "Reading web
-  pages" (the full-text prompt, then the browser only if that fails). If you still cannot get
-  the exact words, ask the user to paste the text or attach the file. Never extract from memory or a search snippet.
+- Link: read the page in the browser, as the workspace rules say in "Reading web pages" (a
+  case study link), and take its main text word for word. If the user declines or it fails,
+  ask them to paste the text or attach the file. Never extract from memory or a search snippet.
 - Keep the full text exactly as captured. Leave out only site menus, footers, share buttons,
   cookie notices and image descriptions.
 
