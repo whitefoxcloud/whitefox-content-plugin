@@ -162,9 +162,12 @@ Then type `/mcp`, select **dataforseo** and sign in with the company login.
 A campaign is one push of content for one industry, with one goal, for example "insurance
 leaders, October, systems integration".
 
-1. Type `/whitefox-content-start`. Claude shows your industries and campaigns, and offers to
-   create a campaign.
-2. Reply with the industry and the goal in one message.
+1. Type `/whitefox-content-start`. Claude shows your industries and campaigns, and the
+   dashboard opens on the right (section 9). Reply *start a new campaign*, or type
+   `/whitefox-content-campaign`.
+2. Claude asks which industry and what goal. Reply in one message, for example *FIN, start
+   conversations with fintech founders and payments product leaders in Australia about
+   building reliable real-time payments integrations*. No goal yet? Just give the industry.
 3. Claude names the campaign (for example `ins-2026-10`) and asks for its case study. Go on to
    stage 1.
 
@@ -289,7 +292,8 @@ The dashboard shows every campaign, newest first:
 - **Open** on a draft shows it on the page as it will look, with copy buttons,
 - the next actions, one of them suggested, and **+ New campaign**.
 
-The dashboard only shows; it never changes anything. To see one saved item in the chat, use
+While it is open, Claude refreshes it after each milestone (a campaign created, a review
+saved, drafts saved). The dashboard only shows; it never changes anything. To see one saved item in the chat, use
 `/whitefox-content-show`, for example `/whitefox-content-show Topic 3 ins-2026-10`.
 
 ![The dashboard](images/26-dashboard.png)
@@ -372,8 +376,8 @@ Save each image in `docs/images/` with this name:
 | `12-app-dataforseo-add.png` | Add custom connector with name and URL filled in |
 | `13-app-dataforseo-permissions.png` | DataForSEO tool permissions, three tools on and set to ask |
 | `14-code-dataforseo-mcp.png` | Claude Code `/mcp` list with claude.ai DataForSEO connected |
-| `15-start.png` | the start reply: version, workspace, industries, campaigns |
-| `16-new-campaign.png` | creating a campaign: the industry and goal reply |
+| `15-start.png` | the start reply with the dashboard open on the right |
+| `16-new-campaign.png` | /whitefox-content-campaign: the industry and goal question, with the answer typed |
 | `17-add-case-study.png` | a case study attached in the message box |
 | `18-review-deliveries.png` | review page for what we delivered |
 | `19-quotes.png` | audience quotes in the chat, with links |

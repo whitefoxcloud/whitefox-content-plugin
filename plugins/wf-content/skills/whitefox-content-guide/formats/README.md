@@ -285,6 +285,15 @@ with copy buttons; a draft without `body` falls back to copying `/whitefox-conte
 <campaign>`. Keep IDs and statuses in `details` exactly as in the files (`PAIN-03`, `active`);
 the page shows them in the user's words.
 
+### Keeping the dashboard fresh
+
+The dashboard is a snapshot: the page cannot read files. If it was shown earlier in this chat,
+show it again, rebuilt from the files exactly as above, right after each of these saves:
+a campaign created, paused, resumed or finished; a stage's review saved (deliveries and
+problems, topics, a content plan); drafts saved. Not after smaller steps. Say nothing extra
+about it beyond one line: "Dashboard updated." In Claude Code, where pages do not show, skip
+this.
+
 When a step names another step to the user, it gives the Claude app command and the Claude Code
 command in brackets, for example `/whitefox-content-check-fit` (Claude Code:
 `/wf-content:whitefox-content-check-fit`).

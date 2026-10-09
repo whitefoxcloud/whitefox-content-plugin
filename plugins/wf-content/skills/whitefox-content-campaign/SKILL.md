@@ -33,7 +33,8 @@ One question, one answer:
    warning."
 4. Reply in one message: "✓ Campaign <name> created for <industry>. Saved to
    `campaigns/<name>/campaign.md`; to rename it or change the goal, just say so." Then ask for
-   the case study:
+   the case study (first refresh the dashboard if it is open in this chat; workspace rules,
+   "Keeping the dashboard fresh"):
 
    > Next: attach the case study for <name>, paste its text, or paste its link, and I'll take
    > it from there.

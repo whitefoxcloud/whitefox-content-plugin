@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.15.2
+
+- The dashboard refreshes itself in the chat after each milestone (campaign created, a stage's
+  review saved, drafts saved), instead of staying as it was when start ran.
+
 ## 0.15.1
 
 - User manual for colleagues (`docs/user-manual.md`): install, workspace folder, DataForSEO
