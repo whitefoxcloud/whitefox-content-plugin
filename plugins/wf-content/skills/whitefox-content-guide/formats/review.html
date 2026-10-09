@@ -16,7 +16,7 @@
   {
     "stage": "Stage 2 of 3, Find topics: step 2 of 3, mint lanes",   // optional header line
     "title": "Lanes for fin-2026-10",          // heading
-    "item": "lane",                            // what one row is, used for "Add a lane"
+    "item": "lane",                            // what one row is, used for "Add a lane" (a noun, singular)
     "allowAdd": true,                          // show the Add button
     "fields": [                                // columns, in order
       { "key": "label", "label": "Label", "edit": true },
@@ -200,7 +200,7 @@ function update() {
 
 const addBtn = document.getElementById("add");
 if (DATA.allowAdd === false) addBtn.style.display = "none";
-addBtn.textContent = `Add a ${DATA.item}`;
+addBtn.textContent = `Add ${/^[aeiou]/i.test(DATA.item) ? "an" : "a"} ${DATA.item}`;
 addBtn.onclick = () => {
   newCount += 1;
   state.push({ id: `new-${newCount}`, orig: {}, vals: {}, ch: choices, pick: choices[0], isNew: true });

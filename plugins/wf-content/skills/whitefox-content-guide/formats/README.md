@@ -184,6 +184,13 @@ example:
 Number the items you show, so the user can refer to them. After a change, show the changed
 items and ask again; save only after a clear yes ("save", "yes", "go ahead").
 
+## Never pick a case study
+
+The user chooses every case study. Never suggest, offer or recommend a specific one (by name or
+link), anywhere: not when asking for one, not in "Check before saving", not as a next step,
+even if an industry profile lists it. When problems are gaps, say only that another case study
+could back them.
+
 ## Reading web pages
 
 Read web pages (search results, forums, articles) with web search and web fetch, never with

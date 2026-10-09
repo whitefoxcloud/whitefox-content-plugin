@@ -208,11 +208,13 @@ Command: `/whitefox-content-add-case-study`
 3. Claude lists **what we delivered**: each piece of work WhiteFox really did, in whole
    sentences from the case study, and checks which ones fit your campaign's audience.
 4. Claude names your **audience's problems** that this work solves, in your buyers' words.
-5. Review both on the review page (section 8) and approve.
+5. Review both on the review page (section 8). Each delivery has **fits** (use it in this
+   campaign), **doesn't fit** (keep it in the library, not for this campaign) or **drop** (do not
+   save it). Each problem has **keep** or **drop**. Then **Copy my choices**, paste, send.
 
-![Stage 1 starts and asks for the case study](images/18-app-stage1-start.png)
+![Starting stage 1 from the dashboard's command](images/18-app-stage1-start.png)
 
-![Attaching a case study](images/19-add-case-study.png)
+![Stage 1 asks for the case study; the link is pasted](images/19-add-case-study.png)
 
 ![Review: what we delivered](images/20-review-deliveries.png)
 
@@ -388,9 +390,9 @@ Save each image in `docs/images/` with this name:
 | `15-start.png` | the start reply with the dashboard open on the right |
 | `16-new-campaign.png` | /whitefox-content-campaign: the industry and goal question, with the answer typed |
 | `17-app-campaign-created.png` | campaign created in the chat, dashboard showing it with Add a case study suggested |
-| `18-app-stage1-start.png` | the stage 1 opener asking for the case study, dashboard on the right |
-| `19-add-case-study.png` | a case study attached in the message box |
-| `20-review-deliveries.png` | review page for what we delivered |
+| `18-app-stage1-start.png` | the start reply, with /whitefox-content-add-case-study typed (or copied from the dashboard) |
+| `19-add-case-study.png` | the stage 1 opener asking for the case study, with the link pasted |
+| `20-review-deliveries.png` | stage 1 review page: one row per delivery with fits, doesn't fit, drop |
 | `21-quotes.png` | audience quotes in the chat, with links |
 | `22-review-topics.png` | review page for topics (chosen, idea, drop) |
 | `23-free-or-paid.png` | the free or paid question with the price |

@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.15.7
+
+- Claude never suggests a specific case study anywhere (also not in "Check before saving").
+- Review page: "Add an item", not "Add a item".
+- User manual: stage 1 screenshots retaken with the new review page.
+
 ## 0.15.6
 
 - Asking for a case study never suggests one (for example from the industry's links): you
