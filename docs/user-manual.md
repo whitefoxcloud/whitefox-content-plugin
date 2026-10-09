@@ -175,6 +175,8 @@ leaders, October, systems integration".
 
 ![Creating a campaign: industry and goal](images/16-new-campaign.png)
 
+![Campaign created; the dashboard shows it with the suggested next step](images/17-app-campaign-created.png)
+
 After the campaign exists, everything runs in three stages, one command each. Each stage runs
 straight through, stops only when there is something for you to review, and then carries on
 into the next stage. From a new campaign to the first drafts takes about seven replies:
@@ -197,15 +199,20 @@ Type **stop** any time. The same command carries on from where you stopped.
 
 Command: `/whitefox-content-add-case-study`
 
-1. Attach the case study (PDF or Word file) or paste its link.
-2. Claude lists **what we delivered**: each piece of work WhiteFox really did, in whole
+1. Right after creating a campaign, Claude already asks for the case study, so just answer.
+   Later, type the command, or click **Copy command** on the dashboard and paste it. Claude
+   says what the stage does and asks for the case study.
+2. Attach the case study (PDF or Word file), paste its text, or paste its link.
+3. Claude lists **what we delivered**: each piece of work WhiteFox really did, in whole
    sentences from the case study, and checks which ones fit your campaign's audience.
-3. Claude names your **audience's problems** that this work solves, in your buyers' words.
-4. Review both on the review page (section 8) and approve.
+4. Claude names your **audience's problems** that this work solves, in your buyers' words.
+5. Review both on the review page (section 8) and approve.
 
-![Attaching a case study](images/17-add-case-study.png)
+![Stage 1 starts and asks for the case study](images/18-app-stage1-start.png)
 
-![Review: what we delivered](images/18-review-deliveries.png)
+![Attaching a case study](images/19-add-case-study.png)
+
+![Review: what we delivered](images/20-review-deliveries.png)
 
 Delivered work goes into your case study library, so later campaigns can use it too.
 
@@ -223,9 +230,9 @@ Command: `/whitefox-content-find-topics`
 3. On the review page, mark each topic **chosen**, **idea** or **drop**. Chosen topics go on to
    stage 3.
 
-![Audience quotes with their links](images/19-quotes.png)
+![Audience quotes with their links](images/21-quotes.png)
 
-![Review: topics](images/20-review-topics.png)
+![Review: topics](images/22-review-topics.png)
 
 ---
 
@@ -246,11 +253,11 @@ For one chosen topic at a time:
    draft, as they will look. Approve, or type what to change.
 4. Claude saves the drafts and offers the next chosen topic. Reply **next** to plan it.
 
-![Free or paid search interest](images/21-free-or-paid.png)
+![Free or paid search interest](images/23-free-or-paid.png)
 
-![Review: content plan](images/22-review-content-plan.png)
+![Review: content plan](images/24-review-content-plan.png)
 
-![Draft preview with one tab per draft](images/23-draft-preview.png)
+![Draft preview with one tab per draft](images/25-draft-preview.png)
 
 Drafts are saved in your campaign's `drafts` folder. Copy the text from the preview page with
 its copy button, or open the file.
@@ -274,9 +281,9 @@ Nothing is saved before you approve.
 In Claude Code there are no pages: Claude lists the items in the chat and you type your
 choices.
 
-![A review page with keep and drop buttons](images/24-review-page.png)
+![A review page with keep and drop buttons](images/26-review-page.png)
 
-![Pasting the copied choices back into the chat](images/25-paste-choices.png)
+![Pasting the copied choices back into the chat](images/27-paste-choices.png)
 
 ---
 
@@ -296,9 +303,9 @@ While it is open, Claude refreshes it after each milestone (a campaign created, 
 saved, drafts saved). The dashboard only shows; it never changes anything. To see one saved item in the chat, use
 `/whitefox-content-show`, for example `/whitefox-content-show Topic 3 ins-2026-10`.
 
-![The dashboard](images/26-dashboard.png)
+![The dashboard](images/28-dashboard.png)
 
-![A draft opened inside the dashboard](images/27-dashboard-draft.png)
+![A draft opened inside the dashboard](images/29-dashboard-draft.png)
 
 ---
 
@@ -310,7 +317,7 @@ saved, drafts saved). The dashboard only shows; it never changes anything. To se
   then **Update**. Start a new chat afterwards (open chats keep the old version).
 - **Claude Code:** `/plugin marketplace update whitefox`, then start a new session.
 
-![Updating the plugin in the Claude app: ⋯ menu, Check for updates, Update](images/28-app-update.png)
+![Updating the plugin in the Claude app: ⋯ menu, Check for updates, Update](images/30-app-update.png)
 
 ---
 
@@ -378,18 +385,20 @@ Save each image in `docs/images/` with this name:
 | `14-code-dataforseo-mcp.png` | Claude Code `/mcp` list with claude.ai DataForSEO connected |
 | `15-start.png` | the start reply with the dashboard open on the right |
 | `16-new-campaign.png` | /whitefox-content-campaign: the industry and goal question, with the answer typed |
-| `17-add-case-study.png` | a case study attached in the message box |
-| `18-review-deliveries.png` | review page for what we delivered |
-| `19-quotes.png` | audience quotes in the chat, with links |
-| `20-review-topics.png` | review page for topics (chosen, idea, drop) |
-| `21-free-or-paid.png` | the free or paid question with the price |
-| `22-review-content-plan.png` | review page for the content plan |
-| `23-draft-preview.png` | draft preview page with tabs |
-| `24-review-page.png` | any review page, buttons and Copy my choices visible |
-| `25-paste-choices.png` | the copied "Decisions for" lines pasted in the chat |
-| `26-dashboard.png` | the dashboard with a campaign expanded |
-| `27-dashboard-draft.png` | a draft opened inside the dashboard |
-| `28-app-update.png` | the plugin's ⋯ menu with Check for updates (and Update, if it shows) |
+| `17-app-campaign-created.png` | campaign created in the chat, dashboard showing it with Add a case study suggested |
+| `18-app-stage1-start.png` | the stage 1 opener asking for the case study, dashboard on the right |
+| `19-add-case-study.png` | a case study attached in the message box |
+| `20-review-deliveries.png` | review page for what we delivered |
+| `21-quotes.png` | audience quotes in the chat, with links |
+| `22-review-topics.png` | review page for topics (chosen, idea, drop) |
+| `23-free-or-paid.png` | the free or paid question with the price |
+| `24-review-content-plan.png` | review page for the content plan |
+| `25-draft-preview.png` | draft preview page with tabs |
+| `26-review-page.png` | any review page, buttons and Copy my choices visible |
+| `27-paste-choices.png` | the copied "Decisions for" lines pasted in the chat |
+| `28-dashboard.png` | the dashboard with a campaign expanded |
+| `29-dashboard-draft.png` | a draft opened inside the dashboard |
+| `30-app-update.png` | the plugin's ⋯ menu with Check for updates (and Update, if it shows) |
 
 Use test data only (for example the fin-2026-10 campaign), and crop out names, emails and
 other chats.

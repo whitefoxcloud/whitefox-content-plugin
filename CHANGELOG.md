@@ -1,5 +1,11 @@
 # Changelog
 
+## 0.15.3
+
+- A case study link is read word for word: the page reader is asked for the full text, not a
+  summary, part by part if needed. Before, the app's reader returned a summary and the step
+  had to ask you to paste the text.
+
 ## 0.15.2
 
 - The dashboard refreshes itself in the chat after each milestone (campaign created, a stage's

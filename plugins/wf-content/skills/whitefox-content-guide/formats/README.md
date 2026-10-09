@@ -192,6 +192,14 @@ not. Use the browser only when fetch cannot read a page that matters, and then s
 one line: "<site> blocks reading as text; I can open it in the browser (the app asks you to
 allow the site once), or skip it." Skip it unless the user says open.
 
+When you need a page's exact words (a case study, a quote), fetch may answer a question about
+the page instead of returning it. Ask it for the words, not a summary, with this prompt:
+"Return the page's main text in full, exactly as written, every heading and paragraph in
+order. Do not summarise, shorten or reword anything. Leave out menus and footers." If what
+comes back is still shorter than the page or reads like a summary, fetch again with the same
+prompt asking for the next part ("continue from: <last sentence you got>"), until you have
+it all. Never treat a summary as the page's words.
+
 ## Pages in the Claude app
 
 Three pages in this folder, in WhiteFox's colours and font, show results next to the chat. Show
