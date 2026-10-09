@@ -152,8 +152,6 @@ Claude app.
 3. Claude Code asks before each DataForSEO call. Answer **Yes** for one call at a time, and
    never pick "don't ask again" for a DataForSEO tool.
 
-![claude.ai DataForSEO in the /mcp list](images/18-code-dataforseo-mcp.png)
-
 If you use Claude Code without the Claude app, add the connector in the terminal instead:
 
 ```
@@ -178,11 +176,11 @@ leaders, October, systems integration".
 3. Claude names the campaign (for example `ins-2026-10`) and asks for its case study. Go on to
    stage 1.
 
-![Start: your industries and campaigns](images/19-start.png)
+![Start: your industries and campaigns](images/18-start.png)
 
-![Creating a campaign: industry and goal](images/20-new-campaign.png)
+![Creating a campaign: industry and goal](images/19-new-campaign.png)
 
-![Campaign created; the dashboard shows it with the suggested next step](images/21-app-campaign-created.png)
+![Campaign created; the dashboard shows it with the suggested next step](images/20-app-campaign-created.png)
 
 After the campaign exists, everything runs in three stages, one command each. Each stage runs
 straight through, stops only when there is something for you to review, and then carries on
@@ -219,11 +217,11 @@ Command: `/whitefox-content-add-case-study`
    campaign), **doesn't fit** (keep it in the library, not for this campaign) or **drop** (do not
    save it). Each problem has **keep** or **drop**. Then **Copy my choices**, paste, send.
 
-![Starting stage 1 from the dashboard's command](images/22-app-stage1-start.png)
+![Starting stage 1 from the dashboard's command](images/21-app-stage1-start.png)
 
-![Stage 1 asks for the case study; the link is pasted](images/23-add-case-study.png)
+![Stage 1 asks for the case study; the link is pasted](images/22-add-case-study.png)
 
-![Review: what we delivered](images/24-review-deliveries.png)
+![Review: what we delivered](images/23-review-deliveries.png)
 
 Delivered work goes into your case study library, so later campaigns can use it too.
 
@@ -243,9 +241,9 @@ Command: `/whitefox-content-find-topics`
    something behind it: if you drop the only quote behind a topic with no delivery, that topic
    is not saved.
 
-![Topics review: topics and their quotes in the chat, the review page on the right](images/25-review-topics.png)
+![Topics review: topics and their quotes in the chat, the review page on the right](images/24-review-topics.png)
 
-![Quotes on the same page (keep or drop), and the copied choices pasted](images/26-topics-quotes-choices.png)
+![Quotes on the same page (keep or drop), and the copied choices pasted](images/25-topics-quotes-choices.png)
 
 ---
 
@@ -268,17 +266,17 @@ For one chosen topic at a time:
    draft, as they will look. Approve, or type what to change.
 4. Claude saves the drafts and offers the next chosen topic. Reply **next** to plan it.
 
-![Topics saved, dashboard updated, then the free or paid question](images/27-free-or-paid.png)
+![Topics saved, dashboard updated, then the free or paid question](images/26-free-or-paid.png)
 
-![Stage 3 on its own: /whitefox-content-write asks free or paid; the answer typed](images/28-app-write-paid.png)
+![Stage 3 on its own: /whitefox-content-write asks free or paid; the answer typed](images/27-app-write-paid.png)
 
-![Paid: the app asks before each DataForSEO call; click Allow once](images/29-app-dataforseo-allow.png)
+![Paid: the app asks before each DataForSEO call; click Allow once](images/28-app-dataforseo-allow.png)
 
-![Review: content plan](images/30-review-content-plan.png)
+![Review: content plan](images/29-review-content-plan.png)
 
-![Draft preview: one tab per draft, here the LinkedIn post](images/31-draft-preview.png)
+![Draft preview: one tab per draft, here the LinkedIn post](images/30-draft-preview.png)
 
-![The article tab with how it may look in search; reply save](images/32-draft-article.png)
+![The article tab with how it may look in search; reply save](images/31-draft-article.png)
 
 Drafts are saved in your campaign's `drafts` folder. Copy the text from the preview page with
 its copy button, or open the file.
@@ -302,9 +300,9 @@ Nothing is saved before you approve.
 In Claude Code there are no pages: Claude lists the items in the chat and you type your
 choices.
 
-![A review page with keep and drop buttons](images/33-review-page.png)
+![A review page with keep and drop buttons](images/32-review-page.png)
 
-![Pasting the copied choices back into the chat](images/34-paste-choices.png)
+![Pasting the copied choices back into the chat](images/33-paste-choices.png)
 
 ---
 
@@ -324,9 +322,9 @@ While it is open, Claude refreshes it after each milestone (a campaign created, 
 saved, drafts saved). The dashboard only shows; it never changes anything. To see one saved item in the chat, use
 `/whitefox-content-show`, for example `/whitefox-content-show Topic 3 ins-2026-10`.
 
-![The dashboard](images/35-dashboard.png)
+![The dashboard](images/34-dashboard.png)
 
-![A draft opened inside the dashboard](images/36-dashboard-draft.png)
+![A draft opened inside the dashboard](images/35-dashboard-draft.png)
 
 ---
 
@@ -338,9 +336,9 @@ saved, drafts saved). The dashboard only shows; it never changes anything. To se
   then **Update**. Start a new chat afterwards (open chats keep the old version).
 - **Claude Code:** `/plugin marketplace update whitefox`, then start a new session.
 
-![Updating the plugin in the Claude app: the ⋯ menu, Check for updates](images/37-app-update.png)
+![Updating the plugin in the Claude app: the ⋯ menu, Check for updates](images/36-app-update.png)
 
-![Update available: click Update](images/38-app-update-button.png)
+![Update available: click Update](images/37-app-update-button.png)
 
 ---
 
@@ -409,27 +407,26 @@ Save each image in `docs/images/` with this name:
 | `15-app-dataforseo-connect.png` | "You're not connected to DataForSEO yet" with Connect |
 | `16-app-dataforseo-approve.png` | DataForSEO's authorization page with Approve |
 | `17-app-dataforseo-permissions.png` | the connected DataForSEO page, tool permissions on ask |
-| `18-code-dataforseo-mcp.png` | Claude Code `/mcp` list with claude.ai DataForSEO connected |
-| `19-start.png` | the start reply with the dashboard open on the right |
-| `20-new-campaign.png` | /whitefox-content-campaign: the industry and goal question, with the answer typed |
-| `21-app-campaign-created.png` | campaign created in the chat, dashboard showing it with Add a case study suggested |
-| `22-app-stage1-start.png` | the start reply, with /whitefox-content-add-case-study typed (or copied from the dashboard) |
-| `23-add-case-study.png` | the stage 1 opener asking for the case study, with the link pasted |
-| `24-review-deliveries.png` | stage 1 review page: one row per delivery with fits, doesn't fit, drop |
-| `25-review-topics.png` | stage 2 review: topics with their quotes in the chat, topics page on the right |
-| `26-topics-quotes-choices.png` | quote rows (keep, drop) on the topics page, choices pasted |
-| `27-free-or-paid.png` | topics saved, dashboard updated, the free or paid question with the price |
-| `28-app-write-paid.png` | /whitefox-content-write run on its own: the free or paid question, answer typed |
-| `29-app-dataforseo-allow.png` | "Claude wants to use DataForSEO ..." with Allow once |
-| `30-review-content-plan.png` | search interest results in the chat, content plan review page (planned, later, drop) |
-| `31-draft-preview.png` | draft preview with tabs, LinkedIn post open, Built from in the chat |
-| `32-draft-article.png` | the article tab with its search preview, checklist in the chat, save typed |
-| `33-review-page.png` | any review page, buttons and Copy my choices visible |
-| `34-paste-choices.png` | the copied "Decisions for" lines pasted in the chat |
-| `35-dashboard.png` | drafts saved, dashboard updated, the drafts list open with Open buttons |
-| `36-dashboard-draft.png` | a draft opened inside the dashboard |
-| `37-app-update.png` | the plugin's ⋯ menu with Check for updates |
-| `38-app-update-button.png` | after the check: Update available, the Update button |
+| `18-start.png` | the start reply with the dashboard open on the right |
+| `19-new-campaign.png` | /whitefox-content-campaign: the industry and goal question, with the answer typed |
+| `20-app-campaign-created.png` | campaign created in the chat, dashboard showing it with Add a case study suggested |
+| `21-app-stage1-start.png` | the start reply, with /whitefox-content-add-case-study typed (or copied from the dashboard) |
+| `22-add-case-study.png` | the stage 1 opener asking for the case study, with the link pasted |
+| `23-review-deliveries.png` | stage 1 review page: one row per delivery with fits, doesn't fit, drop |
+| `24-review-topics.png` | stage 2 review: topics with their quotes in the chat, topics page on the right |
+| `25-topics-quotes-choices.png` | quote rows (keep, drop) on the topics page, choices pasted |
+| `26-free-or-paid.png` | topics saved, dashboard updated, the free or paid question with the price |
+| `27-app-write-paid.png` | /whitefox-content-write run on its own: the free or paid question, answer typed |
+| `28-app-dataforseo-allow.png` | "Claude wants to use DataForSEO ..." with Allow once |
+| `29-review-content-plan.png` | search interest results in the chat, content plan review page (planned, later, drop) |
+| `30-draft-preview.png` | draft preview with tabs, LinkedIn post open, Built from in the chat |
+| `31-draft-article.png` | the article tab with its search preview, checklist in the chat, save typed |
+| `32-review-page.png` | any review page, buttons and Copy my choices visible |
+| `33-paste-choices.png` | the copied "Decisions for" lines pasted in the chat |
+| `34-dashboard.png` | drafts saved, dashboard updated, the drafts list open with Open buttons |
+| `35-dashboard-draft.png` | a draft opened inside the dashboard |
+| `36-app-update.png` | the plugin's ⋯ menu with Check for updates |
+| `37-app-update-button.png` | after the check: Update available, the Update button |
 
 Use test data only (for example the fin-2026-10 campaign), and crop out names, emails and
 other chats.
