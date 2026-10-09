@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.15.5
+
+- Stage 1 review page: one row per delivery with **fits / doesn't fit / drop**, and problems
+  with **keep / drop** only. Before, each delivery showed twice (delivery and fit rows) and
+  every row had the same three buttons, so choices could contradict each other.
+- Review pages can give each row its own buttons.
+
 ## 0.15.4
 
 - A case study link opens straight in the app's browser (one **Always allow** for

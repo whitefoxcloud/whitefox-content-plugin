@@ -234,7 +234,9 @@ add rows with buttons:
    the last dims the row (for example `["matched", "rejected"]` in
    `/whitefox-content-check-fit`, `["keep", "active", "drop"]` in
    `/whitefox-content-choose-topics`). The default is keep and drop. A row may set `pick` to start
-   on another choice than the first (for example your suggestion).
+   on another choice than the first (for example your suggestion). A row may also set its own
+   `choice` when one page mixes kinds of items (for example deliveries and problems); never show
+   the same item in two rows.
 4. Set the page's `<title>` to `Review: <title>` (for example "Review: quotes for
    fin-2026-10") so the artifact card says what it is for. Show it as an HTML artifact, and
    still write the numbered result in the chat.

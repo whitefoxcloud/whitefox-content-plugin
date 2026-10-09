@@ -48,17 +48,21 @@ defaults in "Running straight through", and skip each step's own "Show and appro
 
 ## The review
 
-Open with **Stage 1 of 3, Add a case study: review.** Then three numbered sections in the chat,
-and the review page with all of them as rows (`choice` keep/drop for deliveries, fits/doesn't
-fit for the fit check, keep/drop for problems):
+Open with **Stage 1 of 3, Add a case study: review.** Then two numbered sections in the chat:
 
-1. **What we delivered** (step 1): each delivery, short.
-2. **What fits this campaign** (step 2): fits or doesn't fit, with the one-line wording.
-3. **Audience problems** (step 3): each problem, what backs it, its search angle.
+1. **What we delivered, and what fits this campaign** (steps 1 and 2): each delivery, short,
+   with fits or doesn't fit and its one-line wording; then any testimonials.
+2. **Audience problems** (step 3): each problem, what backs it, its search angle.
+
+Show the review page with **one row per item, never two rows for the same delivery**:
+
+- each delivery: row `D<n>`, `choice` `["fits", "doesn't fit", "drop"]`, `pick` set to the fit
+  check's verdict. *fits* and *doesn't fit* both save it to the library; *drop* saves nothing.
+- each testimonial: row `T<n>`, `choice` `["keep", "drop"]`.
+- each problem: row `P<n>`, `choice` `["keep", "drop"]`.
 
 Then "Check before saving" if anything needs a look, and the reply line: "Reply **save**, or
-tell me what to change, for example: *drop delivery 4*, *delivery 2 doesn't fit*, *reword
-problem 3: ...*". If a change affects a later section (a dropped delivery backed a problem),
+tell me what to change, for example: *drop D4*, *D2 fits*, *reword P3: ...*". If a change affects a later section (a dropped delivery backed a problem),
 update that section too and show what changed.
 
 On save, write in this order: `pool/sources/<source-id>.md`, the campaign's `shelf.md`,
