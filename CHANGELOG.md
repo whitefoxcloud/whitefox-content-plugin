@@ -6,6 +6,9 @@
   connector in the Claude app and Claude Code, the three stages, review pages, dashboard and
   updating, with a list of the screenshots to add.
 - Search interest recognises the DataForSEO connector's tool names in Claude Code.
+- First-time setup asks two plain questions (your name, and whether to set up the folder)
+  instead of ending on an instruction.
+- Choosing the folder: **Project or folder** under the message box, then **Add folder**.
 
 ## 0.15.0
 

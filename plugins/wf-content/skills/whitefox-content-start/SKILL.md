@@ -27,9 +27,9 @@ the user. You recognise it by its contents: a `settings.md` whose heading is
 2. If one of them holds a workspace one level down, use that one.
 3. If you can reach no workspace, ask the user which folder to use, in one short message:
 
-   "Which folder should I use for your WhiteFox content? Either add it with **+** in the
-   message box and send a short message such as *use this folder* (the app does not send a
-   folder on its own), or paste its path. If you are new, pick or create any empty folder, for
+   "Which folder should I use for your WhiteFox content? Either paste its path, or click
+   **Project or folder** under the message box, then **Add folder**, pick it, and send a short
+   message such as *use this folder*. If you are new, pick or create any empty folder, for
    example `Documents\WhiteFox Content`, and I will set it up there."
 
    When the user pastes a path, request access to that folder (in the Claude app this shows an
@@ -49,14 +49,21 @@ Say which folder you are using in the first line of your reply (see step 3).
 
 If `settings.md` does not exist in the workspace:
 
-1. Ask the user's name (it is written into files they create and change).
-2. Tell them what you will create, and wait for yes:
+1. Say what you will create, in short plain lines:
    - `settings.md` (format: `../whitefox-content-guide/formats/settings.md`)
    - `profiles/`, `pool/sources/`, `campaigns/`
    - the starter profiles from `starter-profiles/` in this skill's folder, copied unchanged
      into `profiles/`. Never overwrite a profile that already exists there; list any you
      skipped.
-3. Create them, then say the workspace is ready.
+2. End with these two questions, exactly, and wait:
+
+   "**What is your name?** (It goes into the files you create.)
+   **Shall I set up your folder like this?** Reply with your name and yes, for example
+   *Sam, yes*."
+
+   Never use the user's own name in the example.
+3. On a name and yes, create them, then say the workspace is ready. A yes without a name: ask
+   the name only.
 
 If `settings.md` exists but its `plugin` version differs from 0.15.1, update that line and say
 "Updated from <old> to 0.15.1".

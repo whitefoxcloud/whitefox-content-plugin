@@ -44,9 +44,8 @@ The plugin holds no campaign data, case studies or logins.
 ## Each time you work
 
 1. Type `/whitefox-content-start` (in Claude Code: `/wf-content:whitefox-content-start`).
-2. If Claude asks which folder to use, add your workspace folder with **+** in the message box
-   and send a short message such as "use this folder" (a folder alone does not send), or paste
-   its path. When Claude asks for folder access, tick "Don't ask again for this folder
+2. Before sending, click **Project or folder** under the message box, then **Add folder**, and
+   pick your workspace folder. Forgot? When Claude asks which folder to use, paste its path. When Claude asks for folder access, tick "Don't ask again for this folder
    on this device", then click Allow. Claude shows each campaign's stage and the next command,
    or offers to create a campaign (pick an industry, or create one).
 3. Run the three stages. Each runs straight through and stops only for a review, and each
