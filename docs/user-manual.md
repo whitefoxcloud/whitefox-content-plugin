@@ -21,9 +21,9 @@ Contents:
 7. [Stage 3: write](#7-stage-3-write)
 8. [Review pages: how to approve](#8-review-pages-how-to-approve)
 9. [The dashboard](#9-the-dashboard)
-10. [Getting a new version](#10-getting-a-new-version)
-11. [Commands and words](#11-commands-and-words)
-12. [Problems and fixes](#12-problems-and-fixes)
+10. [Getting a new version](#09-getting-a-new-version)
+11. [Commands and words](#10-commands-and-words)
+12. [Problems and fixes](#11-problems-and-fixes)
 
 ---
 
@@ -65,8 +65,6 @@ Type these two commands:
 Then start a new session. In Claude Code every command begins with `wf-content:`. For example,
 `/whitefox-content-start` in the app is `/wf-content:whitefox-content-start` in Claude Code.
 
-![Installing the plugin in Claude Code](images/06-code-install-plugin.png)
-
 ---
 
 ## 2. Choose your workspace folder
@@ -87,15 +85,15 @@ laptop, called your workspace. You choose its name and place, for example
 4. The first time, Claude lists what it will set up in the empty folder and asks your name (it
    goes into the files you create). Reply with your name and yes, for example *Sam, yes*.
 
-![Project or folder, then Add folder](images/07-app-add-folder.png)
+![Project or folder, then Add folder](images/06-app-add-folder.png)
 
-![Picking the workspace folder, then Select Folder](images/08-app-pick-folder.png)
+![Picking the workspace folder, then Select Folder](images/07-app-pick-folder.png)
 
-![The folder shows under the message box, ready to send](images/09-app-folder-chosen.png)
+![The folder shows under the message box, ready to send](images/08-app-folder-chosen.png)
 
-![Allowing the version check: Always allow for this website](images/10-app-allow-version-check.png)
+![Allowing the version check: Always allow for this website](images/09-app-allow-version-check.png)
 
-![First-time setup: what Claude will create](images/11-app-first-setup.png)
+![First-time setup: what Claude will create](images/10-app-first-setup.png)
 
 The workspace comes with four starter industries: financial services (FIN), insurance (INS),
 healthcare (HC) and AI (AI).
@@ -129,17 +127,17 @@ Rules, whichever app you use:
    The connector marks its tools "read-only". That only means they change nothing at
    DataForSEO; they still cost money.
 
-![Customize, Connectors, + Add, Add custom connector](images/12-app-dataforseo-add-menu.png)
+![Customize, Connectors, + Add, Add custom connector](images/11-app-dataforseo-add-menu.png)
 
-![Name and URL filled in, then Continue](images/13-app-dataforseo-add.png)
+![Name and URL filled in, then Continue](images/12-app-dataforseo-add.png)
 
-![Sign-in options left as they are, then Add](images/14-app-dataforseo-sign-in-options.png)
+![Sign-in options left as they are, then Add](images/13-app-dataforseo-sign-in-options.png)
 
-![Not connected yet: click Connect](images/15-app-dataforseo-connect.png)
+![Not connected yet: click Connect](images/14-app-dataforseo-connect.png)
 
-![DataForSEO's page in the browser: Approve](images/16-app-dataforseo-approve.png)
+![DataForSEO's page in the browser: Approve](images/15-app-dataforseo-approve.png)
 
-![Connected: tool permissions, each tool on the hand (ask before use)](images/17-app-dataforseo-permissions.png)
+![Connected: tool permissions, each tool on the hand (ask before use)](images/16-app-dataforseo-permissions.png)
 
 ### Claude Code
 
@@ -176,11 +174,11 @@ leaders, October, systems integration".
 3. Claude names the campaign (for example `ins-2026-10`) and asks for its case study. Go on to
    stage 1.
 
-![Start: your industries and campaigns](images/18-start.png)
+![Start: your industries and campaigns](images/17-start.png)
 
-![Creating a campaign: industry and goal](images/19-new-campaign.png)
+![Creating a campaign: industry and goal](images/18-new-campaign.png)
 
-![Campaign created; the dashboard shows it with the suggested next step](images/20-app-campaign-created.png)
+![Campaign created; the dashboard shows it with the suggested next step](images/19-app-campaign-created.png)
 
 After the campaign exists, everything runs in three stages, one command each. Each stage runs
 straight through, stops only when there is something for you to review, and then carries on
@@ -217,11 +215,11 @@ Command: `/whitefox-content-add-case-study`
    campaign), **doesn't fit** (keep it in the library, not for this campaign) or **drop** (do not
    save it). Each problem has **keep** or **drop**. Then **Copy my choices**, paste, send.
 
-![Starting stage 1 from the dashboard's command](images/21-app-stage1-start.png)
+![Starting stage 1 from the dashboard's command](images/20-app-stage1-start.png)
 
-![Stage 1 asks for the case study; the link is pasted](images/22-add-case-study.png)
+![Stage 1 asks for the case study; the link is pasted](images/21-add-case-study.png)
 
-![Review: what we delivered](images/23-review-deliveries.png)
+![Review: what we delivered](images/22-review-deliveries.png)
 
 Delivered work goes into your case study library, so later campaigns can use it too.
 
@@ -241,9 +239,9 @@ Command: `/whitefox-content-find-topics`
    something behind it: if you drop the only quote behind a topic with no delivery, that topic
    is not saved.
 
-![Topics review: topics and their quotes in the chat, the review page on the right](images/24-review-topics.png)
+![Topics review: topics and their quotes in the chat, the review page on the right](images/23-review-topics.png)
 
-![Quotes on the same page (keep or drop), and the copied choices pasted](images/25-topics-quotes-choices.png)
+![Quotes on the same page (keep or drop), and the copied choices pasted](images/24-topics-quotes-choices.png)
 
 ---
 
@@ -266,17 +264,17 @@ For one chosen topic at a time:
    draft, as they will look. Approve, or type what to change.
 4. Claude saves the drafts and offers the next chosen topic. Reply **next** to plan it.
 
-![Topics saved, dashboard updated, then the free or paid question](images/26-free-or-paid.png)
+![Topics saved, dashboard updated, then the free or paid question](images/25-free-or-paid.png)
 
-![Stage 3 on its own: /whitefox-content-write asks free or paid; the answer typed](images/27-app-write-paid.png)
+![Stage 3 on its own: /whitefox-content-write asks free or paid; the answer typed](images/26-app-write-paid.png)
 
-![Paid: the app asks before each DataForSEO call; click Allow once](images/28-app-dataforseo-allow.png)
+![Paid: the app asks before each DataForSEO call; click Allow once](images/27-app-dataforseo-allow.png)
 
-![Review: content plan](images/29-review-content-plan.png)
+![Review: content plan](images/28-review-content-plan.png)
 
-![Draft preview: one tab per draft, here the LinkedIn post](images/30-draft-preview.png)
+![Draft preview: one tab per draft, here the LinkedIn post](images/29-draft-preview.png)
 
-![The article tab with how it may look in search; reply save](images/31-draft-article.png)
+![The article tab with how it may look in search; reply save](images/30-draft-article.png)
 
 Drafts are saved in your campaign's `drafts` folder. Copy the text from the preview page with
 its copy button, or open the file.
@@ -300,9 +298,9 @@ Nothing is saved before you approve.
 In Claude Code there are no pages: Claude lists the items in the chat and you type your
 choices.
 
-![A review page with keep and drop buttons](images/32-review-page.png)
+![A review page with keep and drop buttons](images/31-review-page.png)
 
-![Pasting the copied choices back into the chat](images/33-paste-choices.png)
+![Pasting the copied choices back into the chat](images/32-paste-choices.png)
 
 ---
 
@@ -322,9 +320,9 @@ While it is open, Claude refreshes it after each milestone (a campaign created, 
 saved, drafts saved). The dashboard only shows; it never changes anything. To see one saved item in the chat, use
 `/whitefox-content-show`, for example `/whitefox-content-show Topic 3 ins-2026-10`.
 
-![The dashboard](images/34-dashboard.png)
+![The dashboard](images/33-dashboard.png)
 
-![A draft opened inside the dashboard](images/35-dashboard-draft.png)
+![A draft opened inside the dashboard](images/34-dashboard-draft.png)
 
 ---
 
@@ -336,9 +334,9 @@ saved, drafts saved). The dashboard only shows; it never changes anything. To se
   then **Update**. Start a new chat afterwards (open chats keep the old version).
 - **Claude Code:** `/plugin marketplace update whitefox`, then start a new session.
 
-![Updating the plugin in the Claude app: the ⋯ menu, Check for updates](images/36-app-update.png)
+![Updating the plugin in the Claude app: the ⋯ menu, Check for updates](images/35-app-update.png)
 
-![Update available: click Update](images/37-app-update-button.png)
+![Update available: click Update](images/36-app-update-button.png)
 
 ---
 
@@ -395,38 +393,37 @@ Save each image in `docs/images/` with this name:
 | `03-app-add-marketplace.png` | Add from a repository: URL pasted, Sync automatically on, Sync button |
 | `04-app-install-plugin.png` | Plugins, Discover: WhiteFox Content with its Add button |
 | `05-app-plugin-added.png` | the WhiteFox Content page after Add: version, switch on, Try in chat |
-| `06-code-install-plugin.png` | Claude Code after `/plugin install wf-content@whitefox` |
-| `07-app-add-folder.png` | Project or folder menu under the message box, with Add folder |
-| `08-app-pick-folder.png` | the Windows folder picker with WhiteFox Content selected |
-| `09-app-folder-chosen.png` | /whitefox-content-start typed, WhiteFox Content shown under the message box |
-| `10-app-allow-version-check.png` | "Claude wants to fetch a web page" for the version check |
-| `11-app-first-setup.png` | first-time setup in an empty folder: what Claude will create, asks name and yes |
-| `12-app-dataforseo-add-menu.png` | Customize, Connectors, + Add open with Add custom connector |
-| `13-app-dataforseo-add.png` | Add custom connector with name and URL filled in |
-| `14-app-dataforseo-sign-in-options.png` | the sign-in options page with the Add button |
-| `15-app-dataforseo-connect.png` | "You're not connected to DataForSEO yet" with Connect |
-| `16-app-dataforseo-approve.png` | DataForSEO's authorization page with Approve |
-| `17-app-dataforseo-permissions.png` | the connected DataForSEO page, tool permissions on ask |
-| `18-start.png` | the start reply with the dashboard open on the right |
-| `19-new-campaign.png` | /whitefox-content-campaign: the industry and goal question, with the answer typed |
-| `20-app-campaign-created.png` | campaign created in the chat, dashboard showing it with Add a case study suggested |
-| `21-app-stage1-start.png` | the start reply, with /whitefox-content-add-case-study typed (or copied from the dashboard) |
-| `22-add-case-study.png` | the stage 1 opener asking for the case study, with the link pasted |
-| `23-review-deliveries.png` | stage 1 review page: one row per delivery with fits, doesn't fit, drop |
-| `24-review-topics.png` | stage 2 review: topics with their quotes in the chat, topics page on the right |
-| `25-topics-quotes-choices.png` | quote rows (keep, drop) on the topics page, choices pasted |
-| `26-free-or-paid.png` | topics saved, dashboard updated, the free or paid question with the price |
-| `27-app-write-paid.png` | /whitefox-content-write run on its own: the free or paid question, answer typed |
-| `28-app-dataforseo-allow.png` | "Claude wants to use DataForSEO ..." with Allow once |
-| `29-review-content-plan.png` | search interest results in the chat, content plan review page (planned, later, drop) |
-| `30-draft-preview.png` | draft preview with tabs, LinkedIn post open, Built from in the chat |
-| `31-draft-article.png` | the article tab with its search preview, checklist in the chat, save typed |
-| `32-review-page.png` | any review page, buttons and Copy my choices visible |
-| `33-paste-choices.png` | the copied "Decisions for" lines pasted in the chat |
-| `34-dashboard.png` | drafts saved, dashboard updated, the drafts list open with Open buttons |
-| `35-dashboard-draft.png` | a draft opened inside the dashboard |
-| `36-app-update.png` | the plugin's ⋯ menu with Check for updates |
-| `37-app-update-button.png` | after the check: Update available, the Update button |
+| `06-app-add-folder.png` | Project or folder menu under the message box, with Add folder |
+| `07-app-pick-folder.png` | the Windows folder picker with WhiteFox Content selected |
+| `08-app-folder-chosen.png` | /whitefox-content-start typed, WhiteFox Content shown under the message box |
+| `09-app-allow-version-check.png` | "Claude wants to fetch a web page" for the version check |
+| `10-app-first-setup.png` | first-time setup in an empty folder: what Claude will create, asks name and yes |
+| `11-app-dataforseo-add-menu.png` | Customize, Connectors, + Add open with Add custom connector |
+| `12-app-dataforseo-add.png` | Add custom connector with name and URL filled in |
+| `13-app-dataforseo-sign-in-options.png` | the sign-in options page with the Add button |
+| `14-app-dataforseo-connect.png` | "You're not connected to DataForSEO yet" with Connect |
+| `15-app-dataforseo-approve.png` | DataForSEO's authorization page with Approve |
+| `16-app-dataforseo-permissions.png` | the connected DataForSEO page, tool permissions on ask |
+| `17-start.png` | the start reply with the dashboard open on the right |
+| `18-new-campaign.png` | /whitefox-content-campaign: the industry and goal question, with the answer typed |
+| `19-app-campaign-created.png` | campaign created in the chat, dashboard showing it with Add a case study suggested |
+| `20-app-stage1-start.png` | the start reply, with /whitefox-content-add-case-study typed (or copied from the dashboard) |
+| `21-add-case-study.png` | the stage 1 opener asking for the case study, with the link pasted |
+| `22-review-deliveries.png` | stage 1 review page: one row per delivery with fits, doesn't fit, drop |
+| `23-review-topics.png` | stage 2 review: topics with their quotes in the chat, topics page on the right |
+| `24-topics-quotes-choices.png` | quote rows (keep, drop) on the topics page, choices pasted |
+| `25-free-or-paid.png` | topics saved, dashboard updated, the free or paid question with the price |
+| `26-app-write-paid.png` | /whitefox-content-write run on its own: the free or paid question, answer typed |
+| `27-app-dataforseo-allow.png` | "Claude wants to use DataForSEO ..." with Allow once |
+| `28-review-content-plan.png` | search interest results in the chat, content plan review page (planned, later, drop) |
+| `29-draft-preview.png` | draft preview with tabs, LinkedIn post open, Built from in the chat |
+| `30-draft-article.png` | the article tab with its search preview, checklist in the chat, save typed |
+| `31-review-page.png` | any review page, buttons and Copy my choices visible |
+| `32-paste-choices.png` | the copied "Decisions for" lines pasted in the chat |
+| `33-dashboard.png` | drafts saved, dashboard updated, the drafts list open with Open buttons |
+| `34-dashboard-draft.png` | a draft opened inside the dashboard |
+| `35-app-update.png` | the plugin's ⋯ menu with Check for updates |
+| `36-app-update-button.png` | after the check: Update available, the Update button |
 
 Use test data only (for example the fin-2026-10 campaign), and crop out names, emails and
 other chats.
