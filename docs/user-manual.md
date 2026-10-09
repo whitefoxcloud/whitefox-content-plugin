@@ -21,9 +21,9 @@ Contents:
 7. [Stage 3: write](#7-stage-3-write)
 8. [Review pages: how to approve](#8-review-pages-how-to-approve)
 9. [The dashboard](#9-the-dashboard)
-10. [Getting a new version](#09-getting-a-new-version)
-11. [Commands and words](#10-commands-and-words)
-12. [Problems and fixes](#11-problems-and-fixes)
+10. [Getting a new version](#10-getting-a-new-version)
+11. [Commands and words](#11-commands-and-words)
+12. [Problems and fixes](#12-problems-and-fixes)
 
 ---
 
