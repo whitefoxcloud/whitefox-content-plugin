@@ -413,7 +413,7 @@ Save each image in `docs/images/` with this name:
 | `28-draft-article.png` | the article tab with its search preview, checklist in the chat, save typed |
 | `29-review-page.png` | any review page, buttons and Copy my choices visible |
 | `30-paste-choices.png` | the copied "Decisions for" lines pasted in the chat |
-| `31-dashboard.png` | the dashboard with a campaign expanded |
+| `31-dashboard.png` | drafts saved, dashboard updated, the drafts list open with Open buttons |
 | `32-dashboard-draft.png` | a draft opened inside the dashboard |
 | `33-app-update.png` | the plugin's ⋯ menu with Check for updates (and Update, if it shows) |
 
