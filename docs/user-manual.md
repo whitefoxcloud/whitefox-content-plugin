@@ -1,0 +1,366 @@
+# WhiteFox Content: user manual
+
+This guide is for WhiteFox colleagues. It shows how to turn a WhiteFox case study into
+LinkedIn posts, website articles and outbound emails, with Claude doing the legwork and you
+approving each result.
+
+You need a Claude subscription (Pro or Max) and one of these:
+
+- **Claude desktop app** (recommended): review pages, draft previews and the dashboard open as
+  pages beside the chat.
+- **Claude Code**: the same steps in the terminal. Each review happens in the chat, by typing.
+
+Contents:
+
+1. [Install the plugin](#1-install-the-plugin)
+2. [Choose your workspace folder](#2-choose-your-workspace-folder)
+3. [Connect DataForSEO (optional)](#3-connect-dataforseo-optional)
+4. [Start a campaign](#4-start-a-campaign)
+5. [Stage 1: add a case study](#5-stage-1-add-a-case-study)
+6. [Stage 2: find topics](#6-stage-2-find-topics)
+7. [Stage 3: write](#7-stage-3-write)
+8. [Review pages: how to approve](#8-review-pages-how-to-approve)
+9. [The dashboard](#9-the-dashboard)
+10. [Getting a new version](#10-getting-a-new-version)
+11. [Commands and words](#11-commands-and-words)
+12. [Problems and fixes](#12-problems-and-fixes)
+
+---
+
+## 1. Install the plugin
+
+You do this once.
+
+### Claude desktop app
+
+1. Open **Customize**, then **Plugins**.
+2. Click **+**, then **Add marketplace**, and paste `whitefoxcloud/whitefox-content-plugin`.
+3. Install **WhiteFox Content** (`wf-content`).
+4. Start a new chat.
+
+![Adding the WhiteFox marketplace in the Claude app](images/01-app-add-marketplace.png)
+
+![Installing WhiteFox Content](images/02-app-install-plugin.png)
+
+### Claude Code
+
+Type these two commands:
+
+```
+/plugin marketplace add whitefoxcloud/whitefox-content-plugin
+/plugin install wf-content@whitefox
+```
+
+Then start a new session. In Claude Code every command begins with `wf-content:`. For example,
+`/whitefox-content-start` in the app is `/wf-content:whitefox-content-start` in Claude Code.
+
+![Installing the plugin in Claude Code](images/03-code-install-plugin.png)
+
+---
+
+## 2. Choose your workspace folder
+
+Everything you make (industries, case studies, campaigns, drafts) lives in one folder on your
+laptop, called your workspace. You choose its name and place, for example
+`Documents\WhiteFox Content`. The plugin itself holds no data.
+
+1. Type `/whitefox-content-start`.
+2. Claude asks which folder to use. Either:
+   - add the folder with **+** in the message box, then send a short message such as
+     *use this folder* (a folder on its own does not send), or
+   - paste the folder's path.
+3. When the app asks for folder access, tick **Don't ask again for this folder on this
+   device**, then click **Allow**.
+4. The first time, Claude asks your name (it goes into the files you create) and lists what it
+   will set up. Reply **yes**.
+
+![Adding the workspace folder with +](images/04-app-add-folder.png)
+
+![The folder access window](images/05-app-folder-access.png)
+
+The workspace comes with four starter industries: financial services (FIN), insurance (INS),
+healthcare (HC) and AI (AI).
+
+---
+
+## 3. Connect DataForSEO (optional)
+
+DataForSEO gives real monthly search numbers for your topics. It is **only for people with the
+company DataForSEO login**, and every call costs money (a few cents per topic). Everyone else
+skips this section and uses the free check (questions and phrasing from web search, without
+numbers).
+
+Rules, whichever app you use:
+
+- Never paste the DataForSEO login into a chat or a file. You sign in on DataForSEO's own page.
+- The plugin only ever uses three DataForSEO tools: **Keyword Overview**, **Related Keywords**
+  and **SERP Organic Live Advanced**. It shows the price first, and it spends only when you
+  reply **paid** (at most $1.00 per topic).
+
+### Claude desktop app
+
+1. Open **Customize**, then **Connectors**, and click **+**.
+2. Choose **Add custom connector**. Name: `DataForSEO`. URL: `https://mcp.dataforseo.com/mcp`.
+3. Click **Connect**, and sign in on DataForSEO's page with the company login.
+4. Open the connector's tool permissions. Turn off every tool except these three, and set each
+   of them to **ask before use**:
+   - DataForSEO Labs Google Keyword Overview
+   - DataForSEO Labs Google Related Keywords
+   - SERP Organic Live Advanced
+
+   The connector marks many tools "read-only". That only means they change nothing at
+   DataForSEO; they still cost money.
+
+![Adding the DataForSEO custom connector](images/06-app-dataforseo-add.png)
+
+![DataForSEO tool permissions: three tools on, set to ask](images/07-app-dataforseo-permissions.png)
+
+### Claude Code
+
+Claude Code signed in with your Claude account already has the connectors you added in the
+Claude app.
+
+1. Set up the connector in the Claude app first (above).
+2. In Claude Code, type `/mcp`. You should see **claude.ai DataForSEO** with the status
+   *connected*. If it says it needs signing in, select it and sign in with the company login.
+3. Claude Code asks before each DataForSEO call. Answer **Yes** for one call at a time, and
+   never pick "don't ask again" for a DataForSEO tool.
+
+![claude.ai DataForSEO in the /mcp list](images/08-code-dataforseo-mcp.png)
+
+If you use Claude Code without the Claude app, add the connector in the terminal instead:
+
+```
+claude mcp add --transport http dataforseo https://mcp.dataforseo.com/mcp
+```
+
+Then type `/mcp`, select **dataforseo** and sign in with the company login.
+
+---
+
+## 4. Start a campaign
+
+A campaign is one push of content for one industry, with one goal, for example "insurance
+leaders, October, systems integration".
+
+1. Type `/whitefox-content-start`. Claude shows your industries and campaigns, and offers to
+   create a campaign.
+2. Reply with the industry and the goal in one message.
+3. Claude names the campaign (for example `ins-2026-10`) and asks for its case study. Go on to
+   stage 1.
+
+![Start: your industries and campaigns](images/09-start.png)
+
+![Creating a campaign: industry and goal](images/10-new-campaign.png)
+
+After the campaign exists, everything runs in three stages, one command each. Each stage runs
+straight through, stops only when there is something for you to review, and then carries on
+into the next stage. From a new campaign to the first drafts takes about seven replies:
+
+| # | Your reply |
+|---|---|
+| 1 | industry and goal |
+| 2 | the case study |
+| 3 | review: what we delivered, and your audience's problems |
+| 4 | review: the topics |
+| 5 | free or paid search interest check |
+| 6 | review: the content plan |
+| 7 | review: the drafts |
+
+Type **stop** any time. The same command carries on from where you stopped.
+
+---
+
+## 5. Stage 1: add a case study
+
+Command: `/whitefox-content-add-case-study`
+
+1. Attach the case study (PDF or Word file) or paste its link.
+2. Claude lists **what we delivered**: each piece of work WhiteFox really did, in whole
+   sentences from the case study, and checks which ones fit your campaign's audience.
+3. Claude names your **audience's problems** that this work solves, in your buyers' words.
+4. Review both on the review page (section 8) and approve.
+
+![Attaching a case study](images/11-add-case-study.png)
+
+![Review: what we delivered](images/12-review-deliveries.png)
+
+Delivered work goes into your case study library, so later campaigns can use it too.
+
+---
+
+## 6. Stage 2: find topics
+
+Command: `/whitefox-content-find-topics`
+
+1. Claude searches the public web (forums, interviews, reviews) for **audience quotes**: real
+   buyers voicing the problems, word for word, each with its link. You see progress lines while
+   it searches.
+2. Claude proposes **topics**: one audience problem, plus what we delivered and the quotes
+   behind it, framed as a position WhiteFox can own.
+3. On the review page, mark each topic **chosen**, **idea** or **drop**. Chosen topics go on to
+   stage 3.
+
+![Audience quotes with their links](images/13-quotes.png)
+
+![Review: topics](images/14-review-topics.png)
+
+---
+
+## 7. Stage 3: write
+
+Command: `/whitefox-content-write`
+
+For one chosen topic at a time:
+
+1. **Search interest.** Claude asks one question: free or paid.
+   - **free**: questions and phrasing from web search, no numbers, no cost.
+   - **paid** (only with DataForSEO connected): real monthly searches. The question shows the
+     number of calls and the price, and replying **paid** approves that spend.
+2. **Content plan.** Claude plans the pieces for the topic: channel (LinkedIn, email or
+   article), headline, who posts it (company, founder or engineer) and the keyword. Mark each
+   piece **planned**, **later** or **drop**.
+3. **Drafts.** Claude writes every planned piece and opens them in one preview page, one tab per
+   draft, as they will look. Approve, or type what to change.
+4. Claude saves the drafts and offers the next chosen topic. Reply **next** to plan it.
+
+![Free or paid search interest](images/15-free-or-paid.png)
+
+![Review: content plan](images/16-review-content-plan.png)
+
+![Draft preview with one tab per draft](images/17-draft-preview.png)
+
+Drafts are saved in your campaign's `drafts` folder. Copy the text from the preview page with
+its copy button, or open the file.
+
+---
+
+## 8. Review pages: how to approve
+
+When a result has three or more items, a review page opens on the right of the chat (closed
+it? click its card above your reply).
+
+1. For each row, pick a choice with the buttons (for example keep or drop), or edit the text.
+   Text copied from a source, such as a quote or a case study sentence, cannot be edited.
+2. Add a row with the **Add** button at the bottom of the page if something is missing.
+3. Press **Copy my choices**, paste into the chat and send.
+4. Claude shows the result once more. Reply **yes** to save.
+
+You can always skip the page and just type your changes, for example *drop 3, keep the rest*.
+Nothing is saved before you approve.
+
+In Claude Code there are no pages: Claude lists the items in the chat and you type your
+choices.
+
+![A review page with keep and drop buttons](images/18-review-page.png)
+
+![Pasting the copied choices back into the chat](images/19-paste-choices.png)
+
+---
+
+## 9. The dashboard
+
+Command: `/whitefox-content-dashboard` (it also opens with `/whitefox-content-start`)
+
+The dashboard shows every campaign, newest first:
+
+- what has been made so far (case studies, problems, quotes, topics, drafts): click a count to
+  see the list,
+- topics in progress: click one to expand it,
+- **Open** on a draft shows it on the page as it will look, with copy buttons,
+- the next actions, one of them suggested, and **+ New campaign**.
+
+The dashboard only shows; it never changes anything. To see one saved item in the chat, use
+`/whitefox-content-show`, for example `/whitefox-content-show Topic 3 ins-2026-10`.
+
+![The dashboard](images/20-dashboard.png)
+
+![A draft opened inside the dashboard](images/21-dashboard-draft.png)
+
+---
+
+## 10. Getting a new version
+
+`/whitefox-content-start` tells you when a newer version exists.
+
+- **Claude app:** Customize, Plugins, WhiteFox Content, the **⋯** menu, **Check for updates**,
+  then **Update**. Start a new chat afterwards (open chats keep the old version).
+- **Claude Code:** `/plugin marketplace update whitefox`, then start a new session.
+
+![Check for updates in the Claude app](images/22-app-update.png)
+
+---
+
+## 11. Commands and words
+
+| Claude app | Claude Code | What it does |
+|---|---|---|
+| `/whitefox-content-start` | `/wf-content:whitefox-content-start` | where each campaign stands, and the next step |
+| `/whitefox-content-campaign` | `/wf-content:whitefox-content-campaign` | create, pause, resume or finish a campaign |
+| `/whitefox-content-add-case-study` | `/wf-content:whitefox-content-add-case-study` | stage 1 |
+| `/whitefox-content-find-topics` | `/wf-content:whitefox-content-find-topics` | stage 2 |
+| `/whitefox-content-write` | `/wf-content:whitefox-content-write` | stage 3 |
+| `/whitefox-content-dashboard` | `/wf-content:whitefox-content-dashboard` | the dashboard page |
+| `/whitefox-content-show` | `/wf-content:whitefox-content-show` | one saved item |
+| `/whitefox-content-guide` | `/wf-content:whitefox-content-guide` | how the workflow works |
+
+Words the plugin uses:
+
+- **What we delivered:** one piece of work WhiteFox really did, from a case study.
+- **Audience problem:** a problem your campaign's audience has, that this work solves.
+- **Audience quote:** a real buyer saying it, word for word, with its link.
+- **Topic:** one audience problem, plus what we delivered and the quotes behind it.
+- **Content plan:** the pieces planned for one topic.
+- **Piece:** one LinkedIn post, email or article.
+- **Industry:** who a campaign is for, how WhiteFox is positioned there, and which words to use
+  or avoid.
+
+---
+
+## 12. Problems and fixes
+
+| What you see | What to do |
+|---|---|
+| A command is not found | Start a new chat (or session). In Claude Code, add `wf-content:` in front. |
+| Claude asks for the folder every time | Tick "Don't ask again for this folder on this device" in the access window. |
+| Sending the folder does nothing | Add a short message such as *use this folder*; a folder on its own does not send. |
+| The page on the right is gone | Click the page's card above Claude's reply. |
+| "DataForSEO is not connected" | Expected without the company login: choose free. With the login, see section 3. |
+| A DataForSEO call fails or the balance is empty | Nothing is retried without your yes. Choose free, and tell the DataForSEO account owner. |
+| A new version does not show | Check for updates (section 10), then start a new chat. |
+
+If something else goes wrong, take a screenshot and send it to the plugin owner.
+
+---
+
+## Screenshots to add
+
+Save each image in `docs/images/` with this name:
+
+| File | Shows |
+|---|---|
+| `01-app-add-marketplace.png` | Claude app, Plugins, Add marketplace with the repo pasted |
+| `02-app-install-plugin.png` | Claude app, WhiteFox Content with its Install button |
+| `03-code-install-plugin.png` | Claude Code after `/plugin install wf-content@whitefox` |
+| `04-app-add-folder.png` | the + menu in the message box, adding a folder |
+| `05-app-folder-access.png` | the folder access window with "Don't ask again" ticked |
+| `06-app-dataforseo-add.png` | Add custom connector with name and URL filled in |
+| `07-app-dataforseo-permissions.png` | DataForSEO tool permissions, three tools on and set to ask |
+| `08-code-dataforseo-mcp.png` | Claude Code `/mcp` list with claude.ai DataForSEO connected |
+| `09-start.png` | the start reply: version, workspace, industries, campaigns |
+| `10-new-campaign.png` | creating a campaign: the industry and goal reply |
+| `11-add-case-study.png` | a case study attached in the message box |
+| `12-review-deliveries.png` | review page for what we delivered |
+| `13-quotes.png` | audience quotes in the chat, with links |
+| `14-review-topics.png` | review page for topics (chosen, idea, drop) |
+| `15-free-or-paid.png` | the free or paid question with the price |
+| `16-review-content-plan.png` | review page for the content plan |
+| `17-draft-preview.png` | draft preview page with tabs |
+| `18-review-page.png` | any review page, buttons and Copy my choices visible |
+| `19-paste-choices.png` | the copied "Decisions for" lines pasted in the chat |
+| `20-dashboard.png` | the dashboard with a campaign expanded |
+| `21-dashboard-draft.png` | a draft opened inside the dashboard |
+| `22-app-update.png` | the ⋯ menu with Check for updates |
+
+Use test data only (for example the fin-2026-10 campaign), and crop out names, emails and
+other chats.

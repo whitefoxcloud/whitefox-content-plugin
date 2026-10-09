@@ -36,8 +36,10 @@ tell them to remove it from the chat and change it, and do not use it.
 - Country: one per run, from the profile's Markets. With several, ask which.
 - Phrases: the lane's search phrases that are not skipped (at most 3). If all are skipped, say
   the lane has no search phrases and stop.
-- Mode: if you have the DataForSEO connector (its tools are named after DataForSEO services,
-  for example "DataForSEO Labs Google Keyword Overview"), offer both: "Paid
+- Mode: if you have the DataForSEO connector (its tools are named after DataForSEO services:
+  in the Claude app for example "DataForSEO Labs Google Keyword Overview", in Claude Code for
+  example `dataforseo_labs_google_keyword_overview`, often behind a prefix such as
+  `mcp__claude_ai_DataForSEO__`), offer both: "Paid
   (DataForSEO, about $X, real search numbers) or free (web search, questions and phrasing, no
   numbers)?" If you do not have it, say: "DataForSEO is not connected in your Claude app (it is
   limited to the people with the company login). I can do the free version: the questions and
@@ -57,6 +59,9 @@ after each call.
 | 1 | DataForSEO Labs Google Keyword Overview, once | `dataforseo_labs/google/keyword_overview/live` | the phrases, the country, English | $0.012 + $0.00012 per phrase |
 | 2 | DataForSEO Labs Google Related Keywords, once per phrase | `dataforseo_labs/google/related_keywords/live` | the phrase, the country, English, depth 1, limit 20 | up to $0.0144 per call |
 | 3 | SERP Organic Live Advanced, once, for the strongest target keyword | `serp/google/organic/live/advanced` | that keyword, the country, English, depth 10 | $0.002 |
+
+In Claude Code the same three tools are `dataforseo_labs_google_keyword_overview`,
+`dataforseo_labs_google_related_keywords` and `serp_organic_live_advanced` (after any prefix).
 
 Fill each tool's parameters from its own description (names such as `keyword` or `keywords`,
 `location_name`, `language_code` or `language_name`, `depth`, `limit`). Send the country name

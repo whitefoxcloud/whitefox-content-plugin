@@ -1,5 +1,12 @@
 # Changelog
 
+## 0.15.1
+
+- User manual for colleagues (`docs/user-manual.md`): install, workspace folder, DataForSEO
+  connector in the Claude app and Claude Code, the three stages, review pages, dashboard and
+  updating, with a list of the screenshots to add.
+- Search interest recognises the DataForSEO connector's tool names in Claude Code.
+
 ## 0.15.0
 
 - Dashboard: **Open** on a draft shows it on the page, as it will look (LinkedIn post, email
