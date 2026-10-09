@@ -331,7 +331,9 @@ saved, drafts saved). The dashboard only shows; it never changes anything. To se
   then **Update**. Start a new chat afterwards (open chats keep the old version).
 - **Claude Code:** `/plugin marketplace update whitefox`, then start a new session.
 
-![Updating the plugin in the Claude app: ⋯ menu, Check for updates, Update](images/33-app-update.png)
+![Updating the plugin in the Claude app: the ⋯ menu, Check for updates](images/33-app-update.png)
+
+![Update available: click Update](images/34-app-update-button.png)
 
 ---
 
@@ -415,7 +417,8 @@ Save each image in `docs/images/` with this name:
 | `30-paste-choices.png` | the copied "Decisions for" lines pasted in the chat |
 | `31-dashboard.png` | drafts saved, dashboard updated, the drafts list open with Open buttons |
 | `32-dashboard-draft.png` | a draft opened inside the dashboard |
-| `33-app-update.png` | the plugin's ⋯ menu with Check for updates (and Update, if it shows) |
+| `33-app-update.png` | the plugin's ⋯ menu with Check for updates |
+| `34-app-update-button.png` | after the check: Update available, the Update button |
 
 Use test data only (for example the fin-2026-10 campaign), and crop out names, emails and
 other chats.
