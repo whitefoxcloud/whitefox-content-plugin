@@ -11,7 +11,34 @@ The words it uses: **what we delivered** (one piece of work from a case study), 
 problem**, **audience quote**, **topic**, **content plan** and **piece**. `/whitefox-content-guide`
 explains each one.
 
-Step-by-step guide for colleagues: [docs/user-manual.md](docs/user-manual.md).
+## Quick start
+
+**A note before you start:** this plugin lets us test the WhiteFox content workflow and use it
+for real work before we spend money on deploying our content app, or time on making it
+serverless. It runs in your own Claude app on your own subscription, with nothing to host.
+Because of the limits of Claude plugins, the user experience is not the best it could be.
+Please tell us what works and what gets in the way: your feedback helps decide what we build
+next.
+
+1. **Install (once):** in the Claude app, Customize, Plugins, **+ Add**, **Add marketplace**,
+   **Add from a repository**. Paste `whitefoxcloud/whitefox-content-plugin`, click **Sync**,
+   then **Add** on WhiteFox Content.
+2. **Pick your folder:** in a new chat, type `/whitefox-content-start` (don't send yet). Click
+   **Project or folder**, **Add folder**, choose an empty folder (for example
+   `Documents\WhiteFox Content`), then send. The first time, reply with your name and *yes*.
+3. **Start a campaign:** `/whitefox-content-campaign`, then reply with the industry and goal,
+   for example *FIN, start conversations with fintech founders in Australia*.
+4. **Add the case study:** paste its link or attach the file when Claude asks.
+5. **Review and approve:** Claude runs straight through and stops only for your decisions. On a
+   review page (on the right), click keep or drop, then **Copy my choices** and paste them in
+   the chat. About seven replies from a new campaign to drafts.
+6. **Get your drafts:** they open in a preview, one tab per draft.
+   `/whitefox-content-dashboard` shows everything you have made.
+
+Type **stop** any time; the same command carries on later. When Claude asks *free or paid*,
+answer **free** unless you have the company DataForSEO login.
+
+Every step in depth, with screenshots: [docs/user-manual.md](docs/user-manual.md).
 
 ## How it works
 
@@ -35,10 +62,9 @@ The plugin holds no campaign data, case studies or logins.
 3. **Keyword research (only people with the company DataForSEO login):** in the Claude app,
    Customize, Connectors, **+**, "Add custom connector", name it `DataForSEO`, URL
    `https://mcp.dataforseo.com/mcp`, then Connect and sign in on DataForSEO's page with the
-   company login. In the connector's tool permissions, set the read-only tools to ask before
-   each use (every DataForSEO tool costs money, "read-only" only means it changes nothing).
-   Safest: allow only DataForSEO Labs Google Keyword Overview, DataForSEO Labs Google Related
-   Keywords and SERP Organic Live Advanced (ask first), and turn the others off. Never paste the login into a chat or a file. Everyone else skips this step; keyword
+   company login, then Approve. In the connector's tool permissions, leave every tool on ask
+   before use (the hand) and never choose always allow: every DataForSEO tool costs money,
+   "read-only" only means it changes nothing. Never paste the login into a chat or a file. Everyone else skips this step; keyword
    research then offers its free mode (questions and phrasing from web search, no numbers).
 
 ## Each time you work
