@@ -251,7 +251,9 @@ For one chosen topic at a time:
 1. **Search interest.** Claude asks one question: free or paid.
    - **free**: questions and phrasing from web search, no numbers, no cost.
    - **paid** (only with DataForSEO connected): real monthly searches. The question shows the
-     number of calls and the price, and replying **paid** approves that spend.
+     number of calls and the price, and replying **paid** approves that spend. The app then
+     asks before each DataForSEO call (about five): click **Allow once** each time, never
+     Always allow.
 2. **Content plan.** Claude plans the pieces for the topic: channel (LinkedIn, email or
    article), headline, who posts it (company, founder or engineer) and the keyword. Mark each
    piece **planned**, **later** or **drop**.
@@ -261,9 +263,13 @@ For one chosen topic at a time:
 
 ![Topics saved, dashboard updated, then the free or paid question](images/23-free-or-paid.png)
 
-![Review: content plan](images/24-review-content-plan.png)
+![Stage 3 on its own: /whitefox-content-write asks free or paid; the answer typed](images/24-app-write-paid.png)
 
-![Draft preview with one tab per draft](images/25-draft-preview.png)
+![Paid: the app asks before each DataForSEO call; click Allow once](images/25-app-dataforseo-allow.png)
+
+![Review: content plan](images/26-review-content-plan.png)
+
+![Draft preview with one tab per draft](images/27-draft-preview.png)
 
 Drafts are saved in your campaign's `drafts` folder. Copy the text from the preview page with
 its copy button, or open the file.
@@ -287,9 +293,9 @@ Nothing is saved before you approve.
 In Claude Code there are no pages: Claude lists the items in the chat and you type your
 choices.
 
-![A review page with keep and drop buttons](images/26-review-page.png)
+![A review page with keep and drop buttons](images/28-review-page.png)
 
-![Pasting the copied choices back into the chat](images/27-paste-choices.png)
+![Pasting the copied choices back into the chat](images/29-paste-choices.png)
 
 ---
 
@@ -309,9 +315,9 @@ While it is open, Claude refreshes it after each milestone (a campaign created, 
 saved, drafts saved). The dashboard only shows; it never changes anything. To see one saved item in the chat, use
 `/whitefox-content-show`, for example `/whitefox-content-show Topic 3 ins-2026-10`.
 
-![The dashboard](images/28-dashboard.png)
+![The dashboard](images/30-dashboard.png)
 
-![A draft opened inside the dashboard](images/29-dashboard-draft.png)
+![A draft opened inside the dashboard](images/31-dashboard-draft.png)
 
 ---
 
@@ -323,7 +329,7 @@ saved, drafts saved). The dashboard only shows; it never changes anything. To se
   then **Update**. Start a new chat afterwards (open chats keep the old version).
 - **Claude Code:** `/plugin marketplace update whitefox`, then start a new session.
 
-![Updating the plugin in the Claude app: ⋯ menu, Check for updates, Update](images/30-app-update.png)
+![Updating the plugin in the Claude app: ⋯ menu, Check for updates, Update](images/32-app-update.png)
 
 ---
 
@@ -398,13 +404,15 @@ Save each image in `docs/images/` with this name:
 | `21-review-topics.png` | stage 2 review: topics with their quotes in the chat, topics page on the right |
 | `22-topics-quotes-choices.png` | quote rows (keep, drop) on the topics page, choices pasted |
 | `23-free-or-paid.png` | topics saved, dashboard updated, the free or paid question with the price |
-| `24-review-content-plan.png` | review page for the content plan |
-| `25-draft-preview.png` | draft preview page with tabs |
-| `26-review-page.png` | any review page, buttons and Copy my choices visible |
-| `27-paste-choices.png` | the copied "Decisions for" lines pasted in the chat |
-| `28-dashboard.png` | the dashboard with a campaign expanded |
-| `29-dashboard-draft.png` | a draft opened inside the dashboard |
-| `30-app-update.png` | the plugin's ⋯ menu with Check for updates (and Update, if it shows) |
+| `24-app-write-paid.png` | /whitefox-content-write run on its own: the free or paid question, answer typed |
+| `25-app-dataforseo-allow.png` | "Claude wants to use DataForSEO ..." with Allow once |
+| `26-review-content-plan.png` | search interest results in the chat, content plan review page (planned, later, drop) |
+| `27-draft-preview.png` | draft preview page with tabs |
+| `28-review-page.png` | any review page, buttons and Copy my choices visible |
+| `29-paste-choices.png` | the copied "Decisions for" lines pasted in the chat |
+| `30-dashboard.png` | the dashboard with a campaign expanded |
+| `31-dashboard-draft.png` | a draft opened inside the dashboard |
+| `32-app-update.png` | the plugin's ⋯ menu with Check for updates (and Update, if it shows) |
 
 Use test data only (for example the fin-2026-10 campaign), and crop out names, emails and
 other chats.
