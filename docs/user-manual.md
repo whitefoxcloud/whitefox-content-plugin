@@ -231,12 +231,14 @@ Command: `/whitefox-content-find-topics`
    it searches.
 2. Claude proposes **topics**: one audience problem, plus what we delivered and the quotes
    behind it, framed as a position WhiteFox can own.
-3. On the review page, mark each topic **chosen**, **idea** or **drop**. Chosen topics go on to
-   stage 3.
+3. One review page holds the topics and the quotes. Mark each topic **chosen**, **idea** or
+   **drop**, and each quote **keep** or **drop**. Chosen topics go on to stage 3. A topic needs
+   something behind it: if you drop the only quote behind a topic with no delivery, that topic
+   is not saved.
 
-![Audience quotes with their links](images/21-quotes.png)
+![Topics review: topics and their quotes in the chat, the review page on the right](images/21-review-topics.png)
 
-![Review: topics](images/22-review-topics.png)
+![Quotes on the same page (keep or drop), and the copied choices pasted](images/22-topics-quotes-choices.png)
 
 ---
 
@@ -257,7 +259,7 @@ For one chosen topic at a time:
    draft, as they will look. Approve, or type what to change.
 4. Claude saves the drafts and offers the next chosen topic. Reply **next** to plan it.
 
-![Free or paid search interest](images/23-free-or-paid.png)
+![Topics saved, dashboard updated, then the free or paid question](images/23-free-or-paid.png)
 
 ![Review: content plan](images/24-review-content-plan.png)
 
@@ -393,9 +395,9 @@ Save each image in `docs/images/` with this name:
 | `18-app-stage1-start.png` | the start reply, with /whitefox-content-add-case-study typed (or copied from the dashboard) |
 | `19-add-case-study.png` | the stage 1 opener asking for the case study, with the link pasted |
 | `20-review-deliveries.png` | stage 1 review page: one row per delivery with fits, doesn't fit, drop |
-| `21-quotes.png` | audience quotes in the chat, with links |
-| `22-review-topics.png` | review page for topics (chosen, idea, drop) |
-| `23-free-or-paid.png` | the free or paid question with the price |
+| `21-review-topics.png` | stage 2 review: topics with their quotes in the chat, topics page on the right |
+| `22-topics-quotes-choices.png` | quote rows (keep, drop) on the topics page, choices pasted |
+| `23-free-or-paid.png` | topics saved, dashboard updated, the free or paid question with the price |
 | `24-review-content-plan.png` | review page for the content plan |
 | `25-draft-preview.png` | draft preview page with tabs |
 | `26-review-page.png` | any review page, buttons and Copy my choices visible |
