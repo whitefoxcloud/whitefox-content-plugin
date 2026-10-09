@@ -42,6 +42,8 @@ One question, one answer:
    If the case study library already has deliveries, add: "Or reply **library** to check the
    <N> deliveries already in your case study library." When the user replies, follow
    `../whitefox-content-add-case-study/SKILL.md`.
+   Never suggest or offer a case study yourself (not from the industry's links or lead routes);
+   the user chooses it.
 
 ## Pause, resume or finish a campaign
 

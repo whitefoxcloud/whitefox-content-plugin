@@ -1,5 +1,10 @@
 # Changelog
 
+## 0.15.6
+
+- Asking for a case study never suggests one (for example from the industry's links): you
+  choose it.
+
 ## 0.15.5
 
 - Stage 1 review page: one row per delivery with **fits / doesn't fit / drop**, and problems

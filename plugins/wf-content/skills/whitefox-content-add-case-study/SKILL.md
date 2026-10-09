@@ -27,6 +27,8 @@ in "Running straight through". The user replies once: to approve or change the r
      its case study: "Attach the case study for <campaign>, paste its text, or paste its link.
      Or reply **library** to check the <N> deliveries already in your case study library."
      Start at step 1 with the case study, or at step 2 on **library**.
+     Ask only: never suggest or offer a case study yourself (not from the industry's links,
+     lead routes or brand terms, not from memory or the website). The user chooses it.
    - No new case study, the campaign already has deliveries that fit, and the library has
      deliveries not checked for this campaign: start at step 2.
    - Everything checked, at least one fits, no `pains.md`: start at step 3.
